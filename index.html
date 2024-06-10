@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Call</title>
+    <title>Simulatore calcolo costo ccnl domestico</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -12,8 +12,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         h1 {
@@ -27,7 +29,8 @@
             border-radius: 5px;
             padding: 15px;
             margin: 10px 0;
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             text-align: center;
             cursor: pointer;
         }
@@ -54,18 +57,17 @@
 
         .tooltip {
             position: relative;
-            display: inline-block;
+            display: block;
             width: 100%;
         }
 
         .tooltip .tooltiptext {
             visibility: hidden;
-            width: 100%;
-            background-color: green;
-            color: #fff;
-            text-align: center;
+            background-color: aquamarine;
+            color: #000;
+            text-align: left;
             border-radius: 6px;
-            padding: 5px 0;
+            padding: 10px;
             position: absolute;
             z-index: 1;
             bottom: 150%;
@@ -73,12 +75,49 @@
             transform: translateX(-50%);
             opacity: 0;
             transition: opacity 0.3s;
-            overflow: auto;
+            width: 100%;
+            max-width: 300px;
         }
 
         .tooltip:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
+        }
+
+        .selected-items {
+            margin: 20px 0;
+            text-align: left;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .selected-item {
+            border: 1px solid #007BFF;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            max-width: 300px;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid aquamarine;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        input[type="number"] {
+            width: 50px;
         }
     </style>
 </head>
@@ -113,6 +152,36 @@
         <button class="box" onclick="submitChoices()">Calcola</button>
     </div>
 
+    <div class="selected-items" id="selectedItems">
+        <!-- Selections will appear here -->
+    </div>
+
+    <h2>Orario di lavoro</h2>
+    <table>
+        <thead>
+            <tr bodycolor="">
+                <th>Lunedì</th>
+                <th>Martedì</th>
+                <th>Mercoledì</th>
+                <th>Giovedì</th>
+                <th>Venerdì</th>
+                <th>Sabato</th>
+                <th>Domenica</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="number" min="0" max="24"></td>
+                <td><input type="number" min="0" max="24"></td>
+                <td><input type="number" min="0" max="24"></td>
+                <td><input type="number" min="0" max="24"></td>
+                <td><input type="number" min="0" max="24"></td>
+                <td><input type="number" min="0" max="24"></td>
+                <td><input type="number" min="0" max="24"></td>
+            </tr>
+        </tbody>
+    </table>
+
     <script>
         var selections = {
             'Tipo contratto': null,
@@ -137,7 +206,7 @@
 
         function selectChoice(category, choice) {
             selections[category] = choice;
-            alert('Hai selezionato: ' + choice);
+            displaySelections();
             if (category === 'Tipo contratto') {
                 updateLevelChoices(choice);
             }
@@ -151,7 +220,7 @@
                 buttons = '<div class="tooltip"><button onclick="selectChoice(\'Livello\', \'livello unico\')">livello unico</button><span class="tooltiptext">livello unico</span></div>';
             } else if (contractType === 'full-time') {
                 buttons = `
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'a')">a</button><span class="tooltiptext">LIVELLO A - assistenti familiari (no assistenza): Addetto alle pulizie (solo casa), Addetto alla lavanderia (solo lavanderia), Aiuto di cucina (supporto cuoco), Pulizia stalla e cura generica cavallo, Assistente animali domestici, Pulizia ed annaffiamento aree verdi, Operaio comune (solo manuali e piccoli interventi)</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'a')">a</button><span class="tooltiptext">LIVELLO A - assistenti familiari (no assistenza): \n Addetto alle pulizie (solo casa), Addetto alla lavanderia (solo lavanderia), Aiuto di cucina (supporto cuoco), Pulizia stalla e cura generica cavallo, Assistente animali domestici, Pulizia ed annaffiamento aree verdi, Operaio comune (solo manuali e piccoli interventi)</span></div>
                     <div class="tooltip"><button onclick="selectChoice('Livello', 'as')">as</button><span class="tooltiptext">LIVELLO AS</span></div>
                     <div class="tooltip"><button onclick="selectChoice('Livello', 'b')">b</button><span class="tooltiptext">LIVELLO B</span></div>
                     <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">LIVELLO BS</span></div>
@@ -183,7 +252,18 @@
             levelChoices.classList.add('show');
         }
 
-
+        function displaySelections() {
+            var selectedItemsDiv = document.getElementById('selectedItems');
+            selectedItemsDiv.innerHTML = '';
+            for (var key in selections) {
+                if (selections[key]) {
+                    var div = document.createElement('div');
+                    div.className = 'selected-item';
+                    div.innerText = key + ': ' + selections[key];
+                    selectedItemsDiv.appendChild(div);
+                }
+            }
+        }
 
         function submitChoices() {
             var allConfirmed = Object.values(selections).every(choice => choice !== null);
