@@ -5,10 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Call</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .box, .final-choices button {
+            border: 1px solid #007BFF;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            width: 300px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .choices {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .choices button {
+            margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #007BFF;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <button id="sendRequest" class="button">Send Request</button>
+    <h1>Titolo Centrato</h1>
+    
+    <div class="box" onclick="toggleChoices('choices1')">
+        Tipo contratto
+        <div id="choices1" class="choices">
+            <button onclick="selectChoice('Tipo contratto', 'full-time')">full-time</button>
+            <button onclick="selectChoice('Tipo contratto', 'part-time')">part-time</button>
+            <button onclick="selectChoice('Tipo contratto', 'sostituzione')">sostituzione</button>
+            <button onclick="selectChoice('Tipo contratto', 'assistenza')">assistenza</button>
+            <button onclick="selectChoice('Tipo contratto', 'presenza')">presenza</button>
+        </div>
+    </div>
 
-    <script src="index.js"></script>
+    <div class="box" onclick="toggleChoices('choices2')">
+        Livello
+        <div id="choices2" class="choices">
+            <!-- Livello buttons will be dynamically populated here -->
+        </div>
+    </div>
+
+    <div class="final-choices">
+        <button onclick="selectChoice('Contratto', 'indeterminato')">indeterminato</button>
+        <button onclick="selectChoice('Contratto', 'determinato')">determinato</button>
+        <button onclick="selectChoice('Contratto', 'determinato in sostituzione')">determinato in sostituzione</button>
+    </div>
+
+    <div>
+        <button class="box" onclick="submitChoices()">Invia</button>
+    </div>
+
+    <button id="sendRequest" class="box">Send Request</button>
+
+    <script>
+        var selections = {
+            'Tipo contratto': null,
+            'Livello': null,
+            'Contratto': null
+        };
+
+        function toggleChoices(id) {
+            var choices = document.getElementById(id);
+            if (choices.classList.contains('show')) {
+                choices.classList.remove('show');
+            } else {
+                // Nasconde tutte le altre scelte
+                var allChoices = document.querySelectorAll('.choices');
+                allChoices.forEach(function(choice) {
+                    choice.classList.remove('show');
+                });
+                // Mostra le scelte cliccate
+                choices.classList.add('show');
+            }
+        }
+
+        function selectChoice(category, choice) {
+            selections[category] = choice;
+            alert('Hai selezionato: ' + choice);
+            if (category === 'Tipo contratto') {
+                updateLevelChoices(choice);
+            }
+        }
+
+        function updateLevelChoices(contractType) {
+            var levelChoices = document.getElementById('choices2');
+            var buttons = '';
+            if (contractType === 'presenza') {
+                buttons = '<button onclick="selectChoice(\'Livello\', \'livello unico\')">livello unico</button>';
+            } else if (contractType === 'full-time') {
+                buttons = `
+                    <button onclick="selectChoice('Livello', 'a')">a</button>
+                    <button onclick="selectChoice('Livello', 'as')">as</button>
+                    <button onclick="selectChoice('Livello', 'b')">b</button>
+                    <button onclick="selectChoice('Livello', 'bs')">bs</button>
+                    <button onclick="selectChoice('Livello', 'c')">c</button>
+                    <button onclick="selectChoice('Livello', 'cs')">cs</button>
+                    <button onclick="selectChoice('Livello', 'd')">d</button>
+                    <button onclick="selectChoice('Livello', 'ds')">ds</button>
+                `;
+            } else if (contractType === 'part-time') {
+                buttons = `
+                    <button onclick="selectChoice('Livello', 'b')">b</button>
+                    <button onclick="selectChoice('Livello', 'bs')">bs</button>
+                    <button onclick="selectChoice('Livello', 'c')">c</button>
+                `;
+            } else if (contractType === 'assistenza') {
+                buttons = `
+                    <button onclick="selectChoice('Livello', 'bs')">bs</button>
+                    <button onclick="selectChoice('Livello', 'cs')">cs</button>
+                    <button onclick="selectChoice('Livello', 'ds')">ds</button>
+                `;
+            } else if (contractType === 'sostituzione') {
+                buttons = `
+                    <button onclick="selectChoice('Livello', 'cs')">cs</button>
+                    <button onclick="selectChoice('Livello', 'ds')">ds</button>
+                `;
+            }
+            levelChoices.innerHTML = buttons;
+            levelChoices.classList.add('show');
+        }
+
+        function submitChoices() {
+            var allConfirmed = Object.values(selections).every(choice => choice !== null);
+            if (allConfirmed) {
+                alert('Hai inviato le seguenti scelte:\n' +
+                    'Tipo contratto: ' + selections['Tipo contratto'] + '\n' +
+                    'Livello: ' + selections['Livello'] + '\n' +
+                    'Contratto: ' + selections['Contratto']);
+            } else {
+                alert('Per favore, seleziona tutte le opzioni prima di inviare.');
+            }
+        }
+    </script>
 </body>
 </html>
