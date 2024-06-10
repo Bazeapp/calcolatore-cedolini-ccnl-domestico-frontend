@@ -51,10 +51,39 @@
         .show {
             display: block;
         }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 100%;
+            background-color: green;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            overflow: auto;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
-    <h1>Titolo Centrato</h1>
+    <h1>Simulatore calcolo costo ccnl domestico</h1>
     
     <div class="box" onclick="toggleChoices('choices1')">
         Tipo contratto
@@ -67,7 +96,7 @@
         </div>
     </div>
 
-    <div class="box" onclick="toggleChoices('choices2')">
+    <div class="box" id="levelBox" onclick="toggleChoices('choices2')" style="display:none;">
         Livello
         <div id="choices2" class="choices">
             <!-- Livello buttons will be dynamically populated here -->
@@ -81,10 +110,8 @@
     </div>
 
     <div>
-        <button class="box" onclick="submitChoices()">Invia</button>
+        <button class="box" onclick="submitChoices()">Calcola</button>
     </div>
-
-    <button id="sendRequest" class="box">Send Request</button>
 
     <script>
         var selections = {
@@ -117,42 +144,46 @@
         }
 
         function updateLevelChoices(contractType) {
+            var levelBox = document.getElementById('levelBox');
             var levelChoices = document.getElementById('choices2');
             var buttons = '';
             if (contractType === 'presenza') {
-                buttons = '<button onclick="selectChoice(\'Livello\', \'livello unico\')">livello unico</button>';
+                buttons = '<div class="tooltip"><button onclick="selectChoice(\'Livello\', \'livello unico\')">livello unico</button><span class="tooltiptext">livello unico</span></div>';
             } else if (contractType === 'full-time') {
                 buttons = `
-                    <button onclick="selectChoice('Livello', 'a')">a</button>
-                    <button onclick="selectChoice('Livello', 'as')">as</button>
-                    <button onclick="selectChoice('Livello', 'b')">b</button>
-                    <button onclick="selectChoice('Livello', 'bs')">bs</button>
-                    <button onclick="selectChoice('Livello', 'c')">c</button>
-                    <button onclick="selectChoice('Livello', 'cs')">cs</button>
-                    <button onclick="selectChoice('Livello', 'd')">d</button>
-                    <button onclick="selectChoice('Livello', 'ds')">ds</button>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'a')">a</button><span class="tooltiptext">LIVELLO A - assistenti familiari (no assistenza): Addetto alle pulizie (solo casa), Addetto alla lavanderia (solo lavanderia), Aiuto di cucina (supporto cuoco), Pulizia stalla e cura generica cavallo, Assistente animali domestici, Pulizia ed annaffiamento aree verdi, Operaio comune (solo manuali e piccoli interventi)</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'as')">as</button><span class="tooltiptext">LIVELLO AS</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'b')">b</button><span class="tooltiptext">LIVELLO B</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">LIVELLO BS</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'c')">c</button><span class="tooltiptext">LIVELLO C</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'cs')">cs</button><span class="tooltiptext">LIVELLO CS</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'd')">d</button><span class="tooltiptext">LIVELLO D</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'ds')">ds</button><span class="tooltiptext">LIVELLO DS</span></div>
                 `;
             } else if (contractType === 'part-time') {
                 buttons = `
-                    <button onclick="selectChoice('Livello', 'b')">b</button>
-                    <button onclick="selectChoice('Livello', 'bs')">bs</button>
-                    <button onclick="selectChoice('Livello', 'c')">c</button>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'b')">b</button><span class="tooltiptext">LIVELLO B</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">LIVELLO BS</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'c')">c</button><span class="tooltiptext">LIVELLO C</span></div>
                 `;
             } else if (contractType === 'assistenza') {
                 buttons = `
-                    <button onclick="selectChoice('Livello', 'bs')">bs</button>
-                    <button onclick="selectChoice('Livello', 'cs')">cs</button>
-                    <button onclick="selectChoice('Livello', 'ds')">ds</button>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">LIVELLO BS</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'cs')">cs</button><span class="tooltiptext">LIVELLO CS</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'ds')">ds</button><span class="tooltiptext">LIVELLO DS</span></div>
                 `;
             } else if (contractType === 'sostituzione') {
                 buttons = `
-                    <button onclick="selectChoice('Livello', 'cs')">cs</button>
-                    <button onclick="selectChoice('Livello', 'ds')">ds</button>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'cs')">cs</button><span class="tooltiptext">LIVELLO CS</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'ds')">ds</button><span class="tooltiptext">LIVELLO DS</span></div>
                 `;
             }
             levelChoices.innerHTML = buttons;
+            levelBox.style.display = 'block';
             levelChoices.classList.add('show');
         }
+
+
 
         function submitChoices() {
             var allConfirmed = Object.values(selections).every(choice => choice !== null);
