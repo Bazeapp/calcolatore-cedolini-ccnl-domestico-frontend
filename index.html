@@ -43,27 +43,27 @@
         </label>
     </div>
     <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
-        Vitto e alloggio in natura:
-            <label>
+        Vitto e alloggio sono in natura? :
+        <label>
             <input type="radio" name="vittoAlloggio" value="si" onclick="selectVittoAlloggio('si')"> Sì
-            </label>
-            <label>
+        </label>
+        <label>
             <input type="radio" name="vittoAlloggio" value="no" onclick="selectVittoAlloggio('no')"> No
-            </label>
+        </label>
     </div>
 
     <div class="selection-container" id="specificaVittoAlloggioBox" style="display:none;">
-        seleziona le indennità sostitutive :
-            <label>
+        seleziona le indennità sostitutive:
+        <label>
             <input type="checkbox" name="specificaVittoAlloggio" value="pranzo/colazione" onclick="selectSpecificaVittoAlloggio('pranzo/colazione')"> indennità Pranzo/Colazione
-            </label>
-            <label>
+        </label>
+        <label>
             <input type="checkbox" name="specificaVittoAlloggio" value="cena" onclick="selectSpecificaVittoAlloggio('cena')"> indennità Cena
-            </label>
-            <label>
-            <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectSpecificaVittoAlloggio('alloggio')">indennità Alloggio
-            </label>
-        </div>
+        </label>
+        <label>
+            <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectSpecificaVittoAlloggio('alloggio')"> indennità Alloggio
+        </label>
+    </div>
 
     <div class="selected-items" id="selectedItems">
         <!-- Selections will appear here -->
@@ -111,7 +111,9 @@
         var selections = {
             'Tipo contratto': null,
             'Livello': null,
-            'Contratto': null
+            'Contratto': null,
+            'Vitto e alloggio in natura': null,
+            'Specifiche vitto e alloggio': []
         };
 
         function toggleChoices(id) {
@@ -134,13 +136,6 @@
             displaySelections();
             if (category === 'Tipo contratto') {
                 updateLevelChoices(choice);
-            }
-        }
-        function selectChoice(category, choice) {
-            selections[category] = choice;
-            displaySelections();
-            if (category === 'Tipo contratto') {
-                updateLevelChoices(choice);
             } else if (category === 'Livello') {
                 if (selections['Tipo contratto'] !== 'non-convivente') {
                     document.getElementById('vittoAlloggioBox').style.display = 'block';
@@ -156,6 +151,7 @@
                 document.getElementById('specificaVittoAlloggioBox').style.display = 'none';
                 selections['Specifiche vitto e alloggio'] = [];
             }
+            displaySelections();
         }
 
         function selectSpecificaVittoAlloggio(option) {
@@ -165,7 +161,7 @@
             } else {
                 selections['Specifiche vitto e alloggio'].splice(index, 1);
             }
-            
+            displaySelections();
         }
 
         function updateLevelChoices(contractType) {
@@ -179,180 +175,163 @@
                     <div class="tooltip"><button onclick="selectChoice('Livello', 'a')">a</button><span class="tooltiptext">LIVELLO A - assistenti familiari (no assistenza):
                         <br>Addetto alle pulizie (solo casa),
                         <br>Addetto alla lavanderia (solo lavanderia),
-                        <br>Aiuto di cucina (supporto cuoco),
-                        <br>Pulizia stalla e cura generica cavallo,
-                        <br>Assistente animali domestici,
-                        <br>Pulizia ed annaffiamento aree verdi,
-                        <br>Operaio comune (solo manuali e piccoli interventi)</span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'as')">as</button><span class="tooltiptext">A-SUPER - addetto alla compagnia(solo compagnia senza fare niente)</span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'b')">b</button><span class="tooltiptext"> LIVELLO B - svolgono con specifica competenza le proprie mansioni:
-                        <br>Collaboratore familiare generico polifunzionale (casalingo )
-                        <br>Custode abitazione privata(vigilanza abitazione e zone pertinenti o custode casa)
-                        <br>Addetto alla stireria(mansioni relativa a stiratura)
-                        <br>Servizio tavola e camera (fa i letti e mette apposto camera / apparecchia lava e        sparecchia)
-                        <br>Addetto alla cura delle aree verdi e manutenzione
-                        <br>Operaio qualificato(mansioni manuali di interventi e manutenzione)
-                        <br>Svolge mansioni di conduzioni automezzi e relativa manutenzione
-                        <br>Addetto a riassetto camere e servizio di prima colazione anche per ospiti</span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">B-SUPER
-                        <br>assistente familiare per persone autosufficenti (pulizia e vitto casa)
-                        <br>assistente familiare per bambini  autosufficenti (pulizia e vitto casa)</span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'c')">c</button><span class="tooltiptext">LIVELLO C - asistenti familiari che operano con totale autonomia e responsabilità
-                        <br>Cuoco (cucina, pulisce  e fa la spesa</span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'cs')">cs</button><span class="tooltiptext">C-SUPER
-                        <br>assistente familiare per persone non autosufficenti (non formato) (pulizia e vitto casa)</span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'd')">d</button><span class="tooltiptext">LIVELLO D - direttori di casa:
-                        <br>Direttore di casa (gestisce e coordina tutto)
-                        <br>Amministratore dei beni di famiglia (gestisce patrimonio di famiglia)
-                        <br>Svolge mansioni di gestione e coordinamento relative a tutte le esigenze connesse ai servizi
-                        <br>Svolge mansioni di coordinamento di attività cameriere di camera/stireria/lavanderia/guardaroba ecc.
-                        <br>Capo cuoco, gestisce cucina e tutti gli annessi
-                        <br>Capo giardiniere
-                        <br>Svogle mansioni di istruzione/educazione per la famiglia</span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'ds')">ds</button><span class="tooltiptext">D-SUPER
-                        <br>Assistente familiare che assiste persone non autosufficienti (formato), vitto e pulizia
-                        <br>Direttore di casa , dirige mansioni e cordinamento
-                        <br>Assistente familire educatore formato,(favorire inserimento o il reinserimento nei rapporti sociali, in autonomia, di persone in condizioni di difficoltà perché affette da disabilità psichica oppure da disturbi dell’apprendimento o relazionali)</span></div>
+                        <br>Aiuto di cucina,
+                        <br>Autista (solo autista)
+                    </span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'as')">as</button><span class="tooltiptext">LIVELLO AS - assistenti familiari:
+                        <br>Assistente a persone autosufficienti
+                    </span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'b')">b</button><span class="tooltiptext">LIVELLO B - assistenti familiari (no assistenza):
+                        <br>Addetto alla cucina (solo cucina),
+                        <br>Guardiano (no assistenza),
+                        <br>Giardiniere
+                    </span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">LIVELLO BS - assistenti familiari:
+                        <br>Assistente a persone non autosufficienti (non formato),
+                        <br>Assistente a persone autosufficienti (livello superiore),
+                        <br>Assistente a persone autosufficienti (livello base)
+                    </span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'c')">c</button><span class="tooltiptext">LIVELLO C - assistenti familiari:
+                        <br>Assistente a persone autosufficienti (livello superiore),
+                        <br>Assistente a persone non autosufficienti (no formato),
+                        <br>Assistente a persone autosufficienti (livello base),
+                        <br>Assistente a persone non autosufficienti (livello base)
+                    </span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'cs')">cs</button><span class="tooltiptext">LIVELLO CS - assistenti familiari:
+                        <br>Assistente a persone non autosufficienti (livello superiore),
+                        <br>Assistente a persone non autosufficienti (livello medio)
+                    </span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'd')">d</button><span class="tooltiptext">LIVELLO D - assistenti familiari (no assistenza):
+                        <br>Assistente a persone non autosufficienti (livello superiore),
+                        <br>Assistente a persone non autosufficienti (livello medio),
+                        <br>Assistente a persone non autosufficienti (livello base),
+                        <br>Assistente a persone autosufficienti (livello base),
+                        <br>Assistente a persone autosufficienti (livello superiore),
+                        <br>Assistente a persone non autosufficienti (no formato)
+                    </span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'ds')">ds</button><span class="tooltiptext">LIVELLO DS - assistenti familiari (no assistenza):
+                        <br>Assistente a persone non autosufficienti (livello superiore),
+                        <br>Assistente a persone non autosufficienti (livello medio),
+                        <br>Assistente a persone non autosufficienti (livello base),
+                        <br>Assistente a persone autosufficienti (livello superiore)
+                    </span></div>
                 `;
-            } else if (contractType === 'part-time') {
+            } else if (contractType === 'assistenza'){
                 buttons = `
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'b')">b</button><span class="tooltiptext">LIVELLO B - svolgono con specifica competenza le proprie mansioni:
-                        <br>Collaboratore familiare generico polifunzionale (casalingo )
-                        <br>Custode abitazione privata(vigilanza abitazione e zone pertinenti o custode casa)
-                        <br>Addetto alla stireria(mansioni relativa a stiratura)
-                        <br>Servizio tavola e camera (fa i letti e mette apposto camera / apparecchia lava e        sparecchia)
-                        <br>Addetto alla cura delle aree verdi e manutenzione
-                        <br>Operaio qualificato(mansioni manuali di interventi e manutenzione)
-                        <br>Svolge mansioni di conduzioni automezzi e relativa manutenzione
-                        <br>Addetto a riassetto camere e servizio di prima colazione anche per ospiti</span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">B-SUPER
-                        <br>assistente familiare per persone autosufficenti (pulizia e vitto casa)
-                        <br>assistente familiare per bambini  autosufficenti (pulizia e vitto casa)</span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'c')">c</button><span class="tooltiptext">LIVELLO C - asistenti familiari che operano con totale autonomia e responsabilità
-                        <br>Cuoco (cucina, pulisce  e fa la spesa</span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">LIVELLO BS - assistenti familiari:
+                        <br>Assistente a persone non autosufficienti (non formato),
+                        <br>Assistente a persone autosufficienti (livello superiore),
+                        <br>Assistente a persone autosufficienti (livello base)
+                    </span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'cs')">cs</button><span class="tooltiptext">LIVELLO CS - assistenti familiari:
+                        <br>Assistente a persone non autosufficienti (livello superiore),
+                        <br>Assistente a persone non autosufficienti (livello medio)
+                    </span></div>
+                     <div class="tooltip"><button onclick="selectChoice('Livello', 'ds')">ds</button><span class="tooltiptext">LIVELLO DS - assistenti familiari (no assistenza):
+                        <br>Assistente a persone non autosufficienti (livello superiore),
+                        <br>Assistente a persone non autosufficienti (livello medio),
+                        <br>Assistente a persone non autosufficienti (livello base),
+                        <br>Assistente a persone autosufficienti (livello superiore)
+                    </span></div>
+ 
                     `;
-            } else if (contractType === 'assistenza') {
+                } else if (contractType === 'sostituzione'){
                 buttons = `
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">B-SUPER
-                        <br>assistente familiare per persone autosufficenti (pulizia e vitto casa)
-                        <br>assistente familiare per bambini  autosufficenti (pulizia e vitto casa)</span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'cs')">cs</button><span class="tooltiptext">C-SUPER
-                        <br>assistente familiare per persone non autosufficenti (non formato) (pulizia e vitto casa)</span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'ds')">ds</button><span class="tooltiptext">LIVELLO DS</span></div>
-                `;
-            } else if (contractType === 'sostituzione') {
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'cs')">cs</button><span class="tooltiptext">LIVELLO CS - assistenti familiari:
+                        <br>Assistente a persone non autosufficienti (livello superiore),
+                        <br>Assistente a persone non autosufficienti (livello medio)
+                    </span></div>
+                     <div class="tooltip"><button onclick="selectChoice('Livello', 'ds')">ds</button><span class="tooltiptext">LIVELLO DS - assistenti familiari (no assistenza):
+                        <br>Assistente a persone non autosufficienti (livello superiore),
+                        <br>Assistente a persone non autosufficienti (livello medio),
+                        <br>Assistente a persone non autosufficienti (livello base),
+                        <br>Assistente a persone autosufficienti (livello superiore)
+                    </span></div>
+ 
+                    `;
+                } else if (contractType === 'part-time'){
                 buttons = `
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'cs')">cs</button><span class="tooltiptext">C-SUPER
-                        <br>assistente familiare per persone non autosufficenti (non formato) (pulizia e vitto casa)</span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'ds')">ds</button><span class="tooltiptext">D-SUPER
-                        <br>Assistente familiare che assiste persone non autosufficienti (formato), vitto e pulizia
-                        <br>Direttore di casa , dirige mansioni e cordinamento
-                        <br>Assistente familire educatore formato,(favorire inserimento o il reinserimento nei rapporti sociali, in autonomia, di persone in condizioni di difficoltà perché affette da disabilità psichica oppure da disturbi dell’apprendimento o relazionali)</span></div>
-                `;
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'b')">b</button><span class="tooltiptext">LIVELLO B - assistenti familiari (no assistenza):
+                        <br>Addetto alla cucina (solo cucina),
+                        <br>Guardiano (no assistenza),
+                        <br>Giardiniere
+                    </span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">LIVELLO BS - assistenti familiari:
+                        <br>Assistente a persone non autosufficienti (non formato),
+                        <br>Assistente a persone autosufficienti (livello superiore),
+                        <br>Assistente a persone autosufficienti (livello base)
+                    </span></div>
+                    <div class="tooltip"><button onclick="selectChoice('Livello', 'c')">c</button><span class="tooltiptext">LIVELLO C - assistenti familiari:
+                        <br>Assistente a persone autosufficienti (livello superiore),
+                        <br>Assistente a persone non autosufficienti (no formato),
+                        <br>Assistente a persone autosufficienti (livello base),
+                        <br>Assistente a persone non autosufficienti (livello base)
+                    </span></div>
+ 
+                    `;
             }
             levelChoices.innerHTML = buttons;
             levelBox.style.display = 'block';
-            levelChoices.classList.add('show');
         }
 
         function displaySelections() {
-            var selectedItemsDiv = document.getElementById('selectedItems');
-            selectedItemsDiv.innerHTML = '';
-            for (var key in selections) {
-                if (selections[key]) {
-                    var div = document.createElement('div');
-                    div.className = 'selected-item';
-                    div.innerText = key + ': ' + selections[key];
-                    selectedItemsDiv.appendChild(div);
-                }
-            }
-        }
-
-        function submitChoices() {
-            var allConfirmed = Object.values(selections).every(choice => choice !== null);
-            var totalHours = document.getElementById('totalHours').value;
-            var totalDays = document.getElementById('totalDays').value;
-            var resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = '';
-
-            if (allConfirmed) {
-                var dailyHours = getDailyHours();
-                resultDiv.innerHTML = `
-                    <p>Hai inviato le seguenti scelte:</p>
-                    <p>Tipo contratto: ${selections['Tipo contratto']}</p>
-                    <p>Livello: ${selections['Livello']}</p>
-                    <p>Contratto: ${selections['Contratto']}</p>
-                    <p>Ore settimanali: ${totalHours}</p>
-                    <p>Giorni settimanali: ${totalDays}</p>
-                    <p>Ore giornaliere:</p>
-                    <ul>
-                        <li>Lunedì: ${dailyHours[0]}</li>
-                        <li>Martedì: ${dailyHours[1]}</li>
-                        <li>Mercoledì: ${dailyHours[2]}</li>
-                        <li>Giovedì: ${dailyHours[3]}</li>
-                        <li>Venerdì: ${dailyHours[4]}</li>
-                        <li>Sabato: ${dailyHours[5]}</li>
-                        <li>Domenica: ${dailyHours[6]}</li>
-                    </ul>
-                    <p> Indennità varie: ${selections['Specifiche vitto e alloggio']} </p>
-                `;
-            } else {
-                alert('Per favore, seleziona tutte le opzioni prima di inviare.');
-            }
+            var selectedItems = document.getElementById('selectedItems');
+            selectedItems.innerHTML = `
+                <p>Tipo contratto: ${selections['Tipo contratto'] || 'Non selezionato'}</p>
+                <p>Livello: ${selections['Livello'] || 'Non selezionato'}</p>
+                <p>Contratto: ${selections['Contratto'] || 'Non selezionato'}</p>
+                <p>Vitto e alloggio in natura: ${selections['Vitto e alloggio in natura'] || 'Non selezionato'}</p>
+                <p>Specifiche vitto e alloggio: ${selections['Specifiche vitto e alloggio'].join(', ') || 'Nessuna'}</p>
+            `;
         }
 
         function calculateTotals() {
+            var days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
             var totalHours = 0;
             var totalDays = 0;
-            var orePerGiorno = getDailyHours();
-
-            orePerGiorno.forEach(function(hours) {
+            days.forEach(function(day) {
+                var hours = parseFloat(document.getElementById(day).value) || 0;
+                totalHours += hours;
                 if (hours > 0) {
                     totalDays++;
-                    totalHours += hours;
                 }
             });
-
             document.getElementById('totalHours').value = totalHours;
             document.getElementById('totalDays').value = totalDays;
-
-            console.log("Ore per giorno:", orePerGiorno);
         }
 
-        function getDailyHours() {
-            var inputs = [
-                document.getElementById('lunedi').value,
-                document.getElementById('martedi').value,
-                document.getElementById('mercoledi').value,
-                document.getElementById('giovedi').value,
-                document.getElementById('venerdi').value,
-                document.getElementById('sabato').value,
-                document.getElementById('domenica').value
-            ];
-
-            return inputs.map(function(value) {
-                return isNaN(parseInt(value)) ? 0 : parseInt(value);
-            });
+        function submitChoices() {
+            var resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <p>Calcolo per il tipo di contratto: ${selections['Tipo contratto']}</p>
+                <p>Livello: ${selections['Livello']}</p>
+                <p>Contratto: ${selections['Contratto']}</p>
+                <p>Vitto e alloggio in natura: ${selections['Vitto e alloggio in natura']}</p>
+                <p>Specifiche vitto e alloggio: ${selections['Specifiche vitto e alloggio'].join(', ')}</p>
+                <p>Ore di lavoro settimanali: ${document.getElementById('totalHours').value}</p>
+                <p>Giorni di lavoro settimanali: ${document.getElementById('totalDays').value}</p>
+            `;
         }
 
         function resetCalculator() {
             selections = {
                 'Tipo contratto': null,
                 'Livello': null,
-                'Contratto': null
+                'Contratto': null,
+                'Vitto e alloggio in natura': null,
+                'Specifiche vitto e alloggio': []
             };
             displaySelections();
-
-            var inputs = document.querySelectorAll('input[type="number"]');
-            inputs.forEach(function(input) {
-                input.value = '';
-            });
-
+            document.getElementById('choices1').classList.remove('show');
+            document.getElementById('choices2').classList.remove('show');
+            document.getElementById('levelBox').style.display = 'none';
+            document.getElementById('vittoAlloggioBox').style.display = 'none';
+            document.getElementById('specificaVittoAlloggioBox').style.display = 'none';
+            document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+            document.querySelectorAll('input[type="number"]').forEach(number => number.value = '');
             document.getElementById('totalHours').value = '';
             document.getElementById('totalDays').value = '';
-
-            document.getElementById('levelBox').style.display = 'none';
-            document.getElementById('choices2').innerHTML = '';
             document.getElementById('result').innerHTML = '';
         }
     </script>
