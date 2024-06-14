@@ -35,7 +35,7 @@
     </div>
 
     
-    <div class="selection-container">
+    <div class="selection-container" id="duratacontratto">
         <label>
             <input type="radio" name="contratto" value="indeterminato" onclick="selectChoice('Contratto', 'indeterminato')">
             Indeterminato
@@ -90,6 +90,16 @@
         </label>
         <label>
             <input type="radio" name="certificato" value="no" onclick="selectCertificato('no')"> No
+        </label>
+    </div>
+
+    <div class="selection-container" id="autosufficientiBox" style="display:none;">
+        Il lavoratore si occupa di più persone non autosufficienti? :
+        <label>
+            <input type="radio" name="autosufficienti" value="si" onclick="selectAutosuff('si')"> Sì
+        </label>
+        <label>
+            <input type="radio" name="autosufficienti" value="no" onclick="selectAutosuff('no')"> No
         </label>
     </div>
 
@@ -171,14 +181,15 @@
             'Vitto e alloggio in natura': null,
             'Specifiche vitto e alloggio': [],
             'Bambino entro 6 anni': null,
-            'Certificato UNI1176': null
+            'Certificato UNI1176': null,
+            'Autosufficienti':null
         };
 
         function toggleChoices(choiceId) {
             var choices = document.getElementById(choiceId);
             choices.classList.toggle('show');
         }
-        
+
         function selectChoice(category, choice) {
     selections[category] = choice;
     displaySelections();
@@ -192,6 +203,12 @@
         } else {
             document.getElementById('bambinoBox').style.display = 'none';
             document.getElementById('certificatoBox').style.display = 'none';
+        }
+
+        if (choice === 'ds') {
+            document.getElementById('autosufficientiBox').style.display = 'block';
+        } else {
+            document.getElementById('autosufficientiBox').style.display = 'none';
         }
 
         if (selections['Tipo contratto'] !== 'non-convivente') {
@@ -229,6 +246,11 @@
 
         function selectCertificato(choice) {
             selections['Certificato UNI1176'] = choice;
+            displaySelections();
+        }
+
+        function selectAutosuff(choice) {
+            selections['Autosufficienti'] = choice;
             displaySelections();
         }
 
@@ -310,7 +332,8 @@
                 'Vitto e alloggio in natura': null,
                 'Specifiche vitto e alloggio': [],
                 'Bambino entro 6 anni': null,
-                'Certificato UNI1176': null
+                'Certificato UNI1176': null,
+                'Autosufficienti':null
             };
 
             document.getElementById('selectedItems').innerHTML = '';
@@ -321,6 +344,7 @@
             document.getElementById('specificaVittoAlloggioBox').style.display = 'none';
             document.getElementById('bambinoBox').style.display = 'none';
             document.getElementById('certificatoBox').style.display = 'none';
+            document.getElementById('autosufficientiBox').style.display = 'none';
 
             // Reset hours and days
             var days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
