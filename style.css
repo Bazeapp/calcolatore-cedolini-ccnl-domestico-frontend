@@ -65,11 +65,12 @@ h1 {
     bottom: -50%;
     left: -60%;
     transform: translateX(-50%);
-    opacity: 5;
-    transition: opacity 1,5s;
+    opacity: 0;
+    transition: opacity 0.5s;
     width: 100%;
     max-width: 400px;
 }
+
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
@@ -109,4 +110,17 @@ th, td {
 
 input[type="number"] {
     width: 50px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.selection-container {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 300px;
 }

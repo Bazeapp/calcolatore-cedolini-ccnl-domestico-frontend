@@ -3,47 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulatore calcolo costo ccnl domestico</title>
+    <title>Simulatore Calcolo Costo CCNL Domestico</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Simulatore calcolo costo ccnl domestico</h1>
+    <h1>Simulatore Calcolo Costo CCNL Domestico</h1>
     
     <div class="box" onclick="toggleChoices('choices1')">
-        Tipo contratto
+        Tipo Contratto
         <div id="choices1" class="choices">
-            <button onclick="selectChoice('Tipo contratto', 'non-convivente')">non-convivente</button>
-            <button onclick="selectChoice('Tipo contratto', 'full-time')">full-time</button>
-            <button onclick="selectChoice('Tipo contratto', 'part-time')">part-time</button>
-            <button onclick="selectChoice('Tipo contratto', 'sostituzione')">sostituzione</button>
-            <button onclick="selectChoice('Tipo contratto', 'assistenza')">assistenza</button>
-            <button onclick="selectChoice('Tipo contratto', 'presenza')">presenza</button>
+            <button onclick="selectChoice('Tipo contratto', 'non-convivente')">Non-Convivente</button>
+            <button onclick="selectChoice('Tipo contratto', 'full-time')">Full-Time</button>
+            <button onclick="selectChoice('Tipo contratto', 'part-time')">Part-Time</button>
+            <button onclick="selectChoice('Tipo contratto', 'sostituzione')">Sostituzione</button>
+            <button onclick="selectChoice('Tipo contratto', 'assistenza')">Assistenza</button>
+            <button onclick="selectChoice('Tipo contratto', 'presenza')">Presenza</button>
+        </div>
+    </div>
+    <div class="box" onclick="toggleChoices('livello')">
+        Livello contratto
+        <div id="livello" class="choices">
+            <button onclick="selectChoice('Livello', 'a')">A</button>
+            <button onclick="selectChoice('Livello','as')">AS</button>
+            <button onclick="selectChoice('Livello', 'b')">B</button>
+            <button onclick="selectChoice('Livello', 'bs')">BS</button>
+            <button onclick="selectChoice('Livello', 'c')">C</button>
+            <button onclick="selectChoice('Livello', 'cs')">CS</button>
+            <button onclick="selectChoice('Livello', 'd')">D</button>
+            <button onclick="selectChoice('Livello', 'ds')">DS</button>
         </div>
     </div>
 
-    <div class="box" id="levelBox" onclick="toggleChoices('choices2')" style="display:none;">
-        Livello
-        <div id="choices2" class="choices">
-            <!-- Livello buttons will be dynamically populated here -->
-        </div>
-    </div>
-
+    
     <div class="selection-container">
         <label>
             <input type="radio" name="contratto" value="indeterminato" onclick="selectChoice('Contratto', 'indeterminato')">
-            indeterminato
+            Indeterminato
         </label>
         <label>
             <input type="radio" name="contratto" value="determinato" onclick="selectChoice('Contratto', 'determinato')">
-            determinato
+            Determinato
         </label>
         <label>
             <input type="radio" name="contratto" value="determinato in sostituzione" onclick="selectChoice('Contratto', 'determinato in sostituzione')">
-            determinato in sostituzione
+            Determinato in Sostituzione
         </label>
     </div>
+
     <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
-        Vitto e alloggio sono in natura? :
+        Vitto e Alloggio sono in natura? :
         <label>
             <input type="radio" name="vittoAlloggio" value="si" onclick="selectVittoAlloggio('si')"> Sì
         </label>
@@ -53,15 +61,35 @@
     </div>
 
     <div class="selection-container" id="specificaVittoAlloggioBox" style="display:none;">
-        seleziona le indennità sostitutive:
+        Seleziona le indennità sostitutive:
         <label>
-            <input type="checkbox" name="specificaVittoAlloggio" value="pranzo/colazione" onclick="selectSpecificaVittoAlloggio('pranzo/colazione')"> indennità Pranzo/Colazione
+            <input type="checkbox" name="specificaVittoAlloggio" value="pranzo/colazione" onclick="selectSpecificaVittoAlloggio('pranzo/colazione')"> Indennità Pranzo/Colazione
         </label>
         <label>
-            <input type="checkbox" name="specificaVittoAlloggio" value="cena" onclick="selectSpecificaVittoAlloggio('cena')"> indennità Cena
+            <input type="checkbox" name="specificaVittoAlloggio" value="cena" onclick="selectSpecificaVittoAlloggio('cena')"> Indennità Cena
         </label>
         <label>
-            <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectSpecificaVittoAlloggio('alloggio')"> indennità Alloggio
+            <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectSpecificaVittoAlloggio('alloggio')"> Indennità Alloggio
+        </label>
+    </div>
+
+    <div class="selection-container" id="bambinoBox" style="display:none;">
+        Il bambino è entro i 6 anni di età? :
+        <label>
+            <input type="radio" name="bambino" value="si" onclick="selectBambino('si')"> Sì
+        </label>
+        <label>
+            <input type="radio" name="bambino" value="no" onclick="selectBambino('no')"> No
+        </label>
+    </div>
+
+    <div class="selection-container" id="certificatoBox" style="display:none;">
+        Il lavoratore ha il certificato UNI1176 valido? :
+        <label>
+            <input type="radio" name="certificato" value="si" onclick="selectCertificato('si')"> Sì
+        </label>
+        <label>
+            <input type="radio" name="certificato" value="no" onclick="selectCertificato('no')"> No
         </label>
     </div>
 
@@ -69,7 +97,7 @@
         <!-- Selections will appear here -->
     </div>
 
-    <h2>Orario di lavoro</h2>
+    <h2>Orario di Lavoro</h2>
     <table>
         <thead>
             <tr>
@@ -80,45 +108,45 @@
                 <th>Venerdì</th>
                 <th>Sabato</th>
                 <th>Domenica</th>
-                <th>Ore settimanali</th>
-                <th>Giorni settimanali</th>
+                <th>Ore Settimanali</th>
+                <th>Giorni Settimanali</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>
                     <button onclick="increaseHours('lunedi')">+</button>
-                    <input type="number" min="0" max="10" placeholder="0" id="lunedi" value="0" readonly>
+                    <input type="number" min="0" max="10" id="lunedi" value="0" readonly>
                     <button onclick="decreaseHours('lunedi')">-</button>
                 </td>
                 <td>
                     <button onclick="increaseHours('martedi')">+</button>
-                    <input type="number" min="0" max="10" placeholder="0" id="martedi" value="0" readonly>
+                    <input type="number" min="0" max="10" id="martedi" value="0" readonly>
                     <button onclick="decreaseHours('martedi')">-</button>
                 </td>
                 <td>
                     <button onclick="increaseHours('mercoledi')">+</button>
-                    <input type="number" min="0" max="10" placeholder="0" id="mercoledi" value="0" readonly>
+                    <input type="number" min="0" max="10" id="mercoledi" value="0" readonly>
                     <button onclick="decreaseHours('mercoledi')">-</button>
                 </td>
                 <td>
                     <button onclick="increaseHours('giovedi')">+</button>
-                    <input type="number" min="0" max="10" placeholder="0" id="giovedi" value="0" readonly>
+                    <input type="number" min="0" max="10" id="giovedi" value="0" readonly>
                     <button onclick="decreaseHours('giovedi')">-</button>
                 </td>
                 <td>
                     <button onclick="increaseHours('venerdi')">+</button>
-                    <input type="number" min="0" max="10" placeholder="0" id="venerdi" value="0" readonly>
+                    <input type="number" min="0" max="10" id="venerdi" value="0" readonly>
                     <button onclick="decreaseHours('venerdi')">-</button>
                 </td>
                 <td>
                     <button onclick="increaseHours('sabato')">+</button>
-                    <input type="number" min="0" max="10" placeholder="0" id="sabato" value="0" readonly>
+                    <input type="number" min="0" max="10" id="sabato" value="0" readonly>
                     <button onclick="decreaseHours('sabato')">-</button>
                 </td>
                 <td>
                     <button onclick="increaseHours('domenica')">+</button>
-                    <input type="number" min="0" max="10" placeholder="0" id="domenica" value="0" readonly>
+                    <input type="number" min="0" max="10" id="domenica" value="0" readonly>
                     <button onclick="decreaseHours('domenica')">-</button>
                 </td>
                 <td><input type="text" id="totalHours" readonly></td>
@@ -128,7 +156,7 @@
     </table>
     <div>
         <button class="box" onclick="submitChoices()">Calcola</button>
-        <button class="box" onclick="resetCalculator()">Nuovo calcolo</button>
+        <button class="box" onclick="resetCalculator()">Nuovo Calcolo</button>
     </div>
 
     <div id="result">
@@ -141,42 +169,44 @@
             'Livello': null,
             'Contratto': null,
             'Vitto e alloggio in natura': null,
-            'Specifiche vitto e alloggio': []
+            'Specifiche vitto e alloggio': [],
+            'Bambino entro 6 anni': null,
+            'Certificato UNI1176': null
         };
 
-        function toggleChoices(id) {
-            var choices = document.getElementById(id);
-            if (choices.classList.contains('show')) {
-                choices.classList.remove('show');
-            } else {
-                // Nasconde tutte le altre scelte
-                var allChoices = document.querySelectorAll('.choices');
-                allChoices.forEach(function(choice) {
-                    choice.classList.remove('show');
-                });
-                // Mostra le scelte cliccate
-                choices.classList.add('show');
-            }
+        function toggleChoices(choiceId) {
+            var choices = document.getElementById(choiceId);
+            choices.classList.toggle('show');
+        }
+        
+        function selectChoice(category, choice) {
+    selections[category] = choice;
+    displaySelections();
+
+    if (category === 'Tipo contratto') {
+        updateLevelChoices(choice);
+    } else if (category === 'Livello') {
+        if (choice === 'bs') {
+            document.getElementById('bambinoBox').style.display = 'block';
+            document.getElementById('certificatoBox').style.display = 'block';
+        } else {
+            document.getElementById('bambinoBox').style.display = 'none';
+            document.getElementById('certificatoBox').style.display = 'none';
         }
 
-        function selectChoice(category, choice) {
-            selections[category] = choice;
-            displaySelections();
-            if (category === 'Tipo contratto') {
-                updateLevelChoices(choice);
-            } else if (category === 'Livello') {
-                if (selections['Tipo contratto'] !== 'non-convivente') {
-                    document.getElementById('vittoAlloggioBox').style.display = 'block';
-                }
-            }
+        if (selections['Tipo contratto'] !== 'non-convivente') {
+            document.getElementById('vittoAlloggioBox').style.display = 'block';
         }
+    }
+}
+
+
+        
 
         function selectVittoAlloggio(choice) {
             selections['Vitto e alloggio in natura'] = choice;
-            if (choice === 'no') {
-                document.getElementById('specificaVittoAlloggioBox').style.display = 'block';
-            } else {
-                document.getElementById('specificaVittoAlloggioBox').style.display = 'none';
+            document.getElementById('specificaVittoAlloggioBox').style.display = (choice === 'no') ? 'block' : 'none';
+            if (choice === 'si') {
                 selections['Specifiche vitto e alloggio'] = [];
             }
             displaySelections();
@@ -192,196 +222,125 @@
             displaySelections();
         }
 
-        function updateLevelChoices(contractType) {
-            var levelBox = document.getElementById('levelBox');
-            var levelChoices = document.getElementById('choices2');
-            var buttons = '';
-            if (contractType === 'presenza') {
-                buttons = '<div class="tooltip"><button onclick="selectChoice(\'Livello\', \'livello unico\')">livello unico</button><span class="tooltiptext">livello unico</span></div>';
-            } else if (contractType === 'full-time' || contractType === 'non-convivente'){
-                buttons = `
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'a')">a</button><span class="tooltiptext">LIVELLO A - assistenti familiari (no assistenza):
-                        <br>Addetto alle pulizie (solo casa),
-                        <br>Addetto alla lavanderia (solo lavanderia),
-                        <br>Aiuto di cucina,
-                        <br>Autista (solo autista)
-                    </span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'as')">as</button><span class="tooltiptext">LIVELLO AS - assistenti familiari:
-                        <br>Assistente a persone autosufficienti
-                    </span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'b')">b</button><span class="tooltiptext">LIVELLO B - assistenti familiari (no assistenza):
-                        <br>Addetto alla cucina (solo cucina),
-                        <br>Guardiano (no assistenza),
-                        <br>Giardiniere
-                    </span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">LIVELLO BS - assistenti familiari:
-                        <br>Assistente a persone non autosufficienti (non formato),
-                        <br>Assistente a persone autosufficienti (livello superiore),
-                        <br>Assistente a persone autosufficienti (livello base)
-                    </span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'c')">c</button><span class="tooltiptext">LIVELLO C - assistenti familiari:
-                        <br>Assistente a persone autosufficienti (livello superiore),
-                        <br>Assistente a persone non autosufficienti (no formato),
-                        <br>Assistente a persone autosufficienti (livello base),
-                        <br>Assistente a persone non autosufficienti (livello base)
-                    </span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'cs')">cs</button><span class="tooltiptext">LIVELLO CS - assistenti familiari:
-                        <br>Assistente a persone non autosufficienti (livello superiore),
-                        <br>Assistente a persone non autosufficienti (livello medio)
-                    </span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'd')">d</button><span class="tooltiptext">LIVELLO D - assistenti familiari (no assistenza):
-                        <br>Assistente a persone non autosufficienti (livello superiore),
-                        <br>Assistente a persone non autosufficienti (livello medio),
-                        <br>Assistente a persone non autosufficienti (livello base),
-                        <br>Assistente a persone autosufficienti (livello base),
-                        <br>Assistente a persone autosufficienti (livello superiore),
-                        <br>Assistente a persone non autosufficienti (no formato)
-                    </span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'ds')">ds</button><span class="tooltiptext">LIVELLO DS - assistenti familiari (no assistenza):
-                        <br>Assistente a persone non autosufficienti (livello superiore),
-                        <br>Assistente a persone non autosufficienti (livello medio),
-                        <br>Assistente a persone non autosufficienti (livello base),
-                        <br>Assistente a persone autosufficienti (livello superiore)
-                    </span></div>
-                `;
-            } else if (contractType === 'assistenza'){
-                buttons = `
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">LIVELLO BS - assistenti familiari:
-                        <br>Assistente a persone non autosufficienti (non formato),
-                        <br>Assistente a persone autosufficienti (livello superiore),
-                        <br>Assistente a persone autosufficienti (livello base)
-                    </span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'cs')">cs</button><span class="tooltiptext">LIVELLO CS - assistenti familiari:
-                        <br>Assistente a persone non autosufficienti (livello superiore),
-                        <br>Assistente a persone non autosufficienti (livello medio)
-                    </span></div>
-                     <div class="tooltip"><button onclick="selectChoice('Livello', 'ds')">ds</button><span class="tooltiptext">LIVELLO DS - assistenti familiari (no assistenza):
-                        <br>Assistente a persone non autosufficienti (livello superiore),
-                        <br>Assistente a persone non autosufficienti (livello medio),
-                        <br>Assistente a persone non autosufficienti (livello base),
-                        <br>Assistente a persone autosufficienti (livello superiore)
-                    </span></div>
- 
-                    `;
-                } else if (contractType === 'sostituzione'){
-                buttons = `
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'cs')">cs</button><span class="tooltiptext">LIVELLO CS - assistenti familiari:
-                        <br>Assistente a persone non autosufficienti (livello superiore),
-                        <br>Assistente a persone non autosufficienti (livello medio)
-                    </span></div>
-                     <div class="tooltip"><button onclick="selectChoice('Livello', 'ds')">ds</button><span class="tooltiptext">LIVELLO DS - assistenti familiari (no assistenza):
-                        <br>Assistente a persone non autosufficienti (livello superiore),
-                        <br>Assistente a persone non autosufficienti (livello medio),
-                        <br>Assistente a persone non autosufficienti (livello base),
-                        <br>Assistente a persone autosufficienti (livello superiore)
-                    </span></div>
- 
-                    `;
-                } else if (contractType === 'part-time'){
-                buttons = `
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'b')">b</button><span class="tooltiptext">LIVELLO B - assistenti familiari (no assistenza):
-                        <br>Addetto alla cucina (solo cucina),
-                        <br>Guardiano (no assistenza),
-                        <br>Giardiniere
-                    </span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'bs')">bs</button><span class="tooltiptext">LIVELLO BS - assistenti familiari:
-                        <br>Assistente a persone non autosufficienti (non formato),
-                        <br>Assistente a persone autosufficienti (livello superiore),
-                        <br>Assistente a persone autosufficienti (livello base)
-                    </span></div>
-                    <div class="tooltip"><button onclick="selectChoice('Livello', 'c')">c</button><span class="tooltiptext">LIVELLO C - assistenti familiari:
-                        <br>Assistente a persone autosufficienti (livello superiore),
-                        <br>Assistente a persone non autosufficienti (no formato),
-                        <br>Assistente a persone autosufficienti (livello base),
-                        <br>Assistente a persone non autosufficienti (livello base)
-                    </span></div>
- 
-                    `;
-            }
-            levelChoices.innerHTML = buttons;
-            levelBox.style.display = 'block';
+        function selectBambino(choice) {
+            selections['Bambino entro 6 anni'] = choice;
+            displaySelections();
         }
 
+        function selectCertificato(choice) {
+            selections['Certificato UNI1176'] = choice;
+            displaySelections();
+        }
+
+            
         function displaySelections() {
             var selectedItems = document.getElementById('selectedItems');
-            selectedItems.innerHTML = `
-                <p>Tipo contratto: ${selections['Tipo contratto'] || 'Non selezionato'}</p>
-                <p>Livello: ${selections['Livello'] || 'Non selezionato'}</p>
-                <p>Contratto: ${selections['Contratto'] || 'Non selezionato'}</p>
-            `;
+            selectedItems.innerHTML = '';
+
+            for (var key in selections) {
+                if (selections[key] !== null) {
+                    if (Array.isArray(selections[key]) && selections[key].length > 0) {
+                        selectedItems.innerHTML += '<p>' + key + ': ' + selections[key].join(', ') + '</p>';
+                    } else if (!Array.isArray(selections[key])) {
+                        selectedItems.innerHTML += '<p>' + key + ': ' + selections[key] + '</p>';
+                    }
+                }
+            }
         }
 
         function increaseHours(day) {
             var input = document.getElementById(day);
-            var currentValue = parseInt(input.value) || 0;
-            if (currentValue < 10) {
-                input.value = currentValue + 1;
-                calculateTotals();
+            var value = parseInt(input.value);
+            if (value < 10) {
+                input.value = value + 1;
+                updateTotalHoursAndDays();
             }
         }
 
         function decreaseHours(day) {
             var input = document.getElementById(day);
-            var currentValue = parseInt(input.value) || 0;
-            if (currentValue > 0) {
-                input.value = currentValue - 1;
-                calculateTotals();
+            var value = parseInt(input.value);
+            if (value > 0) {
+                input.value = value - 1;
+                updateTotalHoursAndDays();
             }
         }
 
-        function calculateTotals() {
+        function updateTotalHoursAndDays() {
             var days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
             var totalHours = 0;
             var totalDays = 0;
+
             days.forEach(function(day) {
-                var hours = parseInt(document.getElementById(day).value) || 0;
-                totalHours += hours;
-                if (hours > 0) {
-                    totalDays++;
+                var input = document.getElementById(day);
+                var value = parseInt(input.value);
+                totalHours += value;
+                if (value > 0) {
+                    totalDays += 1;
                 }
             });
+
             document.getElementById('totalHours').value = totalHours;
             document.getElementById('totalDays').value = totalDays;
         }
 
         function submitChoices() {
-            var resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = `
-                <p>Calcolo per il tipo di contratto: ${selections['Tipo contratto']}</p>
-                <p>Livello: ${selections['Livello']}</p>
-                <p>Contratto: ${selections['Contratto']}</p>
-                <p>Vitto e alloggio in natura: ${selections['Vitto e alloggio in natura']}</p>
-                <p>Specifiche vitto e alloggio: ${selections['Specifiche vitto e alloggio'].join(', ')}</p>
-                <p>Ore di lavoro settimanali: ${document.getElementById('totalHours').value}</p>
-                <p>Giorni di lavoro settimanali: ${document.getElementById('totalDays').value}</p>
-            `;
+            var result = document.getElementById('result');
+            result.innerHTML = '<h2>Risultati del Calcolo:</h2>';
+            for (var key in selections) {
+                if (selections[key] !== null) {
+                    if (Array.isArray(selections[key]) && selections[key].length > 0) {
+                        result.innerHTML += '<p>' + key + ': ' + selections[key].join(', ') + '</p>';
+                    } else if (!Array.isArray(selections[key])) {
+                        result.innerHTML += '<p>' + key + ': ' + selections[key] + '</p>';
+                    }
+                }
+            }
+            var totalHours = document.getElementById('totalHours').value;
+            var totalDays = document.getElementById('totalDays').value;
+            result.innerHTML += '<p>Ore Settimanali: ' + totalHours + '</p>';
+            result.innerHTML += '<p>Giorni Settimanali: ' + totalDays + '</p>';
         }
 
         function resetCalculator() {
-    selections = {
-        'Tipo contratto': null,
-        'Livello': null,
-        'Contratto': null,
-        'Vitto e alloggio in natura': null,
-        'Specifiche vitto e alloggio': []
-    };
-    displaySelections();
-    document.getElementById('choices1').classList.remove('show');
-    document.getElementById('choices2').classList.remove('show');
-    document.getElementById('levelBox').style.display = 'none';
-    document.getElementById('vittoAlloggioBox').style.display = 'none';
-    document.getElementById('specificaVittoAlloggioBox').style.display = 'none';
-    document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
-    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
-    document.querySelectorAll('input[type="text"]').forEach(text => text.value = '');
-    var days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
-    days.forEach(function(day) {
-        document.getElementById(day).value = '0';
-    });
-    document.getElementById('totalHours').value = '';
-    document.getElementById('totalDays').value = '';
-    document.getElementById('result').innerHTML = '';
-}
+            selections = {
+                'Tipo contratto': null,
+                'Livello': null,
+                'Contratto': null,
+                'Vitto e alloggio in natura': null,
+                'Specifiche vitto e alloggio': [],
+                'Bambino entro 6 anni': null,
+                'Certificato UNI1176': null
+            };
+
+            document.getElementById('selectedItems').innerHTML = '';
+            document.getElementById('result').innerHTML = '';
+            document.getElementById('choices1').classList.remove('show');
+            document.getElementById('livello').classList.remove('show');
+            document.getElementById('vittoAlloggioBox').style.display = 'none';
+            document.getElementById('specificaVittoAlloggioBox').style.display = 'none';
+            document.getElementById('bambinoBox').style.display = 'none';
+            document.getElementById('certificatoBox').style.display = 'none';
+
+            // Reset hours and days
+            var days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
+            days.forEach(function(day) {
+                document.getElementById(day).value = 0;
+            });
+            document.getElementById('totalHours').value = 0;
+            document.getElementById('totalDays').value = 0;
+
+            // Reset radio buttons and checkboxes
+            var radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach(function(radio) {
+                radio.checked = false;
+            });
+
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = false;
+            });
+        }
     </script>
 </body>
 </html>
