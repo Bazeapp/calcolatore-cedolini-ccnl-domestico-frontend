@@ -199,13 +199,17 @@
     } else if (category === 'Livello') {
         if (choice === 'bs') {
             document.getElementById('bambinoBox').style.display = 'block';
-            document.getElementById('certificatoBox').style.display = 'block';
         } else {
             document.getElementById('bambinoBox').style.display = 'none';
+        }
+
+        if (choice === 'b' || choice==='bs' || choice === 'cs' || choice==='d') {
+            document.getElementById('certificatoBox').style.display = 'block';
+        } else {
             document.getElementById('certificatoBox').style.display = 'none';
         }
 
-        if (choice === 'ds') {
+        if (choice === 'cs' || choice==='ds') {
             document.getElementById('autosufficientiBox').style.display = 'block';
         } else {
             document.getElementById('autosufficientiBox').style.display = 'none';
