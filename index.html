@@ -20,20 +20,39 @@
             <button onclick="selectChoice('Tipo contratto', 'presenza')">Presenza</button>
         </div>
     </div>
-    <div class="box" onclick="toggleChoices('livello')">
+    <div class="box" onclick="toggleChoices('livello'); sceltalivello();">
         Livello contratto
         <div id="livello" class="choices">
-            <button onclick="selectChoice('Livello', 'a')">A</button>
-            <button onclick="selectChoice('Livello','as')">AS</button>
-            <button onclick="selectChoice('Livello', 'b')">B</button>
-            <button onclick="selectChoice('Livello', 'bs')">BS</button>
-            <button onclick="selectChoice('Livello', 'c')">C</button>
-            <button onclick="selectChoice('Livello', 'cs')">CS</button>
-            <button onclick="selectChoice('Livello', 'd')">D</button>
-            <button onclick="selectChoice('Livello', 'ds')">DS</button>
+            <div id="a" style="display:none">
+                <button onclick="selectChoice('Livello', 'a')">A</button>
+            </div>
+            <div id="as" style="display:none">    
+                <button onclick="selectChoice('Livello','as')">AS</button>
+            </div>
+            <div id="b" style="display:none">
+                <button onclick="selectChoice('Livello', 'b')">B</button>
+            </div>   
+            <div id="bs" style="display:none"> 
+                <button onclick="selectChoice('Livello', 'bs')">BS</button>
+            </div>
+            <div id="c" style="display:none">
+                <button onclick="selectChoice('Livello', 'c')">C</button>
+            </div>
+            <div id="cs" style="display:none">
+                <button onclick="selectChoice('Livello', 'cs')">CS</button>
+            </div>
+            <div id="d" style="display:none"> 
+                <button onclick="selectChoice('Livello', 'd')">D</button>
+            </div>
+            <div id="ds" style="display:none">
+                <button onclick="selectChoice('Livello', 'ds')">DS</button>
+            </div>   
+            <div id="lu" style="display:none">
+                <button onclick="selectChoice('Livello', 'lu')">LivelloUnico</button>
+            </div>  
         </div>
     </div>
-
+    
     
     <div class="selection-container" id="duratacontratto">
         <label>
@@ -189,14 +208,79 @@
             var choices = document.getElementById(choiceId);
             choices.classList.toggle('show');
         }
+        function sceltalivello() {
+            if(selections['Tipo contratto']==='non-convivente'){
+                document.getElementById('a').style.display='block';
+                document.getElementById('as').style.display='block';
+                document.getElementById('b').style.display='block';
+                document.getElementById('bs').style.display='block';
+                document.getElementById('c').style.display='block';
+                document.getElementById('cs').style.display='block';
+                document.getElementById('d').style.display='block';
+                document.getElementById('ds').style.display='block';
+                document.getElementById('lu').style.display='none';}
+
+            if(selections['Tipo contratto']==='part-time'){
+                document.getElementById('a').style.display='none';
+                document.getElementById('as').style.display='none';
+                document.getElementById('b').style.display='block';
+                document.getElementById('bs').style.display='block';
+                document.getElementById('c').style.display='block';
+                document.getElementById('cs').style.display='none';
+                document.getElementById('d').style.display='none';
+                document.getElementById('ds').style.display='none';
+                document.getElementById('lu').style.display='none';}
+
+            if(selections['Tipo contratto']==='full-time'){
+                document.getElementById('a').style.display='block';
+                document.getElementById('as').style.display='block';
+                document.getElementById('b').style.display='block';
+                document.getElementById('bs').style.display='block';
+                document.getElementById('c').style.display='block';
+                document.getElementById('cs').style.display='block';
+                document.getElementById('d').style.display='block';
+                document.getElementById('ds').style.display='block';
+                document.getElementById('lu').style.display='none';}
+
+            if(selections['Tipo contratto']==='sostituzione'){
+                document.getElementById('a').style.display='none';
+                document.getElementById('as').style.display='none';
+                document.getElementById('b').style.display='none';
+                document.getElementById('bs').style.display='none';
+                document.getElementById('c').style.display='none';
+                document.getElementById('cs').style.display='block';
+                document.getElementById('d').style.display='none';
+                document.getElementById('ds').style.display='block';
+                document.getElementById('lu').style.display='none';}
+            if(selections['Tipo contratto']==='assistenza'){
+                document.getElementById('a').style.display='none';
+                document.getElementById('as').style.display='none';
+                document.getElementById('b').style.display='none';
+                document.getElementById('bs').style.display='block';
+                document.getElementById('c').style.display='none';
+                document.getElementById('cs').style.display='block';
+                document.getElementById('d').style.display='none';
+                document.getElementById('ds').style.display='block';
+                document.getElementById('lu').style.display='none';}  
+            if(selections['Tipo contratto']==='presenza'){
+                document.getElementById('a').style.display='none';
+                document.getElementById('as').style.display='none';
+                document.getElementById('b').style.display='none';
+                document.getElementById('bs').style.display='none';
+                document.getElementById('c').style.display='none';
+                document.getElementById('cs').style.display='none';
+                document.getElementById('d').style.display='none';
+                document.getElementById('ds').style.display='none';
+                document.getElementById('lu').style.display='block';}  
+               }
 
         function selectChoice(category, choice) {
-    selections[category] = choice;
-    displaySelections();
+        selections[category] = choice;
+        displaySelections();
 
-    if (category === 'Tipo contratto') {
-        updateLevelChoices(choice);
-    } else if (category === 'Livello') {
+        if (category === 'Tipo contratto') {
+         updateLevelChoices(choice);
+        } else if (category === 'Livello') {
         if (choice === 'bs') {
             document.getElementById('bambinoBox').style.display = 'block';
         } else {
@@ -349,6 +433,15 @@
             document.getElementById('bambinoBox').style.display = 'none';
             document.getElementById('certificatoBox').style.display = 'none';
             document.getElementById('autosufficientiBox').style.display = 'none';
+            document.getElementById('a').style.display='none';
+            document.getElementById('as').style.display='none';
+            document.getElementById('b').style.display='none';
+            document.getElementById('bs').style.display='none';
+            document.getElementById('c').style.display='none';
+            document.getElementById('cs').style.display='none';
+            document.getElementById('d').style.display='none';
+            document.getElementById('ds').style.display='none';
+            document.getElementById('lu').style.display='none';
 
             // Reset hours and days
             var days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
