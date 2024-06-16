@@ -184,7 +184,66 @@
         </tbody>
     </table>
     <div>
-        <button class="box" onclick="submitChoices()">Calcola</button>
+        <button class="box" onclick="submitChoices(); aprisimulazione();">Calcola</button>
+    </div>
+
+    <div id="simulazione" style="display:none">
+    <h2>Simulazione costi</h2>
+    <table>
+        <tr>
+            <th>descrizione:</th>
+            <th>importo:</th>
+        </tr>
+        <tr>
+            <td>paga lorda lavoratore:</td>
+            <td>€0,00</td>
+        </tr>
+        <tr>
+            <td>contributi cassa colf:</td>
+            <td>€0,00</td>
+        </tr>
+        <tr>
+            <td>contributi inps:</td>
+            <td>€0,00</td>
+        </tr>
+        <tr>
+            <td>paga netta:</td>
+            <td>€0,00</td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+            <td>paga lorda:</td>
+            <td>€0,00</td>
+        </tr>
+        <tr>
+            <td>contributi cassa colf</td>
+            <td>€0,00</td>
+        </tr>
+        <tr>
+            <td>contributi inps:</td>
+            <td>€0,00</td>
+        </tr>
+        <tr>
+            <td>tfr:</td>
+            <td>€0,00</td>
+        </tr>
+        <tr>
+            <td>ferie:</td>
+            <td>€0,00</td>
+        </tr>
+        <tr>
+            <td>tredicesima:</td>
+            <td>€0,00</td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+            <td>costo totale:</td>
+            <td>€0,00</td>
+        </tr>
+    </table>
+    </div>
+
+    <div>    
         <button class="box" onclick="resetCalculator()">Nuovo Calcolo</button>
     </div>
 
@@ -208,6 +267,11 @@
             var choices = document.getElementById(choiceId);
             choices.classList.toggle('show');
         }
+        function aprisimulazione() {
+                document.getElementById('simulazione').style.display='block';
+                }
+
+
         function sceltalivello() {
             if(selections['Tipo contratto']==='non-convivente'){
                 document.getElementById('a').style.display='block';
@@ -442,6 +506,8 @@
             document.getElementById('d').style.display='none';
             document.getElementById('ds').style.display='none';
             document.getElementById('lu').style.display='none';
+            document.getElementById('simulazione').style.display='none';
+                
 
             // Reset hours and days
             var days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
