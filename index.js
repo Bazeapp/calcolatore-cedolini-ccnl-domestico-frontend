@@ -324,6 +324,7 @@
             document.getElementById('simulazione').style.display='none';
             document.getElementById('InputpagaBox').style.display='none';
             document.getElementById('pagabox').style.display='none';
+            document.getElementById('Inputpaga').value = "0";
             
                 
 
@@ -346,3 +347,20 @@
                 checkbox.checked = false;
             });
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/dati')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('pagalorda-lavoratore').innerText = data['pagalorda-lavoratore']+ ' €';
+                    document.getElementById('contributicolf-lavoratore').innerText = data['contributicolf-lavoratore']+ ' €';
+                    document.getElementById('contributiinps-lavoratore').innerText = data['contributiinps-lavoratore']+ ' €';
+                    document.getElementById('paganetta-lavoratore').innerText = data['paganetta-lavoratore']+ ' €';
+                    document.getElementById('contributicolf-datore').innerText = data['contributicolf-datore']+ ' €';
+                    document.getElementById('contributiinps-datore').innerText = data['contributiinps-datore']+ ' €';
+                    document.getElementById('indennita-tfr').innerText = data['indennita-tfr']+ ' €';
+                    document.getElementById('indennita-ferie').innerText = data['indennita-ferie']+ ' €';
+                    document.getElementById('indennita-tredicesim').innerText = data['indennita-tredicesim']+ ' €';
+                    document.getElementById('costototale-datore').innerText = data['costototale-datore']+ ' €';
+                });
+        });
