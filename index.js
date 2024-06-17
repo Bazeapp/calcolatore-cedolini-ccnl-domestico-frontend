@@ -51,7 +51,8 @@
             'Specifiche vitto e alloggio': [],
             'Bambino entro 6 anni': null,
             'Certificato UNI1176': null,
-            'Autosufficienti':null
+            'Autosufficienti':null,
+            'Inputpaga':0
         };
 
         function toggleChoices(choiceId) {
@@ -128,6 +129,29 @@
                 document.getElementById('ds').style.display='none';
                 document.getElementById('lu').style.display='block';}  
                }
+
+            
+            
+            function sceglipaga() {
+                    document.getElementById('pagabox').style.display = 'block';
+            }
+            function toggleManualSalaryInput(choice) {
+                if (choice === 'si') {
+                    document.getElementById('InputpagaBox').style.display = 'block';
+                } else {
+                    document.getElementById('InputpagaBox').style.display = 'none';
+                }
+            }
+            function salvaPaga() {
+                var paga = document.getElementById('Inputpaga').value;
+                if (paga === "") {
+                    alert("Inserisci un valore valido per la paga.");
+                    return;
+                }
+                document.getElementById('pagaImporto').innerText = paga+ ' €';
+            }
+
+
 
         function selectChoice(category, choice) {
         selections[category] = choice;
@@ -298,6 +322,9 @@
             document.getElementById('ds').style.display='none';
             document.getElementById('lu').style.display='none';
             document.getElementById('simulazione').style.display='none';
+            document.getElementById('InputpagaBox').style.display='none';
+            document.getElementById('pagabox').style.display='none';
+            
                 
 
             // Reset hours and days

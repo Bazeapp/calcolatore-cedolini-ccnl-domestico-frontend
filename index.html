@@ -56,18 +56,35 @@
     
     <div class="selection-container" id="duratacontratto">
         <label>
-            <input type="radio" name="contratto" value="indeterminato" onclick="selectChoice('Contratto', 'indeterminato')">
+            <input type="radio" name="contratto" value="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');sceglipaga()">
             Indeterminato
         </label>
         <label>
-            <input type="radio" name="contratto" value="determinato" onclick="selectChoice('Contratto', 'determinato')">
+            <input type="radio" name="contratto" value="determinato" onclick="selectChoice('Contratto', 'determinato');sceglipaga()">
             Determinato
         </label>
         <label>
-            <input type="radio" name="contratto" value="determinato in sostituzione" onclick="selectChoice('Contratto', 'determinato in sostituzione')">
+            <input type="radio" name="contratto" value="determinato in sostituzione" onclick="selectChoice('Contratto', 'determinato in sostituzione');sceglipaga()">
             Determinato in Sostituzione
         </label>
     </div>
+
+    <div class="selection-container" id="pagabox" style="display:none;">
+        Vuoi inserire una paga manualmente? 
+        <label>
+            <input type="radio" name="manualSalary" value="si" onclick="toggleManualSalaryInput('si')"> Sì
+        </label>
+        <label>
+            <input type="radio" name="manualSalary" value="no" onclick="toggleManualSalaryInput('no')"> No
+        </label>
+    </div>
+
+    <div class="selection-container" id="InputpagaBox" style="display:none;">
+        Inserisci la paga:
+        <input type="number" id="Inputpaga" min="0" step="1">
+        <button onclick="salvaPaga()">clicca per confermare </button>
+    </div>
+
 
     <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
         Vitto e Alloggio sono in natura? :
@@ -196,7 +213,7 @@
         </tr>
         <tr>
             <td>paga lorda lavoratore:</td>
-            <td>€0,00</td>
+            <td id="pagaImporto"> </td>   
         </tr>
         <tr>
             <td>contributi cassa colf:</td>
