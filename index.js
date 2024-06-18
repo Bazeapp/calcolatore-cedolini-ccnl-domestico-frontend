@@ -18,7 +18,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         piu_persone: autosufficienti,
         certificato_uni: certificato,
         pranzo_natura: indennitaPranzoColazione,
-        cena_natura: indennitaAlloggio,
+        cena_natura: indennitaCena,
         alloggio_natura: indennitaAlloggio
     };
     console.log(data);
@@ -171,7 +171,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         }    
 
         if (category === 'Tipo contratto') {
-         updateLevelChoices(choice);
+        
         } else if (category === 'Livello') {    
         if (choice === 'bs') {
             document.getElementById('bambinoBox').style.display = 'block';
@@ -384,19 +384,4 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             });
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            fetch('/dati')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('pagalorda-lavoratore').innerText = data['pagalorda-lavoratore']+ ' €';
-                    document.getElementById('contributicolf-lavoratore').innerText = data['contributicolf-lavoratore']+ ' €';
-                    document.getElementById('contributiinps-lavoratore').innerText = data['contributiinps-lavoratore']+ ' €';
-                    document.getElementById('paganetta-lavoratore').innerText = data['paganetta-lavoratore']+ ' €';
-                    document.getElementById('contributicolf-datore').innerText = data['contributicolf-datore']+ ' €';
-                    document.getElementById('contributiinps-datore').innerText = data['contributiinps-datore']+ ' €';
-                    document.getElementById('indennita-tfr').innerText = data['indennita-tfr']+ ' €';
-                    document.getElementById('indennita-ferie').innerText = data['indennita-ferie']+ ' €';
-                    document.getElementById('indennita-tredicesim').innerText = data['indennita-tredicesim']+ ' €';
-                    document.getElementById('costototale-datore').innerText = data['costototale-datore']+ ' €';
-                });
-        });
+        
