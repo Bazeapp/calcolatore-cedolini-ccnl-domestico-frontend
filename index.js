@@ -338,6 +338,9 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('InputpagaBox').style.display='none';
             document.getElementById('pagabox').style.display='none';
             document.getElementById('Inputpaga').value = "";
+            livellocontrattoselezionato = "";
+            tipocontrattoselezionato = "";
+            duratacontrattoselezionato = "";  
             
                 
 
