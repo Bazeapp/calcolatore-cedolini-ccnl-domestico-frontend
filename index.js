@@ -13,7 +13,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         oreVenerdi: "0",
         oreSabato: "0",
         oreDomenica: "0",
-        paga: "730",
+        paga: document.getElementById("Inputpaga").value,
         bambino_6_anni: "si",
         piu_persone: "no",
         certificato_uni: "si",
@@ -21,6 +21,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         cena_natura: "si",
         alloggio_natura: "no"
     };
+    console.log(data);
 
     try {
         const response = await fetch('https://europe-west3-baze-app-prod.cloudfunctions.net/calculator-ccnl', {
@@ -143,6 +144,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                     document.getElementById('InputpagaBox').style.display = 'none';
                 }
             }
+            var paga="";
             function salvaPaga() {
                 var paga = document.getElementById('Inputpaga').value;
                 if (paga === "") {
