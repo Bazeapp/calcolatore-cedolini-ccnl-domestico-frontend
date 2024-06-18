@@ -14,9 +14,9 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         oreSabato: document.getElementById("sabato").value,
         oreDomenica: document.getElementById("domenica").value,
         paga: document.getElementById("Inputpaga").value,
-        bambino_6_anni: "si",
-        piu_persone: "no",
-        certificato_uni: "si",
+        bambino_6_anni: bambino,
+        piu_persone: autosufficienti,
+        certificato_uni: certificato,
         pranzo_natura: indennitaPranzoColazione,
         cena_natura: indennitaAlloggio,
         alloggio_natura: indennitaAlloggio
@@ -229,19 +229,22 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             }
             displaySelections();
         }
-
+        let bambino = "no";
         function selectBambino(choice) {
             selections['Bambino entro 6 anni'] = choice;
+            bambino=choice;
             displaySelections();
         }
-
+        let certificato = "no";
         function selectCertificato(choice) {
             selections['Certificato UNI1176'] = choice;
+            certificato=choice;
             displaySelections();
         }
-
+        let autosufficienti = "no";
         function selectAutosuff(choice) {
             selections['Autosufficienti'] = choice;
+            autosufficienti=choice;
             displaySelections();
         }
 
@@ -355,6 +358,9 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             indennitaPranzoColazione = "no";
             indennitaCena = "no";
             indennitaAlloggio = "no";
+            certificato = "no";
+            bambino="no";
+            autosufficienti="no";
             
                 
 
