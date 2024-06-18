@@ -17,9 +17,9 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         bambino_6_anni: "si",
         piu_persone: "no",
         certificato_uni: "si",
-        pranzo_natura: "si",
-        cena_natura: "si",
-        alloggio_natura: "no"
+        pranzo_natura: indennitaPranzoColazione,
+        cena_natura: indennitaAlloggio,
+        alloggio_natura: indennitaAlloggio
     };
     console.log(data);
 
@@ -197,8 +197,19 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     }
 }
 
+        let indennitaPranzoColazione = "no";
+        let indennitaCena = "no";
+        let indennitaAlloggio = "no";
 
-        
+        function selectvariabiliVittoAlloggio(value,choice) {
+            if (value === 'pranzo/colazione'){
+                indennitaPranzoColazione = choice;
+            } else if (value === 'cena') {
+                indennitaCena = choice;
+            } else if (value === 'alloggio') {
+                indennitaAlloggio = choice;
+            }
+        }
 
         function selectVittoAlloggio(choice) {
             selections['Vitto e alloggio in natura'] = choice;
@@ -341,6 +352,9 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             livellocontrattoselezionato = "";
             tipocontrattoselezionato = "";
             duratacontrattoselezionato = "";  
+            indennitaPranzoColazione = "no";
+            indennitaCena = "no";
+            indennitaAlloggio = "no";
             
                 
 
