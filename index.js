@@ -39,11 +39,22 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         }
 
         const result = await response.json();
+        updateSimulazione(result);
+        
         console.log(result);
     } catch (error) {
         console.error('There was an error!', error);
     }
 }); 
+        function updateSimulazione(result) {
+            for (const key in result) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = result[key];
+                }
+            }
+        }
+
 
         var selections = {
             'Tipo contratto': null,
@@ -161,13 +172,29 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         selections[category] = choice;
         displaySelections();
         if (category === 'Tipo contratto') {
-            tipocontrattoselezionato = selections['Tipo contratto'];
+            if(selections['Tipo contratto']==='full-time'){
+            tipocontrattoselezionato = 'convivente';}
+            if(selections['Tipo contratto']==='non-convivente'){
+                tipocontrattoselezionato = 'nonconvivente';}
+            if(selections['Tipo contratto']==='part-time'){
+                tipocontrattoselezionato = 'part-time';} 
+            if(selections['Tipo contratto']==='sostituzione'){
+            tipocontrattoselezionato = 'sostituzione';}
+            if(selections['Tipo contratto']==='presenza'){
+            tipocontrattoselezionato = 'presenza';} 
+            if(selections['Tipo contratto']==='assistenza'){
+            tipocontrattoselezionato = 'assistenza';}      
         }
         if (category === 'Livello') {
             livellocontrattoselezionato = choice;
         }
         if (category === 'Contratto') {
-            duratacontrattoselezionato = choice;
+            if(choice==='determinato in sostituzione'){
+            duratacontrattoselezionato = 'determinato_in_sostituzione';}
+            if(choice==='determinato'){
+            duratacontrattoselezionato = 'determinato';}
+            if(choice==='indeterminato'){
+            duratacontrattoselezionato = 'indeterminato';}    
         }    
 
         if (category === 'Tipo contratto') {
@@ -288,6 +315,12 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 const input = document.getElementById(day);
                 let value = parseInt(input.value);
         
+                // Assicurati che il valore non sia superiore a 10
+                if (value > 10) {
+                    value = 10;
+                    input.value = 10;
+                }
+        
                 if (value > 0) {
                     totalDays++;
                 }
@@ -298,14 +331,34 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('totalDays').value = totalDays;
         }
         
-        // Aggiungi event listener per gli eventi di modifica sugli input di tipo number
-        document.querySelectorAll('input[type="number"]').forEach(input => {
-            input.addEventListener('change', function() {
-                if (this.value > 10) {
+        // Aggiungi event listener per gli eventi di input sugli input specifici delle ore giornaliere
+        const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
+        days.forEach(day => {
+            const input = document.getElementById(day);
+        
+            input.addEventListener('input', function() {
+                let value = parseInt(this.value);
+        
+                // Assicurati che il valore non sia superiore a 10 o inferiore a 0
+                if (value > 10) {
                     this.value = 10;
-                } else if (this.value < 0) {
+                } else if (value < 0 || isNaN(value)) {
                     this.value = 0;
                 }
+        
+                updateTotals();
+            });
+        
+            // Aggiungi anche un event listener per l'evento change per garantire che i totali siano aggiornati correttamente
+            input.addEventListener('change', function() {
+                let value = parseInt(this.value);
+        
+                if (value > 10) {
+                    this.value = 10;
+                } else if (value < 0 || isNaN(value)) {
+                    this.value = 0;
+                }
+        
                 updateTotals();
             });
         });
@@ -329,7 +382,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             result.innerHTML += '<p>Ore Settimanali: ' + totalHours + '</p>';
             result.innerHTML += '<p>Giorni Settimanali: ' + totalDays + '</p>';
         }
-
+        
         function resetCalculator() {
             selections = {
                 'Tipo contratto': null,
@@ -364,6 +417,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('InputpagaBox').style.display='none';
             document.getElementById('pagabox').style.display='none';
             document.getElementById('Inputpaga').value = "";
+            document.getElementById('pagaImporto').innerText = "";
             livellocontrattoselezionato = "";
             tipocontrattoselezionato = "";
             duratacontrattoselezionato = "";  
@@ -373,6 +427,10 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             certificato = "no";
             bambino="no";
             autosufficienti="no";
+            resetTable();
+
+            
+    
             
                 
 
@@ -393,6 +451,20 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(function(checkbox) {
                 checkbox.checked = false;
+            });
+        }
+
+        function resetTable() {
+            const ids = [
+                "pagalorda-lavoratore", "contributicolf-lavoratore", "contributiinps-lavoratore",
+                "paganetta-lavoratore", "contributicolf-datore", "contributiinps-datore",
+                "indennita-tfr", "indennita-ferie", "indennita-tredicesim", "costototale-datore"
+            ];
+            ids.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = '';
+                }
             });
         }
 
