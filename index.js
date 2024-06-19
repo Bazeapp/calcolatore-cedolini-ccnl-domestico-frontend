@@ -263,43 +263,55 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 }
             }
         }
-
         function increaseHours(day) {
-            var input = document.getElementById(day);
-            var value = parseInt(input.value);
-            if (value < 10) {
-                input.value = value + 1;
-                updateTotalHoursAndDays();
+            const input = document.getElementById(day);
+            if (input.value < 10) {
+                input.value = parseInt(input.value) + 1;
+                updateTotals();
             }
         }
-
+        
         function decreaseHours(day) {
-            var input = document.getElementById(day);
-            var value = parseInt(input.value);
-            if (value > 0) {
-                input.value = value - 1;
-                updateTotalHoursAndDays();
+            const input = document.getElementById(day);
+            if (input.value > 0) {
+                input.value = parseInt(input.value) - 1;
+                updateTotals();
             }
         }
-
-        function updateTotalHoursAndDays() {
-            var days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
-            var totalHours = 0;
-            var totalDays = 0;
-
-            days.forEach(function(day) {
-                var input = document.getElementById(day);
-                var value = parseInt(input.value);
-                totalHours += value;
+        
+        function updateTotals() {
+            const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
+            let totalHours = 0;
+            let totalDays = 0;
+        
+            days.forEach(day => {
+                const input = document.getElementById(day);
+                let value = parseInt(input.value);
+        
                 if (value > 0) {
-                    totalDays += 1;
+                    totalDays++;
                 }
+                totalHours += value;
             });
-
+        
             document.getElementById('totalHours').value = totalHours;
             document.getElementById('totalDays').value = totalDays;
         }
-
+        
+        // Aggiungi event listener per gli eventi di modifica sugli input di tipo number
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('change', function() {
+                if (this.value > 10) {
+                    this.value = 10;
+                } else if (this.value < 0) {
+                    this.value = 0;
+                }
+                updateTotals();
+            });
+        });
+        
+        
+        
         function submitChoices() {
             var result = document.getElementById('result');
             result.innerHTML = '<h2>Risultati del Calcolo:</h2>';
