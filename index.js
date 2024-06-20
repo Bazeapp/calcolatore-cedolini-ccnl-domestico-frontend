@@ -154,7 +154,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                     document.getElementById('InputpagaBox').style.display = 'none';
                 }
             }
-            var paga="";
+            let paga=0 ;
             function salvaPaga() {
                 var paga = document.getElementById('Inputpaga').value;
                 if (paga === "") {
