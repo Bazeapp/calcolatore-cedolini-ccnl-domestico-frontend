@@ -12,7 +12,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         oreVenerdi: document.getElementById("venerdi").value,
         oreSabato: document.getElementById("sabato").value,
         oreDomenica: document.getElementById("domenica").value,
-        paga: document.getElementById("Inputpaga").value,
+        paga: paga,
         bambino_6_anni: bambino,
         piu_persone: autosufficienti,
         certificato_uni: certificato,
