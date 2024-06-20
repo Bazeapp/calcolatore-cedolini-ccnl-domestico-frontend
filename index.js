@@ -154,14 +154,14 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                     document.getElementById('InputpagaBox').style.display = 'none';
                 }
             }
-            let paga=0 ;
+            var paga=0 ;
             function salvaPaga() {
                 var paga = document.getElementById('Inputpaga').value;
                 if (paga === "") {
                     alert("Inserisci un valore valido per la paga.");
                     return;
                 }
-                document.getElementById('pagaImporto').innerText = paga+ ' €';
+                document.getElementById('paga-netta').innerText = paga+ ' €';
             }
 
         let livellocontrattoselezionato = "";
@@ -416,7 +416,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('simulazione').style.display='none';
             document.getElementById('InputpagaBox').style.display='none';
             document.getElementById('pagabox').style.display='none';
-            document.getElementById('Inputpaga').value = "";
+            document.getElementById('paga-netta').value = "";
             livellocontrattoselezionato = "";
             tipocontrattoselezionato = "";
             duratacontrattoselezionato = "";  
