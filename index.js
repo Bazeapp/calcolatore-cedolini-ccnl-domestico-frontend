@@ -155,7 +155,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             }
             let paga=0 ;
             function salvaPaga() {
-                var paga = document.getElementById('Inputpaga').value;
+                    paga = document.getElementById('Inputpaga').value;
                 if (paga === "") {
                     alert("Inserisci un valore valido per la paga.");
                     return;
@@ -416,6 +416,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('InputpagaBox').style.display='none';
             document.getElementById('pagabox').style.display='none';
             document.getElementById('paga-netta').value = "";
+            document.getElementById('Inputpaga').value = "";
             livellocontrattoselezionato = "";
             tipocontrattoselezionato = "";
             duratacontrattoselezionato = "";  
@@ -425,6 +426,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             certificato = "no";
             bambino="no";
             autosufficienti="no";
+            paga=0;
             resetTable();
 
             
