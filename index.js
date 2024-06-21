@@ -85,7 +85,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 document.getElementById('cs').style.display='block';
                 document.getElementById('d').style.display='block';
                 document.getElementById('ds').style.display='block';
-                document.getElementById('lu').style.display='none';}
+                document.getElementById('u').style.display='none';}
 
             if(selections['Tipo contratto']==='part-time'){
                 document.getElementById('a').style.display='none';
@@ -96,7 +96,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 document.getElementById('cs').style.display='none';
                 document.getElementById('d').style.display='none';
                 document.getElementById('ds').style.display='none';
-                document.getElementById('lu').style.display='none';}
+                document.getElementById('u').style.display='none';}
 
             if(selections['Tipo contratto']==='full-time'){
                 document.getElementById('a').style.display='block';
@@ -107,7 +107,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 document.getElementById('cs').style.display='block';
                 document.getElementById('d').style.display='block';
                 document.getElementById('ds').style.display='block';
-                document.getElementById('lu').style.display='none';}
+                document.getElementById('u').style.display='none';}
 
             if(selections['Tipo contratto']==='sostituzione'){
                 document.getElementById('a').style.display='none';
@@ -118,7 +118,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 document.getElementById('cs').style.display='block';
                 document.getElementById('d').style.display='none';
                 document.getElementById('ds').style.display='block';
-                document.getElementById('lu').style.display='none';}
+                document.getElementById('u').style.display='none';}
             if(selections['Tipo contratto']==='assistenza'){
                 document.getElementById('a').style.display='none';
                 document.getElementById('as').style.display='none';
@@ -128,7 +128,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 document.getElementById('cs').style.display='block';
                 document.getElementById('d').style.display='none';
                 document.getElementById('ds').style.display='block';
-                document.getElementById('lu').style.display='none';}  
+                document.getElementById('u').style.display='none';}  
             if(selections['Tipo contratto']==='presenza'){
                 document.getElementById('a').style.display='none';
                 document.getElementById('as').style.display='none';
@@ -138,7 +138,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 document.getElementById('cs').style.display='none';
                 document.getElementById('d').style.display='none';
                 document.getElementById('ds').style.display='none';
-                document.getElementById('lu').style.display='block';}  
+                document.getElementById('u').style.display='block';}  
                }
 
             
@@ -411,7 +411,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('cs').style.display='none';
             document.getElementById('d').style.display='none';
             document.getElementById('ds').style.display='none';
-            document.getElementById('lu').style.display='none';
+            document.getElementById('u').style.display='none';
             document.getElementById('simulazione').style.display='none';
             document.getElementById('InputpagaBox').style.display='none';
             document.getElementById('pagabox').style.display='none';
@@ -456,7 +456,8 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
 
         function resetTable() {
             const ids = [
-                "pagalorda-lavoratore", "contributicolf-lavoratore", "contributiinps-lavoratore",
+                "pagalorda-lavoratore","paga-netta","indennita-tot","indennita-cibo","paga-domenica",
+                "paga-festivo","contributicolf-lavoratore", "contributiinps-lavoratore",
                 "paganetta-lavoratore", "contributicolf-datore", "contributiinps-datore",
                 "indennita-tfr", "indennita-ferie", "indennita-tredicesim", "costototale-datore"
             ];
