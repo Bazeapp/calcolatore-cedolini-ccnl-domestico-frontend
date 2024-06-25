@@ -46,11 +46,14 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     }
 }); 
         function updateSimulazione(result) {
+            // Itera su ciascuna chiave nell'oggetto result
             for (const key in result) {
-                const element = document.getElementById(key);
-                if (element) {
+                // Trova tutti gli elementi HTML con l'ID che corrisponde alla chiave
+                const elements = document.querySelectorAll(`#${key}`);
+                // Itera su ciascun elemento trovato e aggiorna il suo contenuto testuale
+                elements.forEach(element => {
                     element.textContent = result[key];
-                }
+                });
             }
         }
 
@@ -456,17 +459,21 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
 
         function resetTable() {
             const ids = [
-                "pagalorda-lavoratore","paga-netta","indennita-tot","indennita-cibo","paga-domenica",
-                "paga-festivo","contributicolf-lavoratore", "contributiinps-lavoratore",
+                "pagalorda-lavoratore", "paga-netta", "indennita-tot", "indennita-cibo", "paga-domenica",
+                "paga-festivo", "contributicolf-lavoratore", "contributiinps-lavoratore",
                 "paganetta-lavoratore", "contributicolf-datore", "contributiinps-datore",
                 "indennita-tfr", "indennita-ferie", "indennita-tredicesim", "costototale-datore"
             ];
             ids.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) {
+                // Trova tutti gli elementi con l'ID specificato
+                const elements = document.querySelectorAll(`#${id}`);
+                // Pulisce il contenuto testuale di ciascun elemento trovato
+                elements.forEach(element => {
                     element.textContent = '';
-                }
+                });
             });
         }
+        
+        
 
         
