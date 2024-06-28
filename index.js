@@ -1,6 +1,5 @@
 document.getElementById('sendRequest').addEventListener('click', async () => {
-    console.log("LOOOOL")
-    const token = toki; 
+
     const data = {
         durataContratto: duratacontrattoselezionato,
         tipoContratto: tipocontrattoselezionato,
@@ -20,8 +19,28 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         cena_natura: indennitaCena,
         alloggio_natura: indennitaAlloggio
     };
-    console.log(data);
+    console.log(JSON.stringify(data));
 
+    function sendToWebhook(data) {
+        fetch('https://hook.eu1.make.com/asor6kjlu4bbl2eemv3nlbjhb5sr39hb', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(responseData => {
+            console.log('Success:', responseData);
+            updateSimulazione(responseData);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    sendToWebhook(data);
+    /*
     try {
         const response = await fetch('https://europe-west3-baze-app-prod.cloudfunctions.net/calculator-ccnl', {
             method: 'POST',
@@ -43,7 +62,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         console.log(result);
     } catch (error) {
         console.error('There was an error!', error);
-    }
+    }*/
 }); 
         function updateSimulazione(result) {
             // Itera su ciascuna chiave nell'oggetto result
@@ -282,7 +301,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             var selectedItems = document.getElementById('selectedItems');
             selectedItems.innerHTML = '';
 
-            for (var key in selections) {
+            for (let key in selections) {
                 if (selections[key] !== null) {
                     if (Array.isArray(selections[key]) && selections[key].length > 0) {
                         selectedItems.innerHTML += '<p>' + key + ': ' + selections[key].join(', ') + '</p>';
