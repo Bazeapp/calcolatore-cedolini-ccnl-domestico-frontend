@@ -22,7 +22,7 @@ h1 {
 .box, .final-choices button {
     border: 1px solid var(--blubaze);
     background-color: var(--blubaze);
-    color: white;
+    color: whitesmoke;
     border-radius: 5px;
     padding: 15px;
     margin: 10px 0;
@@ -154,6 +154,7 @@ button {
 
 button:hover {
     background-color: var(--giallobaze) /* Leggero effetto hover */
+
 }
 
 /* CSS per schermo piccolo */
