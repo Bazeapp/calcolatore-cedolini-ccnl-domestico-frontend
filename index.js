@@ -71,7 +71,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 const elements = document.querySelectorAll(`#${key}`);
                 // Itera su ciascun elemento trovato e aggiorna il suo contenuto testuale
                 elements.forEach(element => {
-                    element.textContent = result[key];
+                    element.textContent = result[key]+" €";
                 });
             }
         }
