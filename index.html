@@ -130,20 +130,10 @@
 
     <span class="cerchio">3</span>
     <h3>Opzioni Aggiuntive</h3>
-    <div class="selection-container" id="pagabox" style="display:none;">
-        Vuoi inserire una paga manualmente? 
-        <label>
-            <input type="radio" name="manualSalary" value="si" onclick="toggleManualSalaryInput('si')"> Sì
-        </label>
-        <label>
-            <input type="radio" name="manualSalary" value="no" onclick="toggleManualSalaryInput('no')"> No
-        </label>
-    </div>
 
     <div class="selection-container" id="InputpagaBox" style="display:none;">
         Inserisci la paga:
-        <input type="number" id="Inputpaga" min="0" step="1">
-        <button onclick="salvaPaga()" >clicca per confermare </button>
+        <input type="number" id="Inputpaga" min="0" step="1" placeholder="paga">
     </div>
 
 

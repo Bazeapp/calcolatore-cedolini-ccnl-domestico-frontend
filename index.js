@@ -163,27 +163,35 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 document.getElementById('u').style.display='block';}  
                }
 
-            
+            function durata() {
+                document.getElementById('duratacontratto').style.display = 'block'
+            }
             
             function sceglipaga() {
-                    document.getElementById('pagabox').style.display = 'block';
-            }
-            function toggleManualSalaryInput(choice) {
-                if (choice === 'si') {
                     document.getElementById('InputpagaBox').style.display = 'block';
-                } else {
-                    document.getElementById('InputpagaBox').style.display = 'none';
-                }
             }
-            let paga=0 ;
+            let paga=0;
             function salvaPaga() {
-                    paga = document.getElementById('Inputpaga').value;
+                paga = document.getElementById('Inputpaga').value;
                 if (paga === "") {
                     alert("Inserisci un valore valido per la paga.");
+                    paga=0;
+                    document.getElementById('Inputpaga').value = "";
                     return;
                 }
-                document.getElementById('paga-netta').innerText = paga+ ' €';
+                if (paga > 2000) {
+                    alert("Inserisci un valore valido per la paga.");
+                    paga=0;
+                    document.getElementById('Inputpaga').value = "";
+                    return;
+                }
+                document.getElementById('paga-netta').innerText = paga + ' €';
             }
+    
+            document.addEventListener('DOMContentLoaded', (event) => {
+                var inputPaga = document.getElementById('Inputpaga');
+                inputPaga.addEventListener('input', salvaPaga);  // Usa 'input' invece di 'change' per aggiornamenti in tempo reale
+            })
 
         let livellocontrattoselezionato = "";
         let tipocontrattoselezionato = "";
