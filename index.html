@@ -9,16 +9,16 @@
 <body>
     <h1>Simulatore Calcolo Costo CCNL Domestico</h1>
     
-    <div class="box" onclick="toggleChoices('choices1')">
-        Tipo Contratto
-        <div id="choices1" class="choices">
-            <button onclick="selectChoice('Tipo contratto', 'non-convivente')">Non-Convivente</button>
-            <button onclick="selectChoice('Tipo contratto', 'full-time')">Full-Time</button>
-            <button onclick="selectChoice('Tipo contratto', 'part-time')">Part-Time</button>
-            <button onclick="selectChoice('Tipo contratto', 'sostituzione')">Sostituzione</button>
-            <button onclick="selectChoice('Tipo contratto', 'assistenza')">Assistenza</button>
-            <button onclick="selectChoice('Tipo contratto', 'presenza')">Presenza</button>
-        </div>
+        <div class="box" onclick="toggleChoices('choices1')">
+            Tipo Contratto
+            <div id="choices1" class="choices">
+                <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');acceso('nonconvivente');">Non-Convivente</button>
+                <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');acceso('fulltime');">Full-Time</button>
+                <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');acceso('partitime');">Part-Time</button>
+                <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');acceso('sostituzione');">Sostituzione</button>
+                <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');acceso('assistenza');">Assistenza</button>
+                <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');acceso('presenza');">Presenza</button>
+            </div>
     </div>
     <div class="box" onclick="toggleChoices('livello'); sceltalivello();">
         Livello contratto

@@ -1,3 +1,8 @@
+:root {
+    --blubaze: #225ba9;
+    --giallobaze: #ffa436;
+}
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -97,15 +102,17 @@ table {
     max-width: 300px;
     border-collapse: collapse;
     margin: 20px 0;
+    border: none; /* Rimuovi i bordi della tabella */
 }
 
 table, th, td {
-    border: 1px solid aquamarine;
+    border: none; /* Rimuovi i bordi delle celle */
 }
 
 th, td {
     padding: 10px;
     text-align: center;
+    color: #000; /* Imposta il colore del testo in nero */
 }
 
 input[type="number"] {
@@ -123,4 +130,26 @@ input[type="radio"], input[type="checkbox"] {
     align-items: flex-start;
     width: 100%;
     max-width: 300px;
+}
+
+/* CSS per schermo piccolo */
+@media screen and (max-width: 600px) {
+    table, th, td {
+        display: block;
+        width: 100%;
+    }
+    thead {
+        display: none;
+    }
+    tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-align: left;
+        display: block;
+    }
 }
