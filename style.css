@@ -30,6 +30,7 @@ h1 {
     max-width: 300px;
     text-align: center;
     cursor: pointer;
+    font-size:medium;
 }
 
 .choices {
@@ -41,11 +42,12 @@ h1 {
     margin: 5px 0;
     padding: 10px;
     width: 100%;
-    border: 1px solid var(--blubaze);
+    border: 1px solid var(--giallobaze);
     background-color: var(--blubaze);
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    font-size:small;
 }
 
 .show {
@@ -58,28 +60,7 @@ h1 {
     width: 100%;
 }
 
-.tooltip .tooltiptext {
-    visibility: hidden;
-    background-color: aquamarine;
-    color: #000;
-    text-align: left;
-    border-radius: 8px;
-    padding: 12px;
-    position: absolute;
-    z-index: 4;
-    bottom: -50%;
-    left: -60%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.5s;
-    width: 100%;
-    max-width: 400px;
-}
 
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
 
 .selected-items {
     margin: 20px 0;
