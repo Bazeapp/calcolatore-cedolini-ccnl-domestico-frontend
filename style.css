@@ -20,8 +20,8 @@ h1 {
 }
 
 .box, .final-choices button {
-    border: 1px solid #007BFF;
-    background-color: #007BFF;
+    border: 1px solid var(--blubaze);
+    background-color: var(--blubaze);
     color: white;
     border-radius: 5px;
     padding: 15px;
@@ -41,8 +41,8 @@ h1 {
     margin: 5px 0;
     padding: 10px;
     width: 100%;
-    border: 1px solid #007BFF;
-    background-color: #007BFF;
+    border: 1px solid var(--blubaze);
+    background-color: var(--blubaze);
     color: white;
     border-radius: 5px;
     cursor: pointer;
@@ -89,8 +89,8 @@ h1 {
 }
 
 .selected-item {
-    border: 1px solid #007BFF;
-    background-color: #007BFF;
+    border: 1px solid var(--blubaze);
+    background-color: var(--blubaze);
     color: white;
     padding: 10px;
     border-radius: 5px;
@@ -114,6 +114,15 @@ th, td {
     text-align: center;
     color: #000; /* Imposta il colore del testo in nero */
 }
+td{
+    border: 1px solid var(--blubaze);
+}
+#ore-tab td{
+    border:none;
+}
+tr.empty-row {
+    height: 10px; /* Aggiunge 10px di spazio tra le righe */
+}
 
 input[type="number"] {
     width: 50px;
@@ -132,24 +141,50 @@ input[type="radio"], input[type="checkbox"] {
     max-width: 300px;
 }
 
+button {
+    background-color: white;
+    color: black;
+    border-style: groove;
+    border-color: var(--giallobaze);
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: 1,2s;
+}
+
+button:hover {
+    background-color: var(--giallobaze) /* Leggero effetto hover */
+}
+
 /* CSS per schermo piccolo */
 @media screen and (max-width: 600px) {
-    table, th, td {
+    table, td {
         display: block;
         width: 100%;
+    }
+    th {
+        display: none;
     }
     thead {
         display: none;
     }
     tr {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 10px;
-    }
-    td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        text-align: left;
         display: block;
+        margin-bottom: 5px;
+    }
+    td {
+        display: flex;
+        justify-content: space-between;
+        align-items: right;
+        padding: 5px;
+        border-bottom: 1px solid var(--blubaze);
+    }
+    #ore-tab td::before {
+        content: attr(data-label);
+        align-items:right ;
+        font-weight: bold;
+        text-align: center;
+        display: inline-block;
+        width: 50%;
     }
 }
