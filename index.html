@@ -9,8 +9,9 @@
 <body>
     <div class="grande"><h1>Calcolatore Costo Colf / Badanti</h1></div>
     <div class="piccolo"><h1>Calcolatore Costo </h1> <h1> Colf / Badanti</h1></div>
-        <div class="box" onclick="toggleChoices('choices1')">
-            Tipo Contratto
+    <span class="cerchio">1</span>
+        <div class="box" onclick="toggleChoices('choices1');">
+            Seleziona Tipo  Contratto
             <div id="choices1" class="choices">
                 <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');acceso('nonconvivente');">Non-Convivente</button>
                 <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');acceso('fulltime');">Full-Time</button>
@@ -21,7 +22,7 @@
             </div>
     </div>
     <div class="box" onclick="toggleChoices('livello'); sceltalivello();">
-        Livello contratto
+        Seleziona Livello Contratto
         <div id="livello" class="choices">
             <div id="a" style="display:none">
                 <button onclick="selectChoice('Livello','a')">A</button>
@@ -53,7 +54,7 @@
         </div>
     </div>
     
-    
+    <div class="box">Seleziona Durata Contratto</div>
     <div class="selection-container" id="duratacontratto">
         <label>
             <input type="radio" name="contratto" value="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');sceglipaga()">
@@ -68,7 +69,67 @@
             Determinato in Sostituzione
         </label>
     </div>
+    <span class="cerchio">2</span>
+    <h2>Orario di Lavoro</h2>
+   <table >
+       <thead>
+           <tr>
+               <th>Lunedì</th>
+               <th>Martedì</th>
+               <th>Mercoledì</th>
+               <th>Giovedì</th>
+               <th>Venerdì</th>
+               <th>Sabato</th>
+               <th>Domenica</th>
+               <th>Ore Settimanali</th>
+               <th>Giorni Settimanali</th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr>
+               <td data-label="Lunedì">
+                   <button onclick="decreaseHours('lunedi')">-</button>
+                   <input type="number" min="0" max="10" id="lunedi" value="0" onchange="updateTotals()">
+                   <button onclick="increaseHours('lunedi')">+</button>
+               </td>
+               <td data-label="Martedì">
+                   <button onclick="decreaseHours('martedi')">-</button>
+                   <input type="number" min="0" max="10" id="martedi" value="0" onchange="updateTotals()">
+                   <button onclick="increaseHours('martedi')">+</button>
+               </td>
+               <td data-label="Mercoledì">
+                   <button onclick="decreaseHours('mercoledi')">-</button>
+                   <input type="number" min="0" max="10" id="mercoledi" value="0" onchange="updateTotals()">
+                   <button onclick="increaseHours('mercoledi')">+</button>
+               </td>
+               <td data-label="Giovedì">
+                   <button onclick="decreaseHours('giovedi')">-</button>
+                   <input type="number" min="0" max="10" id="giovedi" value="0" onchange="updateTotals()">
+                   <button onclick="increaseHours('giovedi')">+</button>
+               </td>
+               <td data-label="Venerdì">
+                   <button onclick="decreaseHours('venerdi')">-</button>
+                   <input type="number" min="0" max="10" id="venerdi" value="0" onchange="updateTotals()">
+                   <button onclick="increaseHours('venerdi')">+</button>
+               </td>
+               <td data-label="Sabato">
+                   <button onclick="decreaseHours('sabato')">-</button>
+                   <input type="number" min="0" max="10" id="sabato" value="0" onchange="updateTotals()">
+                   <button onclick="increaseHours('sabato')">+</button>
+               </td>
+               <td data-label="Domenica">
+                   <button onclick="decreaseHours('domenica')">-</button>
+                   <input type="number" min="0" max="10" id="domenica" value="0" onchange="updateTotals()">
+                   <button onclick="increaseHours('domenica')">+</button>
+               </td>
+               <td data-label="Ore Settimanali"><input type="text" id="totalHours" readonly></td>
+               <td data-label="Giorni Settimanali"><input type="text" id="totalDays" readonly></td>
+           </tr>
+       </tbody>
+   </table>
 
+    <span class="cerchio">3</span>
+    <h3>Opzioni Aggiuntive</h3>
     <div class="selection-container" id="pagabox" style="display:none;">
         Vuoi inserire una paga manualmente? 
         <label>
@@ -143,70 +204,13 @@
         <!-- Selections will appear here -->
     </div>
 
-        <h2>Orario di Lavoro</h2>
-    <table id="ore-tab">
-        <thead>
-            <tr>
-                <th>Lunedì</th>
-                <th>Martedì</th>
-                <th>Mercoledì</th>
-                <th>Giovedì</th>
-                <th>Venerdì</th>
-                <th>Sabato</th>
-                <th>Domenica</th>
-                <th>Ore Settimanali</th>
-                <th>Giorni Settimanali</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td data-label="Lunedì">
-                    <button onclick="decreaseHours('lunedi')">-</button>
-                    <input type="number" min="0" max="10" id="lunedi" value="0" onchange="updateTotals()">
-                    <button onclick="increaseHours('lunedi')">+</button>
-                </td>
-                <td data-label="Martedì">
-                    <button onclick="decreaseHours('martedi')">-</button>
-                    <input type="number" min="0" max="10" id="martedi" value="0" onchange="updateTotals()">
-                    <button onclick="increaseHours('martedi')">+</button>
-                </td>
-                <td data-label="Mercoledì">
-                    <button onclick="decreaseHours('mercoledi')">-</button>
-                    <input type="number" min="0" max="10" id="mercoledi" value="0" onchange="updateTotals()">
-                    <button onclick="increaseHours('mercoledi')">+</button>
-                </td>
-                <td data-label="Giovedì">
-                    <button onclick="decreaseHours('giovedi')">-</button>
-                    <input type="number" min="0" max="10" id="giovedi" value="0" onchange="updateTotals()">
-                    <button onclick="increaseHours('giovedi')">+</button>
-                </td>
-                <td data-label="Venerdì">
-                    <button onclick="decreaseHours('venerdi')">-</button>
-                    <input type="number" min="0" max="10" id="venerdi" value="0" onchange="updateTotals()">
-                    <button onclick="increaseHours('venerdi')">+</button>
-                </td>
-                <td data-label="Sabato">
-                    <button onclick="decreaseHours('sabato')">-</button>
-                    <input type="number" min="0" max="10" id="sabato" value="0" onchange="updateTotals()">
-                    <button onclick="increaseHours('sabato')">+</button>
-                </td>
-                <td data-label="Domenica">
-                    <button onclick="decreaseHours('domenica')">-</button>
-                    <input type="number" min="0" max="10" id="domenica" value="0" onchange="updateTotals()">
-                    <button onclick="increaseHours('domenica')">+</button>
-                </td>
-                <td data-label="Ore Settimanali"><input type="text" id="totalHours" readonly></td>
-                <td data-label="Giorni Settimanali"><input type="text" id="totalDays" readonly></td>
-            </tr>
-        </tbody>
-    </table>
     <div>
         <button id="sendRequest" class="box" onclick="submitChoices(); aprisimulazione();">Calcola</button>
     </div>
 
     <div id="simulazione" style="display:none">
         <h2>Simulazione costi</h2>
-    <table id="simulazione-tab">
+    <table >
         <tr>
             <th>descrizione:</th>
             <th>importo:</th>
@@ -228,7 +232,7 @@
             <td id="paga-domenica"> </td>   
         </tr>
         <tr>
-            <td>paga lorda lavoratore:</td>
+            <td><b>paga lorda lavoratore:</b></td>
             <td id="pagalorda-lavoratore"> </td>   
         </tr>
         <tr class="empty-row"></tr>
@@ -246,8 +250,8 @@
         </tr>
         <tr class="empty-row"></tr>
         <tr>
-            <td>costo netto:</td>
-            <td id="pagalorda-lavoratore"> </td>
+            <td><b>costo netto:</b></td>
+            <td id="pagalorda-lavoratore"></td>
         </tr>
         <tr>
             <td>contributi cassa colf</td>
@@ -255,7 +259,7 @@
         </tr>
         <tr>
             <td>contributi inps:</td>
-            <td id="contributiinps-datore"></td>
+            <td id="contributiinps-datore" ></td>
         </tr>
         <tr>
             <td>tfr:</td>
@@ -271,7 +275,7 @@
         </tr>
         <tr class="empty-row"></tr>
         <tr>
-            <td>costo totale:</td>
+            <td><b>costo totale:</b></td>
             <td id="costototale-datore"></td>
         </tr>
     </table>

@@ -98,13 +98,11 @@ th, td {
     color: #000; /* Imposta il colore del testo in nero */
 }
 td{
-    border: 1px solid var(--blubaze);
-}
-#ore-tab td{
     border:none;
 }
 tr.empty-row {
     height: 10px; /* Aggiunge 10px di spazio tra le righe */
+    border-bottom: 1px solid var(--giallobaze);
 }
 
 input[type="number"] {
@@ -116,10 +114,9 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .selection-container {
-    margin: 10px 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex;
     width: 100%;
     max-width: 300px;
 }
@@ -133,6 +130,24 @@ button {
     cursor: pointer;
     font-size: 10px;
     transition: 1,2s;
+}
+
+.cerchio {
+    width: 50px;
+    height: 50px;
+    background-color: var(--giallobaze);
+    border-radius: 50%;
+    border-color: black;
+    border-style:double;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-right: 28rem;
+    margin-bottom: -2.5rem;
+
 }
 
 button:hover {
@@ -158,23 +173,27 @@ button:hover {
     table, td {
         display: block;
         width: 100%;
+        border:none;
     }
     th {
         display: none;
+        border:none;
     }
     thead {
         display: none;
+        border:none;
     }
     tr {
         display: block;
         margin-bottom: 5px;
+        border:none;
     }
     td {
         display: flex;
         justify-content: space-between;
         align-items: right;
         padding: 5px;
-        border-bottom: 1px solid var(--blubaze);
+        border:none;
     }
     #ore-tab td::before {
         content: attr(data-label);
@@ -183,5 +202,23 @@ button:hover {
         text-align: center;
         display: inline-block;
         width: 50%;
+    }
+    .cerchio {
+        width: 40px;
+        height: 40px;
+        background-color: var(--giallobaze);
+        border-radius: 50%;
+        border-color: black;
+        border-style:double;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+        margin: auto;
+        
+        
+    
     }
 }
