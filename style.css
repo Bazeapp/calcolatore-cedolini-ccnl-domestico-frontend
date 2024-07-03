@@ -16,8 +16,10 @@ body {
 }
 
 h1 {
-    text-align: center;
+    text-align:center ;
+    margin-top:0%;
 }
+
 
 .box, .final-choices button {
     border: 1px solid var(--blubaze);
@@ -137,9 +139,22 @@ button:hover {
     background-color: var(--giallobaze) /* Leggero effetto hover */
 
 }
+/*per far uscire il titolo diviso in 2 */
+.grande{display:block;}
+.piccolo{display:none;}
 
 /* CSS per schermo piccolo */
 @media screen and (max-width: 600px) {
+    /*per far uscire il titolo diviso in 2 */
+    .grande{display:none;}
+    .piccolo{display:block;}
+    
+
+    h1 {
+        text-align:center ;
+        margin-top:0%;
+    }
+
     table, td {
         display: block;
         width: 100%;
