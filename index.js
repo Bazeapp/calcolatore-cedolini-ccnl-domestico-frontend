@@ -163,9 +163,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 document.getElementById('u').style.display='block';}  
                }
 
-            function durata() {
-                document.getElementById('duratacontratto').style.display = 'block'
-            }
+           
             
             function sceglipaga() {
                     document.getElementById('InputpagaBox').style.display = 'block';
@@ -421,9 +419,9 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 'Specifiche vitto e alloggio': [],
                 'Bambino entro 6 anni': null,
                 'Certificato UNI1176': null,
-                'Autosufficienti':null
+                'Autosufficienti': null
             };
-
+        
             document.getElementById('selectedItems').innerHTML = '';
             document.getElementById('result').innerHTML = '';
             document.getElementById('choices1').classList.remove('show');
@@ -433,37 +431,33 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('bambinoBox').style.display = 'none';
             document.getElementById('certificatoBox').style.display = 'none';
             document.getElementById('autosufficientiBox').style.display = 'none';
-            document.getElementById('a').style.display='none';
-            document.getElementById('as').style.display='none';
-            document.getElementById('b').style.display='none';
-            document.getElementById('bs').style.display='none';
-            document.getElementById('c').style.display='none';
-            document.getElementById('cs').style.display='none';
-            document.getElementById('d').style.display='none';
-            document.getElementById('ds').style.display='none';
-            document.getElementById('u').style.display='none';
-            document.getElementById('simulazione').style.display='none';
-            document.getElementById('InputpagaBox').style.display='none';
-            document.getElementById('pagabox').style.display='none';
-            document.getElementById('paga-netta').value = "";
+            document.getElementById('a').style.display = 'none';
+            document.getElementById('as').style.display = 'none';
+            document.getElementById('b').style.display = 'none';
+            document.getElementById('bs').style.display = 'none';
+            document.getElementById('c').style.display = 'none';
+            document.getElementById('cs').style.display = 'none';
+            document.getElementById('d').style.display = 'none';
+            document.getElementById('ds').style.display = 'none';
+            document.getElementById('u').style.display = 'none';
+            document.getElementById('simulazione').style.display = 'none';
+            document.getElementById('InputpagaBox').style.display = 'none';
+            document.getElementById('paga-netta').textContent = "";
             document.getElementById('Inputpaga').value = "";
+        
             livellocontrattoselezionato = "";
             tipocontrattoselezionato = "";
-            duratacontrattoselezionato = "";  
+            duratacontrattoselezionato = "";
             indennitaPranzoColazione = "no";
             indennitaCena = "no";
             indennitaAlloggio = "no";
             certificato = "no";
-            bambino="no";
-            autosufficienti="no";
-            paga=0;
+            bambino = "no";
+            autosufficienti = "no";
+            paga = 0;
+        
             resetTable();
-
-            
-    
-            
-                
-
+        
             // Reset hours and days
             var days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
             days.forEach(function(day) {
@@ -471,19 +465,19 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             });
             document.getElementById('totalHours').value = 0;
             document.getElementById('totalDays').value = 0;
-
+        
             // Reset radio buttons and checkboxes
             var radios = document.querySelectorAll('input[type="radio"]');
             radios.forEach(function(radio) {
                 radio.checked = false;
             });
-
+        
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(function(checkbox) {
                 checkbox.checked = false;
             });
         }
-
+        
         function resetTable() {
             const ids = [
                 "pagalorda-lavoratore", "paga-netta", "indennita-tot", "indennita-cibo", "paga-domenica",
@@ -500,7 +494,4 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 });
             });
         }
-        
-        
-
         
