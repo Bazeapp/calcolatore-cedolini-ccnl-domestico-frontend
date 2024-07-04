@@ -147,6 +147,7 @@ button {
     color: black;
     margin-right: 28rem;
     margin-bottom: -2.5rem;
+    
 
 }
 
@@ -157,6 +158,23 @@ button:hover {
 /*per far uscire il titolo diviso in 2 */
 .grande{display:block;}
 .piccolo{display:none;}
+
+.container {
+    display: flex;
+    gap: 20px; /* Spazio tra gli elementi, puoi regolarlo secondo le tue esigenze */
+    align-items: center; /* Allinea verticalmente gli elementi al centro */
+  }
+  
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Allinea etichetta e input a sinistra */
+  }
+  
+  .item label {
+    margin-bottom: 5px; /* Spazio tra etichetta e input */
+  }
+  
 
 /* CSS per schermo piccolo */
 @media screen and (max-width: 600px) {
@@ -217,6 +235,7 @@ button:hover {
         font-weight: bold;
         color: black;
         margin: auto;
+        margin-top: 1rem;
         
         
     

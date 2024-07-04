@@ -81,8 +81,6 @@
                <th>Venerdì</th>
                <th>Sabato</th>
                <th>Domenica</th>
-               <th>Ore Settimanali</th>
-               <th>Giorni Settimanali</th>
            </tr>
        </thead>
        <tbody>
@@ -122,11 +120,21 @@
                    <input type="number" min="0" max="10" id="domenica" value="0" onchange="updateTotals()">
                    <button onclick="increaseHours('domenica')">+</button>
                </td>
-               <td data-label="Ore Settimanali"><input type="text" id="totalHours" readonly></td>
-               <td data-label="Giorni Settimanali"><input type="text" id="totalDays" readonly></td>
-           </tr>
-       </tbody>
-   </table>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="container">
+        <div class="item">
+          <label for="totalHours"> <b>Ore Settimanali</b></label>
+          <input type="text" id="totalHours" readonly>
+        </div>
+        <div class="item">
+          <label for="totalDays"> <b>Giorni Settimanali</b></label>
+          <input type="text" id="totalDays" readonly>
+        </div>
+      </div>
+      
 
     <span class="cerchio">3</span>
     <h3>Opzioni Aggiuntive</h3>
