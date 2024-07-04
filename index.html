@@ -69,6 +69,7 @@
             Determinato in Sostituzione
         </label>
     </div>
+    
     <span class="cerchio">2</span>
     <h2>Orario di Lavoro</h2>
    <table id="ore-tab">
@@ -87,37 +88,37 @@
            <tr>
                <td data-label="Lunedì">
                    <button onclick="decreaseHours('lunedi')">-</button>
-                   <input type="number" min="0" max="10" id="lunedi" value="0" onchange="updateTotals()">
+                   <input type="number" inputmode="numeric" min="0" max="10" id="lunedi" value="0" onchange="updateTotals()">
                    <button onclick="increaseHours('lunedi')">+</button>
                </td>
                <td data-label="Martedì">
                    <button onclick="decreaseHours('martedi')">-</button>
-                   <input type="number" min="0" max="10" id="martedi" value="0" onchange="updateTotals()">
+                   <input type="number" inputmode="numeric" min="0" max="10" id="martedi" value="0" onchange="updateTotals()">
                    <button onclick="increaseHours('martedi')">+</button>
                </td>
                <td data-label="Mercoledì">
                    <button onclick="decreaseHours('mercoledi')">-</button>
-                   <input type="number" min="0" max="10" id="mercoledi" value="0" onchange="updateTotals()">
+                   <input type="number" inputmode="numeric" min="0" max="10" id="mercoledi" value="0" onchange="updateTotals()">
                    <button onclick="increaseHours('mercoledi')">+</button>
                </td>
                <td data-label="Giovedì">
                    <button onclick="decreaseHours('giovedi')">-</button>
-                   <input type="number" min="0" max="10" id="giovedi" value="0" onchange="updateTotals()">
+                   <input type="number" inputmode="numeric" min="0" max="10" id="giovedi" value="0" onchange="updateTotals()">
                    <button onclick="increaseHours('giovedi')">+</button>
                </td>
                <td data-label="Venerdì">
                    <button onclick="decreaseHours('venerdi')">-</button>
-                   <input type="number" min="0" max="10" id="venerdi" value="0" onchange="updateTotals()">
+                   <input type="number" inputmode="numeric" min="0" max="10" id="venerdi" value="0" onchange="updateTotals()">
                    <button onclick="increaseHours('venerdi')">+</button>
                </td>
                <td data-label="Sabato">
                    <button onclick="decreaseHours('sabato')">-</button>
-                   <input type="number" min="0" max="10" id="sabato" value="0" onchange="updateTotals()">
+                   <input type="number" inputmode="numeric" min="0" max="10" id="sabato" value="0" onchange="updateTotals()">
                    <button onclick="increaseHours('sabato')">+</button>
                </td>
                <td data-label="Domenica">
                    <button onclick="decreaseHours('domenica')">-</button>
-                   <input type="number" min="0" max="10" id="domenica" value="0" onchange="updateTotals()">
+                   <input type="number" inputmode="numeric" min="0" max="10" id="domenica" value="0" onchange="updateTotals()">
                    <button onclick="increaseHours('domenica')">+</button>
                </td>
             </tr>
@@ -141,7 +142,8 @@
 
     <div class="selection-container" id="InputpagaBox" style="display:none;">
         la paga del lavoratore:
-        <input type="number" id="Inputpaga" min="0" step="1" placeholder="paga">
+        <input type="number" inputmode="numeric" id="Inputpaga" min="0" step="1" placeholder="paga">
+        <br></br>
     </div>
 
 
@@ -153,6 +155,7 @@
         <label>
             <br> <input type="radio" name="vittoAlloggio" value="no" onclick="selectVittoAlloggio('no')"> No
         </label>
+        <br></br>
     </div>
 
     <div class="selection-container" id="specificaVittoAlloggioBox" style="display:none;">
@@ -166,6 +169,7 @@
         <label>
             <br> <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectSpecificaVittoAlloggio('alloggio') ; selectvariabiliVittoAlloggio ('alloggio', this.checked ? 'si' : 'no')"> Indennità Alloggio
         </label>
+        <br></br>
     </div>
 
     <div class="selection-container" id="bambinoBox" style="display:none;">
@@ -176,6 +180,7 @@
         <label>
             <br> <input type="radio" name="bambino" value="no" onclick="selectBambino('no')"> No
         </label>
+        <br></br>
     </div>
 
     <div class="selection-container" id="certificatoBox" style="display:none;">
@@ -186,6 +191,7 @@
         <label>
             <br> <input type="radio" name="certificato" value="no" onclick="selectCertificato('no')"> No
         </label>
+        <br></br>
     </div>
 
     <div class="selection-container" id="autosufficientiBox" style="display:none;">
@@ -196,6 +202,7 @@
         <label>
             <br> <input type="radio" name="autosufficienti" value="no" onclick="selectAutosuff('no')"> No
         </label>
+        <br></br>
     </div>
 
     <div class="selected-items" id="selectedItems">

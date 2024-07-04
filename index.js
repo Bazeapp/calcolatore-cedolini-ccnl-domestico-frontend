@@ -164,27 +164,45 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                }
 
            
-            
+
             function sceglipaga() {
                     document.getElementById('InputpagaBox').style.display = 'block';
             }
-            let paga=0;
-            function salvaPaga() {
-                paga = document.getElementById('Inputpaga').value;
-                if (paga === "") {
-                    alert("Inserisci un valore valido per la paga.");
-                    paga=0;
-                    document.getElementById('Inputpaga').value = "";
-                    return;
-                }
-                if (paga > 2000) {
-                    alert("Inserisci un valore valido per la paga.");
-                    paga=0;
-                    document.getElementById('Inputpaga').value = "";
-                    return;
-                }
-                document.getElementById('paga-netta').innerText = paga + ' €';
+            let paga = 0;
+        
+        function salvaPaga() {
+            let pagaInput = document.getElementById('Inputpaga').value;
+
+            // Controlla se l'input è vuoto
+            if (pagaInput === "") {
+                alert("Inserisci un valore valido per la paga.");
+                resetPaga();
+                return;
             }
+
+            // Controlla se l'input è un numero
+            if (!/^\d+$/.test(pagaInput)) {
+                alert("Inserisci solo numeri per la paga.");
+                resetPaga();
+                return;
+            }
+
+            paga = parseFloat(pagaInput);
+
+            // Controlla se il valore supera il limite
+            if (paga > 2000) {
+                alert("Inserisci un valore valido per la paga.");
+                resetPaga();
+                return;
+            }
+
+            document.getElementById('paga-netta').innerText = paga + ' €';
+        }
+
+        function resetPaga() {
+            paga = 0;
+            document.getElementById('Inputpaga').value = "";
+        }
     
             document.addEventListener('DOMContentLoaded', (event) => {
                 var inputPaga = document.getElementById('Inputpaga');

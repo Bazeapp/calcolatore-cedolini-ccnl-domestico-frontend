@@ -114,12 +114,13 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .selection-container {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
-    align-items: flex;
+    align-items: flex-start;
     width: 100%;
     max-width: 300px;
 }
+
 
 button {
     background-color: white;
