@@ -163,14 +163,202 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 document.getElementById('u').style.display='block';}  
                }
 
-           
+               let livellocontrattoselezionato = "";
+               let tipocontrattoselezionato = "";
+               let duratacontrattoselezionato = "";  
+               
+               function selectChoice(category, choice) {
+               selections[category] = choice;
+               displaySelections();
+               if (category === 'Tipo contratto') {
+                   if(selections['Tipo contratto']==='full-time'){
+                   tipocontrattoselezionato = 'convivente';}
+                   if(selections['Tipo contratto']==='non-convivente'){
+                       tipocontrattoselezionato = 'nonconvivente';}
+                   if(selections['Tipo contratto']==='part-time'){
+                       tipocontrattoselezionato = 'part-time';} 
+                   if(selections['Tipo contratto']==='sostituzione'){
+                   tipocontrattoselezionato = 'sostituzione';}
+                   if(selections['Tipo contratto']==='presenza'){
+                   tipocontrattoselezionato = 'presenza';} 
+                   if(selections['Tipo contratto']==='assistenza'){
+                   tipocontrattoselezionato = 'assistenza';}      
+               }
+               if (category === 'Livello') {
+                   livellocontrattoselezionato = choice;
+               }
+               if (category === 'Contratto') {
+                   if(choice==='determinato in sostituzione'){
+                   duratacontrattoselezionato = 'determinato_in_sostituzione';}
+                   if(choice==='determinato'){
+                   duratacontrattoselezionato = 'determinato';}
+                   if(choice==='indeterminato'){
+                   duratacontrattoselezionato = 'indeterminato';}    
+               }    
+       
+               if (category === 'Tipo contratto') {
+               
+               } else if (category === 'Livello') {    
+               if (choice === 'bs') {
+                   document.getElementById('bambinoBox').style.display = 'block';
+               } else {
+                   document.getElementById('bambinoBox').style.display = 'none';
+               }
+       
+               if (choice === 'b' || choice==='bs' || choice === 'cs' || choice==='d') {
+                   document.getElementById('certificatoBox').style.display = 'block';
+               } else {
+                   document.getElementById('certificatoBox').style.display = 'none';
+               }
+       
+               if (choice === 'cs' || choice==='ds') {
+                   document.getElementById('autosufficientiBox').style.display = 'block';
+               } else {
+                   document.getElementById('autosufficientiBox').style.display = 'none';
+               }
+       
+               if (selections['Tipo contratto'] !== 'non-convivente') {
+                   document.getElementById('vittoAlloggioBox').style.display = 'block';
+               }
+           }
+       }
+            
+               
+            // variabili per la paga
+            const pagaconv_liva=729.25 ;//paga mensile minima lavoratori conviventi liv a
+            const pagaconv_livas=861.86 ;//paga mensile minima lavoratori conviventi liv as
+            const pagaconv_livb=928.15  ;//paga mensile minima lavoratori conviventi liv b
+            const pagaconv_livbs=994.44 ;//paga mensile minima lavoratori conviventi liv bs
+            const pagaconv_livc=1060.76 ;//paga mensile minima lavoratori conviventi liv c
+            const pagaconv_livcs=1127.04 ;//paga mensile minima lavoratori conviventi liv cs
+            const pagaconv_livd=1521.99  ;//paga mensile minima lavoratori conviventi liv d
+            const pagaconv_livds=1588.28 ;//paga mensile minima lavoratori conviventi liv ds
+            const pagapart_livb=662.96   ;//paga mensile minima lavoratori part-time liv b
+            const pagapart_livbs=696.13  ;//paga mensile minima lavoratori part-time liv bs
+            const pagapart_livc=769.02   ;//paga mensile minima lavoratori part-time liv c
+            const paganoconv_liva=5.30   ;//paga oraria minima lavoratori non conviventi liv a
+            const paganoconv_livas=6.24  ;//paga oraria minima lavoratori non conviventi liv as
+            const paganoconv_livb=6.62   ;//paga oraria minima lavoratori non conviventi liv b
+            const paganoconv_livbs=7.03  ;//paga oraria minima lavoratori non conviventi liv bs
+            const paganoconv_livc=7.42   ;//paga oraria minima lavoratori non conviventi liv c
+            const paganoconv_livcs=7.83  ;//paga oraria minima lavoratori non conviventi liv cs
+            const paganoconv_livd=9.03   ;//paga oraria minima lavoratori non conviventi liv d
+            const paganoconv_livds=9.41  ;//paga oraria minima lavoratori non conviventi liv ds
+            const pagaconvass_livbs=1143.60 ;//paga mensile minima lavoratori conviventi assistenza notturna liv bs
+            const pagaconvass_livcs=1296.09 ;//paga mensile minima lavoratori conviventi assistenza notturna liv cs
+            const pagaconvass_livds=1601.09 ;//paga mensile minima lavoratori conviventi assistenza notturna liv ds
+            const pagaconvpres_livu=765.71  ;//paga mensile minima lavoratori conviventi presenza notturna liv unico
+            const pagasost_livcs=8.41    ;//#paga oraria minima lavoratori in sostituzione liv ds
+            const pagasost_livds=10.15    ;//#paga oraria minima lavoratori in sostituzione liv ds  
 
             function sceglipaga() {
-                    document.getElementById('InputpagaBox').style.display = 'block';
+                    //mettiamo il livello minimo nel placeholder
+                    var livellopaga=document.getElementById('Inputpaga');
+
+                    if(tipocontrattoselezionato==="nonconvivente"){
+                    document.getElementById('InputpagaBoxora').style.display = 'block';
+                    document.getElementById('InputpagaBoxmese').style.display = 'none';
+                    if(livellocontrattoselezionato==="a"){
+                        livellopaga.placeholder= paganoconv_liva + "€";
+                    }
+                    if(livellocontrattoselezionato==="as"){
+                        livellopaga.placeholder= paganoconv_livas + "€";
+                    }
+                    if(livellocontrattoselezionato==="b"){
+                        livellopaga.placeholder= paganoconv_livb + "€";
+                    }
+                    if(livellocontrattoselezionato==="bs"){
+                        livellopaga.placeholder= paganoconv_livbs + "€";
+                    }
+                    if(livellocontrattoselezionato==="c"){
+                        livellopaga.placeholder= paganoconv_livc + "€";
+                    }
+                    if(livellocontrattoselezionato==="cs"){
+                        livellopaga.placeholder= paganoconv_livcs + "€";
+                    }
+                    if(livellocontrattoselezionato==="d"){
+                        livellopaga.placeholder= paganoconv_livd + "€";
+                    }
+                    if(livellocontrattoselezionato==="ds"){
+                        livellopaga.placeholder= paganoconv_livds + "€";
+                    }
+                    }
+                    if(tipocontrattoselezionato==="convivente"){
+                        document.getElementById('InputpagaBoxmese').style.display = 'block';
+                        document.getElementById('InputpagaBoxora').style.display = 'none';
+                        if(livellocontrattoselezionato==="a"){
+                            livellopaga.placeholder= pagaconv_liva + "€";
+                        }
+                        if(livellocontrattoselezionato==="as"){
+                            livellopaga.placeholder= pagaconv_livas + "€";
+                        }
+                        if(livellocontrattoselezionato==="b"){
+                            livellopaga.placeholder= pagaconv_livb + "€";
+                        }
+                        if(livellocontrattoselezionato==="bs"){
+                            livellopaga.placeholder= pagaconv_livbs + "€";
+                        }
+                        if(livellocontrattoselezionato==="c"){
+                            livellopaga.placeholder= pagaconv_livc + "€";
+                        }
+                        if(livellocontrattoselezionato==="cs"){
+                            livellopaga.placeholder= pagaconv_livcs + "€";
+                        }
+                        if(livellocontrattoselezionato==="d"){
+                            livellopaga.placeholder= pagaconv_livd + "€";
+                        }
+                        if(livellocontrattoselezionato==="ds"){
+                            livellopaga.placeholder= pagaconv_livds + "€";
+                        }
+                    }
+                    if(tipocontrattoselezionato==="part-time"){
+                        document.getElementById('InputpagaBoxmese').style.display = 'block';
+                        document.getElementById('InputpagaBoxora').style.display = 'none';
+                        if(livellocontrattoselezionato==="b"){
+                            livellopaga.placeholder= pagapart_livb + "€";
+                        }
+                        if(livellocontrattoselezionato==="bs"){
+                            livellopaga.placeholder= pagapart_livbs + "€";
+                        }
+                        if(livellocontrattoselezionato==="c"){
+                            livellopaga.placeholder= pagapart_livc + "€";
+                        }
+                    }
+                    if(tipocontrattoselezionato==="sostituzione"){
+                        document.getElementById('InputpagaBoxora').style.display = 'block';
+                        document.getElementById('InputpagaBoxora').style.display = 'none';
+                        if(livellocontrattoselezionato==="cs"){
+                            livellopaga.placeholder= pagasost_livcs + "€";
+                        }
+                        if(livellocontrattoselezionato==="ds"){
+                            livellopaga.placeholder= pagasost_livds + "€";
+                        }
+                    }
+                    if(tipocontrattoselezionato==="presenza"){
+                        document.getElementById('InputpagaBoxmese').style.display = 'block';
+                        document.getElementById('InputpagaBoxora').style.display = 'none';
+                        if(livellocontrattoselezionato==="u"){
+                            livellopaga.placeholder= pagaconvpres_livu + "€";
+                        }
+                    } 
+                    if(tipocontrattoselezionato==="assistenza"){
+                        document.getElementById('InputpagaBoxmese').style.display = 'block';
+                        document.getElementById('InputpagaBoxora').style.display = 'none';
+                        if(livellocontrattoselezionato==="bs"){
+                            livellopaga.placeholder= pagaconvass_livbs + "€";
+                        }
+                        if(livellocontrattoselezionato==="cs"){
+                            livellopaga.placeholder= pagaconvass_livcs + "€";
+                        }
+                        if(livellocontrattoselezionato==="ds"){
+                            livellopaga.placeholder= pagaconvass_livds + "€";
+                        }
+                    }   
+                 
             }
             let paga = 0;
         
-        function salvaPaga() {
+            function salvaPaga() {
             let pagaInput = document.getElementById('Inputpaga').value;
 
             // Controlla se l'input è vuoto
@@ -210,65 +398,6 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 inputPaga.addEventListener('input', salvaPaga);  // Usa 'input' invece di 'change' per aggiornamenti in tempo reale
             })
 
-        let livellocontrattoselezionato = "";
-        let tipocontrattoselezionato = "";
-        let duratacontrattoselezionato = "";  
-        
-        function selectChoice(category, choice) {
-        selections[category] = choice;
-        displaySelections();
-        if (category === 'Tipo contratto') {
-            if(selections['Tipo contratto']==='full-time'){
-            tipocontrattoselezionato = 'convivente';}
-            if(selections['Tipo contratto']==='non-convivente'){
-                tipocontrattoselezionato = 'nonconvivente';}
-            if(selections['Tipo contratto']==='part-time'){
-                tipocontrattoselezionato = 'part-time';} 
-            if(selections['Tipo contratto']==='sostituzione'){
-            tipocontrattoselezionato = 'sostituzione';}
-            if(selections['Tipo contratto']==='presenza'){
-            tipocontrattoselezionato = 'presenza';} 
-            if(selections['Tipo contratto']==='assistenza'){
-            tipocontrattoselezionato = 'assistenza';}      
-        }
-        if (category === 'Livello') {
-            livellocontrattoselezionato = choice;
-        }
-        if (category === 'Contratto') {
-            if(choice==='determinato in sostituzione'){
-            duratacontrattoselezionato = 'determinato_in_sostituzione';}
-            if(choice==='determinato'){
-            duratacontrattoselezionato = 'determinato';}
-            if(choice==='indeterminato'){
-            duratacontrattoselezionato = 'indeterminato';}    
-        }    
-
-        if (category === 'Tipo contratto') {
-        
-        } else if (category === 'Livello') {    
-        if (choice === 'bs') {
-            document.getElementById('bambinoBox').style.display = 'block';
-        } else {
-            document.getElementById('bambinoBox').style.display = 'none';
-        }
-
-        if (choice === 'b' || choice==='bs' || choice === 'cs' || choice==='d') {
-            document.getElementById('certificatoBox').style.display = 'block';
-        } else {
-            document.getElementById('certificatoBox').style.display = 'none';
-        }
-
-        if (choice === 'cs' || choice==='ds') {
-            document.getElementById('autosufficientiBox').style.display = 'block';
-        } else {
-            document.getElementById('autosufficientiBox').style.display = 'none';
-        }
-
-        if (selections['Tipo contratto'] !== 'non-convivente') {
-            document.getElementById('vittoAlloggioBox').style.display = 'block';
-        }
-    }
-}
 
         let indennitaPranzoColazione = "no";
         let indennitaCena = "no";
