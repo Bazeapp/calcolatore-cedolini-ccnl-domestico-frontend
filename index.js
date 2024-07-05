@@ -202,6 +202,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         function resetPaga() {
             paga = 0;
             document.getElementById('Inputpaga').value = "";
+            document.getElementById('paga-netta').innerText ='';
         }
     
             document.addEventListener('DOMContentLoaded', (event) => {
