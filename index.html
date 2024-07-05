@@ -141,7 +141,7 @@
     <h3>Opzioni Aggiuntive</h3>
 
     <div class="selection-container" id="InputpagaBox" style="display:none;">
-        la paga del lavoratore:
+        la paga del lavoratore è:
         <input type="number" inputmode="numeric" id="Inputpaga" min="0" step="1" placeholder="paga">
         <br></br>
     </div>
@@ -150,13 +150,11 @@
     <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
         Vitto e Alloggio sono in natura? :
         <label>
-            <br> <input type="radio" name="vittoAlloggio" value="si" onclick="selectVittoAlloggio('si')"> Sì
-        </label>
-        <label>
-            <br> <input type="radio" name="vittoAlloggio" value="no" onclick="selectVittoAlloggio('no')"> No
+            <input type="checkbox" id="vittoAlloggioCheckbox" onclick="selectVittoAlloggio()" checked> sì/no
         </label>
         <br></br>
     </div>
+    
 
     <div class="selection-container" id="specificaVittoAlloggioBox" style="display:none;">
         Seleziona le indennità sostitutive:
@@ -175,32 +173,21 @@
     <div class="selection-container" id="bambinoBox" style="display:none;">
         Il bambino è entro i 6 anni di età? :
         <label>
-            <br> <input type="radio" name="bambino" value="si" onclick="selectBambino('si')"> Sì
-        </label>
-        <label>
-            <br> <input type="radio" name="bambino" value="no" onclick="selectBambino('no')"> No
+             <input type="checkbox" id="bambinoCheckbox" onclick="selectBambino()"> 
         </label>
         <br></br>
     </div>
-
     <div class="selection-container" id="certificatoBox" style="display:none;">
         Il lavoratore ha il certificato UNI1176 valido? :
         <label>
-            <br> <input type="radio" name="certificato" value="si" onclick="selectCertificato('si')"> Sì
-        </label>
-        <label>
-            <br> <input type="radio" name="certificato" value="no" onclick="selectCertificato('no')"> No
+             <input type="checkbox" id="certificatoCheckbox" onclick="selectCertificato()"> 
         </label>
         <br></br>
     </div>
-
     <div class="selection-container" id="autosufficientiBox" style="display:none;">
         Il lavoratore si occupa di più persone non autosufficienti? :
         <label>
-            <br> <input type="radio" name="autosufficienti" value="si" onclick="selectAutosuff('si')"> Sì
-        </label>
-        <label>
-            <br> <input type="radio" name="autosufficienti" value="no" onclick="selectAutosuff('no')"> No
+            <input type="checkbox" id="autosufficientiCheckbox" onclick="selectAutosuff()"> 
         </label>
         <br></br>
     </div>

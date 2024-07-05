@@ -283,13 +283,27 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             }
         }
 
-        function selectVittoAlloggio(choice) {
+        function selectVittoAlloggio() {
+            var checkbox = document.getElementById('vittoAlloggioCheckbox');
+            var choice = checkbox.checked ? 'si' : 'no';
             selections['Vitto e alloggio in natura'] = choice;
             document.getElementById('specificaVittoAlloggioBox').style.display = (choice === 'no') ? 'block' : 'none';
             if (choice === 'si') {
                 selections['Specifiche vitto e alloggio'] = [];
+            }else{
+                deselectAllSpecifiche();
             }
             displaySelections();
+        }
+
+        function deselectAllSpecifiche() {
+            // Deseleziona tutte le specifiche checkbox
+            var checkboxes = document.querySelectorAll('#specificaVittoAlloggioBox input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = false;
+                var value = checkbox.value;
+                selections[value] = 'no';
+            });
         }
 
         function selectSpecificaVittoAlloggio(option) {
@@ -301,22 +315,40 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             }
             displaySelections();
         }
+
+
         let bambino = "no";
-        function selectBambino(choice) {
-            selections['Bambino entro 6 anni'] = choice;
-            bambino=choice;
+        function selectBambino() {
+            var checkbox = document.getElementById("bambinoCheckbox");
+            if (checkbox.checked) {
+                bambino = "si";
+            } else {
+                bambino = "no";
+            }
+            selections['Bambino entro 6 anni'] = bambino;
             displaySelections();
         }
+        
         let certificato = "no";
-        function selectCertificato(choice) {
-            selections['Certificato UNI1176'] = choice;
-            certificato=choice;
+        function selectCertificato() {
+            var checkbox = document.getElementById("certificatoCheckbox");
+            if (checkbox.checked) {
+                certificato = "si";
+            } else {
+                certificato = "no";
+            }
+            selections['Certificato UNI1176'] = certificato;
             displaySelections();
         }
         let autosufficienti = "no";
-        function selectAutosuff(choice) {
-            selections['Autosufficienti'] = choice;
-            autosufficienti=choice;
+        function selectAutosuff() {
+            var checkbox = document.getElementById("autosufficientiCheckbox");
+            if (checkbox.checked) {
+                autosufficienti = "si";
+            } else {
+                autosufficienti = "no";
+            }
+            selections['Autosufficienti'] = autosufficienti;
             displaySelections();
         }
 
@@ -494,6 +526,8 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             checkboxes.forEach(function(checkbox) {
                 checkbox.checked = false;
             });
+            var vittoAlloggioCheckbox = document.getElementById('vittoAlloggioCheckbox');
+            vittoAlloggioCheckbox.checked = true;
         }
         
         function resetTable() {
