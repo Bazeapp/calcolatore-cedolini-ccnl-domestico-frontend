@@ -252,152 +252,143 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             const pagasost_livds=10.15    ;//#paga oraria minima lavoratori in sostituzione liv ds  
 
             function sceglipaga() {
-                    //mettiamo il livello minimo nel placeholder
-                    var livellopaga=document.getElementById('Inputpaga');
-
-                    if(tipocontrattoselezionato==="nonconvivente"){
+                var livellopaga;
+                if (tipocontrattoselezionato === "nonconvivente") {
                     document.getElementById('InputpagaBoxora').style.display = 'block';
                     document.getElementById('InputpagaBoxmese').style.display = 'none';
-                    if(livellocontrattoselezionato==="a"){
-                        livellopaga.placeholder= paganoconv_liva + "€";
+                    livellopaga = document.getElementById('InputpagaOra');
+                    if (livellocontrattoselezionato === "a") {
+                        livellopaga.placeholder = paganoconv_liva + "€";
                     }
-                    if(livellocontrattoselezionato==="as"){
-                        livellopaga.placeholder= paganoconv_livas + "€";
+                    if (livellocontrattoselezionato === "as") {
+                        livellopaga.placeholder = paganoconv_livas + "€";
                     }
-                    if(livellocontrattoselezionato==="b"){
-                        livellopaga.placeholder= paganoconv_livb + "€";
+                    if (livellocontrattoselezionato === "b") {
+                        livellopaga.placeholder = paganoconv_livb + "€";
                     }
-                    if(livellocontrattoselezionato==="bs"){
-                        livellopaga.placeholder= paganoconv_livbs + "€";
+                    if (livellocontrattoselezionato === "bs") {
+                        livellopaga.placeholder = paganoconv_livbs + "€";
                     }
-                    if(livellocontrattoselezionato==="c"){
-                        livellopaga.placeholder= paganoconv_livc + "€";
+                    if (livellocontrattoselezionato === "c") {
+                        livellopaga.placeholder = paganoconv_livc + "€";
                     }
-                    if(livellocontrattoselezionato==="cs"){
-                        livellopaga.placeholder= paganoconv_livcs + "€";
+                    if (livellocontrattoselezionato === "cs") {
+                        livellopaga.placeholder = paganoconv_livcs + "€";
                     }
-                    if(livellocontrattoselezionato==="d"){
-                        livellopaga.placeholder= paganoconv_livd + "€";
+                    if (livellocontrattoselezionato === "d") {
+                        livellopaga.placeholder = paganoconv_livd + "€";
                     }
-                    if(livellocontrattoselezionato==="ds"){
-                        livellopaga.placeholder= paganoconv_livds + "€";
+                    if (livellocontrattoselezionato === "ds") {
+                        livellopaga.placeholder = paganoconv_livds + "€";
                     }
+                }
+                if (tipocontrattoselezionato === "convivente") {
+                    document.getElementById('InputpagaBoxmese').style.display = 'block';
+                    document.getElementById('InputpagaBoxora').style.display = 'none';
+                    livellopaga = document.getElementById('InputpagaMese');
+                    if (livellocontrattoselezionato === "a") {
+                        livellopaga.placeholder = pagaconv_liva + "€";
                     }
-                    if(tipocontrattoselezionato==="convivente"){
-                        document.getElementById('InputpagaBoxmese').style.display = 'block';
-                        document.getElementById('InputpagaBoxora').style.display = 'none';
-                        if(livellocontrattoselezionato==="a"){
-                            livellopaga.placeholder= pagaconv_liva + "€";
-                        }
-                        if(livellocontrattoselezionato==="as"){
-                            livellopaga.placeholder= pagaconv_livas + "€";
-                        }
-                        if(livellocontrattoselezionato==="b"){
-                            livellopaga.placeholder= pagaconv_livb + "€";
-                        }
-                        if(livellocontrattoselezionato==="bs"){
-                            livellopaga.placeholder= pagaconv_livbs + "€";
-                        }
-                        if(livellocontrattoselezionato==="c"){
-                            livellopaga.placeholder= pagaconv_livc + "€";
-                        }
-                        if(livellocontrattoselezionato==="cs"){
-                            livellopaga.placeholder= pagaconv_livcs + "€";
-                        }
-                        if(livellocontrattoselezionato==="d"){
-                            livellopaga.placeholder= pagaconv_livd + "€";
-                        }
-                        if(livellocontrattoselezionato==="ds"){
-                            livellopaga.placeholder= pagaconv_livds + "€";
-                        }
+                    if (livellocontrattoselezionato === "as") {
+                        livellopaga.placeholder = pagaconv_livas + "€";
                     }
-                    if(tipocontrattoselezionato==="part-time"){
-                        document.getElementById('InputpagaBoxmese').style.display = 'block';
-                        document.getElementById('InputpagaBoxora').style.display = 'none';
-                        if(livellocontrattoselezionato==="b"){
-                            livellopaga.placeholder= pagapart_livb + "€";
-                        }
-                        if(livellocontrattoselezionato==="bs"){
-                            livellopaga.placeholder= pagapart_livbs + "€";
-                        }
-                        if(livellocontrattoselezionato==="c"){
-                            livellopaga.placeholder= pagapart_livc + "€";
-                        }
+                    if (livellocontrattoselezionato === "b") {
+                        livellopaga.placeholder = pagaconv_livb + "€";
                     }
-                    if(tipocontrattoselezionato==="sostituzione"){
-                        document.getElementById('InputpagaBoxora').style.display = 'block';
-                        document.getElementById('InputpagaBoxora').style.display = 'none';
-                        if(livellocontrattoselezionato==="cs"){
-                            livellopaga.placeholder= pagasost_livcs + "€";
-                        }
-                        if(livellocontrattoselezionato==="ds"){
-                            livellopaga.placeholder= pagasost_livds + "€";
-                        }
+                    if (livellocontrattoselezionato === "bs") {
+                        livellopaga.placeholder = pagaconv_livbs + "€";
                     }
-                    if(tipocontrattoselezionato==="presenza"){
-                        document.getElementById('InputpagaBoxmese').style.display = 'block';
-                        document.getElementById('InputpagaBoxora').style.display = 'none';
-                        if(livellocontrattoselezionato==="u"){
-                            livellopaga.placeholder= pagaconvpres_livu + "€";
-                        }
-                    } 
-                    if(tipocontrattoselezionato==="assistenza"){
-                        document.getElementById('InputpagaBoxmese').style.display = 'block';
-                        document.getElementById('InputpagaBoxora').style.display = 'none';
-                        if(livellocontrattoselezionato==="bs"){
-                            livellopaga.placeholder= pagaconvass_livbs + "€";
-                        }
-                        if(livellocontrattoselezionato==="cs"){
-                            livellopaga.placeholder= pagaconvass_livcs + "€";
-                        }
-                        if(livellocontrattoselezionato==="ds"){
-                            livellopaga.placeholder= pagaconvass_livds + "€";
-                        }
-                    }   
-                 
+                    if (livellocontrattoselezionato === "c") {
+                        livellopaga.placeholder = pagaconv_livc + "€";
+                    }
+                    if (livellocontrattoselezionato === "cs") {
+                        livellopaga.placeholder = pagaconv_livcs + "€";
+                    }
+                    if (livellocontrattoselezionato === "d") {
+                        livellopaga.placeholder = pagaconv_livd + "€";
+                    }
+                    if (livellocontrattoselezionato === "ds") {
+                        livellopaga.placeholder = pagaconv_livds + "€";
+                    }
+                }
+                if (tipocontrattoselezionato === "part-time") {
+                    document.getElementById('InputpagaBoxmese').style.display = 'block';
+                    document.getElementById('InputpagaBoxora').style.display = 'none';
+                    livellopaga = document.getElementById('InputpagaMese');
+                    if (livellocontrattoselezionato === "b") {
+                        livellopaga.placeholder = pagapart_livb + "€";
+                    }
+                    if (livellocontrattoselezionato === "bs") {
+                        livellopaga.placeholder = pagapart_livbs + "€";
+                    }
+                    if (livellocontrattoselezionato === "c") {
+                        livellopaga.placeholder = pagapart_livc + "€";
+                    }
+                }
+                if (tipocontrattoselezionato === "sostituzione") {
+                    document.getElementById('InputpagaBoxora').style.display = 'block';
+                    document.getElementById('InputpagaBoxmese').style.display = 'none';
+                    livellopaga = document.getElementById('InputpagaOra');
+                    if (livellocontrattoselezionato === "cs") {
+                        livellopaga.placeholder = pagasost_livcs + "€";
+                    }
+                    if (livellocontrattoselezionato === "ds") {
+                        livellopaga.placeholder = pagasost_livds + "€";
+                    }
+                }
+                if (tipocontrattoselezionato === "presenza") {
+                    document.getElementById('InputpagaBoxmese').style.display = 'block';
+                    document.getElementById('InputpagaBoxora').style.display = 'none';
+                    livellopaga = document.getElementById('InputpagaMese');
+                    if (livellocontrattoselezionato === "u") {
+                        livellopaga.placeholder = pagaconvpres_livu + "€";
+                    }
+                }
+                if (tipocontrattoselezionato === "assistenza") {
+                    document.getElementById('InputpagaBoxmese').style.display = 'block';
+                    document.getElementById('InputpagaBoxora').style.display = 'none';
+                    livellopaga = document.getElementById('InputpagaMese');
+                    if (livellocontrattoselezionato === "bs") {
+                        livellopaga.placeholder = pagaconvass_livbs + "€";
+                    }
+                    if (livellocontrattoselezionato === "cs") {
+                        livellopaga.placeholder = pagaconvass_livcs + "€";
+                    }
+                    if (livellocontrattoselezionato === "ds") {
+                        livellopaga.placeholder = pagaconvass_livds + "€";
+                    }
+                }
             }
-            let paga = 0;
-        
-            function salvaPaga() {
-            let pagaInput = document.getElementById('Inputpaga').value;
-
-            // Controlla se l'input è vuoto
-            if (pagaInput === "") {
-                alert("Inserisci un valore valido per la paga.");
-                resetPaga();
-                return;
+            
+            function salvaPaga(event) {
+                var pagaInput = event.target.value;
+                var paga = parseFloat(pagaInput);
+    
+                // Controlla se il valore supera il limite
+                if (paga > 2000) {
+                    alert("Inserisci un valore valido per la paga.");
+                    resetPaga();
+                    return;
+                }
+    
+                document.getElementById('paga-netta').innerText = paga + ' €';
             }
-
-            // Controlla se l'input è un numero
-            if (!/^\d+$/.test(pagaInput)) {
-                alert("Inserisci solo numeri per la paga.");
-                resetPaga();
-                return;
+    
+            function resetPaga() {
+                paga = 0;
+                var inputPaga = document.querySelector('#InputpagaOra') || document.querySelector('#InputpagaMese');
+                inputPaga.value = "";
+                document.getElementById('paga-netta').innerText = '';
             }
-
-            paga = parseFloat(pagaInput);
-
-            // Controlla se il valore supera il limite
-            if (paga > 2000) {
-                alert("Inserisci un valore valido per la paga.");
-                resetPaga();
-                return;
-            }
-
-            document.getElementById('paga-netta').innerText = paga + ' €';
-        }
-
-        function resetPaga() {
-            paga = 0;
-            document.getElementById('Inputpaga').value = "";
-            document.getElementById('paga-netta').innerText ='';
-        }
     
             document.addEventListener('DOMContentLoaded', (event) => {
-                var inputPaga = document.getElementById('Inputpaga');
-                inputPaga.addEventListener('input', salvaPaga);  // Usa 'input' invece di 'change' per aggiornamenti in tempo reale
-            })
-
+                var inputPagaOra = document.getElementById('InputpagaOra');
+                var inputPagaMese = document.getElementById('InputpagaMese');
+                inputPagaOra.addEventListener('input', salvaPaga);  // Usa 'input' invece di 'change' per aggiornamenti in tempo reale
+                inputPagaMese.addEventListener('input', salvaPaga);
+                sceglipaga();
+        
+            });
 
         let indennitaPranzoColazione = "no";
         let indennitaCena = "no";
@@ -621,9 +612,23 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('ds').style.display = 'none';
             document.getElementById('u').style.display = 'none';
             document.getElementById('simulazione').style.display = 'none';
-            document.getElementById('InputpagaBox').style.display = 'none';
+            document.getElementById('InputpagaBoxora').style.display = 'none';
+            document.getElementById('InputpagaBoxmese').style.display = 'none';
             document.getElementById('paga-netta').textContent = "";
-            document.getElementById('Inputpaga').value = "";
+            
+            // Reset input values
+            var inputPagaOra = document.getElementById('InputpagaOra');
+            var inputPagaMese = document.getElementById('InputpagaMese');
+            
+            if (inputPagaOra) {
+                inputPagaOra.value = "";
+                inputPagaOra.placeholder = "paga";
+            }
+            
+            if (inputPagaMese) {
+                inputPagaMese.value = "";
+                inputPagaMese.placeholder = "paga";
+            }
         
             livellocontrattoselezionato = "";
             tipocontrattoselezionato = "";
