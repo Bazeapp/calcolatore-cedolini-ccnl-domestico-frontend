@@ -278,8 +278,14 @@
     </div>
 
     <div>    
-        <button class="box" onclick="resetCalculator()">Nuovo Calcolo</button>
+        <button id="nuovocalcolo" class="box" onclick="confermanuovo()">Nuovo Calcolo</button>
     </div>
+    <div id="confermanuovocalcolo">
+        <p class="box"> Attenzione ! <br> proseguendo perderai tutte le scelte fatte finora</p>    
+        <div class="button-container">
+            <button class="ok" onclick="resetCalculator()">conferma</button>
+            <button class="ok" onclick="annullanuovo()">annulla</button>
+        </div>
 
     <div id="result" style="display:none">
            Risultati calcoli verranno visualizzati qui 

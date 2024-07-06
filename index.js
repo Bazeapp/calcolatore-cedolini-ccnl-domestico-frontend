@@ -88,15 +88,17 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             'Autosufficienti':null
         };
 
+        // funzione per aprire la scelta del Tipocontratto e Tipolivello
         function toggleChoices(choiceId) {
             var choices = document.getElementById(choiceId);
             choices.classList.toggle('show');
         }
+        //Funzione per aprire la tabella con i risultati dei calcoli
         function aprisimulazione() {
                 document.getElementById('simulazione').style.display='block';
                 }
 
-
+        //funzione per far visualizzare i livelli giusti in base al tipo di contratto        
         function sceltalivello() {
             if(selections['Tipo contratto']==='non-convivente'){
                 document.getElementById('a').style.display='block';
@@ -163,10 +165,12 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 document.getElementById('u').style.display='block';}  
                }
 
+               // inizializzo le variabili che andrò a passare al backend
                let livellocontrattoselezionato = "";
                let tipocontrattoselezionato = "";
                let duratacontrattoselezionato = "";  
                
+               // riempo le variabili con le selezioni
                function selectChoice(category, choice) {
                selections[category] = choice;
                displaySelections();
@@ -251,6 +255,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             const pagasost_livcs=8.41    ;//#paga oraria minima lavoratori in sostituzione liv ds
             const pagasost_livds=10.15    ;//#paga oraria minima lavoratori in sostituzione liv ds  
 
+            //funizone per mostrare l'input di paga e calcolo del placeholder
             function sceglipaga() {
                 var livellopaga;
                 if (tipocontrattoselezionato === "nonconvivente") {
@@ -360,6 +365,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 }
             }
             
+            //funzione per il salvataggio della paga inserita
             function salvaPaga(event) {
                 var pagaInput = event.target.value;
                 var paga = parseFloat(pagaInput);
@@ -373,7 +379,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     
                 document.getElementById('paga-netta').innerText = paga + ' €';
             }
-    
+            //funizone per resettare la paga quando si inserisce un valore non valido
             function resetPaga() {
                 paga = 0;
                 var inputPaga = document.querySelector('#InputpagaOra') || document.querySelector('#InputpagaMese');
@@ -417,8 +423,8 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             displaySelections();
         }
 
+        // Funzione per deselezionare tutte le specifiche checkbox
         function deselectAllSpecifiche() {
-            // Deseleziona tutte le specifiche checkbox
             var checkboxes = document.querySelectorAll('#specificaVittoAlloggioBox input[type="checkbox"]');
             checkboxes.forEach(function(checkbox) {
                 checkbox.checked = false;
@@ -427,6 +433,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             });
         }
 
+        //funzione per aggiungere o togliere l'indennita nella selections
         function selectSpecificaVittoAlloggio(option) {
             var index = selections['Specifiche vitto e alloggio'].indexOf(option);
             if (index === -1) {
@@ -437,7 +444,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             displaySelections();
         }
 
-
+        // funzioni per le indennità aggiuntive
         let bambino = "no";
         function selectBambino() {
             var checkbox = document.getElementById("bambinoCheckbox");
@@ -449,7 +456,6 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             selections['Bambino entro 6 anni'] = bambino;
             displaySelections();
         }
-        
         let certificato = "no";
         function selectCertificato() {
             var checkbox = document.getElementById("certificatoCheckbox");
@@ -488,6 +494,8 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 }
             }
         }
+
+        //funzione per l'incremento delle ore
         function increaseHours(day) {
             const input = document.getElementById(day);
             if (input.value < 10) {
@@ -495,7 +503,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 updateTotals();
             }
         }
-        
+        //funzione per il decremento delle ore
         function decreaseHours(day) {
             const input = document.getElementById(day);
             if (input.value > 0) {
@@ -503,7 +511,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 updateTotals();
             }
         }
-        
+        //funzione per aggiornare i totali ore
         function updateTotals() {
             const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
             let totalHours = 0;
@@ -513,7 +521,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 const input = document.getElementById(day);
                 let value = parseInt(input.value);
         
-                // Assicurati che il valore non sia superiore a 10
+                // Assicurati che il valore non sia superiore alle ore massime possibili
                 if (value > 10) {
                     value = 10;
                     input.value = 10;
@@ -562,7 +570,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         });
         
         
-        
+        //fuznione per visualizzare le cose scelte nella selections
         function submitChoices() {
             var result = document.getElementById('result');
             result.innerHTML = '<h2>Risultati del Calcolo:</h2>';
@@ -580,7 +588,18 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             result.innerHTML += '<p>Ore Settimanali: ' + totalHours + '</p>';
             result.innerHTML += '<p>Giorni Settimanali: ' + totalDays + '</p>';
         }
-        
+        //funzioni per la conferma del reset
+        function confermanuovo(){
+            document.getElementById('nuovocalcolo').style.display = 'none';
+            document.getElementById('confermanuovocalcolo').style.display = 'block';
+        }
+        function annullanuovo(){
+            document.getElementById('nuovocalcolo').style.display = 'block';
+            document.getElementById('confermanuovocalcolo').style.display = 'none';
+        }
+
+
+        //Funzione per resettare tutta la pagina e prepararla per un nuovo calcolo
         function resetCalculator() {
             selections = {
                 'Tipo contratto': null,
@@ -615,6 +634,8 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('InputpagaBoxora').style.display = 'none';
             document.getElementById('InputpagaBoxmese').style.display = 'none';
             document.getElementById('paga-netta').textContent = "";
+            document.getElementById('confermanuovocalcolo').style.display = 'none';
+            document.getElementById('nuovocalcolo').style.display = 'block';
             
             // Reset input values
             var inputPagaOra = document.getElementById('InputpagaOra');

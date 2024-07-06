@@ -176,6 +176,46 @@ button:hover {
     margin-bottom: 5px; /* Spazio tra etichetta e input */
   }
   
+  .ok {
+    border-color: var(--giallobaze);
+    font-size: large;
+    text-align: center;
+}
+
+#confermanuovocalcolo {
+    display: none;
+    text-align: center;
+}
+
+#confermanuovocalcolo .box {
+    background-color: white;
+    color:black;
+    padding: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--giallobaze);
+    animation: borderColorChange 1.5s infinite;
+    margin-bottom: 20px;
+}
+
+#confermanuovocalcolo .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+@keyframes borderColorChange {
+    0% {
+        border-color: var(--giallobaze);
+    }
+    50% {
+        border-color: var(--blubaze);
+    }
+    100% {
+        border-color: var(--giallobaze);
+    }
+}
+
 
 /* CSS per schermo piccolo */
 @media screen and (max-width: 600px) {
