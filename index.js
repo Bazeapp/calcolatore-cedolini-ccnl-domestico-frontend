@@ -373,7 +373,7 @@ function salvaPaga(event) {
     var placeholderValue = parseFloat(pagaInput.placeholder);
 
     // Controlla se il valore supera il limite
-    if (pagaValue > 2000 || isNaN(pagaValue)) {
+    if (pagaValue > 4000 || isNaN(pagaValue)) {
         alert("Inserisci un valore valido per la paga.");
         resetPaga(pagaInput);
         return;
