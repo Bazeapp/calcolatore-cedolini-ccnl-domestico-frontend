@@ -112,6 +112,11 @@ input[type="number"] {
 input[type="radio"], input[type="checkbox"] {
     margin-right: 10px;
 }
+#InputpagaBoxora input[type="number"],
+#InputpagaBoxmese input[type="number"] {
+    width: 70px;
+    margin: -0.6%;
+}
 
 .selection-container {
     display: inline-flex;
