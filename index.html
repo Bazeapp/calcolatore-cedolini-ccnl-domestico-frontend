@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calcolo Costo CCNL Domestico</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <div class="grande"><h1>Calcolatore Costo Colf / Badanti</h1></div>
@@ -153,6 +154,10 @@
     </div>
 
     <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
+        <span class="informativa">
+            <span class="circle">i</span>
+            <span class="tooltip">Il vitto e l'alloggio possono essere forniti in natura.</span>
+        </span>
         Vitto e Alloggio sono in natura? :
         <label>
             <input type="checkbox" id="vittoAlloggioCheckbox" onclick="selectVittoAlloggio()" checked> sì/no
@@ -161,42 +166,82 @@
     </div>
     
 
-    <div class="selection-container" id="specificaVittoAlloggioBox" style="display:none;">
-        Seleziona le indennità sostitutive:
+    <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
+        <span class="informativa">
+            <span class="circle">i</span>
+            <span class="tooltip">Il vitto e l'alloggio possono essere forniti in natura.</span>
+        </span>
+        Vitto e Alloggio sono in natura? :
         <label>
-            <br> <input type="checkbox" name="specificaVittoAlloggio" value="pranzo/colazione" onclick="selectSpecificaVittoAlloggio('pranzo/colazione') ; selectvariabiliVittoAlloggio ('pranzo/colazione', this.checked ? 'si' : 'no')"> Indennità Pranzo/Colazione
+            <input type="checkbox" id="vittoAlloggioCheckbox" onclick="selectVittoAlloggio()" checked> sì/no
         </label>
-        <label>
-            <br> <input type="checkbox" name="specificaVittoAlloggio" value="cena" onclick="selectSpecificaVittoAlloggio('cena') ; selectvariabiliVittoAlloggio ('cena', this.checked ? 'si' : 'no')"> Indennità Cena
-        </label>
-        <label>
-            <br> <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectSpecificaVittoAlloggio('alloggio') ; selectvariabiliVittoAlloggio ('alloggio', this.checked ? 'si' : 'no')"> Indennità Alloggio
-        </label>
-        <br></br>
+        <br><br>
     </div>
-
+    
+    <div class="selection-container" id="specificaVittoAlloggioBox" style="display:none;">
+        
+            <span class="informativa">
+                <span class="circle">i</span>
+                <span class="tooltip">Il pranzo/colazione se non fornito in natura sono 2,28€ al giorno</span>
+            </span>
+        <label>    
+            <input type="checkbox" name="specificaVittoAlloggio" value="pranzo/colazione" onclick="selectSpecificaVittoAlloggio('pranzo/colazione'); selectvariabiliVittoAlloggio('pranzo/colazione', this.checked ? 'si' : 'no')"> Indennità Pranzo/Colazione
+        </label>
+        <br><br>
+        
+            <span class="informativa">
+                <span class="circle">i</span>
+                <span class="tooltip">La cena se non fornita in natura è 2,28€ al giorno</span>
+            </span>
+        <label>
+            <input type="checkbox" name="specificaVittoAlloggio" value="cena" onclick="selectSpecificaVittoAlloggio('cena'); selectvariabiliVittoAlloggio('cena', this.checked ? 'si' : 'no')"> Indennità Cena
+        </label>
+        <br><br>
+            <span class="informativa">
+                <span class="circle">i</span>
+                <span class="tooltip">L'alloggio se non fornito in natura è 1,96€ al giorno</span>
+            </span>
+        <label>    
+            <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectSpecificaVittoAlloggio('alloggio'); selectvariabiliVittoAlloggio('alloggio', this.checked ? 'si' : 'no')"> Indennità Alloggio
+        </label>
+        <br><br>
+    </div>
     <div class="selection-container" id="bambinoBox" style="display:none;">
+        <span class="informativa">
+            <span class="circle">i</span>
+            <span class="tooltip">Indennità bambino serve a fare ciao</span>
+        </span>
         Il bambino è entro i 6 anni di età? :
         <label>
-             <input type="checkbox" id="bambinoCheckbox" onclick="selectBambino()"> 
+            <input type="checkbox" id="bambinoCheckbox" onclick="selectBambino()"> 
         </label>
         <br></br>
     </div>
+    
     <div class="selection-container" id="certificatoBox" style="display:none;">
+        <span class="informativa">
+            <span class="circle">i</span>
+            <span class="tooltip">Il certificato UNI1176 è necessario per la validità.</span>
+        </span>
         Il lavoratore ha il certificato UNI1176 valido? :
         <label>
-             <input type="checkbox" id="certificatoCheckbox" onclick="selectCertificato()"> 
+            <input type="checkbox" id="certificatoCheckbox" onclick="selectCertificato()"> 
         </label>
         <br></br>
     </div>
+    
     <div class="selection-container" id="autosufficientiBox" style="display:none;">
+        <span class="informativa">
+            <span class="circle">i</span>
+            <span class="tooltip">Occuparsi di più persone non autosufficienti può aumentare i benefici.</span>
+        </span>
         Il lavoratore si occupa di più persone non autosufficienti? :
         <label>
             <input type="checkbox" id="autosufficientiCheckbox" onclick="selectAutosuff()"> 
         </label>
         <br></br>
     </div>
-
+    
     <div class="selected-items" id="selectedItems">
         <!-- Selections will appear here -->
     </div>

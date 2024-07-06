@@ -455,6 +455,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
             displaySelections();
         }
+        
+        // per la i informativa
+    // Funzione per gestire il click fuori dal tooltip
+    document.addEventListener('click', function(event) {
+        var informativas = document.querySelectorAll('.informativa');
+        informativas.forEach(function(informativa) {
+            if (!informativa.contains(event.target)) {
+                informativa.classList.remove('active');
+            }
+        });
+    });
+
+    // Funzione per attivare/disattivare il tooltip al click
+    document.querySelectorAll('.informativa .circle').forEach(function(element) {
+        element.addEventListener('click', function(event) {
+            event.stopPropagation();
+            this.parentElement.classList.toggle('active');
+        });
+    });
 
         // funzioni per le indennità aggiuntive
         let bambino = "no";
