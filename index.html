@@ -14,19 +14,27 @@
         <div class="box" onclick="toggleChoices('choices1');">
             Seleziona Tipo  Contratto
             <div id="choices1" class="choices">
-                <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');">Non-Convivente</button>
-                <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');">Convivente Full-Time</button>
-                <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');">Convivente Part-Time</button>
-                <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');">Sostituzione Lavoratori in Riposo</button>
-                <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');">Convivente Assistenza Notturna</button>
-                <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');">Convivente Presenza Notturna</button>
+                <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');restatipo('nc')">Non-Convivente</button>
+                <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');restatipo('ft')">Convivente Full-Time</button>
+                <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');restatipo('pt')">Convivente Part-Time</button>
+                <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');restatipo('so')">Sostituzione Lavoratori in Riposo</button>
+                <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');restatipo('an')">Convivente Assistenza Notturna</button>
+                <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');restatipo('pn')">Convivente Presenza Notturna</button>
             </div>
     </div>
+
+    <div id="restanc" class="boxrestatipo" style="display:none" >Non-Convivente</div>
+    <div id="restaft" class="boxrestatipo" style="display:none" >Convivente Full-Time</div>
+    <div id="restapt" class="boxrestatipo" style="display:none" >Convivente Part-Time</div>
+    <div id="restaso" class="boxrestatipo" style="display:none" >Sostituzione Lavoratori in Riposo</div>
+    <div id="restaan" class="boxrestatipo" style="display:none" >Convivente Assistenza Notturna</div>
+    <div id="restapn" class="boxrestatipo" style="display:none" >Convivente Presenza Notturna</div>
+
     <div class="box" onclick="toggleChoices('livello'); sceltalivello();">
         Seleziona Livello Contratto
         <div id="livello" class="choices">
             <div id="a" style="display:none">
-                <button onclick="selectChoice('Livello','a');sceglipaga()">
+                <button onclick="selectChoice('Livello','a');sceglipaga();restalivello('a')">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -44,7 +52,7 @@
                     A</button>
             </div>
             <div id="as" style="display:none">    
-                <button onclick="selectChoice('Livello','as');sceglipaga()">
+                <button onclick="selectChoice('Livello','as');sceglipaga();restalivello('as')">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -55,7 +63,7 @@
                     AS</button>
             </div>
             <div id="b" style="display:none">
-                <button onclick="selectChoice('Livello', 'b');sceglipaga()">
+                <button onclick="selectChoice('Livello', 'b');sceglipaga();restalivello('b')">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -74,7 +82,7 @@
                     B</button>
             </div>   
             <div id="bs" style="display:none"> 
-                <button onclick="selectChoice('Livello', 'bs');sceglipaga()">
+                <button onclick="selectChoice('Livello', 'bs');sceglipaga();restalivello('bs')">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -86,7 +94,7 @@
                     BS</button>
             </div>
             <div id="c" style="display:none">
-                <button onclick="selectChoice('Livello', 'c');sceglipaga()">
+                <button onclick="selectChoice('Livello', 'c');sceglipaga(),restalivello('c')">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -98,7 +106,7 @@
                     C</button>
             </div>
             <div id="cs" style="display:none">
-                <button onclick="selectChoice('Livello', 'cs');sceglipaga()">
+                <button onclick="selectChoice('Livello', 'cs');sceglipaga();restalivello('cs')">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -109,7 +117,7 @@
                     CS</button>
             </div>
             <div id="d" style="display:none"> 
-                <button onclick="selectChoice('Livello', 'd');sceglipaga()">
+                <button onclick="selectChoice('Livello', 'd');sceglipaga();restalivello('d')">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -126,7 +134,7 @@
                         D</button>
             </div>
             <div id="ds" style="display:none">
-                <button onclick="selectChoice('Livello', 'ds');sceglipaga()">
+                <button onclick="selectChoice('Livello', 'ds');sceglipaga();restalivello('ds')">
                     <span class="informativa">
                     <span class="circle">i</span>
                     <span class="tooltip">
@@ -139,11 +147,21 @@
                     DS</button>
             </div>   
             <div id="u" style="display:none">
-                <button onclick="selectChoice('Livello', 'u');sceglipaga()">LivelloUnico</button>
+                <button onclick="selectChoice('Livello', 'u');sceglipaga();restalivello('u')">LivelloUnico</button>
             </div>  
         </div>
     </div>
-    
+
+    <div id="restaa" class="boxrestaliv" style="display:none" >A</div>
+    <div id="restaas" class="boxrestaliv" style="display:none" >AS</div>
+    <div id="restab" class="boxrestaliv" style="display:none" >B</div>
+    <div id="restabs" class="boxrestaliv" style="display:none" >BS</div>
+    <div id="restac" class="boxrestaliv" style="display:none" >C</div>
+    <div id="restacs" class="boxrestaliv" style="display:none" >CS</div>
+    <div id="restad" class="boxrestaliv" style="display:none" >D</div>
+    <div id="restads" class="boxrestaliv" style="display:none" >DS</div>
+    <div id="restau" class="boxrestaliv" style="display:none" >Livello Unico</div>
+
     <div class="box">Seleziona Durata Contratto</div>
     <div class="selection-container" id="duratacontratto">
         <label>
@@ -321,7 +339,7 @@
         <br></br>
     </div>
     
-    <div class="selected-items" id="selectedItems">
+    <div class="selected-items" id="selectedItems" style="display: none;">
         <!-- Selections will appear here -->
     </div>
 
