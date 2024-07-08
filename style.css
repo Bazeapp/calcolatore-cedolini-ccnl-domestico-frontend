@@ -174,6 +174,7 @@ input[type="radio"], input[type="checkbox"] {
     align-items: flex-start;
     width: 100%;
     max-width: 300px;
+    white-space: nowrap;
 }
 
 
@@ -306,6 +307,7 @@ button:hover {
     margin-left: -100px; /* Centra il tooltip */
     opacity: 0;
     transition: opacity 0.3s;
+    white-space: normal;
 }
 
 .informativa .tooltip::after {
