@@ -476,8 +476,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             selections['Vitto e alloggio in natura'] = choice;
             document.getElementById('specificaVittoAlloggioBox').style.display = (choice === 'no') ? 'block' : 'none';
             if (choice === 'si') {
-                selections['Specifiche vitto e alloggio'] = [];
-            }else{
                 deselectAllSpecifiche();
             }
             displaySelections();
@@ -485,6 +483,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         // Funzione per deselezionare tutte le specifiche checkbox
         function deselectAllSpecifiche() {
+            indennitaPranzoColazione = "no";
+            indennitaCena = "no";
+            indennitaAlloggio = "no";
             var checkboxes = document.querySelectorAll('#specificaVittoAlloggioBox input[type="checkbox"]');
             checkboxes.forEach(function(checkbox) {
                 checkbox.checked = false;
@@ -493,16 +494,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             });
         }
 
-        //funzione per aggiungere o togliere l'indennita nella selections
-        function selectSpecificaVittoAlloggio(option) {
-            var index = selections['Specifiche vitto e alloggio'].indexOf(option);
-            if (index === -1) {
-                selections['Specifiche vitto e alloggio'].push(option);
-            } else {
-                selections['Specifiche vitto e alloggio'].splice(index, 1);
-            }
-            displaySelections();
-        }
         
 // Funzione per gestire il click fuori dal tooltip
 document.addEventListener('click', function(event) {
