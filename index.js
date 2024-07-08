@@ -165,68 +165,74 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
                 document.getElementById('u').style.display='block';}  
                }
 
-               // inizializzo le variabili che andrò a passare al backend
-               let livellocontrattoselezionato = "";
-               let tipocontrattoselezionato = "";
-               let duratacontrattoselezionato = "";  
-               
-               // riempo le variabili con le selezioni
-               function selectChoice(category, choice) {
-               selections[category] = choice;
-               displaySelections();
-               if (category === 'Tipo contratto') {
-                   if(selections['Tipo contratto']==='full-time'){
-                   tipocontrattoselezionato = 'convivente';}
-                   if(selections['Tipo contratto']==='non-convivente'){
-                       tipocontrattoselezionato = 'nonconvivente';}
-                   if(selections['Tipo contratto']==='part-time'){
-                       tipocontrattoselezionato = 'part-time';} 
-                   if(selections['Tipo contratto']==='sostituzione'){
-                   tipocontrattoselezionato = 'sostituzione';}
-                   if(selections['Tipo contratto']==='presenza'){
-                   tipocontrattoselezionato = 'presenza';} 
-                   if(selections['Tipo contratto']==='assistenza'){
-                   tipocontrattoselezionato = 'assistenza';}      
-               }
-               if (category === 'Livello') {
-                   livellocontrattoselezionato = choice;
-               }
-               if (category === 'Contratto') {
-                   if(choice==='determinato in sostituzione'){
-                   duratacontrattoselezionato = 'determinato_in_sostituzione';}
-                   if(choice==='determinato'){
-                   duratacontrattoselezionato = 'determinato';}
-                   if(choice==='indeterminato'){
-                   duratacontrattoselezionato = 'indeterminato';}    
-               }    
-       
-               if (category === 'Tipo contratto') {
-               
-               } else if (category === 'Livello') {    
-               if (choice === 'bs') {
-                   document.getElementById('bambinoBox').style.display = 'block';
-               } else {
-                   document.getElementById('bambinoBox').style.display = 'none';
-               }
-       
-               if (choice === 'b' || choice==='bs' || choice === 'cs' || choice==='d') {
-                   document.getElementById('certificatoBox').style.display = 'block';
-               } else {
-                   document.getElementById('certificatoBox').style.display = 'none';
-               }
-       
-               if (choice === 'cs' || choice==='ds') {
-                   document.getElementById('autosufficientiBox').style.display = 'block';
-               } else {
-                   document.getElementById('autosufficientiBox').style.display = 'none';
-               }
-       
-               if (selections['Tipo contratto'] !== 'non-convivente') {
-                   document.getElementById('vittoAlloggioBox').style.display = 'block';
-               }
-           }
-       }
-            
+            // inizializzo le variabili che andrò a passare al backend
+let livellocontrattoselezionato = "";
+let tipocontrattoselezionato = "";
+let duratacontrattoselezionato = "";  
+
+// Funzione per gestire la selezione
+function selectChoice(category, choice) {
+    selections[category] = choice;
+    displaySelections();
+    if (category === 'Tipo contratto') {
+        let newTipoContratto;
+        if (selections['Tipo contratto'] === 'full-time') {
+            newTipoContratto = 'convivente';
+        } else if (selections['Tipo contratto'] === 'non-convivente') {
+            newTipoContratto = 'nonconvivente';
+        } else if (selections['Tipo contratto'] === 'part-time') {
+            newTipoContratto = 'part-time';
+        } else if (selections['Tipo contratto'] === 'sostituzione') {
+            newTipoContratto = 'sostituzione';
+        } else if (selections['Tipo contratto'] === 'presenza') {
+            newTipoContratto = 'presenza';
+        } else if (selections['Tipo contratto'] === 'assistenza') {
+            newTipoContratto = 'assistenza';
+        }
+        onTipoContrattoChange(newTipoContratto); // Cambia il tipo di contratto e resetta i valori
+    }
+    
+    if (category === 'Livello') {
+        livellocontrattoselezionato = choice;
+    }
+    
+    if (category === 'Contratto') {
+        if (choice === 'determinato in sostituzione') {
+            duratacontrattoselezionato = 'determinato_in_sostituzione';
+        }
+        if (choice === 'determinato') {
+            duratacontrattoselezionato = 'determinato';
+        }
+        if (choice === 'indeterminato') {
+            duratacontrattoselezionato = 'indeterminato';
+        }
+    }
+
+    if (category === 'Livello') {
+        if (choice === 'bs') {
+            document.getElementById('bambinoBox').style.display = 'block';
+        } else {
+            document.getElementById('bambinoBox').style.display = 'none';
+        }
+
+        if (choice === 'b' || choice === 'bs' || choice === 'cs' || choice === 'd') {
+            document.getElementById('certificatoBox').style.display = 'block';
+        } else {
+            document.getElementById('certificatoBox').style.display = 'none';
+        }
+
+        if (choice === 'cs' || choice === 'ds') {
+            document.getElementById('autosufficientiBox').style.display = 'block';
+        } else {
+            document.getElementById('autosufficientiBox').style.display = 'none';
+        }
+
+        if (selections['Tipo contratto'] !== 'non-convivente') {
+            document.getElementById('vittoAlloggioBox').style.display = 'block';
+        }
+    }
+}
+
                
             // variabili per la paga
             const pagaconv_liva=729.25 ;//paga mensile minima lavoratori conviventi liv a
@@ -574,80 +580,151 @@ document.querySelectorAll('.informativa .circle').forEach(function(element) {
                 }
             }
         }
+// Definizione dei limiti per ogni tipo di contratto
+const contractLimits = {
+    convivente: { maxWeeklyHours: 54, maxDailyHours: 10 },
+    nonconvivente: { maxWeeklyHours: 40, maxDailyHours: 8 },
+    'part-time': { maxWeeklyHours: 30, maxDailyHours: 10 },
+    sostituzione: { maxWeeklyHours: 40, maxDailyHours: 12 },
+    presenza: { maxWeeklyHours: 54, maxDailyHours: 10 },
+    assistenza: { maxWeeklyHours: 54, maxDailyHours: 10 }
+};
 
-        //funzione per l'incremento delle ore
-        function increaseHours(day) {
-            const input = document.getElementById(day);
-            if (input.value < 10) {
-                input.value = parseInt(input.value) + 1;
-                updateTotals();
-            }
+
+// Funzione per gestire il cambio del tipo di contratto
+function onTipoContrattoChange(newTipoContratto) {
+    tipocontrattoselezionato = newTipoContratto;
+    resetHours(); // Resetta le ore ogni volta che cambia il tipo di contratto
+    updateTotals(); // Aggiorna i totali ogni volta che cambia il tipo di contratto
+}
+
+// Funzione per resettare tutte le ore
+function resetHours() {
+    const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
+    days.forEach(day => {
+        document.getElementById(day).value = 0;
+    });
+    document.getElementById('totalHours').value = 0;
+    document.getElementById('totalDays').value = 0;
+}
+
+// Funzione per l'incremento delle ore
+function increaseHours(day) {
+    const input = document.getElementById(day);
+    const maxDailyHours = contractLimits[tipocontrattoselezionato].maxDailyHours;
+    if (parseInt(input.value) < maxDailyHours) {
+        input.value = parseInt(input.value) + 1;
+        if (!updateTotals()) {
+            input.value = parseInt(input.value) - 1;
+            updateTotals();
         }
-        //funzione per il decremento delle ore
-        function decreaseHours(day) {
-            const input = document.getElementById(day);
-            if (input.value > 0) {
-                input.value = parseInt(input.value) - 1;
-                updateTotals();
-            }
+    }
+}
+
+// Funzione per il decremento delle ore
+function decreaseHours(day) {
+    const input = document.getElementById(day);
+    if (input.value > 0) {
+        input.value = parseInt(input.value) - 1;
+        updateTotals();
+    }
+}
+
+// Funzione per aggiornare i totali ore
+function updateTotals() {
+    const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
+    let totalHours = 0;
+    let totalDays = 0;
+    let atLeastOneDayOff = false;
+    let overTimeDaily = false;
+
+    const maxWeeklyHours = contractLimits[tipocontrattoselezionato].maxWeeklyHours;
+    const maxDailyHours = contractLimits[tipocontrattoselezionato].maxDailyHours;
+
+    days.forEach(day => {
+        const input = document.getElementById(day);
+        let value = parseInt(input.value);
+
+        if (value > maxDailyHours) {
+            overTimeDaily = true;
         }
-        //funzione per aggiornare i totali ore
-        function updateTotals() {
-            const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
-            let totalHours = 0;
-            let totalDays = 0;
-        
-            days.forEach(day => {
-                const input = document.getElementById(day);
-                let value = parseInt(input.value);
-        
-                // Assicurati che il valore non sia superiore alle ore massime possibili
-                if (value > 10) {
-                    value = 10;
-                    input.value = 10;
-                }
-        
-                if (value > 0) {
-                    totalDays++;
-                }
-                totalHours += value;
-            });
-        
-            document.getElementById('totalHours').value = totalHours;
-            document.getElementById('totalDays').value = totalDays;
+
+        if (value > 0) {
+            totalDays++;
+        } else {
+            atLeastOneDayOff = true;
         }
-        
-        // Aggiungi event listener per gli eventi di input sugli input specifici delle ore giornaliere
-        const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
-        days.forEach(day => {
-            const input = document.getElementById(day);
-        
-            input.addEventListener('input', function() {
-                let value = parseInt(this.value);
-        
-                // Assicurati che il valore non sia superiore a 10 o inferiore a 0
-                if (value > 10) {
-                    this.value = 10;
-                } else if (value < 0 || isNaN(value)) {
-                    this.value = 0;
-                }
-        
-                updateTotals();
-            });
-        
-            // Aggiungi anche un event listener per l'evento change per garantire che i totali siano aggiornati correttamente
-            input.addEventListener('change', function() {
-                let value = parseInt(this.value);
-        
-                if (value > 10) {
-                    this.value = 10;
-                } else if (value < 0 || isNaN(value)) {
-                    this.value = 0;
-                }
-        
-                updateTotals();
-            });
-        });
+        totalHours += value;
+    });
+
+    document.getElementById('totalHours').value = totalHours;
+    document.getElementById('totalDays').value = totalDays;
+
+    // Mostra messaggio di errore se non c'è almeno un giorno di riposo
+    if (!atLeastOneDayOff) {
+        alert("Bisogna lasciare almeno 1 giorno di riposo.");
+        return false;
+    }
+
+    // Mostra messaggio di errore se il totale delle ore settimanali è maggiore del limite
+    if (totalHours > maxWeeklyHours) {
+        alert(`Il lavoratore con tipo contratto ${tipocontrattoselezionato} non può fare più di ${maxWeeklyHours} ore settimanali.`);
+        return false;
+    }
+
+    // Mostra messaggio di errore se un giorno ha più ore del limite giornaliero
+    if (overTimeDaily) {
+        alert(`Il lavoratore con tipo contratto ${tipocontrattoselezionato} non può fare più di ${maxDailyHours} ore al giorno di lavoro.`);
+        return false;
+    }
+
+    return true;
+}
+
+// Aggiungi event listener per gli eventi di input sugli input specifici delle ore giornaliere
+const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
+days.forEach(day => {
+    const input = document.getElementById(day);
+
+    input.addEventListener('input', function() {
+        let value = parseInt(this.value);
+
+        const maxDailyHours = contractLimits[tipocontrattoselezionato].maxDailyHours;
+
+        // Assicurati che il valore non sia superiore al limite giornaliero o inferiore a 0
+        if (value > maxDailyHours) {
+            this.value = maxDailyHours;
+        } else if (value < 0 || isNaN(value)) {
+            this.value = 0;
+        }
+
+        if (!updateTotals()) {
+            this.value = 0; // Reset solo della casella problematica
+            updateTotals();
+        }
+    });
+
+    // Aggiungi anche un event listener per l'evento change per garantire che i totali siano aggiornati correttamente
+    input.addEventListener('change', function() {
+        let value = parseInt(this.value);
+
+        const maxDailyHours = contractLimits[tipocontrattoselezionato].maxDailyHours;
+
+        if (value > maxDailyHours) {
+            this.value = maxDailyHours;
+        } else if (value < 0 || isNaN(value)) {
+            this.value = 0;
+        }
+
+        if (!updateTotals()) {
+            this.value = 0; // Reset solo della casella problematica
+            updateTotals();
+        }
+    });
+});
+
+
+
         
         
         //fuznione per visualizzare le cose scelte nella selections
