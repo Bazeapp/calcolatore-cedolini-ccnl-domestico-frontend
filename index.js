@@ -1,3 +1,4 @@
+
 document.getElementById('sendRequest').addEventListener('click', async () => {
 
     const data = {
@@ -21,7 +22,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     };
     console.log(JSON.stringify(data));
 
-    /*function sendToWebhook(data) {
+    function sendToWebhook(data) {
         fetch('https://hook.eu1.make.com/asor6kjlu4bbl2eemv3nlbjhb5sr39hb', {
             method: 'POST',
             headers: {
@@ -40,7 +41,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     }
 
     sendToWebhook(data);
-    */
+    /*       
     try {
         const response = await fetch('https://europe-west3-baze-app-prod.cloudfunctions.net/calculator-ccnl', {
             method: 'POST',
@@ -62,8 +63,8 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         console.log(result);
     } catch (error) {
         console.error('There was an error!', error);
-    }
-}); 
+    } */
+});
         function updateSimulazione(result) {
             // Itera su ciascuna chiave nell'oggetto result
             for (const key in result) {
