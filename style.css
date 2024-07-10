@@ -10,8 +10,9 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    min-width: auto;
     margin: 0;
-    padding: 20px;
+    padding: 0px;
     box-sizing: border-box;
 }
 
@@ -304,9 +305,9 @@ button:hover {
     z-index: 1;
     bottom: 125%; /* Posiziona sopra l'icona */
     left: 50%;
-    margin-left: -100px; /* Centra il tooltip */
+    transform: translateX(-50%);
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, transform 0.3s;
     white-space: normal;
 }
 
@@ -317,18 +318,22 @@ button:hover {
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
-    
-    
-    
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.9) transparent transparent transparent;
 }
 
 .informativa:hover .tooltip,
 .informativa.active .tooltip {
     visibility: visible;
     opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
+
+
+
+
 /* CSS per schermo piccolo */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     /*per far uscire il titolo diviso in 2 */
     .grande{display:none;}
     .piccolo{display:block;}
