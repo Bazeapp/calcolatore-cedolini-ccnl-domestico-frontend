@@ -33,7 +33,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         return true;
     }
 
-            // Funzione per controllare se almeno un giorno ha ore > 0
+    // Funzione per controllare se almeno un giorno ha ore > 0
     function isAtLeastOneDayGreaterThanZero(data) {
         return (
             data.oreLunedi > 0 || 
@@ -68,6 +68,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         .then(responseData => {
             console.log('Success:', responseData);
             updateSimulazione(responseData);
+            aprisimulazione();
         })
         .catch(error => {
             console.error('Error:', error);
