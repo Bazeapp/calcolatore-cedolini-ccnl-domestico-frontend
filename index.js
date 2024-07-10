@@ -724,6 +724,43 @@ days.forEach(day => {
     });
 });
 
+// funzione per gestire i toolip e farli stare sempre dentro la pagina
+document.addEventListener('DOMContentLoaded', function() {
+    const informativeElements = document.querySelectorAll('.informativa');
+
+    informativeElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            const tooltip = this.querySelector('.tooltip');
+            const tooltipRect = tooltip.getBoundingClientRect();
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            // Reset tooltip position
+            tooltip.style.left = '50%';
+            tooltip.style.right = 'auto';
+            tooltip.style.transform = 'translateX(-50%)';
+
+            // Check if the tooltip is out of the viewport and adjust
+            if (tooltipRect.left < 0) {
+                tooltip.style.left = '0';
+                tooltip.style.transform = 'translateX(0)';
+            } else if (tooltipRect.right > windowWidth) {
+                tooltip.style.left = 'auto';
+                tooltip.style.right = '0';
+                tooltip.style.transform = 'translateX(0)';
+            }
+
+            if (tooltipRect.top < 0) {
+                tooltip.style.bottom = 'auto';
+                tooltip.style.top = '125%';
+            } else if (tooltipRect.bottom > windowHeight) {
+                tooltip.style.bottom = '125%';
+                tooltip.style.top = 'auto';
+            }
+        });
+    });
+});
+
 
 
         
