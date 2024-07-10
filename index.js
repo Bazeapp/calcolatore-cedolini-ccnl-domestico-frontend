@@ -1,26 +1,44 @@
-document.getElementById('sendRequest').addEventListener('click', async () => {
-    const data = {
-        durataContratto: duratacontrattoselezionato,
-        tipoContratto: tipocontrattoselezionato,
-        livelloContratto: livellocontrattoselezionato,
-        oreLunedi: document.getElementById("lunedi").value,
-        oreMartedi: document.getElementById("martedi").value,
-        oreMercoledi: document.getElementById("mercoledi").value,
-        oreGiovedi:document.getElementById("giovedi").value,
-        oreVenerdi: document.getElementById("venerdi").value,
-        oreSabato: document.getElementById("sabato").value,
-        oreDomenica: document.getElementById("domenica").value,
-        paga: paga,
-        bambino_6_anni: bambino,
-        piu_persone: autosufficienti,
-        certificato_uni: certificato,
-        pranzo_natura: indennitaPranzoColazione,
-        cena_natura: indennitaCena,
-        alloggio_natura: indennitaAlloggio
-    };
-    console.log(JSON.stringify(data));
 
-    /*function sendToWebhook(data) {
+
+
+    document.getElementById('sendRequest').addEventListener('click', async () => {
+        const data = {
+            durataContratto: duratacontrattoselezionato,
+            tipoContratto: tipocontrattoselezionato,
+            livelloContratto: livellocontrattoselezionato,
+            oreLunedi: document.getElementById("lunedi").value,
+            oreMartedi: document.getElementById("martedi").value,
+            oreMercoledi: document.getElementById("mercoledi").value,
+            oreGiovedi: document.getElementById("giovedi").value,
+            oreVenerdi: document.getElementById("venerdi").value,
+            oreSabato: document.getElementById("sabato").value,
+            oreDomenica: document.getElementById("domenica").value,
+            paga: paga,
+            bambino_6_anni: bambino,
+            piu_persone: autosufficienti,
+            certificato_uni: certificato,
+            pranzo_natura: indennitaPranzoColazione,
+            cena_natura: indennitaCena,
+            alloggio_natura: indennitaAlloggio
+        };
+        console.log(JSON.stringify(data));
+    
+        // Funzione per controllare se tutti i campi sono pieni
+        function areAllFieldsFilled(obj) {
+            for (let key in obj) {
+                if (obj[key] === null || obj[key] === undefined || obj[key] === '') {
+                    return false;
+                }
+            }
+            return true;
+        }
+    
+        if (!areAllFieldsFilled(data)) {
+            alert('Per favore selezionare tutte le scelte');
+            return; // Termina la funzione qui se ci sono campi vuoti
+        }
+        
+            /*function sendToWebhook(data) {
         fetch('https://hook.eu1.make.com/asor6kjlu4bbl2eemv3nlbjhb5sr39hb', {
             method: 'POST',
             headers: {
@@ -40,41 +58,45 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
 
     sendToWebhook(data);
     */
-    try {
-        const response = await fetch('https://europe-west3-baze-app-prod.cloudfunctions.net/calculator-ccnl', {
-            method: 'POST',
-            headers: {
-                'Authorization': `bearer ${toki}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data),
-            timeout: 60000 // 70 seconds timeout
-        });
+   
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        updateSimulazione(result);
-        
-        console.log(result);
-    } catch (error) {
-        console.error('There was an error!', error);
-    }
-}); 
-        function updateSimulazione(result) {
-            // Itera su ciascuna chiave nell'oggetto result
-            for (const key in result) {
-                // Trova tutti gli elementi HTML con l'ID che corrisponde alla chiave
-                const elements = document.querySelectorAll(`#${key}`);
-                // Itera su ciascun elemento trovato e aggiorna il suo contenuto testuale
-                elements.forEach(element => {
-                    element.textContent = result[key]+" €";
-                });
+        try {
+            const response = await fetch('https://europe-west3-baze-app-prod.cloudfunctions.net/calculator-ccnl', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `bearer ${toki}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+                timeout: 60000 // 60 seconds timeout
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
+    
+            const result = await response.json();
+            updateSimulazione(result);
+            aprisimulazione();
+            
+            console.log(result);
+        } catch (error) {
+            console.error('There was an error!', error);
         }
-
+    }); 
+    
+    function updateSimulazione(result) {
+        // Itera su ciascuna chiave nell'oggetto result
+        for (const key in result) {
+            // Trova tutti gli elementi HTML con l'ID che corrisponde alla chiave
+            const elements = document.querySelectorAll(`#${key}`);
+            // Itera su ciascun elemento trovato e aggiorna il suo contenuto testuale
+            elements.forEach(element => {
+                element.textContent = result[key] + " €";
+            });
+        }
+    }
+    
 
         var selections = {
             'Tipo contratto': null,
