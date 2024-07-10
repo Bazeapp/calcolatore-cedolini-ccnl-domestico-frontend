@@ -1,5 +1,7 @@
-
-
+document.getElementById("sendRequest").addEventListener("click", function() {
+    console.log("Ciaooo");
+                submitChoices();
+});
 
     document.getElementById('sendRequest').addEventListener('click', async () => {
         const data = {

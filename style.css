@@ -17,6 +17,89 @@ body {
     text-align: left;
 }
 
+
+.margin-left-20 {
+    margin-left: 20%;
+}
+
+
+
+
+
+
+
+
+
+
+/* Stile base (non modificato) */
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 150px;
+    margin: 0 auto;
+}
+
+.btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.input-field {
+    width: 50px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.input-field:focus {
+    outline: none;
+    box-shadow: 0 0 3px #007BFF;
+}
+
+/* Modifiche per mantenere il layout orizzontale anche su dispositivi mobili */
+@media (max-width: 600px) {
+    .input-container {
+        flex-direction: row; /* Mantieni i pulsanti e l'input in fila */
+        justify-content: space-around; /* Distribuisci lo spazio uniformemente */
+        width: 100%; /* Adatta la larghezza al dispositivo mobile */
+        padding: 8px; /* Maggiore padding per facilitare l'uso su touch screen */
+    }
+
+    td {
+        padding: 10px; /* Maggiore separazione tra le celle */
+    }
+}
+
+
+
+
+
+
+
+
+.font-x-small {
+
+    font-size: x-small;
+}
+ 
 h1 {
     text-align:center ;
     margin-top:0%;
@@ -194,6 +277,8 @@ button {
 
 .cerchio {
     width: 50px;
+    margin: 0; /* Rimuove il margine */
+    padding: 0; /* Rimuove il padding */
     height: 50px;
     background-color: var(--giallobaze);
     border-radius: 50%;
@@ -382,11 +467,10 @@ button:hover {
     .cerchio {
         width: 40px;
         height: 40px;
-        background-color: var(--giallobaze);
+        background-color: #FFD700; /* Sostituito con un colore oro vicino al giallo di Baze */
         border-radius: 50%;
-        border-color: black;
-        border-style:double;
-        display:flex;
+        border: 2px solid #DAA520; /* Colore bordo più delicato */
+        display: flex;
         align-items: center;
         justify-content: center;
         font-size: 20px;
@@ -394,7 +478,52 @@ button:hover {
         color: black;
         margin: auto;
         margin-top: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiunta di una leggera ombra */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transizione per interazioni */
     }
+    
+    .cerchio:hover {
+        transform: scale(1.1); /* Effetto di ingrandimento al passaggio del mouse */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombra più profonda al passaggio del mouse */
+    }
+    
+
+    .contenitore-flex {
+        display: flex; /* Imposta il display a flex per allineare gli elementi in linea */
+        align-items: center; /* Centra verticalmente gli elementi */
+        
+        gap: 20px; /* Distanza tra gli elementi */
+    }
+    
+    .cerchio {
+        width: 40px;
+        margin-bottom: 20px;
+        height: 40px;
+        background-color: #FFD700; /* Sostituito con un colore oro vicino al giallo di Baze */
+        border-radius: 50%;
+        vertical-align: middle; /* Ajusta l'allineamento verticale del testo e degli elementi inline */
+        border: 2px solid #DAA520;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .cerchio:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    h3 {
+        margin: 0; /* Rimuovi il margine di default per evitare spazi extra */
+        font-size: 1.5em; /* Regola la dimensione del testo se necessario */
+    }
+    
+
 
     /* CSS specifico per la tabella all'interno del div con id 'simulazione' */
     #simulazione table {
