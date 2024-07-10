@@ -22,6 +22,40 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     };
     console.log(JSON.stringify(data));
 
+
+     // Funzione per controllare se tutti i campi sono pieni
+     function areAllFieldsFilled(obj) {
+        for (let key in obj) {
+            if (obj[key] === null || obj[key] === undefined || obj[key] === '') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+            // Funzione per controllare se almeno un giorno ha ore > 0
+    function isAtLeastOneDayGreaterThanZero(data) {
+        return (
+            data.oreLunedi > 0 || 
+            data.oreMartedi > 0 || 
+            data.oreMercoledi > 0 || 
+            data.oreGiovedi > 0 || 
+            data.oreVenerdi > 0 || 
+            data.oreSabato > 0 || 
+            data.oreDomenica > 0
+        );
+    }
+
+    if (!areAllFieldsFilled(data)) {
+        alert('Per favore effettuare tutte le scelte');
+        return; // Termina la funzione qui se ci sono campi vuoti
+    }
+
+    if (!isAtLeastOneDayGreaterThanZero(data)) {
+        alert('Per favore inserisci almeno un giorno di lavoro');
+        return; // Termina la funzione qui se tutte le ore sono 0
+    }
+
     function sendToWebhook(data) {
         fetch('https://hook.eu1.make.com/asor6kjlu4bbl2eemv3nlbjhb5sr39hb', {
             method: 'POST',
