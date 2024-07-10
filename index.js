@@ -228,7 +228,8 @@ function selectChoice(category, choice) {
         } else if (selections['Tipo contratto'] === 'assistenza') {
             newTipoContratto = 'assistenza';
         }
-        onTipoContrattoChange(newTipoContratto); // Cambia il tipo di contratto e resetta i valori
+        cambiotipo(livellocontrattoselezionato);//se cambia il tipo resetto il livello
+        onTipoContrattoChange(newTipoContratto); // Cambia il tipo di contratto e resetta i valori orari
     }
     
     if (category === 'Livello') {
@@ -272,6 +273,17 @@ function selectChoice(category, choice) {
     }
 }
 
+    function cambiotipo(nuovo){
+        if(tipocontrattoselezionato!=nuovo){
+            const elementi = document.querySelectorAll('.boxrestaliv');
+            // Itera su ciascun elemento e imposta display: none
+            elementi.forEach(elemento => {
+             elemento.style.display = 'none';
+            });
+            livellocontrattoselezionato="";
+            alert('Se cambi il tipo contratto seleziona nuovamente il livello');
+        }
+    }
                
             // variabili per la paga
             const pagaconv_liva=729.25 ;//paga mensile minima lavoratori conviventi liv a
