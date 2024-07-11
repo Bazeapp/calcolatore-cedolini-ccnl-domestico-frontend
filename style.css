@@ -374,6 +374,10 @@ button:hover {
         border-color: var(--giallobaze);
     }
 }
+@keyframes rimbalzi {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
 
 .informativa {
     position:relative;
@@ -381,6 +385,10 @@ button:hover {
     cursor: pointer;
     color: var(--blubaze);
     margin-left: 10px;
+    float: inline-start;
+    
+    animation: rimbalzi 3s infinite; /* Applica l'animazione */
+    animation-fill-mode: forwards; /* Mantiene la posizione finale dell'animazione */
 }
 .informativa .circle {
     display: inline-block;
@@ -409,7 +417,7 @@ button:hover {
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
-    transition: opacity 0.3s, transform 0.3s;
+    transition: opacity 2s , transform 0,5s;
     white-space: normal;
 }
 
@@ -454,6 +462,26 @@ button:hover {
     align-items: center; /* Allinea verticalmente gli elementi */
   }
     
+  @keyframes rimbalzo {
+    0% { text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.88); }
+    20% { text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.88); }
+    40% { text-shadow: 7px 7px 7px rgba(0, 0, 0, 0.88); }
+    50% { text-shadow: 8px 8px 8px rgba(0, 0, 0, 0.88); }
+    60% { text-shadow: 9px 9px 9px rgba(0, 0, 0, 0.88); }
+    65% { text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.88); }
+    70% { text-shadow: 7px 7px 7px rgba(0, 0, 0, 0.88); }
+    90% { text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.88); }
+    100% { text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.88); }
+  }
+  
+    h1,.salto {
+    animation-name: rimbalzo;
+    animation-duration: 1.5s;
+    animation-iteration-count: 2;
+  }
+
+
+  
 
 /* CSS per schermo piccolo */
 @media screen and (max-width: 700px) {

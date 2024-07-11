@@ -294,7 +294,9 @@ function selectChoice(category, choice) {
             alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
         }
     }
-               
+    
+
+
             // variabili per la paga
             const pagaconv_liva=729.25 ;//paga mensile minima lavoratori conviventi liv a
             const pagaconv_livas=861.86 ;//paga mensile minima lavoratori conviventi liv as
@@ -588,33 +590,36 @@ document.addEventListener('click', function(event) {
                 });
 });
 
+
+
+
+
 // Funzione per attivare/disattivare il tooltip al click
 document.querySelectorAll('.informativa .circle').forEach(function(element) {
     element.addEventListener('click', function(event) {
-        event.stopPropagation();
+        event.stopPropagation(); // Impedisce la propagazione dell'evento click
         var informativa = this.parentElement;
         
-                    // Toglie la classe 'active' da tutti gli altri tooltip
-                    document.querySelectorAll('.informativa').forEach(function(otherInformativa) {
-                        if (otherInformativa !== informativa) {
+        // Toglie la classe 'active' da tutti gli altri tooltip
+        document.querySelectorAll('.informativa').forEach(function(otherInformativa) {
+            if (otherInformativa !== informativa) {
                 otherInformativa.classList.remove('active');
-                        }
-                    });
+            }
+        });
         
-                    // Attiva o disattiva il tooltip cliccato
-                    informativa.classList.toggle('active');
-                });
-            });
-        
-            // Funzione per chiudere il tooltip cliccando al di fuori
-            document.addEventListener('click', function(event) {
-                informativas.forEach(function(informativa) {
-                    if (!informativa.contains(event.target)) {
-                        hideTooltip(informativa.querySelector('.tooltip'));
-                    }
-                });
-            });
+        // Attiva o disattiva il tooltip cliccato
+        informativa.classList.toggle('active');
+    });
+});
 
+// Funzione per chiudere il tooltip cliccando al di fuori
+document.addEventListener('click', function(event) {
+    document.querySelectorAll('.informativa').forEach(function(informativa) {
+        if (!informativa.contains(event.target)) {
+            informativa.classList.remove('active');
+        }
+    });
+});
         
 
 
