@@ -1,5 +1,5 @@
 :root {
-    --blubaze: #225ba9;
+    --blubaze: #0047a9;
     --giallobaze: #ffa436;
 }
 
@@ -111,25 +111,11 @@ h1 {
 }
 
 
-.final-choices button {
-    border: 1px solid var(--blubaze);
-    background-color: var(--blubaze);
-    color: whitesmoke;
-    border-radius: 5px;
-    padding: 15px;
-    margin: 10px 0;
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-    cursor: pointer;
-    font-size:medium;
 
-}
 .box {
     border: 1px solid var(--blubaze);
     background-color: var(--blubaze);
     color: whitesmoke;
-    border-radius: 5px;
     padding: 15px;
     margin: 10px 0;
     width: 100%;
@@ -138,6 +124,7 @@ h1 {
     cursor: pointer;
     font-size:medium;
     margin-bottom: 0;
+    border-radius: 30px;
 
 }
 .boxrestaliv {
@@ -145,39 +132,39 @@ h1 {
     border: 2px solid var(--giallobaze);
     background-color: var(--blubaze) ;
     color: whitesmoke;
-    border-radius: 5px;
     padding: 15px;
     margin-top: 0;
     width: 100%;
     max-width: 300px;
     text-align: center;
     font-size:medium;   
+    border-radius: 30px;
 }
 .boxrestatipo {
     border-style:double;
     border: 2px solid var(--giallobaze);
     background-color: var(--blubaze) ;
     color: whitesmoke;
-    border-radius: 5px;
     padding: 15px;
     margin-top: 0%;
     width: 100%;
     max-width: 300px;
     text-align: center;
     font-size:medium;
+    border-radius: 30px;
 }
 .boxrestatempo {
     border-style:double;
     border: 2px solid var(--giallobaze);
     background-color: var(--blubaze) ;
     color: whitesmoke;
-    border-radius: 5px;
     padding: 15px;
     margin-top: 0%;
     width: 100%;
     max-width: 300px;
     text-align: center;
     font-size:medium;
+    border-radius: 30px;
 }
 
 .choices {
@@ -192,10 +179,19 @@ h1 {
     border: 1px solid var(--giallobaze);
     background-color: var(--blubaze);
     color: white;
-    border-radius: 5px;
+    border-radius: 20px; /* Aumenta il border-radius per rendere i pulsanti tondeggianti */
     cursor: pointer;
-    font-size:small;
+    font-size: 16px; /* Puoi regolare la dimensione del font a tuo piacimento */
+    text-align: center; /* Assicurati che il testo sia centrato */
+    display: inline-block; /* Assicurati che i pulsanti siano visualizzati come blocchi in linea */
+    transition: background-color 0.3s, color 0.3s; /* Aggiungi una transizione per un effetto più fluido al passaggio del mouse */
 }
+
+.choices button:hover {
+    background-color: var(--giallobaze); /* Cambia il colore di sfondo al passaggio del mouse */
+    color: var(--blubaze); /* Cambia il colore del testo al passaggio del mouse */
+}
+
 
 .show {
     display: block;
