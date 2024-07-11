@@ -1,6 +1,8 @@
 document.getElementById("sendRequest").addEventListener("click", function() {
-    console.log("Ciaooo");
                 submitChoices();
+});
+document.getElementById("nuovocalcolo").addEventListener("click", function() {
+    confermanuovo();
 });
 
     document.getElementById('sendRequest').addEventListener('click', async () => {
@@ -129,7 +131,7 @@ document.getElementById("sendRequest").addEventListener("click", function() {
             'Autosufficienti':null
         };
 
-        // funzione per aprire la scelta del Tipocontratto e Tipolivello
+        // funzione per aprire la scelta del Tipocontratto e Tipolivello e Duratacontratto
         function toggleChoices(choiceId) {
             var choices = document.getElementById(choiceId);
             choices.classList.toggle('show');
@@ -271,19 +273,25 @@ function selectChoice(category, choice) {
 
         if (selections['Tipo contratto'] !== 'non-convivente') {
             document.getElementById('vittoAlloggioBox').style.display = 'block';
+        }else{
+            document.getElementById('vittoAlloggioBox').style.display = 'none';
         }
     }
 }
 
     function cambiotipo(nuovo){
         if(tipocontrattoselezionato!=nuovo){
-            const elementi = document.querySelectorAll('.boxrestaliv');
-            // Itera su ciascun elemento e imposta display: none
-            elementi.forEach(elemento => {
-             elemento.style.display = 'none';
+            const livelli = document.querySelectorAll('.boxrestaliv');
+            livelli.forEach(livello => {
+             livello.style.display = 'none';
+            });
+            const durati = document.querySelectorAll('.boxrestatempo');
+            durati.forEach(durato => {
+             durato.style.display = 'none';
             });
             livellocontrattoselezionato="";
-            alert('Se cambi il tipo contratto seleziona nuovamente il livello');
+            duratacontrattoselezionato="";
+            alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
         }
     }
                
@@ -473,6 +481,22 @@ function restatipo(acceso){
     
 }
 
+//funzione per mostrare il tipocontratto scelto
+function restatempo(acceso){
+    const elementi3 = document.querySelectorAll('.boxrestatempo');
+    // Itera su ciascun elemento e imposta display: none
+    elementi3.forEach(elemento => {
+        elemento.style.display = 'none';
+    });
+    if (acceso==="ind")
+        document.getElementById('restaind').style.display="block";
+    if (acceso==="det")
+        document.getElementById('restadet').style.display="block";
+    if (acceso==="detsost")
+        document.getElementById('restadetsost').style.display="block";
+    
+}
+
 //funzione per il salvataggio della paga inserita
 function salvaPaga(event) {
     var pagaInput = event.target;
@@ -560,8 +584,8 @@ document.addEventListener('click', function(event) {
     informativas.forEach(function(informativa) {
         if (!informativa.contains(event.target)) {
             informativa.classList.remove('active');
-        }
-    });
+                    }
+                });
 });
 
 // Funzione per attivare/disattivare il tooltip al click
@@ -570,17 +594,28 @@ document.querySelectorAll('.informativa .circle').forEach(function(element) {
         event.stopPropagation();
         var informativa = this.parentElement;
         
-        // Toglie la classe 'active' da tutti gli altri tooltip
-        document.querySelectorAll('.informativa').forEach(function(otherInformativa) {
-            if (otherInformativa !== informativa) {
+                    // Toglie la classe 'active' da tutti gli altri tooltip
+                    document.querySelectorAll('.informativa').forEach(function(otherInformativa) {
+                        if (otherInformativa !== informativa) {
                 otherInformativa.classList.remove('active');
-            }
-        });
+                        }
+                    });
+        
+                    // Attiva o disattiva il tooltip cliccato
+                    informativa.classList.toggle('active');
+                });
+            });
+        
+            // Funzione per chiudere il tooltip cliccando al di fuori
+            document.addEventListener('click', function(event) {
+                informativas.forEach(function(informativa) {
+                    if (!informativa.contains(event.target)) {
+                        hideTooltip(informativa.querySelector('.tooltip'));
+                    }
+                });
+            });
 
-        // Attiva o disattiva il tooltip cliccato
-        informativa.classList.toggle('active');
-    });
-});
+        
 
 
         // funzioni per le indennità aggiuntive
@@ -814,6 +849,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+        function accendiopzioni(){
+            if(tipocontrattoselezionato!="" & livellocontrattoselezionato!="" & duratacontrattoselezionato!=""){
+                document.getElementById('opzioniaggiuntive').style.display='block';
+            }else{
+                document.getElementById('opzioniaggiuntive').style.display='none';
+            }
+        }
+       
 
         
         
@@ -883,8 +926,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('paga-netta').textContent = "";
             document.getElementById('confermanuovocalcolo').style.display = 'none';
             document.getElementById('nuovocalcolo').style.display = 'block';
+            document.getElementById('opzioniaggiuntive').style.display='none';
 
-            // Nascondi il tipo e livello scelti
+            // Nascondi il tipo e livello e Tempo scelti
             const elementiLiv = document.querySelectorAll('.boxrestaliv');
             elementiLiv.forEach(elemento => {
                 elemento.style.display = 'none';
@@ -892,6 +936,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const elementiTipo = document.querySelectorAll('.boxrestatipo');
             elementiTipo.forEach(elemento => {
+                elemento.style.display = 'none';
+            });
+
+            const elementiTempo = document.querySelectorAll('.boxrestatempo');
+            elementiTempo.forEach(elemento => {
                 elemento.style.display = 'none';
             });
             
