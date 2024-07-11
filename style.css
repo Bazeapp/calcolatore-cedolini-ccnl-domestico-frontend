@@ -102,7 +102,7 @@ body {
 
 .font-x-small {
 
-    font-size: x-small;
+    font-size: small;
 }
  
 h1 {
@@ -432,7 +432,28 @@ button:hover {
 }
 
 
+  /* Stile per gli elementi all'interno delle label */
+  #opzioniaggiuntive-label input {
+    margin: 0; 
+    width: 100;
+    padding: 0; 
+  }
 
+  #opzioniaggiuntive input[type="number"] {
+    width: max-content; 
+    max-width: 97px;  
+    height: 30px;     
+    padding: 5px;     
+    box-sizing: border-box; 
+    font-size: 16px;    
+}
+
+  
+  #opzioniaggiuntive label {
+    display: inline-flex; /* Mostra il label e l'input checkbox in una riga */
+    align-items: center; /* Allinea verticalmente gli elementi */
+  }
+    
 
 /* CSS per schermo piccolo */
 @media screen and (max-width: 700px) {
