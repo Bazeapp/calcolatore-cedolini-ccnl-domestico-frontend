@@ -25,7 +25,7 @@ body {
 }
 
 .margin-left-20 {
-    margin-left: 20%;
+    margin-left: 4%;
 }
 .margin-left-5 {
     margin-left: 5%;
@@ -93,8 +93,8 @@ body {
     .input-container {
         flex-direction: row; /* Mantieni i pulsanti e l'input in fila */
         justify-content: space-around; /* Distribuisci lo spazio uniformemente */
-        width: 100%; /* Adatta la larghezza al dispositivo mobile */
         padding: 8px; /* Maggiore padding per facilitare l'uso su touch screen */
+        align-items: flex;
     }
 
     td {
@@ -393,10 +393,27 @@ button:hover {
     }
 }
 @keyframes rimbalzi {
-    0%{ transform: translate(2);opacity: 0; }
-    50% { transform: translateY(-95px); }
+    0%{ transform: translateY();opacity: 0; }
+    6%{ transform: translateY(-2);opacity: 0; }
+    50% { transform: translateY(-80px); }
     100% { transform: translate();opacity: 1; }
   }
+  @keyframes rimbalzo {
+    0%{ transform: translate();opacity: 0; }
+    100% { transform: translate();opacity: 1; }
+  }
+
+ #opzioniaggiuntive .informativa {
+    position:relative;
+    display:inline-block;
+    cursor: pointer;
+    color: var(--blubaze);
+    margin-left: 10px;
+    float: inline-start;
+    animation: rimbalzo 1.8s ; /* Applica l'animazione */    
+    
+
+}
 
 .informativa {
     position:relative;
@@ -536,16 +553,17 @@ button:hover {
         display: flex;
         justify-content: space-between;
         align-items: right;
-        padding: 5px;
+        padding: 3px;
         border:none;
     }
     #ore-tab td::before {
         content: attr(data-label);
-        align-items:right ;
+        align-items:center ;
         font-weight: bold;
-        text-align: center;
+        text-align: left;
         display: inline-block;
         width: 50%;
+        margin-top: 13px;
     }
 
     
