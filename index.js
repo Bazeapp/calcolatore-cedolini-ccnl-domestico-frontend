@@ -260,6 +260,7 @@ function selectChoice(category, choice) {
         }
 
         if (choice === 'b' || choice === 'bs' || choice === 'cs' || choice === 'd') {
+            
             document.getElementById('certificatoBox').style.display = 'block';
         } else {
             document.getElementById('certificatoBox').style.display = 'none';
