@@ -590,10 +590,6 @@ document.addEventListener('click', function(event) {
                 });
 });
 
-
-
-
-
 // Funzione per attivare/disattivare il tooltip al click
 document.querySelectorAll('.informativa .circle').forEach(function(element) {
     element.addEventListener('click', function(event) {
