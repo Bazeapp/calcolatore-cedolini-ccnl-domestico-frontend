@@ -259,9 +259,10 @@ function selectChoice(category, choice) {
             document.getElementById('bambinoBox').style.display = 'none';
         }
 
-        if (choice === 'b' || choice === 'bs' || choice === 'cs' || choice === 'd') {
-            
-            document.getElementById('certificatoBox').style.display = 'block';
+        if ((choice === 'b' || choice === 'bs' || choice === 'cs' || choice === 'd') &&
+        (tipocontrattoselezionato !== 'nonconvivente' && tipocontrattoselezionato !== 'sostituzione'))
+         {
+         document.getElementById('certificatoBox').style.display = 'block';
         } else {
             document.getElementById('certificatoBox').style.display = 'none';
         }

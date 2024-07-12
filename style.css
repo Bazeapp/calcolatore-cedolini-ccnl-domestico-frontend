@@ -497,25 +497,19 @@ button:hover {
     align-items: center; /* Allinea verticalmente gli elementi */
   }
     
-  /*
-  @keyframes rimbalzo {
-    0% { text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.88); }
-    20% { text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.88); }
-    40% { text-shadow: 7px 7px 7px rgba(0, 0, 0, 0.88); }
-    50% { text-shadow: 8px 8px 8px rgba(0, 0, 0, 0.88); }
-    60% { text-shadow: 9px 9px 9px rgba(0, 0, 0, 0.88); }
-    65% { text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.88); 
-    70% { text-shadow: 7px 7px 7px rgba(0, 0, 0, 0.88); }
-    90% { text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.88); }
-    100% { text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.88); }
-  }
-  
-    h1,.salto {
-    animation-name: rimbalzo;
-    animation-duration: 4s;
-    animation-iteration-count: 1;
-  }
-    */
+  #opzioniaggiuntive {
+    border-radius: 1px;
+    border: 1px solid whitesmoke; /* Aggiunge un bordo nero */
+    box-shadow: 0 4px 8px rgba(255, 164, 54, 0.5); /* Aggiunge un'ombra color arancione */
+    padding: 10px; /* Aggiunge un po' di padding per un aspetto migliore */
+}
+#orariodilavoro {
+    align-items: flex;
+    border-radius: 1px;
+    border: 1px solid whitesmoke; /* Aggiunge un bordo nero */
+    box-shadow: 0 4px 8px rgba(255, 164, 54, 0.5); /* Aggiunge un'ombra color arancione */
+    padding: 10px; /* Aggiunge un po' di padding per un aspetto migliore */
+}
 
 
   
