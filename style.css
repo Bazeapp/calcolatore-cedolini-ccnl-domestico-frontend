@@ -1,47 +1,132 @@
 :root {
-    --blubaze: #225ba9;
+    --blubaze: #0047a9;
     --giallobaze: #ffa436;
 }
 
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    min-width: auto;
-    margin-bottom: 1rem;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    text-align: left;
+    height: 100%;
+    accent-color: var(--giallobaze);
+}
+html {
+    height: 100%;
+    margin: 0;
 }
 
+
+
+.content {
+    text-align: center;
+}
+
+.margin-left-20 {
+    margin-left: 4%;
+}
+.margin-left-5 {
+    margin-left: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+/* Stile base (non modificato) */
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    border-radius: 8px;
+    padding: 5px;
+    
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 150px;
+    margin: 0 auto;
+}
+
+.btn {
+    background-color: var(--blubaze);
+    color: var(--giallobaze);
+    border: none;
+    border-radius: 20%;
+    padding: 5px 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    font-style: italic;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: var(--giallobaze);
+    color: var(--blubaze);
+}
+
+.input-field {
+    width: 50px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.input-field:focus {
+    outline: none;
+    box-shadow: 0 0 3px #007BFF;
+}
+
+/* Modifiche per mantenere il layout orizzontale anche su dispositivi mobili */
+@media (max-width: 600px) {
+    .input-container {
+        flex-direction: row; /* Mantieni i pulsanti e l'input in fila */
+        justify-content: space-around; /* Distribuisci lo spazio uniformemente */
+        padding: 8px; /* Maggiore padding per facilitare l'uso su touch screen */
+        align-items: flex;
+    }
+
+    td {
+        padding: 10px; /* Maggiore separazione tra le celle */
+    }
+}
+
+
+
+
+
+
+.font-medium{
+
+    font-size: medium;
+    font-style: oblique;
+}
+
+.font-x-small {
+
+    font-size: small;
+}
+ 
 h1 {
     text-align:center ;
     margin-top:0%;
 }
 
 
-.final-choices button {
-    border: 1px solid var(--blubaze);
-    background-color: var(--blubaze);
-    color: whitesmoke;
-    border-radius: 5px;
-    padding: 15px;
-    margin: 10px 0;
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-    cursor: pointer;
-    font-size:medium;
 
-}
 .box {
     border: 1px solid var(--blubaze);
     background-color: var(--blubaze);
     color: whitesmoke;
-    border-radius: 5px;
     padding: 15px;
     margin: 10px 0;
     width: 100%;
@@ -50,6 +135,7 @@ h1 {
     cursor: pointer;
     font-size:medium;
     margin-bottom: 0;
+    border-radius: 30px;
 
 }
 .boxrestaliv {
@@ -57,29 +143,39 @@ h1 {
     border: 2px solid var(--giallobaze);
     background-color: var(--blubaze) ;
     color: whitesmoke;
-    border-radius: 5px;
     padding: 15px;
     margin-top: 0;
     width: 100%;
     max-width: 300px;
     text-align: center;
-    font-size:medium;
-    
+    font-size:medium;   
+    border-radius: 30px;
 }
 .boxrestatipo {
     border-style:double;
     border: 2px solid var(--giallobaze);
     background-color: var(--blubaze) ;
     color: whitesmoke;
-    border-radius: 5px;
     padding: 15px;
     margin-top: 0%;
     width: 100%;
     max-width: 300px;
     text-align: center;
     font-size:medium;
-
-    
+    border-radius: 30px;
+}
+.boxrestatempo {
+    border-style:double;
+    border: 2px solid var(--giallobaze);
+    background-color: var(--blubaze) ;
+    color: whitesmoke;
+    padding: 15px;
+    margin-top: 0%;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    font-size:medium;
+    border-radius: 30px;
 }
 
 .choices {
@@ -94,10 +190,19 @@ h1 {
     border: 1px solid var(--giallobaze);
     background-color: var(--blubaze);
     color: white;
-    border-radius: 5px;
+    border-radius: 20px; /* Aumenta il border-radius per rendere i pulsanti tondeggianti */
     cursor: pointer;
-    font-size:small;
+    font-size: 16px; /* Puoi regolare la dimensione del font a tuo piacimento */
+    text-align: center; /* Assicurati che il testo sia centrato */
+    display: inline-block; /* Assicurati che i pulsanti siano visualizzati come blocchi in linea */
+    transition: background-color 0.3s, color 0.3s; /* Aggiungi una transizione per un effetto più fluido al passaggio del mouse */
 }
+
+.choices button:hover {
+    background-color: var(--giallobaze); /* Cambia il colore di sfondo al passaggio del mouse */
+    color: var(--blubaze); /* Cambia il colore del testo al passaggio del mouse */
+}
+
 
 .show {
     display: block;
@@ -108,7 +213,6 @@ h1 {
     display: block;
     width: 100%;
 }
-
 
 
 .selected-items {
@@ -144,6 +248,7 @@ th, td {
     text-align: center;
     color: #000; /* Imposta il colore del testo in nero */
 }
+
 td{
     border:none;
     
@@ -151,6 +256,10 @@ td{
 #simulazione td {
     text-align: left;
     vertical-align: bottom;
+}
+#simulazione th {
+    text-align: left;
+    margin-left: 20%;
 }
 
 tr.empty-row {
@@ -162,9 +271,12 @@ input[type="number"] {
     width: 50px;
 }
 
-input[type="radio"], input[type="checkbox"] {
+input[type="checkbox"] {
     margin-right: 10px;
+    
 }
+
+
 #InputpagaBoxora input[type="number"],
 #InputpagaBoxmese input[type="number"] {
     width: 70px;
@@ -193,32 +305,35 @@ button {
 }
 
 .cerchio {
-    width: 50px;
-    height: 50px;
-    background-color: var(--giallobaze);
+    width: 60px; /* Aumenta leggermente le dimensioni */
+    height: 60px; /* Aumenta leggermente le dimensioni */
+    background-color: var(--giallobaze); /* Colore base arancione */
     border-radius: 50%;
-    border-color: black;
-    border-style:double;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
     font-weight: bold;
     color: black;
-    margin: auto;
-    margin-top: 0.5rem;
-    margin-bottom: 0,5rem;
-    
+    margin: 1rem auto; /* Centra il cerchio e aggiunge margine sopra e sotto */
+    flex-shrink: 0; /* Impedisce la riduzione del cerchio */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Ombra iniziale */
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+}
 
+.cerchio:hover {
+    transform: scale(1.5);
+    box-shadow: 0 15px 25px  rgba(0, 0, 0, 0.3);
+    background-color: #ff7518; /* Cambia il colore di sfondo al passaggio del mouse */
 }
 
 button:hover {
-    background-color: var(--giallobaze) /* Leggero effetto hover */
-
+    background-color: var(--giallobaze); /* Leggero effetto hover */
 }
 /*per far uscire il titolo diviso in 2 */
 .grande{display:block;}
-.piccolo{display:none;}
+.piccolo{display:none; align-items: center;}
 
 .container {
     display: flex;
@@ -236,11 +351,7 @@ button:hover {
     margin-bottom: 5px; /* Spazio tra etichetta e input */
   }
   
-  .ok {
-    border-color: var(--giallobaze);
-    font-size: large;
-    text-align: center;
-}
+
 
 #confermanuovocalcolo {
     display: none;
@@ -254,7 +365,27 @@ button:hover {
     border-width: 5px;
     border-style: solid;
     border-color: var(--giallobaze);
-    animation: borderColorChange 1.5s infinite;
+    animation: borderColorChange 4s infinite linear;
+    margin-bottom: 20px;
+}
+#confermanuovocalcolo .okc {
+    background-color: white;
+    color:black;
+    padding: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--giallobaze);
+    animation: borderColorChange1 2s infinite;
+    margin-bottom: 20px;
+}
+#confermanuovocalcolo .oka {
+    background-color: white;
+    color:black;
+    padding: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--giallobaze);
+    animation: borderColorChange2 2s infinite;
     margin-bottom: 20px;
 }
 
@@ -268,12 +399,67 @@ button:hover {
     0% {
         border-color: var(--giallobaze);
     }
+    25% {
+        border-color: var(--blubaze);
+    }
+    50% {
+        border-color: var(--giallobaze);
+    }
+    75% {
+        border-color: var(--blubaze);
+    }
+    100% {
+        border-color: var(--giallobaze);
+    }
+}
+
+
+@keyframes borderColorChange1 {
+    0% {
+        border-color: var(--giallobaze);
+    }
     50% {
         border-color: var(--blubaze);
     }
     100% {
         border-color: var(--giallobaze);
     }
+}
+@keyframes borderColorChange2 {
+    0% {
+        border-color: var(--blubaze);
+    }
+    50% {
+        border-color: var(--giallobaze);
+    }
+    100% {
+        border-color: var(--blubaze);
+    }
+}
+
+
+
+@keyframes rimbalzi {
+    0%{ transform: translateY();opacity: 0; }
+    6%{ transform: translateY(-2);opacity: 0; }
+    50% { transform: translateY(-80px); }
+    100% { transform: translate();opacity: 1; }
+  }
+  @keyframes rimbalzo {
+    0%{ transform: translate();opacity: 0; }
+    100% { transform: translate();opacity: 1; }
+  }
+
+ #opzioniaggiuntive .informativa {
+    position:relative;
+    display:inline-block;
+    cursor: pointer;
+    color: var(--blubaze);
+    margin-left: 10px;
+    float: inline-start;
+    animation: rimbalzo 1.8s ; /* Applica l'animazione */    
+    
+
 }
 
 .informativa {
@@ -282,6 +468,10 @@ button:hover {
     cursor: pointer;
     color: var(--blubaze);
     margin-left: 10px;
+    float: inline-start;
+    animation: rimbalzi 2.5s ; /* Applica l'animazione */    
+    
+
 }
 .informativa .circle {
     display: inline-block;
@@ -310,7 +500,7 @@ button:hover {
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
-    transition: opacity 0.3s, transform 0.3s;
+    transition: opacity 1s , transform 1s;
     white-space: normal;
 }
 
@@ -325,18 +515,107 @@ button:hover {
     border-color: rgba(255, 255, 255, 0.9) transparent transparent transparent;
 }
 
-.informativa:hover .tooltip,
-.informativa.active .tooltip {
+.informativa:hover .tooltip {
     visibility: visible;
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
 
 
+  /* Stile per gli elementi all'interno delle label */
+  #opzioniaggiuntive-label input {
+    margin: 0; 
+    width: 100%;
+    padding: 0; 
+  }
 
+  #opzioniaggiuntive input[type="number"] {
+    width: max-content; 
+    max-width: 86px;  
+    height: 30px;     
+    padding: 1px;     
+    box-sizing: border-box; 
+    font-size: 15px;    
+}
+
+  
+  #opzioniaggiuntive label {
+    display: inline-flex; /* Mostra il label e l'input checkbox in una riga */
+    align-items: center; /* Allinea verticalmente gli elementi */
+  }
+  
+  #calcolatore {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 40px;
+    width: 100%;
+    overflow: visible;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+#selezionicontratto,
+#simulazione,
+#orariodilavoro,
+#opzioniaggiuntive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 40px;
+    border: 1px solid var(--blubaze);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 6px 6px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(190deg, white, #f0f8ff);
+    padding: 20px;
+    width: 100%;
+    overflow: visible;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center; /* Assicura che il testo sia centrato */
+    max-width: 100%;
+}
+
+
+#simulazione table {
+    width: 100%;
+    margin-top: 1em;
+    text-align: left; /* Allinea il testo a sinistra all'interno della tabella */
+    align-items: center;
+}
+
+
+
+.selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centro gli elementi all'interno di ciascun selection-container */
+    width: 100%; /* Assicura che il contenitore prenda tutto lo spazio disponibile */
+}
+
+.selection-container label,
+.selection-container input,
+.selection-container span,
+.selection-container h2 {
+    text-align: center; /* Centro il testo per ogni elemento */
+}
+
+
+
+
+  
 
 /* CSS per schermo piccolo */
 @media screen and (max-width: 700px) {
+
     /*per far uscire il titolo diviso in 2 */
     .grande{display:none;}
     .piccolo{display:block;}
@@ -368,33 +647,59 @@ button:hover {
         display: flex;
         justify-content: space-between;
         align-items: right;
-        padding: 5px;
+        padding: 3px;
         border:none;
     }
     #ore-tab td::before {
         content: attr(data-label);
-        align-items:right ;
+        align-items:center ;
         font-weight: bold;
-        text-align: center;
+        text-align: left;
         display: inline-block;
         width: 50%;
+        margin-top: 13px;
     }
+
+    
+
+    .contenitore-flex {
+        display: flex; /* Imposta il display a flex per allineare gli elementi in linea */
+        align-items: center; /* Centra verticalmente gli elementi */
+        
+        gap: 20px; /* Distanza tra gli elementi */
+    }
+    
     .cerchio {
-        width: 40px;
-        height: 40px;
-        background-color: var(--giallobaze);
+        width: 40px; /* Dimensioni più piccole */
+        height: 40px; /* Dimensioni più piccole */
+        background-color: var(--giallobaze); /* Colore base arancione */
         border-radius: 50%;
-        border-color: black;
-        border-style:double;
-        display:flex;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 20px;
+        font-size: 16px; /* Dimensione del testo */
         font-weight: bold;
         color: black;
-        margin: auto;
-        margin-top: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra iniziale */
+        transition: transform 0.5s ease, box-shadow 0.3s ease;
+        flex-shrink: 0; /* Impedisce la riduzione del cerchio */
     }
+    
+    .cerchio:hover {
+        transform: scale(1.5); /* Ingrandisce al passaggio del mouse */
+        box-shadow: 0 8px 14px rgba(0, 0, 0, 0.5); /* Ombra più pronunciata */
+    }
+    
+    button:hover {
+        background-color: var(--giallobaze); /* Leggero effetto hover */
+    }
+    
+    h3 {
+        margin: 0; /* Rimuovi il margine di default per evitare spazi extra */
+        font-size: 1.5em; /* Regola la dimensione del testo se necessario */
+    }
+    
+
 
     /* CSS specifico per la tabella all'interno del div con id 'simulazione' */
     #simulazione table {
@@ -413,5 +718,6 @@ button:hover {
     #simulazione th {
         display: table-cell;
         text-align: left;
+    
     }
 }

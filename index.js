@@ -1,3 +1,9 @@
+document.getElementById("sendRequest").addEventListener("click", function() {
+                submitChoices();
+});
+document.getElementById("nuovocalcolo").addEventListener("click", function() {
+    confermanuovo();
+});
 
 document.getElementById('sendRequest').addEventListener('click', async () => {
 
@@ -124,7 +130,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             'Autosufficienti':null
         };
 
-        // funzione per aprire la scelta del Tipocontratto e Tipolivello
+        // funzione per aprire la scelta del Tipocontratto e Tipolivello e Duratacontratto
         function toggleChoices(choiceId) {
             var choices = document.getElementById(choiceId);
             choices.classList.toggle('show');
@@ -252,8 +258,10 @@ function selectChoice(category, choice) {
             document.getElementById('bambinoBox').style.display = 'none';
         }
 
-        if (choice === 'b' || choice === 'bs' || choice === 'cs' || choice === 'd') {
-            document.getElementById('certificatoBox').style.display = 'block';
+        if ((choice === 'b' || choice === 'bs' || choice === 'cs' || choice === 'd') &&
+        (tipocontrattoselezionato !== 'nonconvivente' && tipocontrattoselezionato !== 'sostituzione'))
+         {
+         document.getElementById('certificatoBox').style.display = 'block';
         } else {
             document.getElementById('certificatoBox').style.display = 'none';
         }
@@ -266,22 +274,30 @@ function selectChoice(category, choice) {
 
         if (selections['Tipo contratto'] !== 'non-convivente') {
             document.getElementById('vittoAlloggioBox').style.display = 'block';
+        }else{
+            document.getElementById('vittoAlloggioBox').style.display = 'none';
         }
     }
 }
 
     function cambiotipo(nuovo){
         if(tipocontrattoselezionato!=nuovo){
-            const elementi = document.querySelectorAll('.boxrestaliv');
-            // Itera su ciascun elemento e imposta display: none
-            elementi.forEach(elemento => {
-             elemento.style.display = 'none';
+            const livelli = document.querySelectorAll('.boxrestaliv');
+            livelli.forEach(livello => {
+             livello.style.display = 'none';
+            });
+            const durati = document.querySelectorAll('.boxrestatempo');
+            durati.forEach(durato => {
+             durato.style.display = 'none';
             });
             livellocontrattoselezionato="";
-            alert('Se cambi il tipo contratto seleziona nuovamente il livello');
+            duratacontrattoselezionato="";
+            alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
         }
     }
-               
+    
+
+
             // variabili per la paga
             const pagaconv_liva=729.25 ;//paga mensile minima lavoratori conviventi liv a
             const pagaconv_livas=861.86 ;//paga mensile minima lavoratori conviventi liv as
@@ -318,28 +334,28 @@ function sceglipaga() {
         document.getElementById('InputpagaBoxmese').style.display = 'none';
         livellopaga = document.getElementById('InputpagaOra');
         if (livellocontrattoselezionato === "a") {
-            livellopaga.placeholder = paganoconv_liva + "€";
+            livellopaga.placeholder = paganoconv_liva ;
         }
         if (livellocontrattoselezionato === "as") {
-            livellopaga.placeholder = paganoconv_livas + "€";
+            livellopaga.placeholder = paganoconv_livas;
         }
         if (livellocontrattoselezionato === "b") {
-            livellopaga.placeholder = paganoconv_livb + "€";
+            livellopaga.placeholder = paganoconv_livb ;
         }
         if (livellocontrattoselezionato === "bs") {
-            livellopaga.placeholder = paganoconv_livbs + "€";
+            livellopaga.placeholder = paganoconv_livbs;
         }
         if (livellocontrattoselezionato === "c") {
-            livellopaga.placeholder = paganoconv_livc + "€";
+            livellopaga.placeholder = paganoconv_livc;
         }
         if (livellocontrattoselezionato === "cs") {
-            livellopaga.placeholder = paganoconv_livcs + "€";
+            livellopaga.placeholder = paganoconv_livcs;
         }
         if (livellocontrattoselezionato === "d") {
-            livellopaga.placeholder = paganoconv_livd + "€";
+            livellopaga.placeholder = paganoconv_livd;
         }
         if (livellocontrattoselezionato === "ds") {
-            livellopaga.placeholder = paganoconv_livds + "€";
+            livellopaga.placeholder = paganoconv_livds ;
         }
     }
     if (tipocontrattoselezionato === "convivente") {
@@ -347,28 +363,28 @@ function sceglipaga() {
         document.getElementById('InputpagaBoxora').style.display = 'none';
         livellopaga = document.getElementById('InputpagaMese');
         if (livellocontrattoselezionato === "a") {
-            livellopaga.placeholder = pagaconv_liva + "€";
+            livellopaga.placeholder = pagaconv_liva ;
         }
         if (livellocontrattoselezionato === "as") {
-            livellopaga.placeholder = pagaconv_livas + "€";
+            livellopaga.placeholder = pagaconv_livas ;
         }
         if (livellocontrattoselezionato === "b") {
-            livellopaga.placeholder = pagaconv_livb + "€";
+            livellopaga.placeholder = pagaconv_livb;
         }
         if (livellocontrattoselezionato === "bs") {
-            livellopaga.placeholder = pagaconv_livbs + "€";
+            livellopaga.placeholder = pagaconv_livbs;
         }
         if (livellocontrattoselezionato === "c") {
-            livellopaga.placeholder = pagaconv_livc + "€";
+            livellopaga.placeholder = pagaconv_livc;
         }
         if (livellocontrattoselezionato === "cs") {
-            livellopaga.placeholder = pagaconv_livcs + "€";
+            livellopaga.placeholder = pagaconv_livcs;
         }
         if (livellocontrattoselezionato === "d") {
-            livellopaga.placeholder = pagaconv_livd + "€";
+            livellopaga.placeholder = pagaconv_livd ;
         }
         if (livellocontrattoselezionato === "ds") {
-            livellopaga.placeholder = pagaconv_livds + "€";
+            livellopaga.placeholder = pagaconv_livds ;
         }
     }
     if (tipocontrattoselezionato === "part-time") {
@@ -376,13 +392,13 @@ function sceglipaga() {
         document.getElementById('InputpagaBoxora').style.display = 'none';
         livellopaga = document.getElementById('InputpagaMese');
         if (livellocontrattoselezionato === "b") {
-            livellopaga.placeholder = pagapart_livb + "€";
+            livellopaga.placeholder = pagapart_livb;
         }
         if (livellocontrattoselezionato === "bs") {
-            livellopaga.placeholder = pagapart_livbs + "€";
+            livellopaga.placeholder = pagapart_livbs ;
         }
         if (livellocontrattoselezionato === "c") {
-            livellopaga.placeholder = pagapart_livc + "€";
+            livellopaga.placeholder = pagapart_livc;
         }
     }
     if (tipocontrattoselezionato === "sostituzione") {
@@ -390,10 +406,10 @@ function sceglipaga() {
         document.getElementById('InputpagaBoxmese').style.display = 'none';
         livellopaga = document.getElementById('InputpagaOra');
         if (livellocontrattoselezionato === "cs") {
-            livellopaga.placeholder = pagasost_livcs + "€";
+            livellopaga.placeholder = pagasost_livcs ;
         }
         if (livellocontrattoselezionato === "ds") {
-            livellopaga.placeholder = pagasost_livds + "€";
+            livellopaga.placeholder = pagasost_livds ;
         }
     }
     if (tipocontrattoselezionato === "presenza") {
@@ -401,7 +417,7 @@ function sceglipaga() {
         document.getElementById('InputpagaBoxora').style.display = 'none';
         livellopaga = document.getElementById('InputpagaMese');
         if (livellocontrattoselezionato === "u") {
-            livellopaga.placeholder = pagaconvpres_livu + "€";
+            livellopaga.placeholder = pagaconvpres_livu ;
         }
     }
     if (tipocontrattoselezionato === "assistenza") {
@@ -409,13 +425,13 @@ function sceglipaga() {
         document.getElementById('InputpagaBoxora').style.display = 'none';
         livellopaga = document.getElementById('InputpagaMese');
         if (livellocontrattoselezionato === "bs") {
-            livellopaga.placeholder = pagaconvass_livbs + "€";
+            livellopaga.placeholder = pagaconvass_livbs ;
         }
         if (livellocontrattoselezionato === "cs") {
-            livellopaga.placeholder = pagaconvass_livcs + "€";
+            livellopaga.placeholder = pagaconvass_livcs;
         }
         if (livellocontrattoselezionato === "ds") {
-            livellopaga.placeholder = pagaconvass_livds + "€";
+            livellopaga.placeholder = pagaconvass_livds ;
         }
     }
 }
@@ -465,6 +481,22 @@ function restatipo(acceso){
         document.getElementById('restaan').style.display="block";
     if (acceso==="pn")
         document.getElementById('restapn').style.display="block";
+    
+}
+
+//funzione per mostrare il tipocontratto scelto
+function restatempo(acceso){
+    const elementi3 = document.querySelectorAll('.boxrestatempo');
+    // Itera su ciascun elemento e imposta display: none
+    elementi3.forEach(elemento => {
+        elemento.style.display = 'none';
+    });
+    if (acceso==="ind")
+        document.getElementById('restaind').style.display="block";
+    if (acceso==="det")
+        document.getElementById('restadet').style.display="block";
+    if (acceso==="detsost")
+        document.getElementById('restadetsost').style.display="block";
     
 }
 
@@ -555,14 +587,14 @@ document.addEventListener('click', function(event) {
     informativas.forEach(function(informativa) {
         if (!informativa.contains(event.target)) {
             informativa.classList.remove('active');
-        }
-    });
+                    }
+                });
 });
 
 // Funzione per attivare/disattivare il tooltip al click
 document.querySelectorAll('.informativa .circle').forEach(function(element) {
     element.addEventListener('click', function(event) {
-        event.stopPropagation();
+        event.stopPropagation(); // Impedisce la propagazione dell'evento click
         var informativa = this.parentElement;
         
         // Toglie la classe 'active' da tutti gli altri tooltip
@@ -571,11 +603,21 @@ document.querySelectorAll('.informativa .circle').forEach(function(element) {
                 otherInformativa.classList.remove('active');
             }
         });
-
+        
         // Attiva o disattiva il tooltip cliccato
         informativa.classList.toggle('active');
     });
 });
+
+// Funzione per chiudere il tooltip cliccando al di fuori
+document.addEventListener('click', function(event) {
+    document.querySelectorAll('.informativa').forEach(function(informativa) {
+        if (!informativa.contains(event.target)) {
+            informativa.classList.remove('active');
+        }
+    });
+});
+        
 
 
         // funzioni per le indennità aggiuntive
@@ -705,8 +747,8 @@ function updateTotals() {
         totalHours += value;
     });
 
-    document.getElementById('totalHours').value = totalHours;
-    document.getElementById('totalDays').value = totalDays;
+    document.getElementById('totalHours').textContent = totalHours;
+    document.getElementById('totalDays').textContent = totalDays;
 
     // Mostra messaggio di errore se non c'è almeno un giorno di riposo
     if (!atLeastOneDayOff) {
@@ -809,6 +851,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+        function accendiopzioni(){
+            if(tipocontrattoselezionato!="" & livellocontrattoselezionato!="" & duratacontrattoselezionato!=""){
+                document.getElementById('opzioniaggiuntive').style.display='block';
+            }else{
+                document.getElementById('opzioniaggiuntive').style.display='none';
+            }
+        }
+       
 
         
         
@@ -878,8 +928,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('paga-netta').textContent = "";
             document.getElementById('confermanuovocalcolo').style.display = 'none';
             document.getElementById('nuovocalcolo').style.display = 'block';
+            document.getElementById('opzioniaggiuntive').style.display='none';
 
-            // Nascondi il tipo e livello scelti
+            // Nascondi il tipo e livello e Tempo scelti
             const elementiLiv = document.querySelectorAll('.boxrestaliv');
             elementiLiv.forEach(elemento => {
                 elemento.style.display = 'none';
@@ -887,6 +938,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const elementiTipo = document.querySelectorAll('.boxrestatipo');
             elementiTipo.forEach(elemento => {
+                elemento.style.display = 'none';
+            });
+
+            const elementiTempo = document.querySelectorAll('.boxrestatempo');
+            elementiTempo.forEach(elemento => {
                 elemento.style.display = 'none';
             });
             
@@ -922,8 +978,8 @@ document.addEventListener('DOMContentLoaded', function() {
             days.forEach(function(day) {
                 document.getElementById(day).value = 0;
             });
-            document.getElementById('totalHours').value = 0;
-            document.getElementById('totalDays').value = 0;
+            document.getElementById('totalHours').textContent = 0;
+            document.getElementById('totalDays').textContent = 0;
         
             // Reset radio buttons and checkboxes
             var radios = document.querySelectorAll('input[type="radio"]');
