@@ -8,18 +8,16 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    height: 100%;
     accent-color: var(--giallobaze);
 }
-.calcolatore {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 30px;
-    box-sizing: border-box;
-    text-align: left;
+html {
+    height: 100%;
+    margin: 0;
 }
+
+
+
 .content {
     text-align: center;
 }
@@ -335,7 +333,7 @@ button:hover {
 }
 /*per far uscire il titolo diviso in 2 */
 .grande{display:block;}
-.piccolo{display:none;}
+.piccolo{display:none; align-items: center;}
 
 .container {
     display: flex;
@@ -353,11 +351,7 @@ button:hover {
     margin-bottom: 5px; /* Spazio tra etichetta e input */
   }
   
-  .ok {
-    border-color: var(--giallobaze);
-    font-size: large;
-    text-align: center;
-}
+
 
 #confermanuovocalcolo {
     display: none;
@@ -371,7 +365,27 @@ button:hover {
     border-width: 5px;
     border-style: solid;
     border-color: var(--giallobaze);
-    animation: borderColorChange 1.5s infinite;
+    animation: borderColorChange 4s infinite linear;
+    margin-bottom: 20px;
+}
+#confermanuovocalcolo .okc {
+    background-color: white;
+    color:black;
+    padding: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--giallobaze);
+    animation: borderColorChange1 2s infinite;
+    margin-bottom: 20px;
+}
+#confermanuovocalcolo .oka {
+    background-color: white;
+    color:black;
+    padding: 20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--giallobaze);
+    animation: borderColorChange2 2s infinite;
     margin-bottom: 20px;
 }
 
@@ -385,6 +399,25 @@ button:hover {
     0% {
         border-color: var(--giallobaze);
     }
+    25% {
+        border-color: var(--blubaze);
+    }
+    50% {
+        border-color: var(--giallobaze);
+    }
+    75% {
+        border-color: var(--blubaze);
+    }
+    100% {
+        border-color: var(--giallobaze);
+    }
+}
+
+
+@keyframes borderColorChange1 {
+    0% {
+        border-color: var(--giallobaze);
+    }
     50% {
         border-color: var(--blubaze);
     }
@@ -392,6 +425,20 @@ button:hover {
         border-color: var(--giallobaze);
     }
 }
+@keyframes borderColorChange2 {
+    0% {
+        border-color: var(--blubaze);
+    }
+    50% {
+        border-color: var(--giallobaze);
+    }
+    100% {
+        border-color: var(--blubaze);
+    }
+}
+
+
+
 @keyframes rimbalzi {
     0%{ transform: translateY();opacity: 0; }
     6%{ transform: translateY(-2);opacity: 0; }
@@ -478,17 +525,17 @@ button:hover {
   /* Stile per gli elementi all'interno delle label */
   #opzioniaggiuntive-label input {
     margin: 0; 
-    width: 100;
+    width: 100%;
     padding: 0; 
   }
 
   #opzioniaggiuntive input[type="number"] {
     width: max-content; 
-    max-width: 97px;  
+    max-width: 86px;  
     height: 30px;     
-    padding: 5px;     
+    padding: 1px;     
     box-sizing: border-box; 
-    font-size: 16px;    
+    font-size: 15px;    
 }
 
   
@@ -496,26 +543,79 @@ button:hover {
     display: inline-flex; /* Mostra il label e l'input checkbox in una riga */
     align-items: center; /* Allinea verticalmente gli elementi */
   }
-    
-  #opzioniaggiuntive {
-    border-radius: 1px;
-    border: 1px solid whitesmoke; /* Aggiunge un bordo nero */
-    box-shadow: 0 4px 8px rgba(255, 164, 54, 0.5); /* Aggiunge un'ombra color arancione */
-    padding: 10px; /* Aggiunge un po' di padding per un aspetto migliore */
+  
+  #calcolatore {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 40px;
+    width: 100%;
+    overflow: visible;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
-#orariodilavoro {
-    align-items: flex;
-    border-radius: 1px;
-    border: 1px solid whitesmoke; /* Aggiunge un bordo nero */
-    box-shadow: 0 4px 8px rgba(255, 164, 54, 0.5); /* Aggiunge un'ombra color arancione */
-    padding: 10px; /* Aggiunge un po' di padding per un aspetto migliore */
+
+#selezionicontratto,
+#simulazione,
+#orariodilavoro,
+#opzioniaggiuntive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 40px;
+    border: 1px solid var(--blubaze);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 6px 6px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(190deg, white, #f0f8ff);
+    padding: 20px;
+    width: 100%;
+    overflow: visible;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center; /* Assicura che il testo sia centrato */
+    max-width: 100%;
 }
+
+
+#simulazione table {
+    width: 100%;
+    margin-top: 1em;
+    text-align: left; /* Allinea il testo a sinistra all'interno della tabella */
+    align-items: center;
+}
+
+
+
+.selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centro gli elementi all'interno di ciascun selection-container */
+    width: 100%; /* Assicura che il contenitore prenda tutto lo spazio disponibile */
+}
+
+.selection-container label,
+.selection-container input,
+.selection-container span,
+.selection-container h2 {
+    text-align: center; /* Centro il testo per ogni elemento */
+}
+
+
 
 
   
 
 /* CSS per schermo piccolo */
 @media screen and (max-width: 700px) {
+
     /*per far uscire il titolo diviso in 2 */
     .grande{display:none;}
     .piccolo{display:block;}

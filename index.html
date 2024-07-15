@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="style_from_bazeapp_com.css">
 </head>
 <body>
-    <div class="calcolatore">
+    <div id="calcolatore">
     <div class="grande"><h1>Calcolatore Costo Colf / Badanti</h1></div>
     <div class="piccolo"><h1>Calcolatore Costo </h1> <h1> Colf / Badanti</h1></div>
     <br>
-
+    <div id="selezionicontratto">    
     <div class="contenitore-flex">
         <span class="cerchio">1</span>
         <h2>Seleziona tipologia contrattuale</h2>
@@ -180,9 +180,9 @@
     <div id="restaind" class="boxrestatempo" style="display:none" >Indeterminato</div>
     <div id="restadet" class="boxrestatempo" style="display:none" >Determinato</div>
     <div id="restadetsost" class="boxrestatempo" style="display:none" >Determinato in Sostituzione</div>
-
-
+    </div>
     
+    <div id="orariodilavoro">
     <div class="contenitore-flex">
         <span class="cerchio">2</span>
         <h2>Orario di Lavoro</h2>
@@ -268,132 +268,121 @@
             </tr>
         </tbody>
     </table>
-
     <div class="container">
         <div class="item">
-          <label for="totalHours"> <b>Ore Settimanali</b></label>
-          <input type="text" id="totalHours" readonly>
+            <label><b>Ore Settimanali:</b> <span id="totalHours"></span></label>
         </div>
         <div class="item">
-          <label for="totalDays"> <b>Giorni Settimanali</b></label>
-          <input type="text" id="totalDays" readonly>
+            <label><b>Giorni Settimanali:</b> <span id="totalDays"></span></label>
         </div>
-      </div>
-      <br>
+    </div>
+    </div>
+    
+    
+    
       
 
 
-      <div id="opzioniaggiuntive" style="display:none ;">
-      <div class="contenitore-flex">
-        <span class="cerchio">3</span>
-        <h2>Opzioni Aggiuntive</h2>
-    </div>
-    
-
-    <div class="selection-container" id="InputpagaBoxora" style="display:none;">
-        Paga oraria del lavoratore :
-        <input type="number" inputmode="numeric" id="InputpagaOra" min="0" step="1" placeholder="paga">
+    <div id="opzioniaggiuntive" style="display:none;">
+        <div class="contenitore-flex">
+            <span class="cerchio">3</span>
+            <h2>Opzioni Aggiuntive</h2>
+        </div>
         
-        <br><br>
-    </div>
-    <div class="selection-container" id="InputpagaBoxmese" style="display:none;">
-        Paga mensile del lavoratore :
-        <input type="number" inputmode="numeric" id="InputpagaMese" min="0" step="1" placeholder="paga">
-        <br><br>
-    </div>
-
-    
-
-    <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
+        <div class="selection-container" id="InputpagaBoxora" style="display:none;">
+            <label>Paga oraria del lavoratore :</label>
+            <input type="number" inputmode="numeric" id="InputpagaOra" min="0" step="1" placeholder="paga">
+            <br><br>
+        </div>
         
-        <span class="informativa">
-            <span class="circle">i</span>
-            <span class="tooltip">Il vitto e l'alloggio se non sono forniti in natura si applicano delle indennità aggiuntive</span>
-        </span>
-        Vitto e Alloggio sono in natura?
-        <label>
+        <div class="selection-container" id="InputpagaBoxmese" style="display:none;">
+            <label>Paga mensile del lavoratore :</label>
+            <input type="number" inputmode="numeric" id="InputpagaMese" min="0" step="1" placeholder="paga">
+            €
+            <br><br>
+        </div>
+    
+        <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
+            <span class="informativa">
+                <span class="circle">i</span>
+                <span class="tooltip">Il vitto e l'alloggio se non sono forniti in natura si applicano delle indennità aggiuntive</span>
+            </span>
+            <label>Vitto e Alloggio sono in natura?</label>
             <input type="checkbox" id="vittoAlloggioCheckbox" onclick="selectVittoAlloggio()" checked> 
-        </label>
-        <br><br>
-    </div>
-    
-    <div class="selection-container" id="specificaVittoAlloggioBox" style="display:none;">
+            <br><br>
+        </div>
         
+        <div class="selection-container" id="specificaVittoAlloggioBox" style="display:none;">
             <span class="informativa">
                 <span class="circle">i</span>
                 <span class="tooltip">Il pranzo/colazione se non fornito in natura sono 2,28€ al giorno</span>
             </span>
-        <label>    
-            <input type="checkbox" name="specificaVittoAlloggio" value="pranzo/colazione" onclick=" selectvariabiliVittoAlloggio('pranzo/colazione', this.checked ? 'si' : 'no')"> Indennità Pranzo/Colazione
-        </label>
-        <br><br>
-        
+            <label>
+                <input type="checkbox" name="specificaVittoAlloggio" value="pranzo/colazione" onclick="selectvariabiliVittoAlloggio('pranzo/colazione', this.checked ? 'si' : 'no')"> Indennità Pranzo/Colazione
+            </label>
+            <br><br>
             <span class="informativa">
                 <span class="circle">i</span>
                 <span class="tooltip">La cena se non fornita in natura è 2,28€ al giorno</span>
             </span>
-        <label>
-            <input type="checkbox" name="specificaVittoAlloggio" value="cena" onclick=" selectvariabiliVittoAlloggio('cena', this.checked ? 'si' : 'no')"> Indennità Cena
-        </label>
-        <br><br>
+            <label>
+                <input type="checkbox" name="specificaVittoAlloggio" value="cena" onclick="selectvariabiliVittoAlloggio('cena', this.checked ? 'si' : 'no')"> Indennità Cena
+            </label>
+            <br><br>
             <span class="informativa">
                 <span class="circle">i</span>
                 <span class="tooltip">L'alloggio se non fornito in natura è 1,96€ al giorno</span>
             </span>
-        <label>    
-            <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick=" selectvariabiliVittoAlloggio('alloggio', this.checked ? 'si' : 'no')"> Indennità Alloggio
-        </label>
-        <br><br>
-    </div>
-    <div class="selection-container" id="bambinoBox" style="display:none;">
-        <span class="informativa">
-            <span class="circle">i</span>
-            <span class="tooltip">Dal 1° ottobre 2020 cambiano le regole e per le baby sitter chiamate ad occuparsi di bambini sotto ai 6 anni di età è prevista un indennità specifica.
-                <br>- se il lavoratore è convivente full-time l'indennità è di 130,78€ mensili
-                <br>- se il lavoratore è convivente part-time l'indennità è di 91,63€ mensili 
-                <br>- se il lvaoratore non è convivente l'indennità è di 0,79€ orari</span>
-        </span>
-        Il bambino è entro i 6 anni di età?
-        <label>
+            <label>
+                <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectvariabiliVittoAlloggio('alloggio', this.checked ? 'si' : 'no')"> Indennità Alloggio
+            </label>
+            <br><br>
+        </div>
+        
+        <div class="selection-container" id="bambinoBox" style="display:none;">
+            <span class="informativa">
+                <span class="circle">i</span>
+                <span class="tooltip">Dal 1° ottobre 2020 cambiano le regole e per le baby sitter chiamate ad occuparsi di bambini sotto ai 6 anni di età è prevista un indennità specifica.
+                    <br>- se il lavoratore è convivente full-time l'indennità è di 130,78€ mensili
+                    <br>- se il lavoratore è convivente part-time l'indennità è di 91,63€ mensili 
+                    <br>- se il lavoratore non è convivente l'indennità è di 0,79€ orari</span>
+            </span>
+            <label>Il bambino è entro i 6 anni di età?</label>
             <input type="checkbox" id="bambinoCheckbox" onclick="selectBambino()"> 
-        </label>
-        <br></br>
-    </div>
-    
-    <div class="selection-container" id="certificatoBox" style="display:none;">
-        <span class="informativa">
-            <span class="circle">i</span>
-            <span class="tooltip">Se il lavoratore è in possesso della certificazione di qualità di cui alla norma tecnica UNI 11766:2019 in corso di validità dal 01.10.2021 ha diritto ad una speciale indennità
-                <br>- se il livello del lavoratore è BS , CS l'indennità è di 11,30€ mensili
-                <br>- se il livello del lavoratore è B , l'indennità è di 9,04€ mensili
+            <br></br>
+        </div>
+        
+        <div class="selection-container" id="certificatoBox" style="display:none;">
+            <span class="informativa">
+                <span class="circle">i</span>
+                <span class="tooltip">Se il lavoratore è in possesso della certificazione di qualità di cui alla norma tecnica UNI 11766:2019 in corso di validità dal 01.10.2021 ha diritto ad una speciale indennità
+                    <br>- se il livello del lavoratore è BS , CS l'indennità è di 11,30€ mensili
+                    <br>- se il livello del lavoratore è B , l'indennità è di 9,04€ mensili
+                </span>
             </span>
-        </span>
-        Il lavoratore ha il certificato UNI1176 valido?
-        <label>
+            <label>Il lavoratore ha il certificato UNI1176 valido?</label>
             <input type="checkbox" id="certificatoCheckbox" onclick="selectCertificato()"> 
-        </label>
-        <br></br>
+            <br></br>
+        </div>
+        
+        <div class="selection-container" id="autosufficientiBox" style="display:none;">
+            <span class="informativa">
+                <span class="circle">i</span>
+                <span class="tooltip">Dal 1 ottobre 2020 il CCNL prevede che se si assiste più persone non autosufficienti ha diritto ad una speciale indennità. 
+                    <br> - se il lavoratore è convivente l'indennità è di 112,97€ mensili
+                    <br> - se il lavoratore non è convivente l'indennità è di 0,66€ orari
+                </span>
+            </span>
+            <label>Il lavoratore si occupa di più persone non autosufficienti?</label>
+            <input type="checkbox" id="autosufficientiCheckbox" onclick="selectAutosuff()"> 
+        </div>
     </div>
     
-    <div class="selection-container" id="autosufficientiBox" style="display:none;">
-        <span class="informativa">
-            <span class="circle">i</span>
-            <span class="tooltip">Dal 1 ottobre 2020 il CCNL prevede che se si assiste più persone non autosufficienti ha diritto ad una speciale indennità. 
-                <br> - se il lavoratore è convivente l'indennità è di 112,97€ mensili
-                <br> - se il lavoratore non è convivente l'indennità è di 0,66€ orari
-            </span>
-        </span>
-        Il lavoratore si occupa di più persone non autosufficienti?
-        <label>
-            <input type="checkbox" id="autosufficientiCheckbox" onclick="selectAutosuff()"> 
-        </label>
-        <br></br>
-    </div>
     
     <div class="selected-items" id="selectedItems" style="display: none;">
         <!-- Selections will appear here -->
     </div>
-    </div>
+    
 
 
 
@@ -438,7 +427,7 @@
         </tr>
         <tr class="font-medium">
             <td><b class="margin-left-20">Paga lorda lavoratore</b></td>
-            <td id="pagalorda-lavoratore"> </td>   
+            <td><b id="pagalorda-lavoratore"> </b> </td>   
         </tr>
         <tr class="empty-row"></tr>
         <tr class="font-x-small">
@@ -451,12 +440,12 @@
         </tr>
         <tr class="font-x-small">
             <td><i class="margin-left-20"><b> Paga netta lavoratore</b></i></td>
-            <td id="paganetta-lavoratore"></td>
+            <td><b id="paganetta-lavoratore"> </b></td>
         </tr>
         <tr class="empty-row"></tr>
         <tr class="font-medium">
             <td><b class="margin-left-20">Costo netto al datore</b></td>
-            <td id="pagalorda-lavoratore"></td>
+            <td><b id="pagalorda-lavoratore"></b></td>
         </tr>
         <tr class="font-x-small">
             <td> <i class="margin-left-20"> Contributi cassa colf Datore</i></td>
@@ -481,7 +470,7 @@
         <tr class="empty-row"></tr>
         <tr class="font-medium">
             <td><b class="margin-left-20">Costo totale al datore</b></td>
-            <td id="costototale-datore"></td>
+            <td><b id="costototale-datore"> </b></td>
         </tr>
     </table>
     </div>
@@ -492,13 +481,14 @@
     <div id="confermanuovocalcolo">
         <p class="box"> <b>Attenzione ! </b> <br> proseguendo perderai tutte le scelte fatte finora</p>    
         <div class="button-container">
-            <button class="ok" onclick="resetCalculator()">Conferma</button>
-            <button class="ok" onclick="annullanuovo()">Annulla</button>
+            <button class="okc" onclick="resetCalculator()">Conferma</button>
+            <button class="oka" onclick="annullanuovo()">Annulla</button>
         </div>
 
     <div id="result" style="display:none">
            Risultati calcoli verranno visualizzati qui 
     </div>
+</div>
     <script src="toki.js"></script>   
     <script src="index.js"></script>   
 </div>
