@@ -358,40 +358,16 @@ button:hover {
     text-align: center;
 }
 
-#confermanuovocalcolo .box {
-    background-color: white;
-    color:black;
-    padding: 20px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--giallobaze);
-    animation: borderColorChange 4s infinite linear;
-    margin-bottom: 20px;
-}
-#confermanuovocalcolo .okc {
-    background-color: white;
-    color:black;
-    padding: 20px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--giallobaze);
-    animation: borderColorChange1 2s infinite;
-    margin-bottom: 20px;
-}
-#confermanuovocalcolo .oka {
-    background-color: white;
-    color:black;
-    padding: 20px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--giallobaze);
-    animation: borderColorChange2 2s infinite;
-    margin-bottom: 20px;
-}
+#confermanuovocalcolo #confermanuovo {
+    border: 4px solid var(--blubaze);
+    animation: borderColorChange 2s infinite linear;}
+    
 
-#confermanuovocalcolo .button-container {
+
+.button-container {
     display: flex;
     justify-content: center;
+    margin-top: 1em;
     gap: 10px;
 }
 
@@ -399,13 +375,7 @@ button:hover {
     0% {
         border-color: var(--giallobaze);
     }
-    25% {
-        border-color: var(--blubaze);
-    }
     50% {
-        border-color: var(--giallobaze);
-    }
-    75% {
         border-color: var(--blubaze);
     }
     100% {
@@ -413,29 +383,6 @@ button:hover {
     }
 }
 
-
-@keyframes borderColorChange1 {
-    0% {
-        border-color: var(--giallobaze);
-    }
-    50% {
-        border-color: var(--blubaze);
-    }
-    100% {
-        border-color: var(--giallobaze);
-    }
-}
-@keyframes borderColorChange2 {
-    0% {
-        border-color: var(--blubaze);
-    }
-    50% {
-        border-color: var(--giallobaze);
-    }
-    100% {
-        border-color: var(--blubaze);
-    }
-}
 
 
 
