@@ -4,6 +4,12 @@ document.getElementById("sendRequest").addEventListener("click", function() {
 document.getElementById("nuovocalcolo").addEventListener("click", function() {
     confermanuovo();
 });
+document.getElementById("conferma").addEventListener("click", function() {
+    resetCalculator();
+});
+document.getElementById("annulla").addEventListener("click", function() {
+    annullanuovo();
+});
 
 document.getElementById('sendRequest').addEventListener('click', async () => {
 
