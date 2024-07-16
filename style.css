@@ -575,6 +575,20 @@ button:hover {
 
 /* CSS per schermo piccolo */
 @media screen and (max-width: 700px) {
+    #opzioniaggiuntive label {
+        display: math; /* Mostra il label e l'input checkbox in una riga */
+      }
+      #autosufficientiBox label{
+      white-space: normal;
+      display: -webkit-flex;
+      }
+      #certificatoBox label{
+        white-space: normal;
+        }
+      #specificaVittoAlloggioBox label{
+        white-space: normal;
+        display: -webkit-flex;
+      }  
 
     .button-container {
         display: flex;
