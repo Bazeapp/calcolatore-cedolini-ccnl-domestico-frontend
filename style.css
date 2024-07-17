@@ -612,7 +612,9 @@ button:hover {
     margin: 0 5px;
 }
 
-
+#nuovocalcolo{
+    display: none;
+}
   
 
 /* CSS per schermo piccolo */

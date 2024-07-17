@@ -106,6 +106,7 @@ document.getElementById("annulla").addEventListener("click", function() {
             const result = await response.json();
             updateSimulazione(result);
             aprisimulazione();
+            document.getElementById('nuovocalcolo').style.display = 'block';
             
             console.log(result);
         } catch (error) {
