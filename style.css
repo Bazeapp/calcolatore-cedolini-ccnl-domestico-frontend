@@ -615,7 +615,22 @@ button:hover {
 #nuovocalcolo{
     display: none;
 }
-  
+#opzioniaggiuntive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
+
+#opzioniaggiuntive .selection-container {
+    width: 100%;
+    max-width: 500px; 
+    margin: 0 auto;
+}
+#opzioniaggiuntive h2{
+    text-align: center;
+}
+ 
 
 /* CSS per schermo piccolo */
 @media screen and (max-width: 700px) {
