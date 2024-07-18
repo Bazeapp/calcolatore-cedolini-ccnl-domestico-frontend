@@ -183,123 +183,113 @@
     </div>
     
     <div id="orariodilavoro">
-    <div class="contenitore-flex">
-        <span class="cerchio">2</span>
-        <h2>Orario di Lavoro</h2>
-    </div>
-    
-
-   <table id="ore-tab">
-       <thead>
-           <tr>
-               <th>Lunedì</th>
-               <th>Martedì</th>
-               <th>Mercoledì</th>
-               <th>Giovedì</th>
-               <th>Venerdì</th>
-               <th>Sabato</th>
-               <th>Domenica </th>
-               
-           </tr>
-       </thead>
-       <tbody>
-           <tr>
-               <td data-label="Lunedì">
-                <div class="input-container">
-                    <button class="btn" onclick="decreaseHours('lunedi')">-</button>
-                    <input type="number" inputmode="numeric" min="0" max="10" id="lunedi" value="0" onchange="updateTotals()" class="input-field">
-                    <button class="btn" onclick="increaseHours('lunedi')">+</button>
-                </div>
-                </td>
-               <!-- Martedì -->
-                <td data-label="Martedì">
-                    <div class="input-container">
-                        <button class="btn" onclick="decreaseHours('martedi')">-</button>
-                        <input type="number" inputmode="numeric" min="0" max="10" id="martedi" value="0" onchange="updateTotals()" class="input-field">
-                        <button class="btn" onclick="increaseHours('martedi')">+</button>
-                    </div>
-                </td>
-
-                <!-- Mercoledì -->
-                <td data-label="Mercoledì">
-                    <div class="input-container">
-                        <button class="btn" onclick="decreaseHours('mercoledi')">-</button>
-                        <input type="number" inputmode="numeric" min="0" max="10" id="mercoledi" value="0" onchange="updateTotals()" class="input-field">
-                        <button class="btn" onclick="increaseHours('mercoledi')">+</button>
-                    </div>
-                </td>
-
-                <!-- Giovedì -->
-                <td data-label="Giovedì">
-                    <div class="input-container">
-                        <button class="btn" onclick="decreaseHours('giovedi')">-</button>
-                        <input type="number" inputmode="numeric" min="0" max="10" id="giovedi" value="0" onchange="updateTotals()" class="input-field">
-                        <button class="btn" onclick="increaseHours('giovedi')">+</button>
-                    </div>
-                </td>
-
-                <!-- Venerdì -->
-                <td data-label="Venerdì">
-                    <div class="input-container">
-                        <button class="btn" onclick="decreaseHours('venerdi')">-</button>
-                        <input type="number" inputmode="numeric" min="0" max="10" id="venerdi" value="0" onchange="updateTotals()" class="input-field">
-                        <button class="btn" onclick="increaseHours('venerdi')">+</button>
-                    </div>
-                </td>
-
-                <!-- Sabato -->
-                <td data-label="Sabato">
-                    <div class="input-container">
-                        <button class="btn" onclick="decreaseHours('sabato')">-</button>
-                        <input type="number" inputmode="numeric" min="0" max="10" id="sabato" value="0" onchange="updateTotals()" class="input-field">
-                        <button class="btn" onclick="increaseHours('sabato')">+</button>
-                    </div>
-                </td>
-
-                <!-- Domenica -->
-                <td data-label="Domenica">
-                    <div class="input-container">
-                        <button class="btn" onclick="decreaseHours('domenica')">-</button>
-                        <input type="number" inputmode="numeric" min="0" max="12" id="domenica" value="0" onchange="updateTotals()" class="input-field">
-                        <button class="btn" onclick="increaseHours('domenica')">+</button>
-                    </div>
-                </td>
-
-            </tr>
-        </tbody>
-    </table>
-    <div class="container">
-        <div class="item">
-            <label><b>Ore Settimanali:</b> <span id="totalHours"></span></label>
+        <div class="contenitore-flex">
+            <span class="cerchio">2</span>
+            <h2>Orario di Lavoro</h2>
         </div>
-        <div class="item">
-            <label><b>Giorni Settimanali:</b> <span id="totalDays"></span></label>
+        <div class="table-container">
+            <table id="ore-tab" class="table-center">
+                <thead>
+                    <tr>
+                        <th>Lunedì</th>
+                        <th>Martedì</th>
+                        <th>Mercoledì</th>
+                        <th>Giovedì</th>
+                        <th>Venerdì</th>
+                        <th>Sabato</th>
+                        <th>Domenica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Lunedì">
+                            <div class="input-container">
+                                <button class="btn" onclick="decreaseHours('lunedi')">-</button>
+                                <input type="number" inputmode="numeric" min="0" max="10" id="lunedi" value="0" onchange="updateTotals()" class="input-field">
+                                <button class="btn" onclick="increaseHours('lunedi')">+</button>
+                            </div>
+                        </td>
+                        <!-- Martedì -->
+                        <td data-label="Martedì">
+                            <div class="input-container">
+                                <button class="btn" onclick="decreaseHours('martedi')">-</button>
+                                <input type="number" inputmode="numeric" min="0" max="10" id="martedi" value="0" onchange="updateTotals()" class="input-field">
+                                <button class="btn" onclick="increaseHours('martedi')">+</button>
+                            </div>
+                        </td>
+                        <!-- Mercoledì -->
+                        <td data-label="Mercoledì">
+                            <div class="input-container">
+                                <button class="btn" onclick="decreaseHours('mercoledi')">-</button>
+                                <input type="number" inputmode="numeric" min="0" max="10" id="mercoledi" value="0" onchange="updateTotals()" class="input-field">
+                                <button class="btn" onclick="increaseHours('mercoledi')">+</button>
+                            </div>
+                        </td>
+                        <!-- Giovedì -->
+                        <td data-label="Giovedì">
+                            <div class="input-container">
+                                <button class="btn" onclick="decreaseHours('giovedi')">-</button>
+                                <input type="number" inputmode="numeric" min="0" max="10" id="giovedi" value="0" onchange="updateTotals()" class="input-field">
+                                <button class="btn" onclick="increaseHours('giovedi')">+</button>
+                            </div>
+                        </td>
+                        <!-- Venerdì -->
+                        <td data-label="Venerdì">
+                            <div class="input-container">
+                                <button class="btn" onclick="decreaseHours('venerdi')">-</button>
+                                <input type="number" inputmode="numeric" min="0" max="10" id="venerdi" value="0" onchange="updateTotals()" class="input-field">
+                                <button class="btn" onclick="increaseHours('venerdi')">+</button>
+                            </div>
+                        </td>
+                        <!-- Sabato -->
+                        <td data-label="Sabato">
+                            <div class="input-container">
+                                <button class="btn" onclick="decreaseHours('sabato')">-</button>
+                                <input type="number" inputmode="numeric" min="0" max="10" id="sabato" value="0" onchange="updateTotals()" class="input-field">
+                                <button class="btn" onclick="increaseHours('sabato')">+</button>
+                            </div>
+                        </td>
+                        <!-- Domenica -->
+                        <td data-label="Domenica">
+                            <div class="input-container">
+                                <button class="btn" onclick="decreaseHours('domenica')">-</button>
+                                <input type="number" inputmode="numeric" min="0" max="12" id="domenica" value="0" onchange="updateTotals()" class="input-field">
+                                <button class="btn" onclick="increaseHours('domenica')">+</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <div class="item">
+                <label><b>Ore Settimanali:</b> <span id="totalHours"></span></label>
+            </div>
+            <div class="item">
+                <label><b>Giorni Settimanali:</b> <span id="totalDays"></span></label>
+            </div>
         </div>
     </div>
-    </div>
     
-    
-    
-      
-
 
     <div id="opzioniaggiuntive" style="display:none;">
         <div class="contenitore-flex">
             <span class="cerchio">3</span>
             <h2>Opzioni Aggiuntive</h2>
+            <br>
         </div>
         
         <div class="selection-container" id="InputpagaBoxora" style="display:none;">
             <label>Paga oraria del lavoratore :</label>
             <input type="number" inputmode="numeric" id="InputpagaOra" min="0" step="1" placeholder="paga">
-            <br><br>
+            <br>
         </div>
         
         <div class="selection-container" id="InputpagaBoxmese" style="display:none;">
             <label>Paga mensile del lavoratore :</label>
             <input type="number" inputmode="numeric" id="InputpagaMese" min="0" step="1" placeholder="paga">
             €
-            <br><br>
+            <br>
         </div>
     
         <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
@@ -320,7 +310,6 @@
             <label>
                 <input type="checkbox" name="specificaVittoAlloggio" value="pranzo/colazione" onclick="selectvariabiliVittoAlloggio('pranzo/colazione', this.checked ? 'si' : 'no')"> Indennità Pranzo/Colazione
             </label>
-            <br><br>
             <span class="informativa">
                 <span class="circle">i</span>
                 <span class="tooltip">La cena se non fornita in natura è 2,28€ al giorno</span>
@@ -328,7 +317,6 @@
             <label>
                 <input type="checkbox" name="specificaVittoAlloggio" value="cena" onclick="selectvariabiliVittoAlloggio('cena', this.checked ? 'si' : 'no')"> Indennità Cena
             </label>
-            <br><br>
             <span class="informativa">
                 <span class="circle">i</span>
                 <span class="tooltip">L'alloggio se non fornito in natura è 1,96€ al giorno</span>
@@ -336,7 +324,7 @@
             <label>
                 <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectvariabiliVittoAlloggio('alloggio', this.checked ? 'si' : 'no')"> Indennità Alloggio
             </label>
-            <br><br>
+            <br>
         </div>
         
         <div class="selection-container" id="bambinoBox" style="display:none;">
@@ -360,7 +348,7 @@
                     <br>- se il livello del lavoratore è B , l'indennità è di 9,04€ mensili
                 </span>
             </span>
-            <label>Il lavoratore ha il certificato UNI1176 valido?</label>
+            <label>Il lavoratore ha il certificato  UNI1176 valido?</label>
             <input type="checkbox" id="certificatoCheckbox" onclick="selectCertificato()"> 
             <br></br>
         </div>
@@ -404,7 +392,7 @@
             <span class="cerchio">4</span>
         <h2>Simulazione costi</h2>
     </div>
-    <table >
+    <table class="table-center">
         <tr>
             <th><i>Descrizione</i></th>
             <th><i>Importo</i></th>
@@ -476,9 +464,8 @@
     </div>
     <div> 
         <div class="button-group align-center"><a  id="nuovocalcolo"  class="button is-icon w-inline-block"><div>Nuovo Calcolo</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
-      <!--  <button id="nuovocalcolo" class="box" onclick="confermanuovo()">Nuovo Calcolo</button> -->
     </div>
-    <div id="confermanuovocalcolo">
+    <div id="confermanuovocalcolo" class="button-group align-center">
         <div class="button-group align-center"><a  id="confermanuovo"  class="button is-icon w-inline-block"><div><b>Attenzione!</b><p> proseguendo perderai tutte le scelte fatte finora</p></div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
         <div class="button-container">
             <div class="button-group align-center"><a  id="conferma"  class="button is-icon w-inline-block"><div>Conferma</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
