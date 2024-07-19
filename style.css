@@ -285,8 +285,45 @@ input[type="number"] {
 
 input[type="checkbox"] {
     margin-right: 10px;
-    
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    border: 2px solid black;
+    border-radius: 7px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s, border-color 0.3s;
 }
+
+input[type="checkbox"]::after {
+    content: '';
+    position: absolute; 
+    top:-10%; 
+    left: 60%;
+    width: 8px;
+    height: 16px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    transition: transform 0.3s;
+}
+
+input[type="checkbox"]:checked {
+    border-color: black;
+    background-color: var(--giallobaze);
+}
+
+input[type="checkbox"]:checked::after {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.5);
+}
+
+input[type="checkbox"]:hover {
+    border-color: var(--giallobaze);
+}
+
+
+
 
 
 #InputpagaBoxora input[type="number"],
