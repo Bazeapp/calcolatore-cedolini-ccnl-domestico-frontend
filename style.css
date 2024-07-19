@@ -138,52 +138,6 @@ h1 {
     border-radius: 30px;
 }
 
-.box.blu-bg {
-    background-color: var(--blubaze) rgba(0, 71, 169, 0.1);  /* Colore di sfondo quando cliccato */
-    color: black; /* Testo bianco per contrastare il blu */
-}
-
-
-
-.boxrestaliv {
-    border-style:double;
-    border: 1px solid white ;
-    background-color: var(--blubaze) ;
-    color: whitesmoke;
-    padding: 15px;
-    margin-top: 0;
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-    font-size:medium;   
-    border-radius: 30px;
-}
-.boxrestatipo {
-    border-style:double;
-    border: 1px solid white;
-    background-color: var(--blubaze) ;
-    color: whitesmoke;
-    padding: 15px;
-    margin-top: 0%;
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-    font-size:medium;
-    border-radius: 30px;
-}
-.boxrestatempo {
-    border-style:double;
-    border: 1px solid white;
-    background-color: var(--blubaze) ;
-    color: whitesmoke;
-    padding: 15px;
-    margin-top: 0%;
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-    font-size:medium;
-    border-radius: 30px;
-}
 
 .choices {
     display: none;
@@ -698,6 +652,7 @@ button:hover {
     text-align: center;
 }
  
+
 
 /* CSS per schermo piccolo */
 @media screen and (max-width: 700px) {

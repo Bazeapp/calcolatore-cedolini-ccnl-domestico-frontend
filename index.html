@@ -21,27 +21,21 @@
     <div class="box" id="boxTipoContratto" onclick="toggleChoices('choices1');">
         Seleziona Tipo Contratto
         <div id="choices1" class="choices">
-            <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');restatipo('nc');accendiopzioni();scelto('boxTipoContratto');">Non-Convivente</button>
-            <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');restatipo('ft');accendiopzioni();scelto('boxTipoContratto');">Convivente Full-Time</button>
-            <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');restatipo('pt');accendiopzioni();scelto('boxTipoContratto');">Convivente Part-Time</button>
-            <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');restatipo('so');accendiopzioni();scelto('boxTipoContratto');">Sostituzione Lavoratori in Riposo</button>
-            <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');restatipo('an');accendiopzioni();scelto('boxTipoContratto');">Convivente Assistenza Notturna</button>
-            <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');restatipo('pn');accendiopzioni();scelto('boxTipoContratto');">Convivente Presenza Notturna</button>
+            <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');;accendiopzioni();scelto('boxTipoContratto', 'Non-Convivente');">Non-Convivente</button>
+            <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Full-Time');">Convivente Full-Time</button>
+            <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Part-Time');">Convivente Part-Time</button>
+            <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');accendiopzioni();scelto('boxTipoContratto', 'Sostituzione Lavoratori in Riposo');">Sostituzione Lavoratori in Riposo</button>
+            <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Assistenza Notturna');">Convivente Assistenza Notturna</button>
+            <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Presenza Notturna');">Convivente Presenza Notturna</button>
         </div>
     </div>
-
-    <div id="restanc" class="boxrestatipo" style="display:none">Non-Convivente</div>
-    <div id="restaft" class="boxrestatipo" style="display:none">Convivente Full-Time</div>
-    <div id="restapt" class="boxrestatipo" style="display:none">Convivente Part-Time</div>
-    <div id="restaso" class="boxrestatipo" style="display:none">Sostituzione Lavoratori in Riposo</div>
-    <div id="restaan" class="boxrestatipo" style="display:none">Convivente Assistenza Notturna</div>
-    <div id="restapn" class="boxrestatipo" style="display:none">Convivente Presenza Notturna</div>
+    
 
     <div class="box" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltalivello();triggerAnimation()">
         Seleziona Livello Contratto
         <div id="livello" class="choices">
             <div id="a" style="display:none">
-                <button onclick="selectChoice('Livello','a');sceglipaga();restalivello('a');accendiopzioni();scelto('boxLivelloContratto');">
+                <button onclick="selectChoice('Livello','a');sceglipaga();raccendiopzioni();scelto('boxLivelloContratto','A');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -59,7 +53,7 @@
                 A</button>
             </div>
             <div id="as" style="display:none">    
-                <button onclick="selectChoice('Livello','as');sceglipaga();restalivello('as');accendiopzioni();scelto('boxLivelloContratto');">
+                <button onclick="selectChoice('Livello','as');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','AS');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -70,7 +64,7 @@
                     AS</button>
             </div>
             <div id="b" style="display:none">
-                <button onclick="selectChoice('Livello', 'b');sceglipaga();restalivello('b');accendiopzioni();scelto('boxLivelloContratto');">
+                <button onclick="selectChoice('Livello', 'b');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','B');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -89,7 +83,7 @@
                     B</button>
             </div>   
             <div id="bs" style="display:none"> 
-                <button onclick="selectChoice('Livello', 'bs');sceglipaga();restalivello('bs');accendiopzioni();scelto('boxLivelloContratto');">
+                <button onclick="selectChoice('Livello', 'bs');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','BS');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -100,7 +94,7 @@
                     BS</button>
             </div>
             <div id="c" style="display:none">
-                <button onclick="selectChoice('Livello', 'c');sceglipaga(),restalivello('c');accendiopzioni();scelto('boxLivelloContratto');">
+                <button onclick="selectChoice('Livello', 'c');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','C');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -111,7 +105,7 @@
                     C</button>
             </div>
             <div id="cs" style="display:none">
-                <button onclick="selectChoice('Livello', 'cs');sceglipaga();restalivello('cs');accendiopzioni();scelto('boxLivelloContratto');">
+                <button onclick="selectChoice('Livello', 'cs');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','CS');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -121,7 +115,7 @@
                     CS</button>
             </div>
             <div id="d" style="display:none"> 
-                <button onclick="selectChoice('Livello', 'd');sceglipaga();restalivello('d');accendiopzioni();scelto('boxLivelloContratto');">
+                <button onclick="selectChoice('Livello', 'd');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','D');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -138,7 +132,7 @@
                     D</button>
             </div>
             <div id="ds" style="display:none">
-                <button onclick="selectChoice('Livello', 'ds');sceglipaga();restalivello('ds');accendiopzioni();scelto('boxLivelloContratto');">
+                <button onclick="selectChoice('Livello', 'ds');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','DS');">
                     <span class="informativa">
                     <span class="circle">i</span>
                     <span class="tooltip">
@@ -150,33 +144,20 @@
                     DS</button>
             </div>   
             <div id="u" style="display:none">
-                <button onclick="selectChoice('Livello', 'u');sceglipaga();restalivello('u');accendiopzioni();scelto('boxLivelloContratto');">LivelloUnico</button>
+                <button onclick="selectChoice('Livello', 'u');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','U');">LivelloUnico</button>
             </div>  
         </div>
     </div>
 
-    <div id="restaa" class="boxrestaliv" style="display:none">A</div>
-    <div id="restaas" class="boxrestaliv" style="display:none">AS</div>
-    <div id="restab" class="boxrestaliv" style="display:none">B</div>
-    <div id="restabs" class="boxrestaliv" style="display:none">BS</div>
-    <div id="restac" class="boxrestaliv" style="display:none">C</div>
-    <div id="restacs" class="boxrestaliv" style="display:none">CS</div>
-    <div id="restad" class="boxrestaliv" style="display:none">D</div>
-    <div id="restads" class="boxrestaliv" style="display:none">DS</div>
-    <div id="restau" class="boxrestaliv" style="display:none">Livello Unico</div>
-
     <div class="box" id="boxDurataContratto" onclick="toggleChoices('durata');">
         Seleziona Durata Contratto
         <div id="durata" class="choices">
-            <button id="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');restatempo('ind');accendiopzioni();scelto('boxDurataContratto');">Indeterminato</button>
-            <button id="determinato" onclick="selectChoice('Contratto', 'determinato');restatempo('det');accendiopzioni();scelto('boxDurataContratto');">Determinato</button>
-            <button id="determinatoinsostituzione" onclick="selectChoice('Contratto', 'determinato in sostituzione');restatempo('detsost');accendiopzioni();scelto('boxDurataContratto');">Determinato in Sostituzione</button>
+            <button id="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');accendiopzioni();scelto('boxDurataContratto','Indeterminato');">Indeterminato</button>
+            <button id="determinato" onclick="selectChoice('Contratto', 'determinato');accendiopzioni();scelto('boxDurataContratto','Determinato');">Determinato</button>
+            <button id="determinatoinsostituzione" onclick="selectChoice('Contratto', 'determinato in sostituzione');accendiopzioni();scelto('boxDurataContratto','Determinato in sostituzione');">Determinato in Sostituzione</button>
         </div>
     </div>
-    <div id="restaind" class="boxrestatempo" style="display:none">Indeterminato</div>
-    <div id="restadet" class="boxrestatempo" style="display:none">Determinato</div>
-    <div id="restadetsost" class="boxrestatempo" style="display:none">Determinato in Sostituzione</div>
-    </div>
+  </div>
     <div id="orariodilavoro">
         <div class="contenitore-flex">
             <span class="cerchio">2</span>
@@ -281,7 +262,7 @@
             €
             <br>
         </div>
-
+            
         <div class="selection-container" id="InputpagaBoxmese" style="display:none;">
             <br>
             <label>Paga mensile del lavoratore :</label>
@@ -292,34 +273,34 @@
         <br>
         <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
             <span class="informativa">
-                <span class="circle">i</span>
-                <span class="tooltip">Il vitto e l'alloggio se non sono forniti in natura si applicano delle indennità aggiuntive</span>
+                    <span class="circle">i</span>
+                    <span class="tooltip">Il vitto e l'alloggio se non sono forniti in natura si applicano delle indennità aggiuntive</span>
             </span>
             <label>Vitto e Alloggio sono in natura?</label>
-            <input type="checkbox" id="vittoAlloggioCheckbox" onclick="selectVittoAlloggio()" checked> 
+                    <input type="checkbox" id="vittoAlloggioCheckbox" onclick="selectVittoAlloggio()" checked>
             <br><br>
         </div>
-        
+    
         <div class="selection-container" id="specificaVittoAlloggioBox" style="display:none;">
             <span class="informativa">
-                <span class="circle">i</span>
-                <span class="tooltip">Il pranzo/colazione se non fornito in natura sono 2,28€ al giorno</span>
+                    <span class="circle">i</span>
+                    <span class="tooltip">Il pranzo/colazione se non fornito in natura sono 2,28€ al giorno</span>
             </span>
             <label>
                 <input type="checkbox" name="specificaVittoAlloggio" value="pranzo/colazione" onclick="selectvariabiliVittoAlloggio('pranzo/colazione', this.checked ? 'si' : 'no')"> Indennità Pranzo/Colazione
             </label>
-            <br>
+                    <br>
             <span class="informativa">
-                <span class="circle">i</span>
-                <span class="tooltip">La cena se non fornita in natura è 2,28€ al giorno</span>
+                    <span class="circle">i</span>
+                    <span class="tooltip">La cena se non fornita in natura è 2,28€ al giorno</span>
             </span>
             <label>
                 <input type="checkbox" name="specificaVittoAlloggio" value="cena" onclick="selectvariabiliVittoAlloggio('cena', this.checked ? 'si' : 'no')"> Indennità Cena
             </label>
-            <br>
+                    <br>
             <span class="informativa">
-                <span class="circle">i</span>
-                <span class="tooltip">L'alloggio se non fornito in natura è 1,96€ al giorno</span>
+                    <span class="circle">i</span>
+                    <span class="tooltip">L'alloggio se non fornito in natura è 1,96€ al giorno</span>
             </span>
             <label>
                 <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectvariabiliVittoAlloggio('alloggio', this.checked ? 'si' : 'no')"> Indennità Alloggio
@@ -329,40 +310,40 @@
         <div class="selection-container" id="bambinoBox" style="display:none;">
             <br>
             <span class="informativa">
-                <span class="circle">i</span>
+                    <span class="circle">i</span>
                 <span class="tooltip">Dal 1° ottobre 2020 cambiano le regole e per le baby sitter chiamate ad occuparsi di bambini sotto ai 6 anni di età è prevista un indennità specifica.
-                    <br>- se il lavoratore è convivente full-time l'indennità è di 130,78€ mensili
-                    <br>- se il lavoratore è convivente part-time l'indennità è di 91,63€ mensili 
+                        <br>- se il lavoratore è convivente full-time l'indennità è di 130,78€ mensili
+                        <br>- se il lavoratore è convivente part-time l'indennità è di 91,63€ mensili 
                     <br>- se il lavoratore non è convivente l'indennità è di 0,79€ orari</span>
-            </span>
+                    </span>
             <label>Il bambino è entro i 6 anni di età?</label>
-            <input type="checkbox" id="bambinoCheckbox" onclick="selectBambino()"> 
+                    <input type="checkbox" id="bambinoCheckbox" onclick="selectBambino()">
             <br></br>
         </div>
-        
+            
         <div class="selection-container" id="certificatoBox" style="display:none;">
             <span class="informativa">
-                <span class="circle">i</span>
-                <span class="tooltip">Se il lavoratore è in possesso della certificazione di qualità di cui alla norma tecnica UNI 11766:2019 in corso di validità dal 01.10.2021 ha diritto ad una speciale indennità
-                    <br>- se il livello del lavoratore è BS , CS l'indennità è di 11,30€ mensili
-                    <br>- se il livello del lavoratore è B , l'indennità è di 9,04€ mensili
-                </span>
+                    <span class="circle">i</span>
+                    <span class="tooltip">Se il lavoratore è in possesso della certificazione di qualità di cui alla norma tecnica UNI 11766:2019 in corso di validità dal 01.10.2021 ha diritto ad una speciale indennità
+                        <br>- se il livello del lavoratore è BS , CS l'indennità è di 11,30€ mensili
+                        <br>- se il livello del lavoratore è B , l'indennità è di 9,04€ mensili
+                    </span>
             </span>
             <label>Il lavoratore ha il certificato  UNI1176 valido?</label>
-            <input type="checkbox" id="certificatoCheckbox" onclick="selectCertificato()"> 
+                    <input type="checkbox" id="certificatoCheckbox" onclick="selectCertificato()">
             <br></br>
         </div>
-        
+            
         <div class="selection-container" id="autosufficientiBox" style="display:none;">
             <span class="informativa">
-                <span class="circle">i</span>
-                <span class="tooltip">Dal 1 ottobre 2020 il CCNL prevede che se si assiste più persone non autosufficienti ha diritto ad una speciale indennità. 
+                    <span class="circle">i</span>
+                    <span class="tooltip">Dal 1 ottobre 2020 il CCNL prevede che se si assiste più persone non autosufficienti ha diritto ad una speciale indennità. 
                     <br> - se il lavoratore è convivente l'indennità è di 112,97€ mensili
                     <br> - se il lavoratore non è convivente l'indennità è di 0,66€ orari
-                </span>
+                    </span>
             </span>
             <label>Il lavoratore si occupa di più persone non autosufficienti?</label>
-            <input type="checkbox" id="autosufficientiCheckbox" onclick="selectAutosuff()"> 
+                    <input type="checkbox" id="autosufficientiCheckbox" onclick="selectAutosuff()">
         </div>
     </div>
     
