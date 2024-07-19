@@ -136,11 +136,18 @@ h1 {
     font-size:medium;
     margin-bottom: 0;
     border-radius: 30px;
-
 }
+
+.box.blu-bg {
+    background-color: var(--blubaze) rgba(0, 71, 169, 0.1);  /* Colore di sfondo quando cliccato */
+    color: black; /* Testo bianco per contrastare il blu */
+}
+
+
+
 .boxrestaliv {
     border-style:double;
-    border: 2px solid var(--giallobaze);
+    border: 1px solid white ;
     background-color: var(--blubaze) ;
     color: whitesmoke;
     padding: 15px;
@@ -153,7 +160,7 @@ h1 {
 }
 .boxrestatipo {
     border-style:double;
-    border: 2px solid var(--giallobaze);
+    border: 1px solid white;
     background-color: var(--blubaze) ;
     color: whitesmoke;
     padding: 15px;
@@ -166,7 +173,7 @@ h1 {
 }
 .boxrestatempo {
     border-style:double;
-    border: 2px solid var(--giallobaze);
+    border: 1px solid white;
     background-color: var(--blubaze) ;
     color: whitesmoke;
     padding: 15px;

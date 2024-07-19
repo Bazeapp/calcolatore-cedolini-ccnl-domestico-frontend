@@ -18,30 +18,30 @@
         <h2>Seleziona tipologia contrattuale</h2>
         <br>
     </div>
-        <div class="box" onclick="toggleChoices('choices1');">
-            Seleziona Tipo  Contratto
-            <div id="choices1" class="choices">
-                <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');restatipo('nc');accendiopzioni()">Non-Convivente</button>
-                <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');restatipo('ft');accendiopzioni()">Convivente Full-Time</button>
-                <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');restatipo('pt');accendiopzioni()">Convivente Part-Time</button>
-                <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');restatipo('so');accendiopzioni()">Sostituzione Lavoratori in Riposo</button>
-                <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');restatipo('an');accendiopzioni()">Convivente Assistenza Notturna</button>
-                <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');restatipo('pn');accendiopzioni()">Convivente Presenza Notturna</button>
-            </div>
+    <div class="box" id="boxTipoContratto" onclick="toggleChoices('choices1');">
+        Seleziona Tipo Contratto
+        <div id="choices1" class="choices">
+            <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');restatipo('nc');accendiopzioni();scelto('boxTipoContratto');">Non-Convivente</button>
+            <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');restatipo('ft');accendiopzioni();scelto('boxTipoContratto');">Convivente Full-Time</button>
+            <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');restatipo('pt');accendiopzioni();scelto('boxTipoContratto');">Convivente Part-Time</button>
+            <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');restatipo('so');accendiopzioni();scelto('boxTipoContratto');">Sostituzione Lavoratori in Riposo</button>
+            <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');restatipo('an');accendiopzioni();scelto('boxTipoContratto');">Convivente Assistenza Notturna</button>
+            <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');restatipo('pn');accendiopzioni();scelto('boxTipoContratto');">Convivente Presenza Notturna</button>
+        </div>
     </div>
 
-    <div id="restanc" class="boxrestatipo" style="display:none" >Non-Convivente</div>
-    <div id="restaft" class="boxrestatipo" style="display:none" >Convivente Full-Time</div>
-    <div id="restapt" class="boxrestatipo" style="display:none" >Convivente Part-Time</div>
-    <div id="restaso" class="boxrestatipo" style="display:none" >Sostituzione Lavoratori in Riposo</div>
-    <div id="restaan" class="boxrestatipo" style="display:none" >Convivente Assistenza Notturna</div>
-    <div id="restapn" class="boxrestatipo" style="display:none" >Convivente Presenza Notturna</div>
+    <div id="restanc" class="boxrestatipo" style="display:none">Non-Convivente</div>
+    <div id="restaft" class="boxrestatipo" style="display:none">Convivente Full-Time</div>
+    <div id="restapt" class="boxrestatipo" style="display:none">Convivente Part-Time</div>
+    <div id="restaso" class="boxrestatipo" style="display:none">Sostituzione Lavoratori in Riposo</div>
+    <div id="restaan" class="boxrestatipo" style="display:none">Convivente Assistenza Notturna</div>
+    <div id="restapn" class="boxrestatipo" style="display:none">Convivente Presenza Notturna</div>
 
-    <div class="box" onclick="toggleChoices('livello'); sceltalivello();triggerAnimation()">
+    <div class="box" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltalivello();triggerAnimation()">
         Seleziona Livello Contratto
         <div id="livello" class="choices">
             <div id="a" style="display:none">
-                <button onclick="selectChoice('Livello','a');sceglipaga();restalivello('a');accendiopzioni()">
+                <button onclick="selectChoice('Livello','a');sceglipaga();restalivello('a');accendiopzioni();scelto('boxLivelloContratto');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -54,12 +54,12 @@
                             <br>- Assistente ad animali domestici
                             <br>- Addetto alla pulizia e annaffiatura aree verdi
                             <br>- Operaio comune per pulizie e piccola manutenzione
-                            </span>    
-                        </span>
-                    A</button>
+                        </span>    
+                    </span>
+                A</button>
             </div>
             <div id="as" style="display:none">    
-                <button onclick="selectChoice('Livello','as');sceglipaga();restalivello('as');accendiopzioni()">
+                <button onclick="selectChoice('Livello','as');sceglipaga();restalivello('as');accendiopzioni();scelto('boxLivelloContratto');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -70,7 +70,7 @@
                     AS</button>
             </div>
             <div id="b" style="display:none">
-                <button onclick="selectChoice('Livello', 'b');sceglipaga();restalivello('b');accendiopzioni()">
+                <button onclick="selectChoice('Livello', 'b');sceglipaga();restalivello('b');accendiopzioni();scelto('boxLivelloContratto');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -89,7 +89,7 @@
                     B</button>
             </div>   
             <div id="bs" style="display:none"> 
-                <button onclick="selectChoice('Livello', 'bs');sceglipaga();restalivello('bs');accendiopzioni()">
+                <button onclick="selectChoice('Livello', 'bs');sceglipaga();restalivello('bs');accendiopzioni();scelto('boxLivelloContratto');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -100,7 +100,7 @@
                     BS</button>
             </div>
             <div id="c" style="display:none">
-                <button onclick="selectChoice('Livello', 'c');sceglipaga(),restalivello('c');accendiopzioni()">
+                <button onclick="selectChoice('Livello', 'c');sceglipaga(),restalivello('c');accendiopzioni();scelto('boxLivelloContratto');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -111,7 +111,7 @@
                     C</button>
             </div>
             <div id="cs" style="display:none">
-                <button onclick="selectChoice('Livello', 'cs');sceglipaga();restalivello('cs');accendiopzioni()">
+                <button onclick="selectChoice('Livello', 'cs');sceglipaga();restalivello('cs');accendiopzioni();scelto('boxLivelloContratto');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -121,7 +121,7 @@
                     CS</button>
             </div>
             <div id="d" style="display:none"> 
-                <button onclick="selectChoice('Livello', 'd');sceglipaga();restalivello('d');accendiopzioni()">
+                <button onclick="selectChoice('Livello', 'd');sceglipaga();restalivello('d');accendiopzioni();scelto('boxLivelloContratto');">
                     <span class="informativa">
                         <span class="circle">i</span>
                         <span class="tooltip">
@@ -129,15 +129,16 @@
                         <br>- Amministratore beni di famiglia: Gestisce il patrimonio familiare.
                         <br>- Maggiordomo: Coordina i servizi per la vita familiare.
                         <br>- Governante: Coordina attività di cameriere, stireria, lavanderia e guardaroba.
-                        <br>- Capo cuoco: Coordina la preparazione dei cibi e le attività della cucina.
-                        <br>- Capo giardiniere: Coordina la cura e manutenzione delle aree verdi.
-                        <br>- Istitutore: Istruisce ed educa i membri della famiglia.
+                        <br>- Capo cuoco: Dirige la cucina, approvvigionamento, preparazione e servizio.
+                        <br>- Istitutore: Assiste persone autosufficienti, cura l'igiene personale, la vestizione, il vitto e la pulizia della casa.
+                        <br>- Direttore di casa: Organizza e gestisce le esigenze della famiglia.
+                        <br>- Amministratore del patrimonio familiare: Gestisce amministrativamente il patrimonio familiare.
                         </span>
                         </span>
-                        D</button>
+                    D</button>
             </div>
             <div id="ds" style="display:none">
-                <button onclick="selectChoice('Livello', 'ds');sceglipaga();restalivello('ds');accendiopzioni()">
+                <button onclick="selectChoice('Livello', 'ds');sceglipaga();restalivello('ds');accendiopzioni();scelto('boxLivelloContratto');">
                     <span class="informativa">
                     <span class="circle">i</span>
                     <span class="tooltip">
@@ -149,35 +150,33 @@
                     DS</button>
             </div>   
             <div id="u" style="display:none">
-                <button onclick="selectChoice('Livello', 'u');sceglipaga();restalivello('u');accendiopzioni()">LivelloUnico</button>
+                <button onclick="selectChoice('Livello', 'u');sceglipaga();restalivello('u');accendiopzioni();scelto('boxLivelloContratto');">LivelloUnico</button>
             </div>  
         </div>
     </div>
 
-    <div id="restaa" class="boxrestaliv" style="display:none" >A</div>
-    <div id="restaas" class="boxrestaliv" style="display:none" >AS</div>
-    <div id="restab" class="boxrestaliv" style="display:none" >B</div>
-    <div id="restabs" class="boxrestaliv" style="display:none" >BS</div>
-    <div id="restac" class="boxrestaliv" style="display:none" >C</div>
-    <div id="restacs" class="boxrestaliv" style="display:none" >CS</div>
-    <div id="restad" class="boxrestaliv" style="display:none" >D</div>
-    <div id="restads" class="boxrestaliv" style="display:none" >DS</div>
-    <div id="restau" class="boxrestaliv" style="display:none" >Livello Unico</div>
+    <div id="restaa" class="boxrestaliv" style="display:none">A</div>
+    <div id="restaas" class="boxrestaliv" style="display:none">AS</div>
+    <div id="restab" class="boxrestaliv" style="display:none">B</div>
+    <div id="restabs" class="boxrestaliv" style="display:none">BS</div>
+    <div id="restac" class="boxrestaliv" style="display:none">C</div>
+    <div id="restacs" class="boxrestaliv" style="display:none">CS</div>
+    <div id="restad" class="boxrestaliv" style="display:none">D</div>
+    <div id="restads" class="boxrestaliv" style="display:none">DS</div>
+    <div id="restau" class="boxrestaliv" style="display:none">Livello Unico</div>
 
-
-    <div class="box" onclick="toggleChoices('durata');">
-        Seleziona Durata  Contratto
+    <div class="box" id="boxDurataContratto" onclick="toggleChoices('durata');">
+        Seleziona Durata Contratto
         <div id="durata" class="choices">
-            <button id="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');restatempo('ind');accendiopzioni()">Indeterminato</button>
-            <button id="determinato" onclick="selectChoice('Contratto', 'determinato');restatempo('det');accendiopzioni()">Determinato</button>
-            <button id="determinatoinsostituzione" onclick="selectChoice('Contratto', 'determinato in sostituzione');restatempo('detsost');accendiopzioni()">Determinato in Sostituzione</button>
-            </div>
+            <button id="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');restatempo('ind');accendiopzioni();scelto('boxDurataContratto');">Indeterminato</button>
+            <button id="determinato" onclick="selectChoice('Contratto', 'determinato');restatempo('det');accendiopzioni();scelto('boxDurataContratto');">Determinato</button>
+            <button id="determinatoinsostituzione" onclick="selectChoice('Contratto', 'determinato in sostituzione');restatempo('detsost');accendiopzioni();scelto('boxDurataContratto');">Determinato in Sostituzione</button>
+        </div>
     </div>
-    <div id="restaind" class="boxrestatempo" style="display:none" >Indeterminato</div>
-    <div id="restadet" class="boxrestatempo" style="display:none" >Determinato</div>
-    <div id="restadetsost" class="boxrestatempo" style="display:none" >Determinato in Sostituzione</div>
+    <div id="restaind" class="boxrestatempo" style="display:none">Indeterminato</div>
+    <div id="restadet" class="boxrestatempo" style="display:none">Determinato</div>
+    <div id="restadetsost" class="boxrestatempo" style="display:none">Determinato in Sostituzione</div>
     </div>
-    
     <div id="orariodilavoro">
         <div class="contenitore-flex">
             <span class="cerchio">2</span>
@@ -325,6 +324,7 @@
             <label>
                 <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectvariabiliVittoAlloggio('alloggio', this.checked ? 'si' : 'no')"> Indennità Alloggio
             </label>
+            <br>
         </div>
         <div class="selection-container" id="bambinoBox" style="display:none;">
             <br>

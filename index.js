@@ -303,7 +303,12 @@ function selectChoice(category, choice) {
             alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
         }
     }
-    
+              // quando si scegli tipo/livello/durata contratto allora il box diventa trasparente
+                function scelto(boxId) {
+                    const box = document.getElementById(boxId);
+                    box.classList.add('blu-bg');
+                }
+
 
 
             // variabili per la paga
@@ -514,7 +519,7 @@ function salvaPaga(event) {
     var pagaValue = parseFloat(pagaInput.value);
     var placeholderValue = parseFloat(pagaInput.placeholder);
 
-    // Controlla se il valore supera il limite
+    // Controlla se il valore supera il limite o non è un numero valido
     if (pagaValue > 4000 || isNaN(pagaValue)) {
         alert("Inserisci un valore valido per la paga.");
         resetPaga(pagaInput);
@@ -525,7 +530,16 @@ function salvaPaga(event) {
     document.getElementById('paga-netta').innerText = paga + ' €';
 }
 
-//funzione per resettare la paga quando si inserisce un valore non valido
+function formatPaga(event) {
+    var pagaInput = event.target;
+    var pagaValue = parseFloat(pagaInput.value);
+
+    if (!isNaN(pagaValue)) {
+        pagaInput.value = pagaValue.toFixed(2);
+    }
+}
+
+// Funzione per resettare la paga quando si inserisce un valore non valido
 function resetPaga(inputElement) {
     paga = 0;
     inputElement.value = inputElement.placeholder;
@@ -537,6 +551,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var inputPagaMese = document.getElementById('InputpagaMese');
     inputPagaOra.addEventListener('input', salvaPaga);
     inputPagaMese.addEventListener('input', salvaPaga);
+
+    inputPagaOra.addEventListener('blur', formatPaga);
+    inputPagaMese.addEventListener('blur', formatPaga);
 
     // Quando la pagina è caricata, imposta il valore della paga al placeholder se l'input è vuoto
     if (!inputPagaOra.value) {
@@ -911,6 +928,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Certificato UNI1176': null,
                 'Autosufficienti': null
             };
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach(box => {
+                box.classList.remove('blu-bg');
+            });
+        
         
             document.getElementById('selectedItems').innerHTML = '';
             document.getElementById('result').innerHTML = '';
