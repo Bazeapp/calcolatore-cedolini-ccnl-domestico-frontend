@@ -533,11 +533,16 @@ function salvaPaga(event) {
 function formatPaga(event) {
     var pagaInput = event.target;
     var pagaValue = parseFloat(pagaInput.value);
+    var placeholderValue = parseFloat(pagaInput.placeholder);
 
-    if (!isNaN(pagaValue)) {
+    // Se il valore è inferiore al placeholder, resetta al placeholder
+    if (!isNaN(placeholderValue) && pagaValue < placeholderValue) {
+        pagaInput.value = placeholderValue.toFixed(2);
+    } else if (!isNaN(pagaValue)) {
         pagaInput.value = pagaValue.toFixed(2);
     }
 }
+
 
 // Funzione per resettare la paga quando si inserisce un valore non valido
 function resetPaga(inputElement) {
