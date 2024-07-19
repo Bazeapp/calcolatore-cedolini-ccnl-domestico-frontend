@@ -461,7 +461,7 @@ button:hover {
     border-radius: 5px;
     padding: 10px;
     position: absolute;
-    z-index: 1;
+    z-index: 999;
     bottom: 125%; /* Posiziona sopra l'icona */
     left: 50%;
     transform: translateX(-50%);
