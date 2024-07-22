@@ -288,20 +288,21 @@ function selectChoice(category, choice) {
 
     function cambiotipo(nuovo){
         if(tipocontrattoselezionato!=nuovo){
-            const livelli = document.querySelectorAll('.boxrestaliv');
-            livelli.forEach(livello => {
-             livello.style.display = 'none';
-            });
-            const durati = document.querySelectorAll('.boxrestatempo');
-            durati.forEach(durato => {
-             durato.style.display = 'none';
-            });
             livellocontrattoselezionato="";
             duratacontrattoselezionato="";
+            const boxlivello2 = document.getElementById('boxLivelloContratto');
+            boxlivello2.firstChild.textContent = 'Seleziona Livello Contratto'; 
+            const boxdurata2 = document.getElementById('boxDurataContratto');
+            boxdurata2.firstChild.textContent = 'Seleziona Durata Contratto'; 
             alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
+            
         }
     }
-    
+              // quando si scegli tipo/livello/durata contratto allora il box cambia scritta
+              function scelto(boxId, newText) {
+                const box = document.getElementById(boxId);
+                box.firstChild.textContent = newText; // Cambia il testo del box
+            }
 
 
             // variabili per la paga
@@ -441,70 +442,7 @@ function sceglipaga() {
         }
     }
 }
-//funzione per mostrare il livello scelto
-function restalivello(acceso){
-    const elementi = document.querySelectorAll('.boxrestaliv');
-    // Itera su ciascun elemento e imposta display: none
-    elementi.forEach(elemento => {
-        elemento.style.display = 'none';
-    });
-    if (acceso==="a")
-        document.getElementById('restaa').style.display="block";
-    if (acceso==="as")
-        document.getElementById('restaas').style.display="block";
-    if (acceso==="b")
-        document.getElementById('restab').style.display="block";
-    if (acceso==="bs")
-        document.getElementById('restabs').style.display="block";
-    if (acceso==="c")
-        document.getElementById('restac').style.display="block";
-    if (acceso==="cs")
-        document.getElementById('restacs').style.display="block";
-    if (acceso==="d")
-        document.getElementById('restad').style.display="block";
-    if (acceso==="ds")
-        document.getElementById('restads').style.display="block";
-    if (acceso==="u")
-        document.getElementById('restau').style.display="block";
-}
 
-//funzione per mostrare il tipocontratto scelto
-function restatipo(acceso){
-    const elementi2 = document.querySelectorAll('.boxrestatipo');
-    // Itera su ciascun elemento e imposta display: none
-    elementi2.forEach(elemento => {
-        elemento.style.display = 'none';
-    });
-    if (acceso==="nc")
-        document.getElementById('restanc').style.display="block";
-    if (acceso==="ft")
-        document.getElementById('restaft').style.display="block";
-    if (acceso==="pt")
-        document.getElementById('restapt').style.display="block";
-    if (acceso==="so")
-        document.getElementById('restaso').style.display="block";
-    if (acceso==="an")
-        document.getElementById('restaan').style.display="block";
-    if (acceso==="pn")
-        document.getElementById('restapn').style.display="block";
-    
-}
-
-//funzione per mostrare il tipocontratto scelto
-function restatempo(acceso){
-    const elementi3 = document.querySelectorAll('.boxrestatempo');
-    // Itera su ciascun elemento e imposta display: none
-    elementi3.forEach(elemento => {
-        elemento.style.display = 'none';
-    });
-    if (acceso==="ind")
-        document.getElementById('restaind').style.display="block";
-    if (acceso==="det")
-        document.getElementById('restadet').style.display="block";
-    if (acceso==="detsost")
-        document.getElementById('restadetsost').style.display="block";
-    
-}
 
 //funzione per il salvataggio della paga inserita
 function salvaPaga(event) {
@@ -512,18 +450,32 @@ function salvaPaga(event) {
     var pagaValue = parseFloat(pagaInput.value);
     var placeholderValue = parseFloat(pagaInput.placeholder);
 
-    // Controlla se il valore supera il limite
+    // Controlla se il valore supera il limite o non è un numero valido
     if (pagaValue > 4000 || isNaN(pagaValue)) {
         alert("Inserisci un valore valido per la paga.");
         resetPaga(pagaInput);
         return;
     }
 
-    paga = pagaValue;
+    paga = pagaValue.toFixed(2);
     document.getElementById('paga-netta').innerText = paga + ' €';
 }
 
-//funzione per resettare la paga quando si inserisce un valore non valido
+function formatPaga(event) {
+    var pagaInput = event.target;
+    var pagaValue = parseFloat(pagaInput.value);
+    var placeholderValue = parseFloat(pagaInput.placeholder);
+
+    // Se il valore è inferiore al placeholder, resetta al placeholder
+    if (!isNaN(placeholderValue) && pagaValue < placeholderValue) {
+        pagaInput.value = placeholderValue.toFixed(2);
+    } else if (!isNaN(pagaValue)) {
+        pagaInput.value = pagaValue.toFixed(2);
+    }
+}
+
+
+// Funzione per resettare la paga quando si inserisce un valore non valido
 function resetPaga(inputElement) {
     paga = 0;
     inputElement.value = inputElement.placeholder;
@@ -535,6 +487,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var inputPagaMese = document.getElementById('InputpagaMese');
     inputPagaOra.addEventListener('input', salvaPaga);
     inputPagaMese.addEventListener('input', salvaPaga);
+
+    inputPagaOra.addEventListener('blur', formatPaga);
+    inputPagaMese.addEventListener('blur', formatPaga);
 
     // Quando la pagina è caricata, imposta il valore della paga al placeholder se l'input è vuoto
     if (!inputPagaOra.value) {
@@ -909,6 +864,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Certificato UNI1176': null,
                 'Autosufficienti': null
             };
+         
+                const boxtipo = document.getElementById('boxTipoContratto');
+                boxtipo.firstChild.textContent = 'Seleziona Tipo Contratto'; 
+                const boxlivello = document.getElementById('boxLivelloContratto');
+                boxlivello.firstChild.textContent = 'Seleziona Livello Contratto'; 
+                const boxdurata = document.getElementById('boxDurataContratto');
+                boxdurata.firstChild.textContent = 'Seleziona Durata Contratto'; 
+           
+        
         
             document.getElementById('selectedItems').innerHTML = '';
             document.getElementById('result').innerHTML = '';
@@ -936,21 +900,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('nuovocalcolo').style.display = 'block';
             document.getElementById('opzioniaggiuntive').style.display='none';
 
-            // Nascondi il tipo e livello e Tempo scelti
-            const elementiLiv = document.querySelectorAll('.boxrestaliv');
-            elementiLiv.forEach(elemento => {
-                elemento.style.display = 'none';
-            });
-
-            const elementiTipo = document.querySelectorAll('.boxrestatipo');
-            elementiTipo.forEach(elemento => {
-                elemento.style.display = 'none';
-            });
-
-            const elementiTempo = document.querySelectorAll('.boxrestatempo');
-            elementiTempo.forEach(elemento => {
-                elemento.style.display = 'none';
-            });
+  
             
             // Reset input values
             var inputPagaOra = document.getElementById('InputpagaOra');
