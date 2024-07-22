@@ -292,7 +292,12 @@ function selectChoice(category, choice) {
         if(tipocontrattoselezionato!=nuovo){
             livellocontrattoselezionato="";
             duratacontrattoselezionato="";
+            const boxlivello2 = document.getElementById('boxLivelloContratto');
+            boxlivello2.firstChild.textContent = 'Seleziona Livello Contratto'; 
+            const boxdurata2 = document.getElementById('boxDurataContratto');
+            boxdurata2.firstChild.textContent = 'Seleziona Durata Contratto'; 
             alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
+            
         }
     }
               // quando si scegli tipo/livello/durata contratto allora il box cambia scritta
@@ -861,10 +866,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Certificato UNI1176': null,
                 'Autosufficienti': null
             };
-            const boxes = document.querySelectorAll('.box');
-            boxes.forEach(box => {
-                box.classList.remove('blu-bg');
-            });
+         
+                const boxtipo = document.getElementById('boxTipoContratto');
+                boxtipo.firstChild.textContent = 'Seleziona Tipo Contratto'; 
+                const boxlivello = document.getElementById('boxLivelloContratto');
+                boxlivello.firstChild.textContent = 'Seleziona Livello Contratto'; 
+                const boxdurata = document.getElementById('boxDurataContratto');
+                boxdurata.firstChild.textContent = 'Seleziona Durata Contratto'; 
+           
         
         
             document.getElementById('selectedItems').innerHTML = '';
@@ -893,21 +902,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('nuovocalcolo').style.display = 'block';
             document.getElementById('opzioniaggiuntive').style.display='none';
 
-            // Nascondi il tipo e livello e Tempo scelti
-            const elementiLiv = document.querySelectorAll('.boxrestaliv');
-            elementiLiv.forEach(elemento => {
-                elemento.style.display = 'none';
-            });
-
-            const elementiTipo = document.querySelectorAll('.boxrestatipo');
-            elementiTipo.forEach(elemento => {
-                elemento.style.display = 'none';
-            });
-
-            const elementiTempo = document.querySelectorAll('.boxrestatempo');
-            elementiTempo.forEach(elemento => {
-                elemento.style.display = 'none';
-            });
+  
             
             // Reset input values
             var inputPagaOra = document.getElementById('InputpagaOra');
