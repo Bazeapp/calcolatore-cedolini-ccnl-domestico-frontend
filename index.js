@@ -459,7 +459,7 @@ function salvaPaga(event) {
         return;
     }
 
-    paga = pagaValue;
+    paga = pagaValue.toFixed(2);
     document.getElementById('paga-netta').innerText = paga + ' €';
 }
 
