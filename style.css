@@ -237,6 +237,8 @@ input[type="number"] {
     width: 50px;
 }
 
+
+/* Modifiche alla checkbox*/
 input[type="checkbox"] {
     margin-right: 10px;
     width: 20px;
@@ -249,7 +251,6 @@ input[type="checkbox"] {
     outline: none;
     transition: background-color 0.3s, border-color 0.3s;
 }
-
 input[type="checkbox"]::after {
     content: '';
     position: absolute; 
@@ -262,16 +263,13 @@ input[type="checkbox"]::after {
     transform: translate(-50%, -50%) rotate(45deg) scale(0);
     transition: transform 0.3s;
 }
-
 input[type="checkbox"]:checked {
     border-color: black;
     background-color: var(--giallobaze);
 }
-
 input[type="checkbox"]:checked::after {
     transform: translate(-50%, -50%) rotate(45deg) scale(1.5);
 }
-
 input[type="checkbox"]:hover {
     border-color: var(--giallobaze);
 }
@@ -435,7 +433,7 @@ button:hover {
     display:inline-block;
     cursor: pointer;
     color: var(--blubaze);
-    margin-right: 1em;
+    margin-right: 1rem;
 
     float: inline-start;
     animation: rimbalzo 2s ; /* Applica l'animazione */    
@@ -504,11 +502,7 @@ button:hover {
 
 
   /* Stile per gli elementi all'interno delle label */
-  #opzioniaggiuntive-label input {
-    margin: 0; 
-    width: 100%;
-    padding: 0; 
-  }
+
 
   #opzioniaggiuntive input[type="number"] {
     width: max-content; 
@@ -537,11 +531,6 @@ button:hover {
 
 
   
-  #opzioniaggiuntive label {
-    display: inline-flex; /* Mostra il label e l'input checkbox in una riga */
-    align-items: center; /* Allinea verticalmente gli elementi */
-  }
-  
   #calcolatore {
     display: flex;
     flex-direction: column;
@@ -563,23 +552,26 @@ button:hover {
 #simulazione,
 #orariodilavoro,
 #opzioniaggiuntive {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    border-radius: 40px;
-    border: 1px solid var(--blubaze);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 6px 6px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(190deg, white, #f0f8ff);
-    padding: 20px;
-    width: 100%;
-    overflow: visible;
-    margin: auto;
-    margin-top: 2em;
-    margin-bottom: 2em;
-    text-align: center; /* Assicura che il testo sia centrato */
-    max-width: 100%;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        border-radius: 40px;
+        border: 1px solid var(--blubaze);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 6px 6px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(190deg, white, #f0f8ff);
+        padding: 20px;
+        width: 100%;
+        overflow: visible;
+        margin: auto;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        text-align: center; /* Assicura che il testo sia centrato */
+        max-width: 100%;
+      
+    
 }
 
 
@@ -650,23 +642,34 @@ button:hover {
 #nuovocalcolo{
     display: none;
 }
-#opzioniaggiuntive {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: left;
-}
+
+
 
 #opzioniaggiuntive .selection-container {
     width: 100%;
-    max-width: 500px; 
-    margin: 0 auto;
+    margin: auto;
+    box-sizing: border-box; /* Assicura che padding e bordo siano inclusi nella larghezza */
+    padding: 0; /* Rimuove eventuali padding */
 }
+
+#opzioniaggiuntive .selection-container * {
+    box-sizing: border-box; /* Assicura che padding e bordo siano inclusi nella larghezza per tutti gli elementi all'interno */
+}
+
+
+
 #opzioniaggiuntive h2{
     text-align: center;
 }
  
+#opzioniaggiuntive label {
+    display: math; /* Mostra il label e l'input checkbox in una riga */
+  }
 
+  #specificaVittoAlloggioBox label{
+    white-space: normal;
+    display: -webkit-flex;
+  }  
 
 /* CSS per schermo piccolo */
 @media screen and (max-width: 700px) {
@@ -678,6 +681,7 @@ button:hover {
       }
       #autosufficientiBox label{
       white-space: normal;
+      
       }
       #certificatoBox label{
         white-space: normal;
