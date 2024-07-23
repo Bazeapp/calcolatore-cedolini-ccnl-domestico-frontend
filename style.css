@@ -356,12 +356,33 @@ button {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Ombra iniziale */
     cursor: pointer; /* Cambia il cursore al passaggio del mouse */
 }
-
-.cerchio:hover {
-    transform: scale(1.5);
-    box-shadow: 0 15px 25px  rgba(0, 0, 0, 0.3);
-    background-color: #ff7518; /* Cambia il colore di sfondo al passaggio del mouse */
+.box {
+    position: relative; /* Aggiungi questa linea */
+    margin: 2rem; /* Per evitare che l'elemento fluttui fuori dalla visualizzazione */
+    padding: 1rem; /* Aggiungi un po' di padding se necessario */
+    border: 1px solid #ccc; /* Aggiungi un bordo per vedere chiaramente il box */
 }
+
+.cerchio2 {
+    width: 40px; /* Riduce le dimensioni */
+    height: 40px; /* Riduce le dimensioni */
+    background-color: var(--giallobaze); /* Colore base arancione */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px; /* Riduce la dimensione del testo */
+    font-weight: bold;
+    color: black;
+    position: absolute; /* Posizione assoluta */
+    top: 50%; /* Centra verticalmente */
+    left: -50px; /* Sposta a sinistra del box */
+    transform: translateY(-50%); /* Centra perfettamente verticalmente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Ombra iniziale */
+    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+}
+
 
 button:hover {
     background-color: var(--giallobaze); /* Leggero effetto hover */

@@ -18,8 +18,9 @@
         <h2>Seleziona tipologia contrattuale</h2>
         <br>
     </div>
+     
     <div class="box" id="boxTipoContratto" onclick="toggleChoices('choices1');">
-        Seleziona Tipo Contratto
+        <span class="cerchio2">.1</span>Seleziona Tipo Contratto
         <div id="choices1" class="choices">
             <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');;accendiopzioni();scelto('boxTipoContratto', 'Non-Convivente');">Non-Convivente</button>
             <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Full-Time');">Convivente Full-Time</button>
@@ -30,9 +31,9 @@
         </div>
     </div>
     
-
+    
     <div class="box" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltalivello();triggerAnimation()">
-        Seleziona Livello Contratto
+        <span class="cerchio2">.2</span> Seleziona Livello Contratto
         <div id="livello" class="choices">
             <div id="a" style="display:none">
                 <button onclick="selectChoice('Livello','a');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','A');">
@@ -148,8 +149,9 @@
             </div>  
         </div>
     </div>
-
+    
     <div class="box" id="boxDurataContratto" onclick="toggleChoices('durata');">
+        <span class="cerchio2">.3</span> 
         Seleziona Durata Contratto
         <div id="durata" class="choices">
             <button id="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');accendiopzioni();scelto('boxDurataContratto','Indeterminato');">Indeterminato</button>
