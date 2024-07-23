@@ -644,6 +644,7 @@ const contractLimits = {
 };
 
 
+
 // Funzione per gestire il cambio del tipo di contratto
 function onTipoContrattoChange(newTipoContratto) {
     tipocontrattoselezionato = newTipoContratto;
@@ -655,10 +656,12 @@ function onTipoContrattoChange(newTipoContratto) {
 function resetHours() {
     const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
     days.forEach(day => {
-        document.getElementById(day).value = 0;
+        const input = document.getElementById(day);
+        input.value = 0;
+        updateButtonVisibility(day);
     });
-    document.getElementById('totalHours').value = 0;
-    document.getElementById('totalDays').value = 0;
+    document.getElementById('totalHours').textContent = 0;
+    document.getElementById('totalDays').textContent = 0;
 }
 
 // Funzione per l'incremento delle ore
@@ -670,6 +673,8 @@ function increaseHours(day) {
         if (!updateTotals()) {
             input.value = parseInt(input.value) - 1;
             updateTotals();
+        } else {
+            updateButtonVisibility(day);
         }
     }
 }
@@ -680,6 +685,7 @@ function decreaseHours(day) {
     if (input.value > 0) {
         input.value = parseInt(input.value) - 1;
         updateTotals();
+        updateButtonVisibility(day);
     }
 }
 
@@ -734,6 +740,17 @@ function updateTotals() {
     return true;
 }
 
+// Funzione per aggiornare la visibilità dei pulsanti
+function updateButtonVisibility(day) {
+    const input = document.getElementById(day);
+    const decreaseButton = input.previousElementSibling;
+    if (input.value == 0) {
+        decreaseButton.classList.add('hidden');
+    } else {
+        decreaseButton.classList.remove('hidden');
+    }
+}
+
 // Aggiungi event listener per gli eventi di input sugli input specifici delle ore giornaliere
 const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
 days.forEach(day => {
@@ -755,6 +772,7 @@ days.forEach(day => {
             this.value = 0; // Reset solo della casella problematica
             updateTotals();
         }
+        updateButtonVisibility(day);
     });
 
     // Aggiungi anche un event listener per l'evento change per garantire che i totali siano aggiornati correttamente
@@ -773,8 +791,16 @@ days.forEach(day => {
             this.value = 0; // Reset solo della casella problematica
             updateTotals();
         }
+        updateButtonVisibility(day);
     });
 });
+
+// Inizializza la visibilità dei pulsanti al caricamento della pagina
+window.onload = function() {
+    days.forEach(day => {
+        updateButtonVisibility(day);
+    });
+};
 
 // funzione per gestire i toolip e farli stare sempre dentro la pagina
 document.addEventListener('DOMContentLoaded', function() {
@@ -951,8 +977,16 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             var vittoAlloggioCheckbox = document.getElementById('vittoAlloggioCheckbox');
             vittoAlloggioCheckbox.checked = true;
+
+
+
+            // per nasocndere i meno nella tabella delle ore
+            resetHours();
         }
         
+
+        
+
         function resetTable() {
             const ids = [
                 "pagalorda-lavoratore", "paga-netta", "indennita-tot", "indennita-cibo", "paga-domenica",
