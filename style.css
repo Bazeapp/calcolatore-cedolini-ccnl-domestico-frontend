@@ -679,6 +679,9 @@ button:hover {
     #opzioniaggiuntive label {
         display: math; /* Mostra il label e l'input checkbox in una riga */
       }
+      #opzioniaggiuntive {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
       #autosufficientiBox label{
       white-space: normal;
       
