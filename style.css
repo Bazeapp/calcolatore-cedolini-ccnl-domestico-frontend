@@ -126,7 +126,6 @@ h1 {
 }
 
 
-
 .box {
     border: 1px solid var(--blubaze);
     background-color: var(--blubaze);
@@ -281,7 +280,31 @@ input[type="checkbox"]:hover {
     border-color: var(--giallobaze);
 }
 
-
+/* per il messaggio attendi*/
+@keyframes dots {
+    0% {
+        content: '';
+    }
+    33% {
+        content: '.';
+    }
+    66% {
+        content: '..';
+    }
+    100% {
+        content: '...';
+    }
+}
+#loadingMessage {
+    margin-top: 1em;
+    font-size: 1em;
+    font-weight: bold;
+    font-style: italic;
+}
+#dots::after {
+    content: '...';
+    animation: dots 1,5s steps(3, end) infinite;
+}
 
 
 

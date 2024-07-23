@@ -86,7 +86,10 @@ document.getElementById("annulla").addEventListener("click", function() {
 
     sendToWebhook(data);
     */
-   
+                //far vedere attendi... mentre si carica la tabella
+             document.getElementById('simulazione').style.display = 'block';
+             document.getElementById('loadingMessage').style.display = 'block';
+             document.getElementById('risultatisimulazione').style.display = 'none';
 
         try {
             const response = await fetch('https://europe-west3-baze-app-prod.cloudfunctions.net/calculator-ccnl', {
@@ -106,11 +109,15 @@ document.getElementById("annulla").addEventListener("click", function() {
             const result = await response.json();
             updateSimulazione(result);
             aprisimulazione();
+            document.getElementById('loadingMessage').style.display = 'none';
+            document.getElementById('risultatisimulazione').style.display='block';
             document.getElementById('nuovocalcolo').style.display = 'block';
+            
             
             console.log(result);
         } catch (error) {
             console.error('There was an error!', error);
+            document.getElementById('loadingMessage').style.display = 'none';
         }
     }); 
     
