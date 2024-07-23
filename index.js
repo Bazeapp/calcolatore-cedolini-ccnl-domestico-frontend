@@ -297,13 +297,18 @@ function selectChoice(category, choice) {
             const boxdurata2 = document.getElementById('boxDurataContratto');
             boxdurata2.firstChild.textContent = 'Seleziona Durata Contratto'; 
             alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
-            
+            // per rimuovere lo sfondo bianco dalle selezioni tipo contratto
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach(box => {
+            box.classList.remove('selected');
+            });
         }
     }
               // quando si scegli tipo/livello/durata contratto allora il box cambia scritta
               function scelto(boxId, newText) {
                 const box = document.getElementById(boxId);
                 box.firstChild.textContent = newText; // Cambia il testo del box
+                box.classList.add('selected'); // Cambia il colore di sfondo
             }
 
 
@@ -978,7 +983,11 @@ document.addEventListener('DOMContentLoaded', function() {
             var vittoAlloggioCheckbox = document.getElementById('vittoAlloggioCheckbox');
             vittoAlloggioCheckbox.checked = true;
 
-
+            // per rimuovere lo sfondo bianco dalle selezioni tipo contratto
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach(box => {
+                box.classList.remove('selected');
+            });
 
             // per nasocndere i meno nella tabella delle ore
             resetHours();
