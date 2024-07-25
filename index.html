@@ -9,27 +9,27 @@
 </head>
 <body>
     <div id="calcolatore">
-    <div class="grande"><h1>Calcolatore Costo Colf / Badanti</h1></div>
-    <div class="piccolo"><h1>Calcolatore Costo </h1> <h1> Colf / Badanti</h1></div>
-    <br>
-    <div id="selezionicontratto">    
-    <div class="contenitore-flex">
-        <span class="cerchio">1</span>
-        <h2>Seleziona tipologia contrattuale</h2>
+        <div class="grande"><h1>Calcolatore Costo Colf / Badanti</h1></div>
+        <div class="piccolo"><h1>Calcolatore Costo </h1> <h1> Colf / Badanti</h1></div>
         <br>
-    </div>
-     
-    <div class="box" id="boxTipoContratto" onclick="toggleChoices('choices1');">
-        <span class="cerchio2">.1</span>Seleziona Tipo Contratto
-        <div id="choices1" class="choices">
-            <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');;accendiopzioni();scelto('boxTipoContratto', 'Non-Convivente');">Non-Convivente</button>
-            <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Full-Time');">Convivente Full-Time</button>
-            <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Part-Time');">Convivente Part-Time</button>
-            <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');accendiopzioni();scelto('boxTipoContratto', 'Sostituzione Lavoratori in Riposo');">Sostituzione Lavoratori in Riposo</button>
-            <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Assistenza Notturna');">Convivente Assistenza Notturna</button>
-            <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Presenza Notturna');">Convivente Presenza Notturna</button>
-        </div>
-    </div>
+        <div id="selezionicontratto">    
+            <div class="contenitore-flex">
+                <span class="cerchio">1</span>
+                <h2>Seleziona tipologia contrattuale</h2>
+                <br>
+            </div>
+    
+            <div class="box" id="boxTipoContratto" onclick="toggleChoices('choices1');">
+                Seleziona Tipo Contratto<span class="cerchio21">.1</span>
+                <div id="choices1" class="choices">
+                    <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');accendiopzioni();scelto('boxTipoContratto', 'Non-Convivente');">Non-Convivente</button>
+                    <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Full-Time');">Convivente Full-Time</button>
+                    <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Part-Time');">Convivente Part-Time</button>
+                    <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');accendiopzioni();scelto('boxTipoContratto', 'Sostituzione Lavoratori in Riposo');">Sostituzione Lavoratori in Riposo</button>
+                    <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Assistenza Notturna');">Convivente Assistenza Notturna</button>
+                    <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Presenza Notturna');">Convivente Presenza Notturna</button>
+                </div>
+            </div>
     
     
             <div class="box" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltalivello();triggerAnimation()">
@@ -357,7 +357,7 @@
         <!-- Selections will appear here -->
     </div>
     
-    <div style="display:none;" class="button-group align-center"><a  id="sendRequest"  class="button is-icon w-inline-block"> <div>Calcola</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>
+    <div  class="button-group align-center"><a  id="sendRequest"  class="button is-icon w-inline-block"> <div>Calcola</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>
     <br>
 
     <div id="simulazione" style="display:none">

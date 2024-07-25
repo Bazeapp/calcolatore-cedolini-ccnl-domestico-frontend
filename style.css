@@ -37,7 +37,9 @@ html {
 }
 
 
-
+#sendRequest{
+    display: none;
+}
 
 
 
@@ -903,3 +905,4 @@ button:hover {
     
     }
 }
+
