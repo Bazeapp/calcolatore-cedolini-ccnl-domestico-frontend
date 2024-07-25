@@ -88,42 +88,54 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     }
 
     sendToWebhook(data);
-    /*       
-    try {
-        const response = await fetch('https://europe-west3-baze-app-prod.cloudfunctions.net/calculator-ccnl', {
-            method: 'POST',
-            headers: {
-                'Authorization': `bearer ${toki}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data),
-            timeout: 60000 // 70 seconds timeout
-        });
+    */
+                //far vedere attendi... mentre si carica la tabella
+             document.getElementById('simulazione').style.display = 'block';
+             document.getElementById('loadingMessage').style.display = 'block';
+             document.getElementById('risultatisimulazione').style.display = 'none';
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        updateSimulazione(result);
-        
-        console.log(result);
-    } catch (error) {
-        console.error('There was an error!', error);
-    } */
-});
-        function updateSimulazione(result) {
-            // Itera su ciascuna chiave nell'oggetto result
-            for (const key in result) {
-                // Trova tutti gli elementi HTML con l'ID che corrisponde alla chiave
-                const elements = document.querySelectorAll(`#${key}`);
-                // Itera su ciascun elemento trovato e aggiorna il suo contenuto testuale
-                elements.forEach(element => {
-                    element.textContent = result[key]+" €";
-                });
+        try {
+            const response = await fetch('https://europe-west3-baze-app-prod.cloudfunctions.net/calculator-ccnl', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `bearer ${toki}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+                timeout: 60000 // 60 seconds timeout
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
+    
+            const result = await response.json();
+            updateSimulazione(result);
+            aprisimulazione();
+            document.getElementById('loadingMessage').style.display = 'none';
+            document.getElementById('risultatisimulazione').style.display='block';
+            document.getElementById('nuovocalcolo').style.display = 'block';
+            
+            
+            console.log(result);
+        } catch (error) {
+            console.error('There was an error!', error);
+            document.getElementById('loadingMessage').style.display = 'none';
         }
-
+    }); 
+    
+    function updateSimulazione(result) {
+        // Itera su ciascuna chiave nell'oggetto result
+        for (const key in result) {
+            // Trova tutti gli elementi HTML con l'ID che corrisponde alla chiave
+            const elements = document.querySelectorAll(`#${key}`);
+            // Itera su ciascun elemento trovato e aggiorna il suo contenuto testuale
+            elements.forEach(element => {
+                element.textContent = result[key] + " €";
+            });
+        }
+    }
+    
 
         var selections = {
             'Tipo contratto': null,
@@ -295,13 +307,18 @@ function selectChoice(category, choice) {
             const boxdurata2 = document.getElementById('boxDurataContratto');
             boxdurata2.firstChild.textContent = 'Seleziona Durata Contratto'; 
             alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
-            
+            // per rimuovere lo sfondo bianco dalle selezioni tipo contratto
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach(box => {
+            box.classList.remove('selected');
+            });
         }
     }
               // quando si scegli tipo/livello/durata contratto allora il box cambia scritta
               function scelto(boxId, newText) {
                 const box = document.getElementById(boxId);
                 box.firstChild.textContent = newText; // Cambia il testo del box
+                box.classList.add('selected'); // Cambia il colore di sfondo
             }
 
 
@@ -642,6 +659,7 @@ const contractLimits = {
 };
 
 
+
 // Funzione per gestire il cambio del tipo di contratto
 function onTipoContrattoChange(newTipoContratto) {
     tipocontrattoselezionato = newTipoContratto;
@@ -653,10 +671,12 @@ function onTipoContrattoChange(newTipoContratto) {
 function resetHours() {
     const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
     days.forEach(day => {
-        document.getElementById(day).value = 0;
+        const input = document.getElementById(day);
+        input.value = 0;
+        updateButtonVisibility(day);
     });
-    document.getElementById('totalHours').value = 0;
-    document.getElementById('totalDays').value = 0;
+    document.getElementById('totalHours').textContent = 0;
+    document.getElementById('totalDays').textContent = 0;
 }
 
 // Funzione per l'incremento delle ore
@@ -668,6 +688,8 @@ function increaseHours(day) {
         if (!updateTotals()) {
             input.value = parseInt(input.value) - 1;
             updateTotals();
+        } else {
+            updateButtonVisibility(day);
         }
     }
 }
@@ -678,6 +700,7 @@ function decreaseHours(day) {
     if (input.value > 0) {
         input.value = parseInt(input.value) - 1;
         updateTotals();
+        updateButtonVisibility(day);
     }
 }
 
@@ -732,6 +755,17 @@ function updateTotals() {
     return true;
 }
 
+// Funzione per aggiornare la visibilità dei pulsanti
+function updateButtonVisibility(day) {
+    const input = document.getElementById(day);
+    const decreaseButton = input.previousElementSibling;
+    if (input.value == 0) {
+        decreaseButton.classList.add('hidden');
+    } else {
+        decreaseButton.classList.remove('hidden');
+    }
+}
+
 // Aggiungi event listener per gli eventi di input sugli input specifici delle ore giornaliere
 const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
 days.forEach(day => {
@@ -753,6 +787,7 @@ days.forEach(day => {
             this.value = 0; // Reset solo della casella problematica
             updateTotals();
         }
+        updateButtonVisibility(day);
     });
 
     // Aggiungi anche un event listener per l'evento change per garantire che i totali siano aggiornati correttamente
@@ -771,8 +806,16 @@ days.forEach(day => {
             this.value = 0; // Reset solo della casella problematica
             updateTotals();
         }
+        updateButtonVisibility(day);
     });
 });
+
+// Inizializza la visibilità dei pulsanti al caricamento della pagina
+window.onload = function() {
+    days.forEach(day => {
+        updateButtonVisibility(day);
+    });
+};
 
 // funzione per gestire i toolip e farli stare sempre dentro la pagina
 document.addEventListener('DOMContentLoaded', function() {
@@ -949,8 +992,20 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             var vittoAlloggioCheckbox = document.getElementById('vittoAlloggioCheckbox');
             vittoAlloggioCheckbox.checked = true;
+
+            // per rimuovere lo sfondo bianco dalle selezioni tipo contratto
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach(box => {
+                box.classList.remove('selected');
+            });
+
+            // per nasocndere i meno nella tabella delle ore
+            resetHours();
         }
         
+
+        
+
         function resetTable() {
             const ids = [
                 "pagalorda-lavoratore", "paga-netta", "indennita-tot", "indennita-cibo", "paga-domenica",
