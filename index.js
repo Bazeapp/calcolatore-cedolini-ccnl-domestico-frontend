@@ -68,6 +68,11 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         return; // Termina la funzione qui se tutte le ore sono 0
     }
 
+    
+    document.getElementById('simulazione').style.display = 'block';
+    document.getElementById('loadingMessage').style.display = 'block';
+    document.getElementById('risultatisimulazione').style.display = 'none';
+
     function sendToWebhook(data) {
         fetch('https://hook.eu1.make.com/asor6kjlu4bbl2eemv3nlbjhb5sr39hb', {
             method: 'POST',
@@ -81,6 +86,9 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             console.log('Success:', responseData);
             updateSimulazione(responseData);
             aprisimulazione();
+            document.getElementById('loadingMessage').style.display = 'none';
+            document.getElementById('risultatisimulazione').style.display='block';
+            document.getElementById('nuovocalcolo').style.display = 'block';
         })
         .catch(error => {
             console.error('Error:', error);
@@ -88,12 +96,9 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     }
 
     sendToWebhook(data);
-    */
+    
                 //far vedere attendi... mentre si carica la tabella
-             document.getElementById('simulazione').style.display = 'block';
-             document.getElementById('loadingMessage').style.display = 'block';
-             document.getElementById('risultatisimulazione').style.display = 'none';
-
+ /*
         try {
             const response = await fetch('https://europe-west3-baze-app-prod.cloudfunctions.net/calculator-ccnl', {
                 method: 'POST',
@@ -123,7 +128,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('loadingMessage').style.display = 'none';
         }
     }); 
-    
+    */
     function updateSimulazione(result) {
         // Itera su ciascuna chiave nell'oggetto result
         for (const key in result) {
