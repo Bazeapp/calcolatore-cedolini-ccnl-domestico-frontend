@@ -16,6 +16,9 @@ html {
     margin: 0;
 }
 
+#boxLivelloContratto,#boxDurataContratto{
+    display: none;
+}
 
   .hidden {
     display: none;
@@ -359,29 +362,71 @@ button {
 .box {
     position: relative; /* Aggiungi questa linea */
     margin: 2rem; /* Per evitare che l'elemento fluttui fuori dalla visualizzazione */
-    padding: 1rem; /* Aggiungi un po' di padding se necessario */
-    border: 1px solid #ccc; /* Aggiungi un bordo per vedere chiaramente il box */
+    
 }
 
-.cerchio2 {
-    width: 40px; /* Riduce le dimensioni */
-    height: 40px; /* Riduce le dimensioni */
+.cerchio21 {
+    width: 40px;
+    height: 40px;
     background-color: var(--giallobaze); /* Colore base arancione */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px; /* Riduce la dimensione del testo */
+    font-size: 18px;
     font-weight: bold;
     color: black;
-    position: absolute; /* Posizione assoluta */
-    top: 50%; /* Centra verticalmente */
-    left: -50px; /* Sposta a sinistra del box */
-    transform: translateY(-50%); /* Centra perfettamente verticalmente */
+    position: absolute;
+    top: 50%;
+    left: -50px;
+    transform: translateY(-50%);
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Ombra iniziale */
-    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    position: absolute;
 }
+.cerchio22 {
+    width: 40px;
+    height: 40px;
+    background-color: #ffa536dc; /* Colore base arancione */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: -50px;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    position: absolute;
+}
+.cerchio23 {
+    width: 40px;
+    height: 40px;
+    background-color: #ffa536c2; /* Colore base arancione */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: -50px;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    position: absolute;
+}
+
+
 
 
 button:hover {
@@ -601,8 +646,8 @@ button:hover {
 
 #selezionicontratto,
 #simulazione,
-#orariodilavoro,
-#opzioniaggiuntive {
+#opzioniaggiuntive ,
+#orariodilavoro{
     
         display: flex;
         flex-direction: column;
@@ -624,6 +669,7 @@ button:hover {
       
     
 }
+
 
 
 #simulazione table {
@@ -802,7 +848,7 @@ button:hover {
         display: flex; /* Imposta il display a flex per allineare gli elementi in linea */
         align-items: center; /* Centra verticalmente gli elementi */
         
-        gap: 20px; /* Distanza tra gli elementi */
+        gap: 13px; /* Distanza tra gli elementi */
     }
     
     .cerchio {

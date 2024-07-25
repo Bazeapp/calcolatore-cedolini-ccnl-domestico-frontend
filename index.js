@@ -1,3 +1,6 @@
+
+
+
 document.getElementById("sendRequest").addEventListener("click", function() {
                 submitChoices();
 });
@@ -133,6 +136,10 @@ document.getElementById("annulla").addEventListener("click", function() {
         }
     }
     
+    
+
+
+
 
         var selections = {
             'Tipo contratto': null,
@@ -302,7 +309,7 @@ function selectChoice(category, choice) {
             const boxlivello2 = document.getElementById('boxLivelloContratto');
             boxlivello2.firstChild.textContent = 'Seleziona Livello Contratto'; 
             const boxdurata2 = document.getElementById('boxDurataContratto');
-            boxdurata2.firstChild.textContent = 'Seleziona Durata Contratto'; 
+            boxdurata2.firstChild.textContent = 'Seleziona Tipo Contratto'; 
             alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
             // per rimuovere lo sfondo bianco dalle selezioni tipo contratto
             const boxes = document.querySelectorAll('.box');
@@ -314,9 +321,22 @@ function selectChoice(category, choice) {
               // quando si scegli tipo/livello/durata contratto allora il box cambia scritta
               function scelto(boxId, newText) {
                 const box = document.getElementById(boxId);
+                box.firstChild.textContent='';
                 box.firstChild.textContent = newText; // Cambia il testo del box
                 box.classList.add('selected'); // Cambia il colore di sfondo
+                if (boxId==='boxTipoContratto'){
+                    document.getElementById('boxLivelloContratto').style.display='block';
+                }
+                if (boxId==='boxLivelloContratto'){
+                    document.getElementById('boxDurataContratto').style.display='block';
+                }
+                if (boxId==='boxDurataContratto'){
+                    document.getElementById('orariodilavoro').style.display='flex';
+                    document.getElementById('sendRequest').style.display='block';
+                }
             }
+
+            
 
 
             // variabili per la paga
