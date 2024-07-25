@@ -18,8 +18,9 @@
         <h2>Seleziona tipologia contrattuale</h2>
         <br>
     </div>
+     
     <div class="box" id="boxTipoContratto" onclick="toggleChoices('choices1');">
-        Seleziona Tipo Contratto
+        <span class="cerchio2">.1</span>Seleziona Tipo Contratto
         <div id="choices1" class="choices">
             <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');;accendiopzioni();scelto('boxTipoContratto', 'Non-Convivente');">Non-Convivente</button>
             <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Full-Time');">Convivente Full-Time</button>
@@ -30,9 +31,9 @@
         </div>
     </div>
     
-
+    
     <div class="box" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltalivello();triggerAnimation()">
-        Seleziona Livello Contratto
+        <span class="cerchio2">.2</span> Seleziona Livello Contratto
         <div id="livello" class="choices">
             <div id="a" style="display:none">
                 <button onclick="selectChoice('Livello','a');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','A');">
@@ -148,8 +149,9 @@
             </div>  
         </div>
     </div>
-
+    
     <div class="box" id="boxDurataContratto" onclick="toggleChoices('durata');">
+        <span class="cerchio2">.3</span> 
         Seleziona Durata Contratto
         <div id="durata" class="choices">
             <button id="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');accendiopzioni();scelto('boxDurataContratto','Indeterminato');">Indeterminato</button>
@@ -180,7 +182,7 @@
                     <tr>
                         <td data-label="Lunedì">
                             <div class="input-container">
-                                <button class="btn" onclick="decreaseHours('lunedi')">-</button>
+                                <button class="btn hidden" onclick="decreaseHours('lunedi')">-</button>
                                 <input type="number" inputmode="numeric" min="0" max="10" id="lunedi" value="0" onchange="updateTotals()" class="input-field">
                                 <button class="btn" onclick="increaseHours('lunedi')">+</button>
                             </div>
@@ -188,7 +190,7 @@
                         <!-- Martedì -->
                         <td data-label="Martedì">
                             <div class="input-container">
-                                <button class="btn" onclick="decreaseHours('martedi')">-</button>
+                                <button class="btn hidden" onclick="decreaseHours('martedi')">-</button>
                                 <input type="number" inputmode="numeric" min="0" max="10" id="martedi" value="0" onchange="updateTotals()" class="input-field">
                                 <button class="btn" onclick="increaseHours('martedi')">+</button>
                             </div>
@@ -196,7 +198,7 @@
                         <!-- Mercoledì -->
                         <td data-label="Mercoledì">
                             <div class="input-container">
-                                <button class="btn" onclick="decreaseHours('mercoledi')">-</button>
+                                <button class="btn hidden" onclick="decreaseHours('mercoledi')">-</button>
                                 <input type="number" inputmode="numeric" min="0" max="10" id="mercoledi" value="0" onchange="updateTotals()" class="input-field">
                                 <button class="btn" onclick="increaseHours('mercoledi')">+</button>
                             </div>
@@ -204,7 +206,7 @@
                         <!-- Giovedì -->
                         <td data-label="Giovedì">
                             <div class="input-container">
-                                <button class="btn" onclick="decreaseHours('giovedi')">-</button>
+                                <button class="btn hidden" onclick="decreaseHours('giovedi')">-</button>
                                 <input type="number" inputmode="numeric" min="0" max="10" id="giovedi" value="0" onchange="updateTotals()" class="input-field">
                                 <button class="btn" onclick="increaseHours('giovedi')">+</button>
                             </div>
@@ -212,7 +214,7 @@
                         <!-- Venerdì -->
                         <td data-label="Venerdì">
                             <div class="input-container">
-                                <button class="btn" onclick="decreaseHours('venerdi')">-</button>
+                                <button class="btn hidden" onclick="decreaseHours('venerdi')">-</button>
                                 <input type="number" inputmode="numeric" min="0" max="10" id="venerdi" value="0" onchange="updateTotals()" class="input-field">
                                 <button class="btn" onclick="increaseHours('venerdi')">+</button>
                             </div>
@@ -220,7 +222,7 @@
                         <!-- Sabato -->
                         <td data-label="Sabato">
                             <div class="input-container">
-                                <button class="btn" onclick="decreaseHours('sabato')">-</button>
+                                <button class="btn hidden" onclick="decreaseHours('sabato')">-</button>
                                 <input type="number" inputmode="numeric" min="0" max="10" id="sabato" value="0" onchange="updateTotals()" class="input-field">
                                 <button class="btn" onclick="increaseHours('sabato')">+</button>
                             </div>
@@ -228,7 +230,7 @@
                         <!-- Domenica -->
                         <td data-label="Domenica">
                             <div class="input-container">
-                                <button class="btn" onclick="decreaseHours('domenica')">-</button>
+                                <button class="btn hidden" onclick="decreaseHours('domenica')">-</button>
                                 <input type="number" inputmode="numeric" min="0" max="12" id="domenica" value="0" onchange="updateTotals()" class="input-field">
                                 <button class="btn" onclick="increaseHours('domenica')">+</button>
                             </div>
@@ -254,7 +256,7 @@
             <h2>Opzioni Aggiuntive</h2>
             <br>
         </div>
-        
+       
         <div class="selection-container" id="InputpagaBoxora" style="display:none;">
             <br>
             <label>Paga oraria del lavoratore :</label>
@@ -360,7 +362,10 @@
             <span class="cerchio">4</span>
         <h2>Simulazione costi</h2>
     </div>
-    <table class="table-center">
+    <p id="loadingMessage" style="text-align:center; font-size: 2em; font-weight: bold;">
+        Attendi<span id="dots">.</span>
+    </p>
+    <table id="risultatisimulazione" class="table-center" style="display:none;">
         <tr>
             <th><i>Descrizione</i></th>
             <th><i>Importo</i></th>
