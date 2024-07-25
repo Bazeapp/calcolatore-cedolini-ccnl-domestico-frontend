@@ -30,9 +30,10 @@
                     <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Presenza Notturna');">Convivente Presenza Notturna</button>
                 </div>
             </div>
+        </div>
     
     
-    <div class="box" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltalivello();triggerAnimation()">
+        <div class="box" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltalivello();triggerAnimation()">
         Seleziona Livello Contratto <span class="cerchio22">.2</span>
         <div id="livello" class="choices">
             <div id="a" style="display:none">
@@ -148,17 +149,17 @@
                 <button onclick="selectChoice('Livello', 'u');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','U');">LivelloUnico</button>
             </div>  
         </div>
-    </div>
+        </div>
     
-    <div class="box" id="boxDurataContratto" onclick="toggleChoices('durata');">
+        <div class="box" id="boxDurataContratto" onclick="toggleChoices('durata');">
         Seleziona Durata Contratto <span class="cerchio23">.3</span> 
             <button id="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');accendiopzioni();scelto('boxDurataContratto','Indeterminato');">Indeterminato</button>
             <button id="determinato" onclick="selectChoice('Contratto', 'determinato');accendiopzioni();scelto('boxDurataContratto','Determinato');">Determinato</button>
             <button id="determinatoinsostituzione" onclick="selectChoice('Contratto', 'determinato in sostituzione');accendiopzioni();scelto('boxDurataContratto','Determinato in sostituzione');">Determinato in Sostituzione</button>
         </div>
-    </div>
-  </div>
-    <div id="orariodilavoro">
+        
+        
+        <div id="orariodilavoro">
         <div class="contenitore-flex">
             <span class="cerchio">2</span>
             <h2>Orario di Lavoro</h2>
@@ -245,10 +246,10 @@
                 <label><b>Giorni Settimanali:</b> <span id="totalDays"></span></label>
             </div>
         </div>
-    </div>
+        </div>
     
 
-    <div id="opzioniaggiuntive" style="display:none;">
+        <div id="opzioniaggiuntive" style="display:none;">
         <div class="contenitore-flex">
             <span class="cerchio">3</span>
             <h2>Opzioni Aggiuntive</h2>
@@ -345,25 +346,25 @@
             <label>Il lavoratore si occupa di più persone non autosufficienti?</label>
                     <input type="checkbox" id="autosufficientiCheckbox" onclick="selectAutosuff()">
         </div>
-    </div>
+        </div>
     
     
-    <div class="selected-items" id="selectedItems" style="display: none;">
+        <div class="selected-items" id="selectedItems" style="display: none;">
         <!-- Selections will appear here -->
-    </div>
+        </div>
     
-    <div class="button-group align-center"><a  id="sendRequest"  class="button is-icon w-inline-block"> <div>Calcola</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>
-    <br>
+        <div class="button-group align-center"><a  id="sendRequest"  class="button is-icon w-inline-block"> <div>Calcola</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>
+        <br>
 
-    <div id="simulazione" style="display:none">
+        <div id="simulazione" style="display:none">
         <div class="contenitore-flex">
             <span class="cerchio">4</span>
         <h2>Simulazione costi</h2>
-    </div>
-    <p id="loadingMessage" style="text-align:center; font-size: 2em; font-weight: bold;">
+        </div>
+        <p id="loadingMessage" style="text-align:center; font-size: 2em; font-weight: bold;">
         Attendi<span id="dots">.</span>
-    </p>
-    <table id="risultatisimulazione" class="table-center" style="display:none;">
+        </p>
+        <table id="risultatisimulazione" class="table-center" style="display:none;">
         <tr>
             <th><i>Descrizione</i></th>
             <th><i>Importo</i></th>
@@ -431,22 +432,23 @@
             <td><b class="margin-left-20">Costo totale al datore</b></td>
             <td><b id="costototale-datore"> </b></td>
         </tr>
-    </table>
-    </div>
-    <div> 
+        </table>
+        </div>
+        <div> 
         <div class="button-group align-center"><a  id="nuovocalcolo"  class="button is-icon w-inline-block"><div>Nuovo Calcolo</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
-    </div>
-    <div id="confermanuovocalcolo" class="button-group align-center">
+        </div>
+        <div id="confermanuovocalcolo" class="button-group align-center">
         <div class="button-group align-center"><a  id="confermanuovo"  class="button is-icon w-inline-block"><div><b>Attenzione!</b><p> proseguendo perderai tutte le scelte fatte finora</p></div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
         <div class="button-container">
             <div class="button-group align-center"><a  id="conferma"  class="button is-icon w-inline-block"><div>Conferma</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
             <div class="button-group align-center"><a  id="annulla"  class="button is-icon w-inline-block"><div>Annulla</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
         </div>
 
-    <div id="result" style="display:none">
+        <div id="result" style="display:none">
            Risultati calcoli verranno visualizzati qui 
-    </div>
-</div>
+        </div>
+        </div>
+    </div>    
     
     <script src="index.js"></script>   
 </div>
