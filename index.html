@@ -9,33 +9,31 @@
 </head>
 <body>
     <div id="calcolatore">
-        <!-- 
-    <div class="grande"><h1>Calcolatore Costo Colf / Badanti</h1></div>
-    <div class="piccolo"><h1>Calcolatore Costo </h1> <h1> Colf / Badanti</h1></div>-->
-    
-    <br>
-    <div id="selezionicontratto">    
-    <div class="contenitore-flex">
-        <span class="cerchio">1</span>
-        <h2>Seleziona tipologia contrattuale</h2>
+        <div class="grande"><h1>Calcolatore Costo Colf / Badanti</h1></div>
+        <div class="piccolo"><h1>Calcolatore Costo </h1> <h1> Colf / Badanti</h1></div>
         <br>
-    </div>
-     
-    <div class="box" id="boxTipoContratto" onclick="toggleChoices('choices1');">
-        <span class="cerchio2">.1</span>Seleziona Tipo Contratto
-        <div id="choices1" class="choices">
-            <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');;accendiopzioni();scelto('boxTipoContratto', 'Non-Convivente');">Non-Convivente</button>
-            <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Full-Time');">Convivente Full-Time</button>
-            <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Part-Time');">Convivente Part-Time</button>
-            <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');accendiopzioni();scelto('boxTipoContratto', 'Sostituzione Lavoratori in Riposo');">Sostituzione Lavoratori in Riposo</button>
-            <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Assistenza Notturna');">Convivente Assistenza Notturna</button>
-            <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Presenza Notturna');">Convivente Presenza Notturna</button>
-        </div>
-    </div>
+        <div id="selezionicontratto">    
+            <div class="contenitore-flex">
+                <span class="cerchio">1</span>
+                <h2>Seleziona tipologia contrattuale</h2>
+                <br>
+            </div>
+    
+            <div class="box" id="boxTipoContratto" onclick="toggleChoices('choices1');">
+                Seleziona Tipo Contratto<span class="cerchio21">1</span>
+                <div id="choices1" class="choices">
+                    <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');accendiopzioni();scelto('boxTipoContratto', 'Non-Convivente');">Non-Convivente</button>
+                    <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Full-Time');">Convivente Full-Time</button>
+                    <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Part-Time');">Convivente Part-Time</button>
+                    <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');accendiopzioni();scelto('boxTipoContratto', 'Sostituzione Lavoratori in Riposo');">Sostituzione Lavoratori in Riposo</button>
+                    <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Assistenza Notturna');">Convivente Assistenza Notturna</button>
+                    <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Presenza Notturna');">Convivente Presenza Notturna</button>
+                </div>
+            </div>
     
     
     <div class="box" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltalivello();triggerAnimation()">
-        <span class="cerchio2">.2</span> Seleziona Livello Contratto
+        Seleziona Livello Contratto <span class="cerchio22">.2</span>
         <div id="livello" class="choices">
             <div id="a" style="display:none">
                 <button onclick="selectChoice('Livello','a');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','A');">
@@ -154,8 +152,7 @@
     
     <div class="box" id="boxDurataContratto" onclick="toggleChoices('durata');">
         <span class="cerchio2">.3</span> 
-        Seleziona Durata Contratto
-        <div id="durata" class="choices">
+        Seleziona Durata Contratto <span class="cerchio23">.3</span> 
             <button id="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');accendiopzioni();scelto('boxDurataContratto','Indeterminato');">Indeterminato</button>
             <button id="determinato" onclick="selectChoice('Contratto', 'determinato');accendiopzioni();scelto('boxDurataContratto','Determinato');">Determinato</button>
             <button id="determinatoinsostituzione" onclick="selectChoice('Contratto', 'determinato in sostituzione');accendiopzioni();scelto('boxDurataContratto','Determinato in sostituzione');">Determinato in Sostituzione</button>
