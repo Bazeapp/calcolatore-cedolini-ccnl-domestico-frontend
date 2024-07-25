@@ -126,9 +126,9 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         } catch (error) {
             console.error('There was an error!', error);
             document.getElementById('loadingMessage').style.display = 'none';
-        }
+        }*/
     }); 
-    */
+    
     function updateSimulazione(result) {
         // Itera su ciascuna chiave nell'oggetto result
         for (const key in result) {
