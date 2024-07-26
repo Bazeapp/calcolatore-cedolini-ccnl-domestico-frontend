@@ -75,13 +75,20 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     document.getElementById('simulazione').style.display = 'block';
     document.getElementById('loadingMessage').style.display = 'block';
     document.getElementById('risultatisimulazione').style.display = 'none';
-        var buttonText = document.getElementById("buttonText");
-        buttonText.textContent = "Attendi";
-        
-        var dots = document.querySelectorAll(".dot");
-        dots.forEach(function(dot) {
-            dot.style.display = 'inline-block';
-        });
+    var buttonText = document.getElementById("buttonText");
+    buttonText.textContent = "Attendi";
+    
+    var loadingDots = document.getElementById("loadingDots");
+    loadingDots.style.visibility = 'visible'; // Show the dots
+
+    var dotInterval = setInterval(function() {
+        if (loadingDots.textContent.length < 3) {
+            loadingDots.textContent += ".";
+        } else {
+            loadingDots.textContent = "";
+        }
+    }, 500); // Change dots every 500ms
+
     
 
     function sendToWebhook(data) {
@@ -100,12 +107,12 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('loadingMessage').style.display = 'none';
             document.getElementById('risultatisimulazione').style.display='block';
             document.getElementById('nuovocalcolo').style.display = 'block';
-             // Riporta il testo del pulsante a "Calcola"
-             buttonText.textContent = "Calcola";
-             dots.forEach(function(dot) {
-                 dot.style.display = 'none';
-             });
+                     // Riporta il testo del pulsante a "Calcola"
+                     buttonText.textContent = "Calcola";
+            loadingDots.style.visibility = 'hidden'; // Hide the dots
+            clearInterval(dotInterval); // Stop the interval
         })
+        
         .catch(error => {
             console.error('Error:', error);
         });
