@@ -107,6 +107,10 @@ html {
     td {
         padding: 10px; /* Maggiore separazione tra le celle */
     }
+    .box {
+       
+        width: 84%; 
+    }
 }
 
 
@@ -780,8 +784,13 @@ button:hover {
 /* CSS per schermo piccolo */
 @media screen and (max-width: 700px) {
 
+    .box {
+       
+        width: 84%; 
+    }
+
     .cerchio21,.cerchio22,.cerchio23,.cerchio24 {
-         margin-left: -14em;
+         margin-left: -13.6em;
     }
 
     .table-center th, .table-center td {
