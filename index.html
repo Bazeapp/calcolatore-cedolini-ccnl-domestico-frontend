@@ -18,25 +18,25 @@
                 <h2>Seleziona tipologia contrattuale</h2>
                 <br>
             </div>
-    
+            <span class="cerchio21">.1</span>
             <div class="box" id="boxTipoContratto" onclick="toggleChoices('choices1');">
-                Seleziona Tipo Contratto<span class="cerchio21">1</span>
+                Seleziona Tipo Contratto
                 <div id="choices1" class="choices">
-                    <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');accendiopzioni();scelto('boxTipoContratto', 'Non-Convivente');">Non-Convivente</button>
-                    <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Full-Time');">Convivente Full-Time</button>
-                    <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Part-Time');">Convivente Part-Time</button>
-                    <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');accendiopzioni();scelto('boxTipoContratto', 'Sostituzione Lavoratori in Riposo');">Sostituzione Lavoratori in Riposo</button>
-                    <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Assistenza Notturna');">Convivente Assistenza Notturna</button>
-                    <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Presenza Notturna');">Convivente Presenza Notturna</button>
+                    <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');accendiopzioni();scelto('boxTipoContratto', 'Non-Convivente');showLine('.cerchio21')">Non-Convivente</button>
+                    <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Full-Time');showLine('.cerchio21')">Convivente Full-Time</button>
+                    <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Part-Time');showLine('.cerchio21')">Convivente Part-Time</button>
+                    <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');accendiopzioni();scelto('boxTipoContratto', 'Sostituzione Lavoratori in Riposo');showLine('.cerchio21')">Sostituzione Lavoratori in Riposo</button>
+                    <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Assistenza Notturna');showLine('.cerchio21')">Convivente Assistenza Notturna</button>
+                    <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Presenza Notturna');showLine('.cerchio21')">Convivente Presenza Notturna</button>
                 </div>
             </div>
     
-    
+            <span class="cerchio22">.2</span>
             <div class="box" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltalivello();triggerAnimation()">
-                 Seleziona Livello Contratto <span class="cerchio22">.2</span>
+                 Seleziona Livello Contratto 
                 <div id="livello" class="choices">
                     <div id="a" style="display:none">
-                        <button onclick="selectChoice('Livello','a');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','A');">
+                        <button onclick="selectChoice('Livello','a');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','A');showLine('.cerchio22')">
                             <span class="informativa">
                                 <span class="circle">i</span>
                                 <span class="tooltip">
@@ -54,7 +54,7 @@
                         A</button>
                     </div>
                     <div id="as" style="display:none">    
-                        <button onclick="selectChoice('Livello','as');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','AS');">
+                        <button onclick="selectChoice('Livello','as');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','AS');showLine('.cerchio22')">
                             <span class="informativa">
                                 <span class="circle">i</span>
                                 <span class="tooltip">
@@ -65,7 +65,7 @@
                         AS</button>
                     </div>
                     <div id="b" style="display:none">
-                        <button onclick="selectChoice('Livello', 'b');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','B');">
+                        <button onclick="selectChoice('Livello', 'b');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','B');showLine('.cerchio22')">
                             <span class="informativa">
                                 <span class="circle">i</span>
                                 <span class="tooltip">
@@ -84,7 +84,7 @@
                         B</button>
                     </div>   
                     <div id="bs" style="display:none"> 
-                        <button onclick="selectChoice('Livello', 'bs');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','BS');">
+                        <button onclick="selectChoice('Livello', 'bs');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','BS');showLine('.cerchio22')">
                             <span class="informativa">
                                 <span class="circle">i</span>
                                 <span class="tooltip">
@@ -95,7 +95,7 @@
                         BS</button>
                     </div>
                     <div id="c" style="display:none">
-                        <button onclick="selectChoice('Livello', 'c');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','C');">
+                        <button onclick="selectChoice('Livello', 'c');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','C');showLine('.cerchio22')">
                             <span class="informativa">
                                 <span class="circle">i</span>
                                 <span class="tooltip">
@@ -106,7 +106,7 @@
                             C</button>
                     </div>
                     <div id="cs" style="display:none">
-                        <button onclick="selectChoice('Livello', 'cs');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','CS');">
+                        <button onclick="selectChoice('Livello', 'cs');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','CS');showLine('.cerchio22')">
                             <span class="informativa">
                                 <span class="circle">i</span>
                                 <span class="tooltip">
@@ -116,7 +116,7 @@
                         CS</button>
                     </div>
                     <div id="d" style="display:none"> 
-                        <button onclick="selectChoice('Livello', 'd');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','D');">
+                        <button onclick="selectChoice('Livello', 'd');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','D');showLine('.cerchio22')">
                             <span class="informativa">
                                 <span class="circle">i</span>
                                 <span class="tooltip">
@@ -133,7 +133,7 @@
                         D</button>
                     </div>
                     <div id="ds" style="display:none">
-                        <button onclick="selectChoice('Livello', 'ds');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','DS');">
+                        <button onclick="selectChoice('Livello', 'ds');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','DS');showLine('.cerchio22')">
                             <span class="informativa">
                             <span class="circle">i</span>
                             <span class="tooltip">
@@ -145,23 +145,23 @@
                             DS</button>
                     </div>   
                     <div id="u" style="display:none">
-                        <button onclick="selectChoice('Livello', 'u');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','U');">LivelloUnico</button>
+                        <button onclick="selectChoice('Livello', 'u');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','U');showLine('.cerchio22')">LivelloUnico</button>
                     </div>  
                 </div>
             </div>
     
-    
+            <span class="cerchio23">.3</span> 
             <div class="box" id="boxDurataContratto" onclick="toggleChoices('durata');">
-                
-                Seleziona Durata Contratto <span class="cerchio23">.3</span> 
+                Seleziona Durata Contratto 
                 <div id="durata" class="choices">
-                    <button id="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');accendiopzioni();scelto('boxDurataContratto','Indeterminato');">Indeterminato</button>
-                    <button id="determinato" onclick="selectChoice('Contratto', 'determinato');accendiopzioni();scelto('boxDurataContratto','Determinato');">Determinato</button>
-                    <button id="determinatoinsostituzione" onclick="selectChoice('Contratto', 'determinato in sostituzione');accendiopzioni();scelto('boxDurataContratto','Determinato in sostituzione');">Determinato in Sostituzione</button>
+                    <button id="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');accendiopzioni();scelto('boxDurataContratto','Indeterminato');showLine('.cerchio23')">Indeterminato</button>
+                    <button id="determinato" onclick="selectChoice('Contratto', 'determinato');accendiopzioni();scelto('boxDurataContratto','Determinato');showLine('.cerchio23')">Determinato</button>
+                    <button id="determinatoinsostituzione" onclick="selectChoice('Contratto', 'determinato in sostituzione');accendiopzioni();scelto('boxDurataContratto','Determinato in sostituzione');showLine('.cerchio23')">Determinato in Sostituzione</button>
                 </div>
             </div>
+            <span class="cerchio24">ok</span>
         </div>
-    
+        
     
     <div id="orariodilavoro" style="display:none;" >
         <div class="contenitore-flex">
@@ -366,7 +366,7 @@
         <h2>Simulazione costi</h2>
     </div>
     <p id="loadingMessage" style="text-align:center; font-size: 2em; font-weight: bold;">
-        Attendi<span id="dots">.</span>
+        caricamento <span id="spinner"></span>
     </p>
     <table id="risultatisimulazione" class="table-center" style="display:none;">
         <tr>

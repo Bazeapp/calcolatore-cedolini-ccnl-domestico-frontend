@@ -131,12 +131,16 @@ h1 {
 }
 
 
+
+
 .box {
+    position: relative;
     border: 1px solid var(--blubaze);
     background-color: var(--blubaze);
     color: whitesmoke;
     padding: 15px;
-    margin: 10px 0;
+    margin: 1rem;
+    margin-top: 0.5rem ;
     width: 100%;
     max-width: 300px;
     text-align: center;
@@ -144,6 +148,7 @@ h1 {
     font-size:medium;
     margin-bottom: 0;
     border-radius: 30px;
+    
 }
 .box.selected {
     background-color: aliceblue; /* Bianco */
@@ -300,16 +305,27 @@ input[type="checkbox"]:hover {
         content: '...';
     }
 }
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 #loadingMessage {
-    margin-top: 1em;
-    font-size: 1em;
+    text-align: center;
+    font-size: 2em;
     font-weight: bold;
     font-style: italic;
 }
-#dots::after {
-    content: '...';
-    animation: dots 1,5s steps(3, end) infinite;
-}
+
+#spinner {
+    display: inline-block;
+    margin-left: 10px;
+    width: 1em;
+    height: 1em;
+    border: 0.2em solid rgba(0, 0, 0, 0.1);
+    border-top: 0.2em solid black;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;}
 
 
 
@@ -361,71 +377,74 @@ button {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Ombra iniziale */
     cursor: pointer; /* Cambia il cursore al passaggio del mouse */
 }
-.box {
-    position: relative; /* Aggiungi questa linea */
-    margin: 2rem; /* Per evitare che l'elemento fluttui fuori dalla visualizzazione */
-    
+
+/* Stili di base per i cerchi */
+.cerchio21,.cerchio22,.cerchio23,.cerchio24 {
+    display: flex; /* Posizionamento degli elementi al centro */
+    width: 38px;
+    height: 38px;
+    background-color: #ffa536f5; /* Colore base arancione */
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    position: relative; /* Posizionato assolutamente rispetto al contenitore */
+    margin-left: -20em;
+    margin-top: 2em;
+    transform: translateY(-50%); /* Centra verticalmente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 3; /* Porta i cerchi sopra gli altri elementi */
+}
+.cerchio22,.cerchio23,.cerchio24 {
+    display: none; 
+}
+ 
+
+/* Righe sotto i cerchi */
+.cerchio21::after, .cerchio22::after, .cerchio23::after {
+    content: "";
+    position: absolute;
+    width: 4px; /* Larghezza della riga */
+    height: 5.6em; /* Altezza della riga */
+    bottom: -5.6em; /* Posiziona la riga sotto il cerchio */
+    left: 50%; /* Centra orizzontalmente la riga rispetto al cerchio */
+    transform: translateX(-50%);
+    z-index: 1; /* Porta la riga sotto i cerchi */
+    opacity: 0; /* Riga inizialmente nascosta */
+    transition: opacity 0.3s ease; /* Transizione per l'apparizione/scomparsa */
 }
 
-.cerchio21 {
-    width: 40px;
-    height: 40px;
-    background-color: var(--giallobaze); /* Colore base arancione */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
-    position: absolute;
-    top: 50%;
-    left: -50px;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    position: absolute;
+/* Colori e gradienti per le righe */
+.cerchio21::after {
+    background: linear-gradient(to bottom, #ffa536 50%, #ffa536dc 50%);
 }
+
+.cerchio22::after {
+    background: linear-gradient(to bottom, #ffa536dc 50%, #ffa536c2 50%);
+}
+.cerchio23::after {
+    background: linear-gradient(to bottom, #ffa536c2 50%, #ffa536a7 50%);
+}
+
+/* Colori di sfondo specifici per i cerchi */
 .cerchio22 {
-    width: 40px;
-    height: 40px;
-    background-color: #ffa536dc; /* Colore base arancione */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
-    position: absolute;
-    top: 50%;
-    left: -50px;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    position: absolute;
+    background-color: #ffa536dc;
 }
+
 .cerchio23 {
-    width: 40px;
-    height: 40px;
-    background-color: #ffa536c2; /* Colore base arancione */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
-    position: absolute;
-    top: 50%;
-    left: -50px;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    position: absolute;
+    background-color: #ffa536c2;
+}
+.cerchio24 {
+    font-style: italic;
+}
+
+/* Classe per mostrare la riga */
+.show-line::after {
+    opacity: 1; /* Rendi visibile la riga */
 }
 
 
@@ -512,15 +531,6 @@ button:hover {
     }
 }
 
-
-
-
-@keyframes rimbalzi {
-    0%{ transform: translateY();opacity: 0; }
-    6%{ transform: translateY(-2);opacity: 0; }
-    50% { transform: translateY(-80px); }
-    100% { transform: translate();opacity: 1; }
-  }
   @keyframes rimbalzo {
     0%{ transform: translate();opacity: 0; }
     100% { transform: translate();opacity: 1; }
@@ -546,7 +556,7 @@ button:hover {
     color: var(--blubaze);
     margin-left: 10px;
     float: inline-start;
-    animation: rimbalzi 2s ; /* Applica l'animazione */    
+    animation: rimbalzo 2s ; /* Applica l'animazione */    
     
 
 }
@@ -772,6 +782,11 @@ button:hover {
 
 /* CSS per schermo piccolo */
 @media screen and (max-width: 700px) {
+
+    .cerchio21,.cerchio22,.cerchio23,.cerchio24 {
+         margin-left: -14em;
+    }
+
     .table-center th, .table-center td {
         border: none;
     }

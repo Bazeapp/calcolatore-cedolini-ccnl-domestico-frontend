@@ -151,6 +151,24 @@ var selections = {
 'Certificato UNI1176': null,
 'Autosufficienti':null
 };
+// per mostrare righe cerchio
+function showLine(selector) {
+    document.querySelector(selector).classList.add('show-line');
+    if(selector === '.cerchio21'){
+        document.querySelector('.cerchio22').style.display = 'flex';  
+    }
+    if(selector === '.cerchio22'){
+        document.querySelector('.cerchio23').style.display = 'flex';  
+    }
+    if(selector === '.cerchio23'){
+        document.querySelector('.cerchio24').style.display = 'flex';  
+    }
+}
+
+//per nascondere righe cerchio
+function hideLine(selector) {
+    document.querySelector(selector).classList.remove('show-line');
+}
 
 // funzione per aprire la scelta del Tipocontratto e Tipolivello e Duratacontratto
 function toggleChoices(choiceId) {
@@ -309,7 +327,11 @@ duratacontrattoselezionato="";
 const boxlivello2 = document.getElementById('boxLivelloContratto');
 boxlivello2.firstChild.textContent = 'Seleziona Livello Contratto'; 
 const boxdurata2 = document.getElementById('boxDurataContratto');
-boxdurata2.firstChild.textContent = 'Seleziona Tipo Contratto'; 
+boxdurata2.firstChild.textContent = 'Seleziona Tipo Contratto';
+boxdurata2.style.display="none"; 
+document.querySelectorAll('.cerchio22').forEach(el => {
+    el.classList.remove('show-line');
+});
 alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
 // per rimuovere lo sfondo bianco dalle selezioni tipo contratto
 const boxes = document.querySelectorAll('.box');
@@ -958,8 +980,21 @@ document.getElementById('InputpagaBoxora').style.display = 'none';
 document.getElementById('InputpagaBoxmese').style.display = 'none';
 document.getElementById('paga-netta').textContent = "";
 document.getElementById('confermanuovocalcolo').style.display = 'none';
-document.getElementById('nuovocalcolo').style.display = 'block';
 document.getElementById('opzioniaggiuntive').style.display='none';
+document.getElementById('orariodilavoro').style.display='none';
+document.getElementById('boxLivelloContratto').style.display='none';
+document.getElementById('boxDurataContratto').style.display='none';
+document.getElementById('sendRequest').style.display = 'none';
+document.getElementById('nuovocalcolo').style.display = 'none';
+
+//tolgo le linee dei cerchi
+document.querySelectorAll('.cerchio21, .cerchio22,.cerchio23').forEach(el => {
+    el.classList.remove('show-line');
+});
+document.querySelectorAll('.cerchio22, .cerchio23, .cerchio24').forEach(el => {
+    el.style.display = 'none';
+});
+
 
 
 
