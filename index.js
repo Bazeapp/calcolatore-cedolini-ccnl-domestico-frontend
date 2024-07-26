@@ -75,6 +75,14 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     document.getElementById('simulazione').style.display = 'block';
     document.getElementById('loadingMessage').style.display = 'block';
     document.getElementById('risultatisimulazione').style.display = 'none';
+        var buttonText = document.getElementById("buttonText");
+        buttonText.textContent = "Attendi";
+        
+        var dots = document.querySelectorAll(".dot");
+        dots.forEach(function(dot) {
+            dot.style.display = 'inline-block';
+        });
+    
 
     function sendToWebhook(data) {
         fetch('https://hook.eu1.make.com/asor6kjlu4bbl2eemv3nlbjhb5sr39hb', {
@@ -92,6 +100,11 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('loadingMessage').style.display = 'none';
             document.getElementById('risultatisimulazione').style.display='block';
             document.getElementById('nuovocalcolo').style.display = 'block';
+             // Riporta il testo del pulsante a "Calcola"
+             buttonText.textContent = "Calcola";
+             dots.forEach(function(dot) {
+                 dot.style.display = 'none';
+             });
         })
         .catch(error => {
             console.error('Error:', error);
@@ -333,9 +346,12 @@ boxlivello2.firstChild.textContent = 'Seleziona Livello Contratto';
 const boxdurata2 = document.getElementById('boxDurataContratto');
 boxdurata2.firstChild.textContent = 'Seleziona Tipo Contratto';
 boxdurata2.style.display="none"; 
-document.querySelectorAll('.cerchio22').forEach(el => {
-    el.classList.remove('show-line');
-});
+    document.querySelectorAll('.cerchio22,.cerchio23').forEach(el => {
+        el.classList.remove('show-line');
+    });
+    document.querySelectorAll('.cerchio23, .cerchio24').forEach(el => {
+        el.style.display = 'none';
+    });    
 alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
 // per rimuovere lo sfondo bianco dalle selezioni tipo contratto
 const boxes = document.querySelectorAll('.box');
