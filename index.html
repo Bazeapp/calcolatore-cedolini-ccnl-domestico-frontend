@@ -211,7 +211,7 @@
                         <th>Giovedì</th>
                         <th>Venerdì</th>
                         <th>Sabato</th>
-                        <th  style="color: red;">Domenica</th>
+                        <th style="color: red;">Domenica</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -301,11 +301,11 @@
     <div id="opzioniaggiuntive">
         <div class="contenitore-flex">
             <!--<span class="cerchio">3</span>-->
-            <h2>Opzioni Aggiuntive</h2>
+            <h2 class="titleSectionInput">Altre Opzioni</h2>
             <br>
         </div>
-       
-        <div class="selection-container" id="InputpagaBoxora" style="display:none;">
+       <!-- 
+        <div class="selection-container" id="InputpagaBoxora">
             <br>
             <label>Paga oraria del lavoratore :</label>
             <input type="number" inputmode="numeric" id="InputpagaOra" min="0" step="1" placeholder="paga">
@@ -319,7 +319,23 @@
             <input type="number" inputmode="numeric" id="InputpagaMese" min="0" step="1" placeholder="paga">
             €
             <br>
+        </div>-->
+        <div class="payment-container" id="InputpagaBoxora">
+            <label for="InputpagaOra">Paga Oraria</label>
+            <div class="input-group">
+                <input type="number" inputmode="numeric" id="InputpagaOra" min="0" step="1" placeholder="">
+                <span class="currency">€</span>
+            </div>
         </div>
+        
+        <div class="payment-container" id="InputpagaBoxmese" style="display:none;">
+            <label for="InputpagaMese">Paga Mensile</label>
+            <div class="input-group">
+                <input type="number" inputmode="numeric" id="InputpagaMese" min="0" step="1" placeholder=">
+                <span class="currency">€</span>
+            </div>
+        </div>
+        
         <br>
         <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
             <span class="informativa">

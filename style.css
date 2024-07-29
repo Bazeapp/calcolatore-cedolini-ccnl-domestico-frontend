@@ -266,7 +266,7 @@ input[type="checkbox"] {
     width: 20px;
     height: 20px;
     appearance: none;
-    border: 2px solid black;
+    border: 2px solid var(--blubaze);
     border-radius: 7px;
     position: relative;
     cursor: pointer;
@@ -276,11 +276,11 @@ input[type="checkbox"] {
 input[type="checkbox"]::after {
     content: '';
     position: absolute; 
-    top:-10%; 
+    top:-5%; 
     left: 60%;
     width: 8px;
     height: 16px;
-    border: solid black;
+    border: solid  var(--blubaze);
     border-width: 0 3px 3px 0;
     transform: translate(-50%, -50%) rotate(45deg) scale(0);
     transition: transform 0.3s;
@@ -550,6 +550,7 @@ button:hover {
     cursor: pointer;
     color: var(--blubaze);
     margin-right: 1rem;
+    font-family: Recoleta, sans-serif;
     float: inline-start;
     animation: rimbalzo 2s ; /* Applica l'animazione */    
     
@@ -729,6 +730,8 @@ button:hover {
 
 }
 
+
+
 .table-center {
     width: 100%;
     border-collapse: collapse;
@@ -739,6 +742,7 @@ button:hover {
     padding: 8px;
     text-align: center;
 }
+
 
 
 
@@ -986,4 +990,47 @@ button:hover {
 .margin-top-2-rem{
     
     margin-top: 2rem;
+}
+
+
+.payment-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 340px;
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-container label {
+    font-size: 1rem;
+    font-family: Recoleta, sans-serif;
+    font-weight: 500;
+    color: #333;
+    margin-right: 1rem;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.input-group input[type="number"] {
+    flex-grow: 1;
+    border: none;
+    padding: 12px 16px;
+    font-size: 16px;
+}
+
+.input-group .currency {
+    padding: 12px 16px;
+}
+
+/* Hides the spinner on number inputs */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0; 
 }

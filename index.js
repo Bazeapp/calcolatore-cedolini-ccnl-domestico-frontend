@@ -350,7 +350,18 @@ document.getElementById('autosufficientiBox').style.display = 'none';
 }
 
 if (selections['Tipo contratto'] !== 'non-convivente') {
-document.getElementById('vittoAlloggioBox').style.display = 'block';
+    //document.getElementById('vittoAlloggioBox').style.display = 'block';
+
+    // Access the element with the ID 'vittoAlloggioBox'
+    var vittoAlloggioBox = document.getElementById('vittoAlloggioBox');
+
+    // Set the display property to 'flex'
+    vittoAlloggioBox.style.display = 'flex';
+
+    // Set the flex-direction property to 'row'
+    vittoAlloggioBox.style.flexDirection = 'row-reverse';
+
+
 }else{
 document.getElementById('vittoAlloggioBox').style.display = 'none';
 }
@@ -465,7 +476,7 @@ livellopaga.placeholder = paganoconv_livds ;
 }
 }
 if (tipocontrattoselezionato === "convivente") {
-document.getElementById('InputpagaBoxmese').style.display = 'block';
+document.getElementById('InputpagaBoxmese').style.display = 'flex';
 document.getElementById('InputpagaBoxora').style.display = 'none';
 livellopaga = document.getElementById('InputpagaMese');
 if (livellocontrattoselezionato === "a") {
@@ -494,7 +505,7 @@ livellopaga.placeholder = pagaconv_livds ;
 }
 }
 if (tipocontrattoselezionato === "part-time") {
-document.getElementById('InputpagaBoxmese').style.display = 'block';
+document.getElementById('InputpagaBoxmese').style.display = 'flex';
 document.getElementById('InputpagaBoxora').style.display = 'none';
 livellopaga = document.getElementById('InputpagaMese');
 if (livellocontrattoselezionato === "b") {
@@ -519,7 +530,7 @@ livellopaga.placeholder = pagasost_livds ;
 }
 }
 if (tipocontrattoselezionato === "presenza") {
-document.getElementById('InputpagaBoxmese').style.display = 'block';
+document.getElementById('InputpagaBoxmese').style.display = 'flex';
 document.getElementById('InputpagaBoxora').style.display = 'none';
 livellopaga = document.getElementById('InputpagaMese');
 if (livellocontrattoselezionato === "u") {
@@ -527,7 +538,7 @@ livellopaga.placeholder = pagaconvpres_livu ;
 }
 }
 if (tipocontrattoselezionato === "assistenza") {
-document.getElementById('InputpagaBoxmese').style.display = 'block';
+document.getElementById('InputpagaBoxmese').style.display = 'flex';
 document.getElementById('InputpagaBoxora').style.display = 'none';
 livellopaga = document.getElementById('InputpagaMese');
 if (livellocontrattoselezionato === "bs") {
