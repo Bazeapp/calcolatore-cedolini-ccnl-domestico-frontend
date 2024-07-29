@@ -36,11 +36,11 @@ html {
     margin-left: 5%;
 }
 
-
-#sendRequest{
-    display: none;
+.centered-container {
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente il contenuto */
+    align-items: center; /* Centra verticalmente il contenuto */
 }
-
 
 
 
@@ -63,15 +63,14 @@ html {
 
 .btn {
     background-color: var(--blubaze);
-    color: var(--giallobaze);
+    color: white;
     border: none;
     border-radius: 20%;
     padding: 5px 10px;
     width: 30px;
     height: 30px;
     cursor: pointer;
-    font-size: 18px;
-    font-style: italic;
+    
     transition: background-color 0.3s;
     text-align: center;
 }
@@ -108,7 +107,8 @@ html {
         padding: 10px; /* Maggiore separazione tra le celle */
     }
     .box {
-       
+        font-family: Recoleta, sans-serif;
+
         width: 84%; 
     }
 }
@@ -152,6 +152,8 @@ h1 {
     font-size:medium;
     margin-bottom: 0;
     border-radius: 30px;
+    font-family: Recoleta, sans-serif;
+
     
 }
 .box.selected {
@@ -381,57 +383,32 @@ button {
 }
 
 /* Stili di base per i cerchi */
-.cerchio21,.cerchio22,.cerchio23,.cerchio24 {
-    display: flex; /* Posizionamento degli elementi al centro */
+.cerchio21, .cerchio22, .cerchio23, .cerchio24 {
     width: 38px;
     height: 38px;
-    background-color: #ffa536f5; /* Colore base arancione */
+    min-width: 38px;  /* Impedisce al cerchio di ridursi */
+    min-height: 38px; /* Impedisce al cerchio di ridursi */
+    max-width: 38px;  /* Impedisce al cerchio di allargarsi */
+    max-height: 38px; /* Impedisce al cerchio di allargarsi */
+    background-color: #ffa536f5; /* Colore arancione */
     border-radius: 50%;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
     font-weight: bold;
     font-style: italic;
     color: black;
-    position: relative; /* Posizionato assolutamente rispetto al contenitore */
-    margin-left: -20em;
-    margin-top: 2em;
-    transform: translateY(-50%); /* Centra verticalmente */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    margin: 0 10px; /* Aggiunge un margine orizzontale per non attaccare ai bordi */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    z-index: 3; /* Porta i cerchi sopra gli altri elementi */
 }
-.cerchio22,.cerchio23,.cerchio24 {
+
+.cerchio21 .cerchio22,.cerchio23,.cerchio24 {
     display: none; 
 }
  
 
-/* Righe sotto i cerchi */
-.cerchio21::after, .cerchio22::after, .cerchio23::after {
-    content: "";
-    position: absolute;
-    width: 4px; /* Larghezza della riga */
-    height: 5.6em; /* Altezza della riga */
-    bottom: -5.6em; /* Posiziona la riga sotto il cerchio */
-    left: 50%; /* Centra orizzontalmente la riga rispetto al cerchio */
-    transform: translateX(-50%);
-    z-index: 1; /* Porta la riga sotto i cerchi */
-    opacity: 0; /* Riga inizialmente nascosta */
-    transition: opacity 0.3s ease; /* Transizione per l'apparizione/scomparsa */
-}
-
-/* Colori e gradienti per le righe */
-.cerchio21::after {
-    background: linear-gradient(to bottom, #ffa536 50%, #ffa536dc 50%);
-}
-
-.cerchio22::after {
-    background: linear-gradient(to bottom, #ffa536dc 50%, #ffa536c2 50%);
-}
-.cerchio23::after {
-    background: linear-gradient(to bottom, #ffa536c2 50%, #ffa536a7 50%);
-}
 
 /* Colori di sfondo specifici per i cerchi */
 .cerchio22 {
@@ -466,13 +443,45 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Allinea etichetta e input a sinistra */
+    font-family: Recoleta, sans-serif;
+
   }
   
   .item label {
     margin-bottom: 5px; /* Spazio tra etichetta e input */
   }
 
-#conferma{
+
+  .stats-container {
+    display: flex;
+    gap: 40px; /* Maggiore spaziatura tra gli elementi */
+    align-items: center; /* Centra gli elementi verticalmente */
+    padding: 20px; /* Maggiore spazio interno */
+    /*background-color: #ffffff; /* Sfondo bianco per il contenitore */
+    /*box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ombreggiatura leggera per un effetto elevato */
+    border-radius: 10px; /* Bordi arrotondati per il contenitore */
+}
+
+.stats-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Allineamento a sinistra */
+    font-family: Recoleta, sans-serif; /* Mantenuto il font originale per coerenza con il tuo design */
+}
+
+.stats-item label {
+    margin-bottom: 8px; /* Aumento dello spazio sotto l'etichetta */
+    color: #333; /* Colore del testo scuro per migliore leggibilità */
+    font-size: 1rem; /* Dimensione del testo standard per le etichette */
+}
+
+.stats-item span {
+    font-size: 1.5rem; /* Dimensione aumentata per i numeri, rendendoli più visibili */
+    color: #2a2a2a; /* Colore del testo leggermente più scuro per i numeri */
+}
+
+
+  #conferma{
     background-color: aliceblue;
     border: 2px solid var(--blubaze);
     color: var(--blubaze);
@@ -716,6 +725,8 @@ button:hover {
     width: 100%;
     overflow-x: auto;
     box-sizing: border-box;
+    font-family: Recoleta, sans-serif;
+
 }
 
 .table-center {
@@ -763,7 +774,19 @@ button:hover {
     box-sizing: border-box; /* Assicura che padding e bordo siano inclusi nella larghezza per tutti gli elementi all'interno */
 }
 
+.subTitleInTipoContratto{
+    color: #6d6d6d;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 400;
+}
 
+
+
+.titleSectionInput{
+
+    font-size: 1.8rem;
+}
 
 #opzioniaggiuntive h2{
     text-align: center;
@@ -780,18 +803,23 @@ button:hover {
 
 
 
-
 /* CSS per schermo piccolo */
 @media screen and (max-width: 700px) {
+    .width-empty-cell{
+        width: 3%;
+    }
+    
 
     .box {
-       
+        font-family: Recoleta, sans-serif;
+
         width: 84%; 
     }
 
     .cerchio21,.cerchio22,.cerchio23,.cerchio24 {
-         margin-left: -13.6em;
+         margin-left: 0em;
     }
+
 
     .table-center th, .table-center td {
         border: none;
@@ -927,3 +955,35 @@ button:hover {
     }
 }
 
+.table {
+    display: table;
+    width: 100%; /* Adatta la larghezza alla finestra del browser */
+    margin-top: 3rem;
+}
+.table-cell {
+    display: table-cell;
+    vertical-align: middle; /* Centra verticalmente il contenuto nelle celle */
+}
+
+.width-empty-cell{
+    width: 1.5%;
+}
+
+
+.box-selezione-tipologia-contratto{
+
+    display: flex;
+    flex-direction: column; /* Allinea i figli verticalmente */
+    gap: 1.5rem; /* Distanza tra i figli */
+}
+
+.tipo-contratto{
+
+    margin-top: 2rem;
+}
+
+
+.margin-top-2-rem{
+    
+    margin-top: 2rem;
+}

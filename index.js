@@ -75,8 +75,8 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     document.getElementById('simulazione').style.display = 'block';
     document.getElementById('loadingMessage').style.display = 'block';
     document.getElementById('risultatisimulazione').style.display = 'none';
-    var buttonText = document.getElementById("buttonText");
-    buttonText.textContent = "Attendi";
+    const buttonCalcola = document.getElementById("buttonCalcola");
+    buttonCalcola.textContent = "ATTENDI";
     
     var loadingDots = document.getElementById("loadingDots");
     loadingDots.style.visibility = 'visible'; // Show the dots
@@ -108,7 +108,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('risultatisimulazione').style.display='block';
             document.getElementById('nuovocalcolo').style.display = 'block';
                      // Riporta il testo del pulsante a "Calcola"
-                     buttonText.textContent = "Calcola";
+                     buttonCalcola.textContent = "CALCOLA 🧮";
             loadingDots.style.visibility = 'hidden'; // Hide the dots
             clearInterval(dotInterval); // Stop the interval
         })
@@ -165,7 +165,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     }
     
 
-var selections = {
+let selections = {
 'Tipo contratto': null,
 'Livello': null,
 'Contratto': null,
@@ -175,11 +175,13 @@ var selections = {
 'Certificato UNI1176': null,
 'Autosufficienti':null
 };
+
 // per mostrare righe cerchio
+/*
 function showLine(selector) {
     document.querySelector(selector).classList.add('show-line');
     if(selector === '.cerchio21'){
-        document.querySelector('.cerchio22').style.display = 'flex';  
+        document.querySelector('.cerchio22').style.display = 'block';  
     }
     if(selector === '.cerchio22'){
         document.querySelector('.cerchio23').style.display = 'flex';  
@@ -187,22 +189,33 @@ function showLine(selector) {
     if(selector === '.cerchio23'){
         document.querySelector('.cerchio24').style.display = 'flex';  
     }
-}
+}*/
 
 //per nascondere righe cerchio
+/*
 function hideLine(selector) {
     document.querySelector(selector).classList.remove('show-line');
-}
+}*/
 
 // funzione per aprire la scelta del Tipocontratto e Tipolivello e Duratacontratto
 function toggleChoices(choiceId) {
-var choices = document.getElementById(choiceId);
-choices.classList.toggle('show');
+    const choices = document.getElementById(choiceId);
+    choices.classList.toggle('show');
 }
 //Funzione per aprire la tabella con i risultati dei calcoli
 function aprisimulazione() {
-    document.getElementById('simulazione').style.display='block';
+    const simulazioneBox = document.getElementById('simulazione');
+    simulazioneBox.style.display = 'block';  // Mostra l'elemento
+    const costototaleDatore = document.getElementById('costototale-datore');
+    if(simulazioneBox){
+        
+        simulazioneBox.scrollIntoView({behavior: 'smooth'});  // Scorre la pagina fino all'elemento
+
     }
+    //document.getElementById('simulazione').style.display='block';
+
+    // Aggiungi uno scroll verticale aggiuntivo per andare un po' più giù
+}
 
 //funzione per far visualizzare i livelli giusti in base al tipo di contratto        
 function sceltalivello() {
@@ -279,7 +292,7 @@ let duratacontrattoselezionato = "";
 // Funzione per gestire la selezione
 function selectChoice(category, choice) {
 selections[category] = choice;
-displaySelections();
+//displaySelections();
 if (category === 'Tipo contratto') {
 let newTipoContratto;
 if (selections['Tipo contratto'] === 'full-time') {
@@ -373,15 +386,17 @@ box.classList.remove('selected');
     box.firstChild.textContent='';
     box.firstChild.textContent = newText; // Cambia il testo del box
     box.classList.add('selected'); // Cambia il colore di sfondo
+
     if (boxId==='boxTipoContratto'){
-        document.getElementById('boxLivelloContratto').style.display='block';
+        document.getElementById('boxLivelloContratto').style.display='inline-block';
+        
     }
     if (boxId==='boxLivelloContratto'){
-        document.getElementById('boxDurataContratto').style.display='block';
+        document.getElementById('boxDurataContratto').style.display='inline-block';
     }
     if (boxId==='boxDurataContratto'){
-        document.getElementById('orariodilavoro').style.display='flex';
-        document.getElementById('sendRequest').style.display = 'flex';
+        //document.getElementById('orariodilavoro').style.display='flex';
+        //document.getElementById('sendRequest').style.display = 'flex';
 
     }
 }
@@ -609,7 +624,7 @@ document.getElementById('specificaVittoAlloggioBox').style.display = (choice ===
 if (choice === 'si') {
     deselectAllSpecifiche();
 }
-displaySelections();
+//displaySelections();
 }
 
 // Funzione per deselezionare tutte le specifiche checkbox
@@ -675,7 +690,7 @@ if (checkbox.checked) {
     bambino = "no";
 }
 selections['Bambino entro 6 anni'] = bambino;
-displaySelections();
+//displaySelections();
 }
 let certificato = "no";
 function selectCertificato() {
@@ -686,7 +701,7 @@ if (checkbox.checked) {
     certificato = "no";
 }
 selections['Certificato UNI1176'] = certificato;
-displaySelections();
+//displaySelections();
 }
 let autosufficienti = "no";
 function selectAutosuff() {
@@ -697,10 +712,10 @@ if (checkbox.checked) {
     autosufficienti = "no";
 }
 selections['Autosufficienti'] = autosufficienti;
-displaySelections();
+//displaySelections();
 }
 
-
+/*
 function displaySelections() {
 var selectedItems = document.getElementById('selectedItems');
 selectedItems.innerHTML = '';
@@ -714,123 +729,123 @@ for (let key in selections) {
         }
     }
 }
-}
+}*/
 // Definizione dei limiti per ogni tipo di contratto
-const contractLimits = {
-convivente: { maxWeeklyHours: 54, maxDailyHours: 10 },
-nonconvivente: { maxWeeklyHours: 40, maxDailyHours: 8 },
-'part-time': { maxWeeklyHours: 30, maxDailyHours: 10 },
-sostituzione: { maxWeeklyHours: 40, maxDailyHours: 12 },
-presenza: { maxWeeklyHours: 54, maxDailyHours: 10 },
-assistenza: { maxWeeklyHours: 54, maxDailyHours: 10 }
+var  contractLimits = {
+    convivente: { maxWeeklyHours: 54, maxDailyHours: 10 },
+    nonconvivente: { maxWeeklyHours: 40, maxDailyHours: 8 },
+    'part-time': { maxWeeklyHours: 30, maxDailyHours: 10 },
+    sostituzione: { maxWeeklyHours: 40, maxDailyHours: 12 },
+    presenza: { maxWeeklyHours: 54, maxDailyHours: 10 },
+    assistenza: { maxWeeklyHours: 54, maxDailyHours: 10 }
 };
 
 
 
 // Funzione per gestire il cambio del tipo di contratto
 function onTipoContrattoChange(newTipoContratto) {
-tipocontrattoselezionato = newTipoContratto;
-resetHours(); // Resetta le ore ogni volta che cambia il tipo di contratto
-updateTotals(); // Aggiorna i totali ogni volta che cambia il tipo di contratto
+    tipocontrattoselezionato = newTipoContratto;
+    resetHours(); // Resetta le ore ogni volta che cambia il tipo di contratto
+    updateTotals(); // Aggiorna i totali ogni volta che cambia il tipo di contratto
 }
 
 // Funzione per resettare tutte le ore
 function resetHours() {
-const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
-days.forEach(day => {
-const input = document.getElementById(day);
-input.value = 0;
-updateButtonVisibility(day);
-});
-document.getElementById('totalHours').textContent = 0;
-document.getElementById('totalDays').textContent = 0;
+    const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
+    days.forEach(day => {
+    const input = document.getElementById(day);
+    input.value = 0;
+    updateButtonVisibility(day);
+    });
+    document.getElementById('totalHours').textContent = 0;
+    document.getElementById('totalDays').textContent = 0;
 }
 
 // Funzione per l'incremento delle ore
 function increaseHours(day) {
-const input = document.getElementById(day);
-const maxDailyHours = contractLimits[tipocontrattoselezionato].maxDailyHours;
-if (parseInt(input.value) < maxDailyHours) {
-input.value = parseInt(input.value) + 1;
-if (!updateTotals()) {
-input.value = parseInt(input.value) - 1;
-updateTotals();
-} else {
-updateButtonVisibility(day);
-}
-}
+    const input = document.getElementById(day);
+    const maxDailyHours = contractLimits[tipocontrattoselezionato].maxDailyHours;
+    if (parseInt(input.value) < maxDailyHours) {
+    input.value = parseInt(input.value) + 1;
+    if (!updateTotals()) {
+    input.value = parseInt(input.value) - 1;
+    updateTotals();
+    } else {
+    updateButtonVisibility(day);
+    }
+    }
 }
 
 // Funzione per il decremento delle ore
 function decreaseHours(day) {
-const input = document.getElementById(day);
-if (input.value > 0) {
-input.value = parseInt(input.value) - 1;
-updateTotals();
-updateButtonVisibility(day);
-}
+    const input = document.getElementById(day);
+    if (input.value > 0) {
+    input.value = parseInt(input.value) - 1;
+    updateTotals();
+    updateButtonVisibility(day);
+    }
 }
 
 // Funzione per aggiornare i totali ore
 function updateTotals() {
-const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
-let totalHours = 0;
-let totalDays = 0;
-let atLeastOneDayOff = false;
-let overTimeDaily = false;
+    const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
+    let totalHours = 0;
+    let totalDays = 0;
+    let atLeastOneDayOff = false;
+    let overTimeDaily = false;
 
-const maxWeeklyHours = contractLimits[tipocontrattoselezionato].maxWeeklyHours;
-const maxDailyHours = contractLimits[tipocontrattoselezionato].maxDailyHours;
+    let maxWeeklyHours = contractLimits[tipocontrattoselezionato].maxWeeklyHours;
+    let maxDailyHours = contractLimits[tipocontrattoselezionato].maxDailyHours;
 
-days.forEach(day => {
-const input = document.getElementById(day);
-let value = parseInt(input.value);
+    days.forEach(day => {
+    const input = document.getElementById(day);
+    let value = parseInt(input.value);
 
-if (value > maxDailyHours) {
-overTimeDaily = true;
-}
+    if (value > maxDailyHours) {
+    overTimeDaily = true;
+    }
 
-if (value > 0) {
-totalDays++;
-} else {
-atLeastOneDayOff = true;
-}
-totalHours += value;
-});
+    if (value > 0) {
+    totalDays++;
+    } else {
+    atLeastOneDayOff = true;
+    }
+    totalHours += value;
+    });
 
-document.getElementById('totalHours').textContent = totalHours;
-document.getElementById('totalDays').textContent = totalDays;
+    document.getElementById('totalHours').textContent = totalHours;
+    document.getElementById('totalDays').textContent = totalDays;
 
-// Mostra messaggio di errore se non c'è almeno un giorno di riposo
-if (!atLeastOneDayOff) {
-alert("Bisogna lasciare almeno 1 giorno di riposo.");
-return false;
-}
+    // Mostra messaggio di errore se non c'è almeno un giorno di riposo
+    if (!atLeastOneDayOff) {
+    alert("Bisogna lasciare almeno 1 giorno di riposo.");
+    return false;
+    }
 
-// Mostra messaggio di errore se il totale delle ore settimanali è maggiore del limite
-if (totalHours > maxWeeklyHours) {
-alert(`Il lavoratore con tipo contratto ${tipocontrattoselezionato} non può fare più di ${maxWeeklyHours} ore settimanali.`);
-return false;
-}
+    // Mostra messaggio di errore se il totale delle ore settimanali è maggiore del limite
+    if (totalHours > maxWeeklyHours) {
+    alert(`Il lavoratore con tipo contratto ${tipocontrattoselezionato} non può fare più di ${maxWeeklyHours} ore settimanali.`);
+    return false;
+    }
 
-// Mostra messaggio di errore se un giorno ha più ore del limite giornaliero
-if (overTimeDaily) {
-alert(`Il lavoratore con tipo contratto ${tipocontrattoselezionato} non può fare più di ${maxDailyHours} ore al giorno di lavoro.`);
-return false;
-}
+    // Mostra messaggio di errore se un giorno ha più ore del limite giornaliero
+    if (overTimeDaily) {
+    alert(`Il lavoratore con tipo contratto ${tipocontrattoselezionato} non può fare più di ${maxDailyHours} ore al giorno di lavoro.`);
+    return false;
+    }
 
-return true;
-}
+    return true;
+    }
 
-// Funzione per aggiornare la visibilità dei pulsanti
-function updateButtonVisibility(day) {
-const input = document.getElementById(day);
-const decreaseButton = input.previousElementSibling;
-if (input.value == 0) {
-decreaseButton.classList.add('hidden');
-} else {
-decreaseButton.classList.remove('hidden');
-}
+    // Funzione per aggiornare la visibilità dei pulsanti
+    function updateButtonVisibility(day) {
+    const input = document.getElementById(day);
+    const decreaseButton = input.previousElementSibling;
+    if (input.value == 0) {
+    decreaseButton.classList.add('hidden');
+    } else {
+    decreaseButton.classList.remove('hidden');
+    }
 }
 
 // Aggiungi event listener per gli eventi di input sugli input specifici delle ore giornaliere
@@ -923,11 +938,11 @@ if (tooltipRect.top < 0) {
 
 
 function accendiopzioni(){
-if(tipocontrattoselezionato!="" & livellocontrattoselezionato!="" & duratacontrattoselezionato!=""){
-    document.getElementById('opzioniaggiuntive').style.display='block';
-}else{
-    document.getElementById('opzioniaggiuntive').style.display='none';
-}
+    if(tipocontrattoselezionato!="" & livellocontrattoselezionato!="" & duratacontrattoselezionato!=""){
+        //document.getElementById('opzioniaggiuntive').style.display='block';
+    }else{
+        //document.getElementById('opzioniaggiuntive').style.display='none';
+    }
 }
 
 
@@ -964,141 +979,139 @@ document.getElementById('confermanuovocalcolo').style.display = 'none';
 
 //Funzione per resettare tutta la pagina e prepararla per un nuovo calcolo
 function resetCalculator() {
-selections = {
-    'Tipo contratto': null,
-    'Livello': null,
-    'Contratto': null,
-    'Vitto e alloggio in natura': null,
-    'Specifiche vitto e alloggio': [],
-    'Bambino entro 6 anni': null,
-    'Certificato UNI1176': null,
-    'Autosufficienti': null
-};
+    selections = {
+        'Tipo contratto': null,
+        'Livello': null,
+        'Contratto': null,
+        'Vitto e alloggio in natura': null,
+        'Specifiche vitto e alloggio': [],
+        'Bambino entro 6 anni': null,
+        'Certificato UNI1176': null,
+        'Autosufficienti': null
+    };
 
-    const boxtipo = document.getElementById('boxTipoContratto');
-    boxtipo.firstChild.textContent = 'Seleziona Tipo Contratto'; 
-    const boxlivello = document.getElementById('boxLivelloContratto');
-    boxlivello.firstChild.textContent = 'Seleziona Livello Contratto'; 
-    const boxdurata = document.getElementById('boxDurataContratto');
-    boxdurata.firstChild.textContent = 'Seleziona Durata Contratto'; 
-
-
-
-document.getElementById('selectedItems').innerHTML = '';
-document.getElementById('result').innerHTML = '';
-document.getElementById('choices1').classList.remove('show');
-document.getElementById('livello').classList.remove('show');
-document.getElementById('vittoAlloggioBox').style.display = 'none';
-document.getElementById('specificaVittoAlloggioBox').style.display = 'none';
-document.getElementById('bambinoBox').style.display = 'none';
-document.getElementById('certificatoBox').style.display = 'none';
-document.getElementById('autosufficientiBox').style.display = 'none';
-document.getElementById('a').style.display = 'none';
-document.getElementById('as').style.display = 'none';
-document.getElementById('b').style.display = 'none';
-document.getElementById('bs').style.display = 'none';
-document.getElementById('c').style.display = 'none';
-document.getElementById('cs').style.display = 'none';
-document.getElementById('d').style.display = 'none';
-document.getElementById('ds').style.display = 'none';
-document.getElementById('u').style.display = 'none';
-document.getElementById('simulazione').style.display = 'none';
-document.getElementById('InputpagaBoxora').style.display = 'none';
-document.getElementById('InputpagaBoxmese').style.display = 'none';
-document.getElementById('paga-netta').textContent = "";
-document.getElementById('confermanuovocalcolo').style.display = 'none';
-document.getElementById('opzioniaggiuntive').style.display='none';
-document.getElementById('orariodilavoro').style.display='none';
-document.getElementById('boxLivelloContratto').style.display='none';
-document.getElementById('boxDurataContratto').style.display='none';
-document.getElementById('sendRequest').style.display = 'none';
-document.getElementById('nuovocalcolo').style.display = 'none';
-
-//tolgo le linee dei cerchi
-document.querySelectorAll('.cerchio21, .cerchio22,.cerchio23').forEach(el => {
-    el.classList.remove('show-line');
-});
-document.querySelectorAll('.cerchio22, .cerchio23, .cerchio24').forEach(el => {
-    el.style.display = 'none';
-});
+        const boxtipo = document.getElementById('boxTipoContratto');
+        boxtipo.firstChild.textContent = 'Seleziona Tipo Contratto'; 
+        const boxlivello = document.getElementById('boxLivelloContratto');
+        boxlivello.firstChild.textContent = 'Seleziona Livello Contratto'; 
+        const boxdurata = document.getElementById('boxDurataContratto');
+        boxdurata.firstChild.textContent = 'Seleziona Durata Contratto'; 
 
 
 
+    //document.getElementById('selectedItems').innerHTML = '';
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('choices1').classList.remove('show');
+    document.getElementById('livello').classList.remove('show');
+    document.getElementById('vittoAlloggioBox').style.display = 'none';
+    document.getElementById('specificaVittoAlloggioBox').style.display = 'none';
+    document.getElementById('bambinoBox').style.display = 'none';
+    document.getElementById('certificatoBox').style.display = 'none';
+    document.getElementById('autosufficientiBox').style.display = 'none';
+    document.getElementById('a').style.display = 'none';
+    document.getElementById('as').style.display = 'none';
+    document.getElementById('b').style.display = 'none';
+    document.getElementById('bs').style.display = 'none';
+    document.getElementById('c').style.display = 'none';
+    document.getElementById('cs').style.display = 'none';
+    document.getElementById('d').style.display = 'none';
+    document.getElementById('ds').style.display = 'none';
+    document.getElementById('u').style.display = 'none';
+    document.getElementById('simulazione').style.display = 'none';
+    document.getElementById('InputpagaBoxora').style.display = 'none';
+    document.getElementById('InputpagaBoxmese').style.display = 'none';
+    document.getElementById('paga-netta').textContent = "";
+    document.getElementById('confermanuovocalcolo').style.display = 'none';
+    //document.getElementById('opzioniaggiuntive').style.display='none';
+    //document.getElementById('orariodilavoro').style.display='none';
+    document.getElementById('boxLivelloContratto').style.display='none';
+    document.getElementById('boxDurataContratto').style.display='none';
+    //document.getElementById('sendRequest').style.display = 'none';
+    document.getElementById('nuovocalcolo').style.display = 'none';
 
-// Reset input values
-var inputPagaOra = document.getElementById('InputpagaOra');
-var inputPagaMese = document.getElementById('InputpagaMese');
+    //tolgo le linee dei cerchi
+    document.querySelectorAll('.cerchio21, .cerchio22,.cerchio23').forEach(el => {
+        el.classList.remove('show-line');
+    });
+    document.querySelectorAll('.cerchio22, .cerchio23, .cerchio24').forEach(el => {
+        el.style.display = 'none';
+    });
 
-if (inputPagaOra) {
-    inputPagaOra.value = "";
-    inputPagaOra.placeholder = "paga";
+
+
+
+    // Reset input values
+    const inputPagaOra = document.getElementById('InputpagaOra');
+    const inputPagaMese = document.getElementById('InputpagaMese');
+
+    if (inputPagaOra) {
+        inputPagaOra.value = "";
+        inputPagaOra.placeholder = "paga";
+    }
+
+    if (inputPagaMese) {
+        inputPagaMese.value = "";
+        inputPagaMese.placeholder = "paga";
+    }
+
+    livellocontrattoselezionato = "";
+    tipocontrattoselezionato = "";
+    duratacontrattoselezionato = "";
+    indennitaPranzoColazione = "no";
+    indennitaCena = "no";
+    indennitaAlloggio = "no";
+    certificato = "no";
+    bambino = "no";
+    autosufficienti = "no";
+    paga = 0;
+
+    resetTable();
+
+    // Reset hours and days
+    const days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
+    days.forEach(function(day) {
+        document.getElementById(day).value = 0;
+    });
+    document.getElementById('totalHours').textContent = 0;
+    document.getElementById('totalDays').textContent = 0;
+
+    // Reset radio buttons and checkboxes
+    const radios = document.querySelectorAll('input[type="radio"]');
+    radios.forEach(function(radio) {
+        radio.checked = false;
+    });
+
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+    });
+    var vittoAlloggioCheckbox = document.getElementById('vittoAlloggioCheckbox');
+    vittoAlloggioCheckbox.checked = true;
+
+    // per rimuovere lo sfondo bianco dalle selezioni tipo contratto
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => {
+        box.classList.remove('selected');
+    });
+
+    // per nasocndere i meno nella tabella delle ore
+    resetHours();
 }
-
-if (inputPagaMese) {
-    inputPagaMese.value = "";
-    inputPagaMese.placeholder = "paga";
-}
-
-livellocontrattoselezionato = "";
-tipocontrattoselezionato = "";
-duratacontrattoselezionato = "";
-indennitaPranzoColazione = "no";
-indennitaCena = "no";
-indennitaAlloggio = "no";
-certificato = "no";
-bambino = "no";
-autosufficienti = "no";
-paga = 0;
-
-resetTable();
-
-// Reset hours and days
-var days = ['lunedi', 'martedi', 'mercoledi', 'giovedi', 'venerdi', 'sabato', 'domenica'];
-days.forEach(function(day) {
-    document.getElementById(day).value = 0;
-});
-document.getElementById('totalHours').textContent = 0;
-document.getElementById('totalDays').textContent = 0;
-
-// Reset radio buttons and checkboxes
-var radios = document.querySelectorAll('input[type="radio"]');
-radios.forEach(function(radio) {
-    radio.checked = false;
-});
-
-var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-checkboxes.forEach(function(checkbox) {
-    checkbox.checked = false;
-});
-var vittoAlloggioCheckbox = document.getElementById('vittoAlloggioCheckbox');
-vittoAlloggioCheckbox.checked = true;
-
-// per rimuovere lo sfondo bianco dalle selezioni tipo contratto
-const boxes = document.querySelectorAll('.box');
-boxes.forEach(box => {
-    box.classList.remove('selected');
-});
-
-// per nasocndere i meno nella tabella delle ore
-resetHours();
-}
-
-
 
 
 function resetTable() {
-const ids = [
-    "pagalorda-lavoratore", "paga-netta", "indennita-tot", "indennita-cibo", "paga-domenica",
-    "paga-festivo", "contributicolf-lavoratore", "contributiinps-lavoratore",
-    "paganetta-lavoratore", "contributicolf-datore", "contributiinps-datore",
-    "indennita-tfr", "indennita-ferie", "indennita-tredicesim", "costototale-datore"
-];
-ids.forEach(id => {
-    // Trova tutti gli elementi con l'ID specificato
-    const elements = document.querySelectorAll(`#${id}`);
-    // Pulisce il contenuto testuale di ciascun elemento trovato
-    elements.forEach(element => {
-        element.textContent = '';
+    const ids = [
+        "pagalorda-lavoratore", "paga-netta", "indennita-tot", "indennita-cibo", "paga-domenica",
+        "paga-festivo", "contributicolf-lavoratore", "contributiinps-lavoratore",
+        "paganetta-lavoratore", "contributicolf-datore", "contributiinps-datore",
+        "indennita-tfr", "indennita-ferie", "indennita-tredicesim", "costototale-datore"
+    ];
+    ids.forEach(id => {
+        // Trova tutti gli elementi con l'ID specificato
+        const elements = document.querySelectorAll(`#${id}`);
+        // Pulisce il contenuto testuale di ciascun elemento trovato
+        elements.forEach(element => {
+            element.textContent = '';
+        });
     });
-});
 }
