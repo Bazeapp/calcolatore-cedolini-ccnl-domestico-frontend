@@ -1,14 +1,3 @@
-// Invio dell'altezza all'origine genitore
-function sendHeight() {
-    var height = document.body.scrollHeight;
-    window.parent.postMessage({ height: height }, "*");
-}
-
-// Invia l'altezza iniziale e aggiornala su resize o altre modifiche
-sendHeight();
-window.addEventListener('resize', sendHeight);
-
-
 
 // Aggiunge un ascoltatore di eventi al bottone con ID "sendRequest".
 // Al click, viene chiamata la funzione submitChoices per inviare i dati scelti.
