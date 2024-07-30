@@ -230,121 +230,116 @@ function sceltaLivello() {
     }
 }
 
-
-
-
-
-
-
 // inizializzo le variabili che andrò a passare al backend
 let livellocontrattoselezionato = "";
 let tipocontrattoselezionato = "";
 let duratacontrattoselezionato = "";  
 
-// Funzione per gestire la selezione
+/**
+ * Aggiorna le selezioni dell'utente basate sulla categoria e applica le logiche dipendenti dalla scelta.
+ * @param {string} category - Categoria della selezione (es. 'Tipo contratto', 'Livello', 'Contratto').
+ * @param {string} choice - La scelta specifica fatta dall'utente per la data categoria.
+ */
 function selectChoice(category, choice) {
-selections[category] = choice;
-//displaySelections();
-if (category === 'Tipo contratto') {
-let newTipoContratto;
-if (selections['Tipo contratto'] === 'full-time') {
-newTipoContratto = 'convivente';
-} else if (selections['Tipo contratto'] === 'non-convivente') {
-newTipoContratto = 'nonconvivente';
-} else if (selections['Tipo contratto'] === 'part-time') {
-newTipoContratto = 'part-time';
-} else if (selections['Tipo contratto'] === 'sostituzione') {
-newTipoContratto = 'sostituzione';
-} else if (selections['Tipo contratto'] === 'presenza') {
-newTipoContratto = 'presenza';
-} else if (selections['Tipo contratto'] === 'assistenza') {
-newTipoContratto = 'assistenza';
-}
-cambiotipo(livellocontrattoselezionato);//se cambia il tipo resetto il livello
-onTipoContrattoChange(newTipoContratto); // Cambia il tipo di contratto e resetta i valori orari
+    // Aggiorna l'oggetto globale delle selezioni con la nuova scelta dell'utente.
+    selections[category] = choice;
+
+    // Gestione delle azioni basate sul tipo di contratto selezionato.
+    if (category === 'Tipo contratto') {
+        let newTipoContratto;
+
+        // Assegna un valore specifico a newTipoContratto basato sul tipo di contratto selezionato.
+        switch (selections['Tipo contratto']) {
+            case 'full-time':
+                newTipoContratto = 'convivente';
+                break;
+            case 'non-convivente':
+                newTipoContratto = 'nonconvivente';
+                break;
+            case 'part-time':
+                newTipoContratto = 'part-time';
+                break;
+            case 'sostituzione':
+                newTipoContratto = 'sostituzione';
+                break;
+            case 'presenza':
+                newTipoContratto = 'presenza';
+                break;
+            case 'assistenza':
+                newTipoContratto = 'assistenza';
+                break;
+        }
+
+        // Resetta il livello selezionato quando il tipo di contratto cambia.
+        cambiotipo(livellocontrattoselezionato);
+        // Esegue una funzione per gestire il cambio del tipo di contratto.
+        onTipoContrattoChange(newTipoContratto);
+    }
+
+    // Gestione delle azioni basate sul livello selezionato.
+    if (category === 'Livello') {
+        livellocontrattoselezionato = choice;
+        // Gestione della visibilità di box specifici basati sul livello scelto.
+        document.getElementById('bambinoBox').style.display = choice === 'bs' ? 'block' : 'none';
+        document.getElementById('certificatoBox').style.display = ['b', 'bs', 'cs', 'd'].includes(choice) && !['nonconvivente', 'sostituzione'].includes(tipocontrattoselezionato) ? 'block' : 'none';
+        document.getElementById('autosufficientiBox').style.display = ['cs', 'ds'].includes(choice) ? 'block' : 'none';
+        document.getElementById('vittoAlloggioBox').style.display = selections['Tipo contratto'] !== 'non-convivente' ? 'flex' : 'none';
+        document.getElementById('vittoAlloggioBox').style.flexDirection = 'row-reverse';
+    }
+
+    // Gestione delle azioni basate sulla scelta del contratto.
+    if (category === 'Contratto') {
+        // Imposta la durata del contratto basata sulla scelta, usando underscore per gli spazi.
+        duratacontrattoselezionato = choice.replace(' ', '_');
+    }
 }
 
-if (category === 'Livello') {
-livellocontrattoselezionato = choice;
+
+/**
+ * Gestisce il cambiamento del tipo di contratto selezionato.
+ * @param {string} nuovo - Il nuovo tipo di contratto selezionato.
+ */
+function cambiotipo(nuovo) {
+    // Controlla se il tipo di contratto attualmente selezionato è diverso dal nuovo tipo selezionato.
+    if (tipocontrattoselezionato != nuovo) {
+        // Resetta le selezioni di livello e durata del contratto a vuoto.
+        livellocontrattoselezionato = "";
+        duratacontrattoselezionato = "";
+
+        // Trova e aggiorna il contenuto del box di selezione del livello del contratto.
+        const boxlivello2 = document.getElementById('boxLivelloContratto');
+        boxlivello2.firstChild.textContent = 'Seleziona Livello Contratto'; 
+
+        // Trova e aggiorna il contenuto del box di selezione della durata del contratto.
+        const boxdurata2 = document.getElementById('boxDurataContratto');
+        boxdurata2.firstChild.textContent = 'Seleziona Tipo Contratto';
+        // Nasconde il box della durata del contratto dato che il tipo di contratto è cambiato.
+        boxdurata2.style.display = "none"; 
+
+        // Rimuove le classi che mostrano le linee connettive tra elementi visivi per i livelli specificati.
+        document.querySelectorAll('.cerchio22, .cerchio23').forEach(el => {
+            el.classList.remove('show-line');
+        });
+
+        // Nasconde gli elementi visivi per i livelli specificati.
+        document.querySelectorAll('.cerchio23, .cerchio24').forEach(el => {
+            el.style.display = 'none';
+        });
+
+        // Mostra un alert per informare l'utente che deve selezionare nuovamente il livello e la durata del contratto.
+        alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
+
+        // Rimuove lo sfondo selezionato da tutte le box di selezione tipo contratto.
+        const boxes = document.querySelectorAll('.box');
+        boxes.forEach(box => {
+            box.classList.remove('selected');
+        });
+    }
 }
 
-if (category === 'Contratto') {
-if (choice === 'determinato in sostituzione') {
-duratacontrattoselezionato = 'determinato_in_sostituzione';
-}
-if (choice === 'determinato') {
-duratacontrattoselezionato = 'determinato';
-}
-if (choice === 'indeterminato') {
-duratacontrattoselezionato = 'indeterminato';
-}
-}
 
-if (category === 'Livello') {
-if (choice === 'bs') {
-document.getElementById('bambinoBox').style.display = 'block';
-} else {
-document.getElementById('bambinoBox').style.display = 'none';
-}
-
-if ((choice === 'b' || choice === 'bs' || choice === 'cs' || choice === 'd') &&
-(tipocontrattoselezionato !== 'nonconvivente' && tipocontrattoselezionato !== 'sostituzione'))
-{
-document.getElementById('certificatoBox').style.display = 'block';
-} else {
-document.getElementById('certificatoBox').style.display = 'none';
-}
-
-if (choice === 'cs' || choice === 'ds') {
-document.getElementById('autosufficientiBox').style.display = 'block';
-} else {
-document.getElementById('autosufficientiBox').style.display = 'none';
-}
-
-if (selections['Tipo contratto'] !== 'non-convivente') {
-    //document.getElementById('vittoAlloggioBox').style.display = 'block';
-
-    // Access the element with the ID 'vittoAlloggioBox'
-    var vittoAlloggioBox = document.getElementById('vittoAlloggioBox');
-
-    // Set the display property to 'flex'
-    vittoAlloggioBox.style.display = 'flex';
-
-    // Set the flex-direction property to 'row'
-    vittoAlloggioBox.style.flexDirection = 'row-reverse';
-
-
-}else{
-document.getElementById('vittoAlloggioBox').style.display = 'none';
-}
-}
-}
-
-function cambiotipo(nuovo){
-if(tipocontrattoselezionato!=nuovo){
-livellocontrattoselezionato="";
-duratacontrattoselezionato="";
-const boxlivello2 = document.getElementById('boxLivelloContratto');
-boxlivello2.firstChild.textContent = 'Seleziona Livello Contratto'; 
-const boxdurata2 = document.getElementById('boxDurataContratto');
-boxdurata2.firstChild.textContent = 'Seleziona Tipo Contratto';
-boxdurata2.style.display="none"; 
-    document.querySelectorAll('.cerchio22,.cerchio23').forEach(el => {
-        el.classList.remove('show-line');
-    });
-    document.querySelectorAll('.cerchio23, .cerchio24').forEach(el => {
-        el.style.display = 'none';
-    });    
-alert('Se cambi il tipo contratto seleziona nuovamente il livello e la durata del contratto');
-// per rimuovere lo sfondo bianco dalle selezioni tipo contratto
-const boxes = document.querySelectorAll('.box');
-boxes.forEach(box => {
-box.classList.remove('selected');
-});
-}
-}
-  // quando si scegli tipo/livello/durata contratto allora il box cambia scritta
-  function scelto(boxId, newText) {
+// quando si scegli tipo/livello/durata contratto allora il box cambia scritta
+function scelto(boxId, newText) {
     const box = document.getElementById(boxId);
     box.firstChild.textContent='';
     box.firstChild.textContent = newText; // Cambia il testo del box
@@ -394,117 +389,36 @@ const pagaconvpres_livu=765.71  ;//paga mensile minima lavoratori conviventi pre
 const pagasost_livcs=8.41    ;//#paga oraria minima lavoratori in sostituzione liv ds
 const pagasost_livds=10.15    ;//#paga oraria minima lavoratori in sostituzione liv ds  
 
-//funzione per mostrare l'input di paga e calcolo del placeholder
 let paga = 0;
+/**
+ * Imposta la visibilità degli input di paga e aggiorna i segnaposto in base al tipo e livello di contratto selezionati.
+ */
 function sceglipaga() {
-var livellopaga;
-if (tipocontrattoselezionato === "nonconvivente") {
-document.getElementById('InputpagaBoxora').style.display = 'block';
-document.getElementById('InputpagaBoxmese').style.display = 'none';
-livellopaga = document.getElementById('InputpagaOra');
-if (livellocontrattoselezionato === "a") {
-livellopaga.placeholder = paganoconv_liva ;
-}
-if (livellocontrattoselezionato === "as") {
-livellopaga.placeholder = paganoconv_livas;
-}
-if (livellocontrattoselezionato === "b") {
-livellopaga.placeholder = paganoconv_livb ;
-}
-if (livellocontrattoselezionato === "bs") {
-livellopaga.placeholder = paganoconv_livbs;
-}
-if (livellocontrattoselezionato === "c") {
-livellopaga.placeholder = paganoconv_livc;
-}
-if (livellocontrattoselezionato === "cs") {
-livellopaga.placeholder = paganoconv_livcs;
-}
-if (livellocontrattoselezionato === "d") {
-livellopaga.placeholder = paganoconv_livd;
-}
-if (livellocontrattoselezionato === "ds") {
-livellopaga.placeholder = paganoconv_livds ;
-}
-}
-if (tipocontrattoselezionato === "convivente") {
-document.getElementById('InputpagaBoxmese').style.display = 'inline-block';
-document.getElementById('InputpagaBoxora').style.display = 'none';
-livellopaga = document.getElementById('InputpagaMese');
-if (livellocontrattoselezionato === "a") {
-livellopaga.placeholder = pagaconv_liva ;
-}
-if (livellocontrattoselezionato === "as") {
-livellopaga.placeholder = pagaconv_livas ;
-}
-if (livellocontrattoselezionato === "b") {
-livellopaga.placeholder = pagaconv_livb;
-}
-if (livellocontrattoselezionato === "bs") {
-livellopaga.placeholder = pagaconv_livbs;
-}
-if (livellocontrattoselezionato === "c") {
-livellopaga.placeholder = pagaconv_livc;
-}
-if (livellocontrattoselezionato === "cs") {
-livellopaga.placeholder = pagaconv_livcs;
-}
-if (livellocontrattoselezionato === "d") {
-livellopaga.placeholder = pagaconv_livd ;
-}
-if (livellocontrattoselezionato === "ds") {
-livellopaga.placeholder = pagaconv_livds ;
-}
-}
-if (tipocontrattoselezionato === "part-time") {
-document.getElementById('InputpagaBoxmese').style.display = 'flex';
-document.getElementById('InputpagaBoxora').style.display = 'none';
-livellopaga = document.getElementById('InputpagaMese');
-if (livellocontrattoselezionato === "b") {
-livellopaga.placeholder = pagapart_livb;
-}
-if (livellocontrattoselezionato === "bs") {
-livellopaga.placeholder = pagapart_livbs ;
-}
-if (livellocontrattoselezionato === "c") {
-livellopaga.placeholder = pagapart_livc;
-}
-}
-if (tipocontrattoselezionato === "sostituzione") {
-document.getElementById('InputpagaBoxora').style.display = 'block';
-document.getElementById('InputpagaBoxmese').style.display = 'none';
-livellopaga = document.getElementById('InputpagaOra');
-if (livellocontrattoselezionato === "cs") {
-livellopaga.placeholder = pagasost_livcs ;
-}
-if (livellocontrattoselezionato === "ds") {
-livellopaga.placeholder = pagasost_livds ;
-}
-}
-if (tipocontrattoselezionato === "presenza") {
-document.getElementById('InputpagaBoxmese').style.display = 'flex';
-document.getElementById('InputpagaBoxora').style.display = 'none';
-livellopaga = document.getElementById('InputpagaMese');
-if (livellocontrattoselezionato === "u") {
-livellopaga.placeholder = pagaconvpres_livu ;
-}
-}
-if (tipocontrattoselezionato === "assistenza") {
-document.getElementById('InputpagaBoxmese').style.display = 'flex';
-document.getElementById('InputpagaBoxora').style.display = 'none';
-livellopaga = document.getElementById('InputpagaMese');
-if (livellocontrattoselezionato === "bs") {
-livellopaga.placeholder = pagaconvass_livbs ;
-}
-if (livellocontrattoselezionato === "cs") {
-livellopaga.placeholder = pagaconvass_livcs;
-}
-if (livellocontrattoselezionato === "ds") {
-livellopaga.placeholder = pagaconvass_livds ;
-}
-}
-}
+    let livellopaga; // Variabile per tenere traccia dell'elemento di input corrente
 
+    // Imposta la visibilità degli input box in base al tipo di contratto
+    const isHourly = ["nonconvivente", "sostituzione"].includes(tipocontrattoselezionato);
+    document.getElementById('InputpagaBoxora').style.display = isHourly ? 'inline-block' : 'none';
+    document.getElementById('InputpagaBoxmese').style.display = isHourly ? 'none' : 'inline-block';
+
+    // Seleziona l'elemento input appropriato basato sul tipo di contratto
+    livellopaga = isHourly ? document.getElementById('InputpagaOra') : document.getElementById('InputpagaMese');
+
+    // Mappa dei segnaposti basata su tipo e livello di contratto
+    const placeholders = {
+        "nonconvivente": { "a": paganoconv_liva, "as": paganoconv_livas, "b": paganoconv_livb, "bs": paganoconv_livbs, "c": paganoconv_livc, "cs": paganoconv_livcs, "d": paganoconv_livd, "ds": paganoconv_livds },
+        "convivente": { "a": pagaconv_liva, "as": pagaconv_livas, "b": pagaconv_livb, "bs": pagaconv_livbs, "c": pagaconv_livc, "cs": pagaconv_livcs, "d": pagaconv_livd, "ds": pagaconv_livds },
+        "part-time": { "b": pagapart_livb, "bs": pagapart_livbs, "c": pagapart_livc },
+        "sostituzione": { "cs": pagasost_livcs, "ds": pagasost_livds },
+        "presenza": { "u": pagaconvpres_livu },
+        "assistenza": { "bs": pagaconvass_livbs, "cs": pagaconvass_livcs, "ds": pagaconvass_livds }
+    };
+
+    // Imposta il segnaposto per l'input basato sul tipo e livello di contratto
+    if (placeholders[tipocontrattoselezionato] && placeholders[tipocontrattoselezionato][livellocontrattoselezionato]) {
+        livellopaga.placeholder = placeholders[tipocontrattoselezionato][livellocontrattoselezionato];
+    }
+}
 
 //funzione per il salvataggio della paga inserita
 function salvaPaga(event) {
@@ -874,42 +788,49 @@ updateButtonVisibility(day);
 });
 };
 
-// funzione per gestire i toolip e farli stare sempre dentro la pagina
+// Ascolta l'evento quando il DOM è completamente caricato.
 document.addEventListener('DOMContentLoaded', function() {
-const informativeElements = document.querySelectorAll('.informativa');
+    // Seleziona tutti gli elementi con classe 'informativa'.
+    const informativeElements = document.querySelectorAll('.informativa');
 
-informativeElements.forEach(element => {
-element.addEventListener('mouseenter', function() {
-const tooltip = this.querySelector('.tooltip');
-const tooltipRect = tooltip.getBoundingClientRect();
-const windowWidth = window.innerWidth;
-const windowHeight = window.innerHeight;
+    // Aggiunge un listener per l'evento 'mouseenter' su ciascun elemento informativo.
+    informativeElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            // Trova l'elemento tooltip all'interno dell'elemento informativo.
+            const tooltip = this.querySelector('.tooltip');
+            // Ottiene le dimensioni e la posizione del tooltip.
+            const tooltipRect = tooltip.getBoundingClientRect();
+            // Ottiene la larghezza e l'altezza della finestra del browser.
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
 
-// Reset tooltip position
-tooltip.style.left = '50%';
-tooltip.style.right = 'auto';
-tooltip.style.transform = 'translateX(-50%)';
+            // Ripristina la posizione predefinita del tooltip.
+            tooltip.style.left = '50%';
+            tooltip.style.right = 'auto';
+            tooltip.style.transform = 'translateX(-50%)';
 
-// Check if the tooltip is out of the viewport and adjust
-if (tooltipRect.left < 0) {
-    tooltip.style.left = '0';
-    tooltip.style.transform = 'translateX(0)';
-} else if (tooltipRect.right > windowWidth) {
-    tooltip.style.left = 'auto';
-    tooltip.style.right = '0';
-    tooltip.style.transform = 'translateX(0)';
-}
+            // Verifica se il tooltip esce dal viewport a sinistra e aggiusta se necessario.
+            if (tooltipRect.left < 0) {
+                tooltip.style.left = '0';
+                tooltip.style.transform = 'translateX(0)';
+            } else if (tooltipRect.right > windowWidth) { // Controlla se esce a destra e corregge.
+                tooltip.style.left = 'auto';
+                tooltip.style.right = '0';
+                tooltip.style.transform = 'translateX(0)';
+            }
 
-if (tooltipRect.top < 0) {
-    tooltip.style.bottom = 'auto';
-    tooltip.style.top = '125%';
-} else if (tooltipRect.bottom > windowHeight) {
-    tooltip.style.bottom = '125%';
-    tooltip.style.top = 'auto';
-}
+            // Controlla se il tooltip esce dal viewport in alto e corregge.
+            if (tooltipRect.top < 0) {
+                tooltip.style.bottom = 'auto';
+                tooltip.style.top = '125%';
+            } else if (tooltipRect.bottom > windowHeight) { // Controlla se esce in basso e corregge.
+                tooltip.style.bottom = '125%';
+                tooltip.style.top = 'auto';
+            }
+        });
+    });
 });
-});
-});
+
 
 
 function accendiopzioni(){
@@ -921,34 +842,59 @@ function accendiopzioni(){
 }
 
 
-
-
-//fuznione per visualizzare le cose scelte nella selections
+/**
+ * Funzione per raccogliere e visualizzare le selezioni fatte dall'utente.
+ * Mostra le selezioni in un elemento HTML identificato da 'result'.
+ */
 function submitChoices() {
-var result = document.getElementById('result');
-result.innerHTML = '<h2>Risultati del Calcolo:</h2>';
-for (var key in selections) {
-    if (selections[key] !== null) {
-        if (Array.isArray(selections[key]) && selections[key].length > 0) {
-            result.innerHTML += '<p>' + key + ': ' + selections[key].join(', ') + '</p>';
-        } else if (!Array.isArray(selections[key])) {
-            result.innerHTML += '<p>' + key + ': ' + selections[key] + '</p>';
+    // Ottiene il riferimento all'elemento dove verranno visualizzati i risultati.
+    var result = document.getElementById('result');
+    
+    // Inizializza il contenuto di 'result' con un'intestazione.
+    result.innerHTML = '<h2>Risultati del Calcolo:</h2>';
+
+    // Itera su ogni chiave nell'oggetto 'selections'.
+    for (var key in selections) {
+        // Controlla se il valore associato alla chiave non è null.
+        if (selections[key] !== null) {
+            // Gestisce il caso in cui il valore è un array con elementi.
+            if (Array.isArray(selections[key]) && selections[key].length > 0) {
+                result.innerHTML += '<p>' + key + ': ' + selections[key].join(', ') + '</p>';
+            } else if (!Array.isArray(selections[key])) {
+                // Gestisce il caso in cui il valore non è un array.
+                result.innerHTML += '<p>' + key + ': ' + selections[key] + '</p>';
+            }
         }
     }
+    
+    // Ottiene i valori per le ore e i giorni settimanali dall'utente e li aggiunge a 'result'.
+    var totalHours = document.getElementById('totalHours').value;
+    var totalDays = document.getElementById('totalDays').value;
+    result.innerHTML += '<p>Ore Settimanali: ' + totalHours + '</p>';
+    result.innerHTML += '<p>Giorni Settimanali: ' + totalDays + '</p>';
 }
-var totalHours = document.getElementById('totalHours').value;
-var totalDays = document.getElementById('totalDays').value;
-result.innerHTML += '<p>Ore Settimanali: ' + totalHours + '</p>';
-result.innerHTML += '<p>Giorni Settimanali: ' + totalDays + '</p>';
+
+
+/**
+ * Funzione per gestire la conferma di un'azione di reset.
+ * Nasconde il bottone di nuovo calcolo e mostra il bottone per confermare il nuovo calcolo.
+ */
+function confermanuovo() {
+    // Nasconde il bottone per iniziare un nuovo calcolo
+    document.getElementById('nuovocalcolo').style.display = 'none';
+    // Mostra il bottone per confermare il nuovo calcolo, chiedendo conferma all'utente
+    document.getElementById('confermanuovocalcolo').style.display = 'block';
 }
-//funzioni per la conferma del reset
-function confermanuovo(){
-document.getElementById('nuovocalcolo').style.display = 'none';
-document.getElementById('confermanuovocalcolo').style.display = 'block';
-}
-function annullanuovo(){
-document.getElementById('nuovocalcolo').style.display = 'block';
-document.getElementById('confermanuovocalcolo').style.display = 'none';
+
+/**
+ * Funzione per annullare l'azione di reset.
+ * Mostra di nuovo il bottone di nuovo calcolo e nasconde il bottone di conferma del nuovo calcolo.
+ */
+function annullanuovo() {
+    // Mostra di nuovo il bottone per iniziare un nuovo calcolo
+    document.getElementById('nuovocalcolo').style.display = 'block';
+    // Nasconde il bottone per confermare il nuovo calcolo, annullando la richiesta di conferma
+    document.getElementById('confermanuovocalcolo').style.display = 'none';
 }
 
 
@@ -1074,6 +1020,11 @@ function resetCalculator() {
 }
 
 
+/**
+ * Resetta il contenuto testuale delle celle di una tabella specificando gli ID delle celle.
+ * Questa funzione è utile per pulire i dati visualizzati dopo un calcolo o in preparazione
+ * di un nuovo inserimento di dati.
+ */
 function resetTable() {
     const ids = [
         "pagalorda-lavoratore", "paga-netta", "indennita-tot", "indennita-cibo", "paga-domenica",
