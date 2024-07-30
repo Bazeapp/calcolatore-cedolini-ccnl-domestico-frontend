@@ -1,27 +1,18 @@
-// Aggiunge un ascoltatore di eventi al bottone con ID "sendRequest".
-// Al click, viene chiamata la funzione submitChoices per inviare i dati scelti.
+
+
+
 document.getElementById("sendRequest").addEventListener("click", function() {
     submitChoices();
 });
-
-// Aggiunge un ascoltatore di eventi al bottone con ID "nuovocalcolo".
-// Al click, viene chiamata la funzione confermanuovo per avviare un nuovo calcolo.
 document.getElementById("nuovocalcolo").addEventListener("click", function() {
-    confermanuovo();
+confermanuovo();
 });
-
-// Aggiunge un ascoltatore di eventi al bottone con ID "conferma".
-// Al click, viene chiamata la funzione resetCalculator per resettare il calcolatore.
 document.getElementById("conferma").addEventListener("click", function() {
-    resetCalculator();
+resetCalculator();
 });
-
-// Aggiunge un ascoltatore di eventi al bottone con ID "annulla".
-// Al click, viene chiamata la funzione annullanuovo per annullare l'azione corrente.
 document.getElementById("annulla").addEventListener("click", function() {
-    annullanuovo();
+annullanuovo();
 });
-
 
 document.getElementById('sendRequest').addEventListener('click', async () => {
 
@@ -161,80 +152,139 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         }*/
     }); 
     
-// Funzione per aggiornare il contenuto dei campi della simulazione in base ai risultati ottenuti
-function updateSimulazione(result) {
-    // Itera su ciascuna chiave nell'oggetto result
-    for (const key in result) {
-        // Seleziona tutti gli elementi HTML con l'ID che corrisponde alla chiave
-        const elements = document.querySelectorAll(`#${key}`);
-        // Aggiorna il contenuto testuale di ciascun elemento trovato
-        elements.forEach(element => {
-            element.textContent = result[key] + " €"; // Aggiunge l'unità di misura (Euro)
-        });
-    }
-}
-
-// Oggetto per memorizzare le selezioni dell'utente
-let selections = {
-    'Tipo contratto': null,
-    'Livello': null,
-    'Contratto': null,
-    'Vitto e alloggio in natura': null,
-    'Specifiche vitto e alloggio': [],
-    'Bambino entro 6 anni': null,
-    'Certificato UNI1176': null,
-    'Autosufficienti': null
-};
-
-// Funzione per alternare la visualizzazione delle scelte in base all'ID fornito
-function toggleChoices(choiceId) {
-    const choices = document.getElementById(choiceId);
-    choices.classList.toggle('show'); // Alterna la classe 'show' per mostrare/nascondere elementi
-}
-
-// Funzione per visualizzare la tabella con i risultati dei calcoli
-function aprisimulazione() {
-    const simulazioneBox = document.getElementById('simulazione');
-    simulazioneBox.style.display = 'block'; // Rende visibile la simulazione
-    // Scorre la pagina fino al simulazioneBox con un'animazione
-    simulazioneBox.scrollIntoView({behavior: 'smooth'});
-}
-
-
-/**
- * Aggiorna la visibilità dei livelli in base al tipo di contratto selezionato.
- * Utilizza un approccio basato su mappatura per ridurre la ripetizione di codice.
- */
-function sceltaLivello() {
-    // Mappa di configurazione per determinare la visibilità degli elementi per ciascun tipo di contratto
-    const visibilityMap = {
-        'non-convivente': { a: 'block', as: 'block', b: 'block', bs: 'block', c: 'block', cs: 'block', d: 'block', ds: 'block', u: 'none' },
-        'part-time':      { a: 'none',  as: 'none',  b: 'block', bs: 'block', c: 'block', cs: 'none',  d: 'none',  ds: 'none',  u: 'none' },
-        'full-time':      { a: 'block', as: 'block', b: 'block', bs: 'block', c: 'block', cs: 'block', d: 'block', ds: 'block', u: 'none' },
-        'sostituzione':   { a: 'none',  as: 'none',  b: 'none',  bs: 'none',  c: 'none',  cs: 'block', d: 'none',  ds: 'block', u: 'none' },
-        'assistenza':     { a: 'none',  as: 'none',  b: 'none',  bs: 'block', c: 'none',  cs: 'block', d: 'none',  ds: 'block', u: 'none' },
-        'presenza':       { a: 'none',  as: 'none',  b: 'none',  bs: 'none',  c: 'none',  cs: 'none',  d: 'none',  ds: 'none',  u: 'block' }
-    };
-
-    // Ottenere il tipo di contratto selezionato
-    const contractType = selections['Tipo contratto'];
-    
-    // Ottenere la configurazione di visibilità per il tipo di contratto selezionato
-    const settings = visibilityMap[contractType];
-
-    // Aggiornare la visibilità per ogni elemento basato sulla configurazione
-    if (settings) {
-        for (const [elementId, displayStyle] of Object.entries(settings)) {
-            document.getElementById(elementId).style.display = displayStyle;
+    function updateSimulazione(result) {
+        // Itera su ciascuna chiave nell'oggetto result
+        for (const key in result) {
+            // Trova tutti gli elementi HTML con l'ID che corrisponde alla chiave
+            const elements = document.querySelectorAll(`#${key}`);
+            // Itera su ciascun elemento trovato e aggiorna il suo contenuto testuale
+            elements.forEach(element => {
+                element.textContent = result[key] + " €";
+            });
         }
     }
+    
+
+let selections = {
+'Tipo contratto': null,
+'Livello': null,
+'Contratto': null,
+'Vitto e alloggio in natura': null,
+'Specifiche vitto e alloggio': [],
+'Bambino entro 6 anni': null,
+'Certificato UNI1176': null,
+'Autosufficienti':null
+};
+
+// per mostrare righe cerchio
+/*
+function showLine(selector) {
+    document.querySelector(selector).classList.add('show-line');
+    if(selector === '.cerchio21'){
+        document.querySelector('.cerchio22').style.display = 'block';  
+    }
+    if(selector === '.cerchio22'){
+        document.querySelector('.cerchio23').style.display = 'flex';  
+    }
+    if(selector === '.cerchio23'){
+        document.querySelector('.cerchio24').style.display = 'flex';  
+    }
+}*/
+
+//per nascondere righe cerchio
+/*
+function hideLine(selector) {
+    document.querySelector(selector).classList.remove('show-line');
+}*/
+
+// Funzione per aprire la scelta del Tipocontratto e Tipolivello e Duratacontratto
+function toggleChoices(choiceId) {
+    const choices = document.getElementById(choiceId);
+    choices.classList.toggle('show');
 }
 
 
+//Funzione per aprire la tabella con i risultati dei calcoli
+function aprisimulazione() {
+    const simulazioneBox = document.getElementById('simulazione');
+    simulazioneBox.style.display = 'block';  // Mostra l'elemento
+    const costototaleDatore = document.getElementById('costototale-datore');
+    if(simulazioneBox){
+        
+        simulazioneBox.scrollIntoView({behavior: 'smooth'});  // Scorre la pagina fino all'elemento
 
+    }
+    //document.getElementById('simulazione').style.display='block';
 
+    // Aggiungi uno scroll verticale aggiuntivo per andare un po' più giù
+}
 
+// Funzione per far visualizzare i livelli giusti in base al tipo di contratto        
+function sceltalivello() {
+if(selections['Tipo contratto']==='non-convivente'){
+    document.getElementById('a').style.display='block';
+    document.getElementById('as').style.display='block';
+    document.getElementById('b').style.display='block';
+    document.getElementById('bs').style.display='block';
+    document.getElementById('c').style.display='block';
+    document.getElementById('cs').style.display='block';
+    document.getElementById('d').style.display='block';
+    document.getElementById('ds').style.display='block';
+    document.getElementById('u').style.display='none';}
 
+if(selections['Tipo contratto']==='part-time'){
+    document.getElementById('a').style.display='none';
+    document.getElementById('as').style.display='none';
+    document.getElementById('b').style.display='block';
+    document.getElementById('bs').style.display='block';
+    document.getElementById('c').style.display='block';
+    document.getElementById('cs').style.display='none';
+    document.getElementById('d').style.display='none';
+    document.getElementById('ds').style.display='none';
+    document.getElementById('u').style.display='none';}
+
+if(selections['Tipo contratto']==='full-time'){
+    document.getElementById('a').style.display='block';
+    document.getElementById('as').style.display='block';
+    document.getElementById('b').style.display='block';
+    document.getElementById('bs').style.display='block';
+    document.getElementById('c').style.display='block';
+    document.getElementById('cs').style.display='block';
+    document.getElementById('d').style.display='block';
+    document.getElementById('ds').style.display='block';
+    document.getElementById('u').style.display='none';}
+
+if(selections['Tipo contratto']==='sostituzione'){
+    document.getElementById('a').style.display='none';
+    document.getElementById('as').style.display='none';
+    document.getElementById('b').style.display='none';
+    document.getElementById('bs').style.display='none';
+    document.getElementById('c').style.display='none';
+    document.getElementById('cs').style.display='block';
+    document.getElementById('d').style.display='none';
+    document.getElementById('ds').style.display='block';
+    document.getElementById('u').style.display='none';}
+if(selections['Tipo contratto']==='assistenza'){
+    document.getElementById('a').style.display='none';
+    document.getElementById('as').style.display='none';
+    document.getElementById('b').style.display='none';
+    document.getElementById('bs').style.display='block';
+    document.getElementById('c').style.display='none';
+    document.getElementById('cs').style.display='block';
+    document.getElementById('d').style.display='none';
+    document.getElementById('ds').style.display='block';
+    document.getElementById('u').style.display='none';}  
+if(selections['Tipo contratto']==='presenza'){
+    document.getElementById('a').style.display='none';
+    document.getElementById('as').style.display='none';
+    document.getElementById('b').style.display='none';
+    document.getElementById('bs').style.display='none';
+    document.getElementById('c').style.display='none';
+    document.getElementById('cs').style.display='none';
+    document.getElementById('d').style.display='none';
+    document.getElementById('ds').style.display='none';
+    document.getElementById('u').style.display='block';}  
+   }
 
 // inizializzo le variabili che andrò a passare al backend
 let livellocontrattoselezionato = "";
@@ -428,7 +478,7 @@ livellopaga.placeholder = paganoconv_livds ;
 }
 }
 if (tipocontrattoselezionato === "convivente") {
-document.getElementById('InputpagaBoxmese').style.display = 'inline-block';
+document.getElementById('InputpagaBoxmese').style.display = 'flex';
 document.getElementById('InputpagaBoxora').style.display = 'none';
 livellopaga = document.getElementById('InputpagaMese');
 if (livellocontrattoselezionato === "a") {
@@ -508,15 +558,15 @@ livellopaga.placeholder = pagaconvass_livds ;
 
 //funzione per il salvataggio della paga inserita
 function salvaPaga(event) {
-    var pagaInput = event.target;
-    var pagaValue = parseFloat(pagaInput.value);
-    var placeholderValue = parseFloat(pagaInput.placeholder);
+var pagaInput = event.target;
+var pagaValue = parseFloat(pagaInput.value);
+var placeholderValue = parseFloat(pagaInput.placeholder);
 
-    // Controlla se il valore supera il limite o non è un numero valido
-    if (pagaValue > 4000 || isNaN(pagaValue)) {
-    alert("Inserisci un valore valido per la paga.");
-    resetPaga(pagaInput);
-    return;
+// Controlla se il valore supera il limite o non è un numero valido
+if (pagaValue > 4000 || isNaN(pagaValue)) {
+alert("Inserisci un valore valido per la paga.");
+resetPaga(pagaInput);
+return;
 }
 
 paga = pagaValue.toFixed(2);
@@ -727,27 +777,15 @@ function resetHours() {
 // Funzione per l'incremento delle ore
 function increaseHours(day) {
     const input = document.getElementById(day);
-    if (input) {
-        // Assicurati che 'tipocontrattoselezionato' sia definito e che la chiave esista in 'contractLimits'
-        if (contractLimits && contractLimits[tipocontrattoselezionato]) {
-            const maxDailyHours = contractLimits[tipocontrattoselezionato].maxDailyHours;
-            if (parseInt(input.value) < maxDailyHours) {
-                input.value = parseInt(input.value) + 1;
-                // Gestisci l'aggiornamento totale e la visibilità del pulsante
-                if (!updateTotals()) {
-                    input.value = parseInt(input.value) - 1;
-                    updateTotals();
-                } else {
-                    updateButtonVisibility(day);
-                }
-            }
-        } else {
-            // Lancia un alert se il tipo di contratto selezionato non è valido
-            alert("⚠️ Inserisci tipo di contratto prima di selezionare ore");
-        }
+    const maxDailyHours = contractLimits[tipocontrattoselezionato].maxDailyHours;
+    if (parseInt(input.value) < maxDailyHours) {
+    input.value = parseInt(input.value) + 1;
+    if (!updateTotals()) {
+    input.value = parseInt(input.value) - 1;
+    updateTotals();
     } else {
-        // Lancia un alert se l'elemento input non è trovato
-        console.log("Errore: elemento input non trovato.");
+    updateButtonVisibility(day);
+    }
     }
 }
 
@@ -793,20 +831,20 @@ function updateTotals() {
 
     // Mostra messaggio di errore se non c'è almeno un giorno di riposo
     if (!atLeastOneDayOff) {
-        alert(" ⚠️ Bisogna lasciare almeno 1 giorno di riposo.");
-        return false;
+    alert("Bisogna lasciare almeno 1 giorno di riposo.");
+    return false;
     }
 
     // Mostra messaggio di errore se il totale delle ore settimanali è maggiore del limite
     if (totalHours > maxWeeklyHours) {
-        alert(`⚠️ Il lavoratore con tipo contratto ${tipocontrattoselezionato} non può fare più di ${maxWeeklyHours} ore settimanali.`);
-        return false;
+    alert(`Il lavoratore con tipo contratto ${tipocontrattoselezionato} non può fare più di ${maxWeeklyHours} ore settimanali.`);
+    return false;
     }
 
     // Mostra messaggio di errore se un giorno ha più ore del limite giornaliero
     if (overTimeDaily) {
-        alert(`⚠️ Il lavoratore con tipo contratto ${tipocontrattoselezionato} non può fare più di ${maxDailyHours} ore al giorno di lavoro.`);
-        return false;
+    alert(`Il lavoratore con tipo contratto ${tipocontrattoselezionato} non può fare più di ${maxDailyHours} ore al giorno di lavoro.`);
+    return false;
     }
 
     return true;

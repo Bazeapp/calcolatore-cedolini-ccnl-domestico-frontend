@@ -16,7 +16,7 @@
         <div id="selezionicontratto">    
             <div class="contenitore-flex">
                 <!--<span class="cerchio">1</span>-->
-                <h2 class="titleSectionInput">Clicca il bottone per selezionare il tipo di contratto 👇 </h2>
+                <h2 class="titleSectionInput">Clicca per selezionare il tipo di contratto 👇 </h2>
                 <!-- <h3 class="subTitleInTipoContratto">  </h3>-->
                 <br>
             </div>
@@ -39,140 +39,215 @@
                     <!-- 1.2 LIVELLO CONTRATTO -->
 
 
-                    <div class=" table-cell box" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltalivello();">
+                    <div class=" table-cell box" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltaLivello();">
                             2) Seleziona Livello Contratto 
                         <div id="livello" class="choices">
                             <div id="a" style="display:none">
-                                <button onclick="selectChoice('Livello','a');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','A');">
-                                    <span class="informativa">
-                                        <span class="circle">i</span>
-                                        <span class="tooltip">
-                                            Assistenti familiari che non si occupano di assistenza personale ma lavorano sotto la supervisione del datore di lavoro. I profili in questo gruppo includono addetti alle pulizie, alla lavanderia, aiuti di cucina, stallieri, assistenti per animali domestici, addetti alla cura di aree verdi e operai comuni per pulizie e piccole manutenzioni.
-                                           <!-- 
-                                            Questo livello comprende assistenti familiari non addetti all'assistenza di persone, che lavorano sotto il controllo del datore di lavoro.
-                                            <br>I profili includono:
-                                            <br>- Addetto alle pulizie
-                                            <br>- Addetto alla lavanderia
-                                            <br>- Aiuto di cucina
-                                            <br>- Stalliere
-                                            <br>- Assistente ad animali domestici
-                                            <br>- Addetto alla pulizia e annaffiatura aree verdi
-                                            <br>- Operaio comune per pulizie e piccola manutenzione
-                                            -->
-                                        </span>    
-                                    </span>
-                                A</button>
+                                <div class="layout-container">
+                                    <div class="navigazione-laterale">
+                                        <span class="informativa">
+                                            <span class="circle">i</span>
+                                            <span class="tooltip">
+                                                Assistenti familiari che non si occupano di assistenza personale ma lavorano sotto la supervisione del datore di lavoro. I profili in questo gruppo includono addetti alle pulizie, alla lavanderia, aiuti di cucina, stallieri, assistenti per animali domestici, addetti alla cura di aree verdi e operai comuni per pulizie e piccole manutenzioni.
+                                               <!-- 
+                                                Questo livello comprende assistenti familiari non addetti all'assistenza di persone, che lavorano sotto il controllo del datore di lavoro.
+                                                <br>I profili includono:
+                                                <br>- Addetto alle pulizie
+                                                <br>- Addetto alla lavanderia
+                                                <br>- Aiuto di cucina
+                                                <br>- Stalliere
+                                                <br>- Assistente ad animali domestici
+                                                <br>- Addetto alla pulizia e annaffiatura aree verdi
+                                                <br>- Operaio comune per pulizie e piccola manutenzione
+                                                -->
+                                            </span>    
+                                        </span>
+                                    </div>
+                                    <div class="contenuto-principale">
+                                        <button onclick="selectChoice('Livello','a');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','A');">
+                                        
+                                            A</button>
+                                    </div>
+                                </div>
+                                
                             </div>
                             <div id="as" style="display:none">    
-                                <button onclick="selectChoice('Livello','as');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','AS');">
-                                    <span class="informativa">
-                                        <span class="circle">i</span>
-                                        <span class="tooltip">
-                                            Addetto alla compagnia:
-                                            <br>si occupa esclusivamente di tenere compagnia a persone adulte autosufficienti, senza svolgere altre mansioni.
+                                <div class="layout-container">
+                                    <div class="navigazione-laterale">
+                                        <span class="informativa">
+                                            <span class="circle">i</span>
+                                            <span class="tooltip">
+                                                Addetto alla compagnia:
+                                                <br>si occupa esclusivamente di tenere compagnia a persone adulte autosufficienti, senza svolgere altre mansioni.
+                                            </span>
                                         </span>
-                                    </span>
-                                AS</button>
+                                    </div>
+                                    <div class="contenuto-principale">
+                                        <button onclick="selectChoice('Livello','as');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','A Super');">
+                                        
+                                            A Super</button>
+                                    </div>
+                                  </div>
                             </div>
                             <div id="b" style="display:none">
-                                <button onclick="selectChoice('Livello', 'b');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','B');">
-                                    <span class="informativa">
-                                        <span class="circle">i</span>
-                                        <span class="tooltip">
-                                            <p>Assistenti familiari con competenze specifiche per mansioni esecutive. I profili includono:</p>
-                                            <ul>
-                                            <li>Collaboratore familiare generico polifunzionale (pulizia, cucina, lavanderia, assistenza animali)</li>
-                                            <li>Custode di abitazione privata (vigilanza e custodia della proprietà)</li>
-                                            <li>Addetto alla stireria</li>
-                                            <li>Cameriere (servizio di tavola e camera)</li>
-                                            <li>Giardiniere (cura delle aree verdi e manutenzione)</li>
-                                            <li>Operaio qualificato (manutenzione complessa)</li>
-                                            <li>Autista</li>
-                                            <li>Addetto al riassetto camere e servizio colazione</li>
-                                            </ul>
-                                            <!-- 
-                                            Questo livello comprende assistenti familiari che svolgono mansioni con specifica competenza a livello esecutivo.
-                                            <br>I profili includono:
-                                            <br>- Collaboratore familiare generico polifunzionale: Mansioni di pulizia, cucina, lavanderia, assistenza animali e altro.
-                                            <br>- Custode di abitazione privata: Vigilanza e custodia della proprietà.
-                                            <br>- Addetto alla stireria: Stiratura.
-                                            <br>- Cameriere: Servizio di tavola e camera.
-                                            <br>- Giardiniere: Cura delle aree verdi e manutenzione.
-                                            <br>- Operaio qualificato: Manutenzione complessa.
-                                            <br>- Autista: Conduzione e manutenzione di automezzi.
-                                            <br>- Addetto al riassetto camere e servizio colazione: Pulizia, riassetto camere e servizio colazione per ospiti.
-                                            -->
+                                <div class="layout-container">
+                                    <div class="navigazione-laterale">
+                                        <span class="informativa">
+                                            <span class="circle">i</span>
+                                            <span class="tooltip">
+                                                <p>Assistenti familiari con competenze specifiche per mansioni esecutive. I profili includono:</p>
+                                                <ul>
+                                                <li>Collaboratore familiare generico polifunzionale (pulizia, cucina, lavanderia, assistenza animali)</li>
+                                                <li>Custode di abitazione privata (vigilanza e custodia della proprietà)</li>
+                                                <li>Addetto alla stireria</li>
+                                                <li>Cameriere (servizio di tavola e camera)</li>
+                                                <li>Giardiniere (cura delle aree verdi e manutenzione)</li>
+                                                <li>Operaio qualificato (manutenzione complessa)</li>
+                                                <li>Autista</li>
+                                                <li>Addetto al riassetto camere e servizio colazione</li>
+                                                </ul>
+                                                <!-- 
+                                                Questo livello comprende assistenti familiari che svolgono mansioni con specifica competenza a livello esecutivo.
+                                                <br>I profili includono:
+                                                <br>- Collaboratore familiare generico polifunzionale: Mansioni di pulizia, cucina, lavanderia, assistenza animali e altro.
+                                                <br>- Custode di abitazione privata: Vigilanza e custodia della proprietà.
+                                                <br>- Addetto alla stireria: Stiratura.
+                                                <br>- Cameriere: Servizio di tavola e camera.
+                                                <br>- Giardiniere: Cura delle aree verdi e manutenzione.
+                                                <br>- Operaio qualificato: Manutenzione complessa.
+                                                <br>- Autista: Conduzione e manutenzione di automezzi.
+                                                <br>- Addetto al riassetto camere e servizio colazione: Pulizia, riassetto camere e servizio colazione per ospiti.
+                                                -->
+                                            </span>
                                         </span>
-                                    </span>
-                                B</button>
-                            </div>   
+                                    </div>
+                                    <div class="contenuto-principale">
+                                        <button onclick="selectChoice('Livello', 'b');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','B');">
+                                            
+                                        B</button>
+                                    </div>
+                                  </div>
+                                
+                            </div>  
                             <div id="bs" style="display:none"> 
-                                <button onclick="selectChoice('Livello', 'bs');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','B Super');">
-                                    <span class="informativa">
-                                        <span class="circle">i</span>
-                                        <span class="tooltip">
-                                            <ul>
-                                                <li>Assistente per persone autosufficienti: Assiste persone autosufficienti e, se richiesto, si occupa di vitto e pulizia della casa.</li>
-                                                <li>Baby sitter: Assiste bambini e, se richiesto, si occupa di vitto e pulizia della casa.</li>
-                                              </ul>
-                                              
+                                <div class="layout-container">
+                                    <div class="navigazione-laterale">
+                                        
+                                        <span class="informativa">
+                                            <span class="circle">i</span>
+                                            <span class="tooltip">
+                                                <ul>
+                                                    <li>Assistente per persone autosufficienti: Assiste persone autosufficienti e, se richiesto, si occupa di vitto e pulizia della casa.</li>
+                                                    <li>Baby sitter: Assiste bambini e, se richiesto, si occupa di vitto e pulizia della casa.</li>
+                                                  </ul>
+                                                  
+                                            </span>
                                         </span>
-                                    </span>
-                                BS</button>
+                                    </div>
+                                    <div class="contenuto-principale">
+                                        
+                                        <button onclick="selectChoice('Livello', 'bs');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','B Super');">
+                                                
+                                            B Super</button>
+                                    </div>
+                                  </div>
+                                        
                             </div>
+                            
                             <div id="c" style="display:none">
-                                <button onclick="selectChoice('Livello', 'c');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','C');">
+                            <div class="layout-container">
+                                <div class="navigazione-laterale">
                                     <span class="informativa">
                                         <span class="circle">i</span>
                                         <span class="tooltip">
-                                            Questo livello comprende assistenti familiari con conoscenze teoriche e tecniche, che operano autonomamente e con responsabilità.
-                                            <br>- Cuoco: Prepara i pasti, gestisce la cucina e l'approvvigionamento delle materie prime.
-                                        </span>
+                                            <p>
+                                                Questo livello comprende assistenti familiari con conoscenze teoriche e tecniche, che operano autonomamente e con responsabilità.
+                                            </p>
+                                            <ul>
+                                                <li><strong>Cuoco:</strong> Prepara i pasti, gestisce la cucina e l'approvvigionamento delle materie prime.</li>
+                                            </ul>
+                                                                                    </span>
                                     </span>
-                                    C</button>
+                                </div>
+                                <div class="contenuto-principale">
+                                    <button onclick="selectChoice('Livello', 'c');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','C');">
+
+                                        C</button>
+                                </div>
+                                </div>
                             </div>
+                                                       
                             <div id="cs" style="display:none">
-                                <button onclick="selectChoice('Livello', 'cs');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','C Super');">
-                                    <span class="informativa">
-                                        <span class="circle">i</span>
-                                        <span class="tooltip">
-                                            Assistente non formato per persone non autosufficienti: Assiste persone non autosufficienti e, se richiesto, si occupa di vitto e pulizia della casa.
+                                <div class="layout-container">
+                                    <div class="navigazione-laterale">
+                                        <span class="informativa">
+                                            <span class="circle">i</span>
+                                            <span class="tooltip">
+                                                Assistente non formato per persone non autosufficienti: Assiste persone non autosufficienti e, se richiesto, si occupa di vitto e pulizia della casa.
+                                            </span>
                                         </span>
-                                    </span>
-                                CS</button>
+                                    </div>
+                                    <div class="contenuto-principale">
+                                        <button onclick="selectChoice('Livello', 'cs');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','C Super');">
+                                        
+                                            C Super</button>
+                                    </div>
+                                  </div>
+
                             </div>
                             <div id="d" style="display:none"> 
-                                <button onclick="selectChoice('Livello', 'd');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','D');">
-                                    <span class="informativa">
-                                        <span class="circle">i</span>
-                                        <span class="tooltip">
-                                            <p>Assistenti familiari con requisiti professionali, responsabili di posizioni con autonomia e coordinamento:</p>
+                                <div class="layout-container">
+                                    <div class="navigazione-laterale">
+                                        <span class="informativa">
+                                            <span class="circle">i</span>
+                                            <span class="tooltip">
+                                                <p>Assistenti familiari con requisiti professionali, responsabili di posizioni con autonomia e coordinamento:</p>
                                                 <ul>
-                                                <li>Amministratore beni di famiglia: Gestisce il patrimonio familiare.</li>
-                                                <li>Maggiordomo: Coordina i servizi per la vita familiare.</li>
-                                                <li>Governante: Coordina attività di cameriere, stireria, lavanderia e guardaroba.</li>
-                                                <li>Capo cuoco: Dirige la cucina, approvvigionamento, preparazione e servizio.</li>
-                                                <li>Istitutore: Assiste persone autosufficienti, cura l'igiene personale, la vestizione, il vitto e la pulizia della casa.</li>
-                                                <li>Direttore di casa: Organizza e gestisce le esigenze della famiglia.</li>
-                                                <li>Amministratore del patrimonio familiare: Gestisce amministrativamente il patrimonio familiare.</li>
+                                                    <li><strong>Amministratore dei beni di famiglia:</strong> Gestisce il patrimonio familiare.</li>
+                                                    <li><strong>Maggiordomo:</strong> Coordina i servizi per la vita familiare.</li>
+                                                    <li><strong>Governante:</strong> Coordina le attività di camerieri, stireria, lavanderia e guardaroba.</li>
+                                                    <li><strong>Capo cuoco:</strong> Dirige la cucina, l'approvvigionamento, la preparazione e il servizio.</li>
+                                                    <li><strong>Istitutore:</strong> Assiste persone autosufficienti, curando l'igiene personale, la vestizione, il vitto e la pulizia della casa.</li>
+                                                    <li><strong>Direttore di casa:</strong> Organizza e gestisce le esigenze della famiglia.</li>
+                                                    <li><strong>Amministratore del patrimonio familiare:</strong> Gestisce amministrativamente il patrimonio familiare.</li>
                                                 </ul>
-
+                                            </span>
+                                            
                                         </span>
-                                    </span>
-                                D</button>
+                                    </div>
+                                    <div class="contenuto-principale">
+                                        <button onclick="selectChoice('Livello', 'd');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','D');">
+    
+                                            D</button>
+                                    </div>
+                                  </div>
+
                             </div>
+
                             <div id="ds" style="display:none">
-                                <button onclick="selectChoice('Livello', 'ds');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','D Super');">
-                                    <span class="informativa">
-                                    <span class="circle">i</span>
-                                    <span class="tooltip">
-                                    - Assistente formato per non autosufficienti: Assiste persone non autosufficienti e, se richiesto, gestisce vitto e pulizia della casa.
-                                    <br>- Direttore di casa: Gestisce e coordina le esigenze della casa.
-                                    <br>- Assistente educatore formato: Attua interventi educativi e riabilitativi per persone con disabilità psichica o difficoltà relazionali, secondo progetti professionali.
-                                    </span>
-                                    </span>
-                                    DS</button>
+                                <div class="layout-container">
+                                    <div class="navigazione-laterale">
+                                        <span class="informativa">
+                                            <span class="circle">i</span>
+                                            <span class="tooltip">
+                                                <ul>
+                                                    <li><strong>Assistente formato per non autosufficienti:</strong> Assiste persone non autosufficienti e, se richiesto, gestisce il vitto e la pulizia della casa.</li>
+                                                    <li><strong>Direttore di casa:</strong> Gestisce e coordina le esigenze della casa.</li>
+                                                    <li><strong>Assistente educatore formato:</strong> Attua interventi educativi e riabilitativi per persone con disabilità psichica o difficoltà relazionali, seguendo progetti professionali.</li>
+                                                </ul>
+                                                                                    </span>
+                                            </span>
+                                    </div>
+                                    <div class="contenuto-principale">
+                                        <button onclick="selectChoice('Livello', 'ds');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','D Super');">
+                                        
+                                            D Super</button>
+                                    </div>
+                                  </div>
+    
+
                             </div>   
+  
                             <div id="u" style="display:none">
                                 <button onclick="selectChoice('Livello', 'u');sceglipaga();accendiopzioni();scelto('boxLivelloContratto','U');">LivelloUnico</button>
                             </div>  
@@ -302,7 +377,7 @@
         <div class="contenitore-flex">
             <!--<span class="cerchio">3</span>-->
             <h2 class="titleSectionInput">Altre Opzioni</h2>
-            <br>
+
         </div>
        <!-- 
         <div class="selection-container" id="InputpagaBoxora">
@@ -324,15 +399,15 @@
             <label for="InputpagaOra">Paga Oraria</label>
             <div class="input-group">
                 <input type="number" inputmode="numeric" id="InputpagaOra" min="0" step="1" placeholder="">
-                <span class="currency">€</span>
+                <span class="currency">€/h</span>
             </div>
         </div>
         
         <div class="payment-container" id="InputpagaBoxmese" style="display:none;">
             <label for="InputpagaMese">Paga Mensile</label>
             <div class="input-group">
-                <input type="number" inputmode="numeric" id="InputpagaMese" min="0" step="1" placeholder=">
-                <span class="currency">€</span>
+                <input type="number" inputmode="numeric" id="InputpagaMese" min="0" step="1" placeholder="">
+                <span class="currency">€/mese</span>
             </div>
         </div>
         
@@ -421,9 +496,9 @@
         </a>
     </div>
 -->
-<div class="button-group align-center">
+<div class="align-center">
     <button id="sendRequest" class="button">
-        <span id="buttonCalcola">CALCOLA 🧮</span>
+        <span class="buttonCalcola" id="buttonCalcola">🧮 CALCOLA 🧮</span>
         <span id="loadingDots" class="dots"></span>
     </button>
 </div>
@@ -518,10 +593,10 @@
     </div>
 
     <div id="confermanuovocalcolo" class="button-group align-center">
-        <div class="button-group align-center"><a  id="confermanuovo"  class="button is-icon w-inline-block"><div><b>Attenzione!</b><p> proseguendo perderai tutte le scelte fatte finora</p></div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
+        <div class="align-center"><a  id="confermanuovo"  class="button is-icon w-inline-block"><div><b>Attenzione!</b><p> proseguendo perderai tutte le scelte fatte finora</p></div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
         <div class="button-container">
-            <div class="button-group align-center"><a  id="conferma"  class="button is-icon w-inline-block"><div>Conferma</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
-            <div class="button-group align-center"><a  id="annulla"  class="button is-icon w-inline-block"><div>Annulla</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
+            <div class="align-center"><a  id="conferma"  class="button is-icon w-inline-block"><div>CONFERMA 👍</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
+            <div class="align-center"><a  id="annulla"  class="button is-icon w-inline-block"><div>ANNULLA ❌</div><div class="icon-1x1-small w-embed"><svg aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"></svg></div></a></div>   
         </div>
 
     <div id="result" style="display:none">

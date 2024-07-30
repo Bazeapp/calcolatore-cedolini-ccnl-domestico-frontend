@@ -4,7 +4,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Recoleta, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -570,6 +570,8 @@ button:hover {
 }
 .informativa .circle {
     display: inline-block;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
     width: 24px;
     height: 24px;
     border-radius: 50%;
@@ -647,7 +649,7 @@ button:hover {
 
 
   
-  #calcolatore {
+#calcolatore {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -995,7 +997,7 @@ button:hover {
 
 .payment-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     max-width: 340px;
     padding: 16px;
@@ -1026,6 +1028,7 @@ button:hover {
 
 .input-group .currency {
     padding: 12px 16px;
+    font-family: Recoleta, sans-serif;
 }
 
 /* Hides the spinner on number inputs */
@@ -1034,3 +1037,38 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0; 
 }
+
+.buttonCalcola{
+    font-family: Recoleta, sans-serif;
+    font-weight: 600;
+    justify-content: center; /* Centra orizzontalmente il contenuto nel bottone */
+}
+
+.layout-container {
+    display: flex;
+    height: 100%; /* Assicurati che il contenitore esterno abbia altezza definita */
+    gap: 0.5rem;
+  }
+
+  .navigazione-laterale {
+    width: 20%;
+    box-sizing: border-box;
+  }
+
+  .contenuto-principale {
+    width: 80%;
+    box-sizing: border-box;
+  }
+
+
+
+  #buttonCalcola {
+    max-width: 100%;  /* Limita la larghezza massima al 100% di quella del #calcolatore */
+    max-height: 100vh; /* Altitudine massima impostata sulla stessa del #calcolatore */
+    overflow: auto; /* Aggiungi scrollbar se il contenuto eccede la dimensione massima */
+    padding: 20px; /* Spazio interno opzionale */
+    box-sizing: border-box; /* Include padding e bordo nel calcolo della larghezza */
+    margin: auto; /* Centra l'elemento */
+    text-align: center; /* Allineamento del testo */
+}
+
