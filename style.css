@@ -655,15 +655,16 @@ button:hover {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
     box-sizing: border-box;
     text-align: center;
     border-radius: 40px;
     width: 100%;
     overflow: visible;
-    margin: auto;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    /* margin: auto; */
+    /* margin-top: 2em; */
+    /* margin-bottom: 2em; */
 }
 
 #selezionicontratto,
