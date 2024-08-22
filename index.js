@@ -281,9 +281,12 @@ function selectChoice(category, choice) {
     if (category === 'Livello') {
         livellocontrattoselezionato = choice;
         // Gestione della visibilità di box specifici basati sul livello scelto.
-        document.getElementById('bambinoBox').style.display = choice === 'bs' ? 'block' : 'none';
-        document.getElementById('certificatoBox').style.display = ['b', 'bs', 'cs', 'd'].includes(choice) && !['nonconvivente', 'sostituzione'].includes(tipocontrattoselezionato) ? 'block' : 'none';
-        document.getElementById('autosufficientiBox').style.display = ['cs', 'ds'].includes(choice) ? 'block' : 'none';
+        document.getElementById('bambinoBox').style.display = choice === 'bs' ? 'flex' : 'none';
+        document.getElementById('bambinoBox').style.flexDirection = 'row-reverse';
+        document.getElementById('certificatoBox').style.display = ['b', 'bs', 'cs', 'd'].includes(choice) && !['nonconvivente', 'sostituzione'].includes(tipocontrattoselezionato) ? 'flex' : 'none';
+        document.getElementById('certificatoBox').style.flexDirection = 'row-reverse';
+        document.getElementById('autosufficientiBox').style.display = ['cs', 'ds'].includes(choice) ? 'flex' : 'none';
+        document.getElementById('autosufficientiBox').style.flexDirection = 'row-reverse';
         document.getElementById('vittoAlloggioBox').style.display = selections['Tipo contratto'] !== 'non-convivente' ? 'flex' : 'none';
         document.getElementById('vittoAlloggioBox').style.flexDirection = 'row-reverse';
     }

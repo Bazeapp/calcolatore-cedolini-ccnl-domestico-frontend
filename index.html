@@ -412,79 +412,84 @@
         </div>
         
         <br>
-        <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
-            <span class="informativa">
-                    <span class="circle">i</span>
-                    <span class="tooltip">Il vitto e l'alloggio se non sono forniti in natura si applicano delle indennità aggiuntive</span>
-            </span>
-            <label>Vitto e Alloggio sono in natura?</label>
-                    <input type="checkbox" id="vittoAlloggioCheckbox" onclick="selectVittoAlloggio()" checked>
-            <br><br>
-        </div>
-    
-        <div class="selection-container" id="specificaVittoAlloggioBox" style="display:none;">
-            <span class="informativa">
-                    <span class="circle">i</span>
-                    <span class="tooltip">Il pranzo/colazione se non fornito in natura sono 2,28€ al giorno</span>
-            </span>
-            <label>
-                <input type="checkbox" name="specificaVittoAlloggio" value="pranzo/colazione" onclick="selectvariabiliVittoAlloggio('pranzo/colazione', this.checked ? 'si' : 'no')"> Indennità Pranzo/Colazione
-            </label>
-                    <br>
-            <span class="informativa">
-                    <span class="circle">i</span>
-                    <span class="tooltip">La cena se non fornita in natura è 2,28€ al giorno</span>
-            </span>
-            <label>
-                <input type="checkbox" name="specificaVittoAlloggio" value="cena" onclick="selectvariabiliVittoAlloggio('cena', this.checked ? 'si' : 'no')"> Indennità Cena
-            </label>
-                    <br>
-            <span class="informativa">
-                    <span class="circle">i</span>
-                    <span class="tooltip">L'alloggio se non fornito in natura è 1,96€ al giorno</span>
-            </span>
-            <label>
-                <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectvariabiliVittoAlloggio('alloggio', this.checked ? 'si' : 'no')"> Indennità Alloggio
-            </label>
-            <br>
-        </div>
-        <div class="selection-container" id="bambinoBox" style="display:none;">
-            <br>
-            <span class="informativa">
-                    <span class="circle">i</span>
-                <span class="tooltip">Dal 1° ottobre 2020 cambiano le regole e per le baby sitter chiamate ad occuparsi di bambini sotto ai 6 anni di età è prevista un indennità specifica.
-                        <br>- se il lavoratore è convivente full-time l'indennità è di 130,78€ mensili
-                        <br>- se il lavoratore è convivente part-time l'indennità è di 91,63€ mensili 
-                    <br>- se il lavoratore non è convivente l'indennità è di 0,79€ orari</span>
+        <div class="selection-wrapper">
+                <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
+                    <span class="informativa">
+                            <span class="circle">i</span>
+                            <span class="tooltip">Il vitto e l'alloggio se non sono forniti in natura si applicano delle indennità aggiuntive</span>
                     </span>
-            <label>Il bambino è entro i 6 anni di età?</label>
-                    <input type="checkbox" id="bambinoCheckbox" onclick="selectBambino()">
-            <br></br>
-        </div>
+                    <label>
+                        <input type="checkbox" id="vittoAlloggioCheckbox" onclick="selectVittoAlloggio()" checked> Vitto e Alloggio sono in natura?</label>
+                    <br><br>
+                </div>
             
-        <div class="selection-container" id="certificatoBox" style="display:none;">
-            <span class="informativa">
-                    <span class="circle">i</span>
-                    <span class="tooltip">Se il lavoratore è in possesso della certificazione di qualità di cui alla norma tecnica UNI 11766:2019 in corso di validità dal 01.10.2021 ha diritto ad una speciale indennità
-                        <br>- se il livello del lavoratore è BS , CS l'indennità è di 11,30€ mensili
-                        <br>- se il livello del lavoratore è B , l'indennità è di 9,04€ mensili
+                <div class="selection-container" id="specificaVittoAlloggioBox" style="display:none;">
+                    <span class="informativa">
+                            <span class="circle">i</span>
+                            <span class="tooltip">Il pranzo/colazione se non fornito in natura sono 2,28€ al giorno</span>
                     </span>
-            </span>
-            <label>Il lavoratore ha il certificato  UNI1176 valido?</label>
-                    <input type="checkbox" id="certificatoCheckbox" onclick="selectCertificato()">
-            <br></br>
-        </div>
-            
-        <div class="selection-container" id="autosufficientiBox" style="display:none;">
-            <span class="informativa">
-                    <span class="circle">i</span>
-                    <span class="tooltip">Dal 1 ottobre 2020 il CCNL prevede che se si assiste più persone non autosufficienti ha diritto ad una speciale indennità. 
-                    <br> - se il lavoratore è convivente l'indennità è di 112,97€ mensili
-                    <br> - se il lavoratore non è convivente l'indennità è di 0,66€ orari
+                    <label>
+                        <input type="checkbox" name="specificaVittoAlloggio" value="pranzo/colazione" onclick="selectvariabiliVittoAlloggio('pranzo/colazione', this.checked ? 'si' : 'no')"> Indennità Pranzo/Colazione
+                    </label>
+                            <br>
+                    <span class="informativa">
+                            <span class="circle">i</span>
+                            <span class="tooltip">La cena se non fornita in natura è 2,28€ al giorno</span>
                     </span>
-            </span>
-            <label>Il lavoratore si occupa di più persone non autosufficienti?</label>
-                    <input type="checkbox" id="autosufficientiCheckbox" onclick="selectAutosuff()">
+                    <label>
+                        <input type="checkbox" name="specificaVittoAlloggio" value="cena" onclick="selectvariabiliVittoAlloggio('cena', this.checked ? 'si' : 'no')"> Indennità Cena
+                    </label>
+                            <br>
+                    <span class="informativa">
+                            <span class="circle">i</span>
+                            <span class="tooltip">L'alloggio se non fornito in natura è 1,96€ al giorno</span>
+                    </span>
+                    <label>
+                        <input type="checkbox" name="specificaVittoAlloggio" value="alloggio" onclick="selectvariabiliVittoAlloggio('alloggio', this.checked ? 'si' : 'no')"> Indennità Alloggio
+                    </label>
+                    <br>
+                </div>
+                <div class="selection-container" id="bambinoBox" style="display:none;">
+                    <br>
+                    <span class="informativa">
+                            <span class="circle">i</span>
+                        <span class="tooltip">Dal 1° ottobre 2020 cambiano le regole e per le baby sitter chiamate ad occuparsi di bambini sotto ai 6 anni di età è prevista un indennità specifica.
+                                <br>- se il lavoratore è convivente full-time l'indennità è di 130,78€ mensili
+                                <br>- se il lavoratore è convivente part-time l'indennità è di 91,63€ mensili 
+                            <br>- se il lavoratore non è convivente l'indennità è di 0,79€ orari</span>
+                            </span>
+                    <label><input type="checkbox" id="bambinoCheckbox" onclick="selectBambino()">Il bambino è entro i 6 anni di età?
+                    </label>
+                            
+                    <br></br>
+                </div>
+
+                
+                    
+                <div class="selection-container" id="certificatoBox" style="display:none;">
+                    <span class="informativa">
+                            <span class="circle">i</span>
+                            <span class="tooltip">Se il lavoratore è in possesso della certificazione di qualità di cui alla norma tecnica UNI 11766:2019 in corso di validità dal 01.10.2021 ha diritto ad una speciale indennità
+                                <br>- se il livello del lavoratore è BS , CS l'indennità è di 11,30€ mensili
+                                <br>- se il livello del lavoratore è B , l'indennità è di 9,04€ mensili
+                            </span>
+                    </span>
+                    <label>
+                        <input type="checkbox" id="certificatoCheckbox" onclick="selectCertificato()"> Possiede certificato  UNI1176 valido?</label>
+                    <br></br>
+                </div>
+                    
+                <div class="selection-container" id="autosufficientiBox" style="display:none;">
+                    <span class="informativa">
+                            <span class="circle">i</span>
+                            <span class="tooltip">Dal 1 ottobre 2020 il CCNL prevede che se si assiste più persone non autosufficienti ha diritto ad una speciale indennità. 
+                            <br> - se il lavoratore è convivente l'indennità è di 112,97€ mensili
+                            <br> - se il lavoratore non è convivente l'indennità è di 0,66€ orari
+                            </span>
+                    </span>
+                    <label>
+                        <input type="checkbox" id="autosufficientiCheckbox" onclick="selectAutosuff()">Persone non autosufficienti?</label>
+                </div>
         </div>
     </div>
     
