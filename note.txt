@@ -1,0 +1,3 @@
+"indeterminato" - selectChoice('Contratto', 'indeterminato');accendiopzioni();scelto('boxDurataContratto','Indeterminato');"
+"determinato" - "selectChoice('Contratto', 'determinato');accendiopzioni();scelto('boxDurataContratto','Determinato');"
+"determinatoinsostituzione" - "selectChoice('Contratto', 'determinato in sostituzione');accendiopzioni();scelto('boxDurataContratto','Determinato in sostituzione');"

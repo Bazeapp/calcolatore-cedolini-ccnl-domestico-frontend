@@ -1,3 +1,99 @@
+function main(url) {
+    // Crea un oggetto URL dal parametro url fornito
+    const urlObj = new URL(url);
+  
+    // Estrazione dei parametri della URL utilizzando URLSearchParams
+    const params = new URLSearchParams(urlObj.search);
+    
+    // Stampare i parametri richiesti
+    console.log("Location:", params.get('location'));
+    console.log("Stipendio Medio in location:", params.get('avg-price'));
+    
+    
+    
+    console.log("Numero di ore:", params.get('number-hours'));
+
+    // 1 TIPO RAPPORTO
+    const tipo_rapporto = params.get('type-job')
+    console.log("Tipo Rapporto:", tipo_rapporto); 
+    if(tipo_rapporto==="non-convivente"){
+        selectChoice('Tipo contratto', 'non-convivente');
+        accendiopzioni();
+        scelto('boxTipoContratto', 'Non-Convivente');
+    }else if(tipo_rapporto==="full-time"){
+        selectChoice('Tipo contratto', 'full-time');
+        accendiopzioni();
+        scelto('boxTipoContratto', 'Convivente Full-Time');
+    }else if(tipo_rapporto==="part-time"){
+        selectChoice('Tipo contratto', 'part-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Part-Time');
+    }else if(tipo_rapporto==="sostituzione"){
+        selectChoice('Tipo contratto', 'sostituzione');accendiopzioni();scelto('boxTipoContratto', 'Sostituzione Lavoratori in Riposo');
+    }else if(tipo_rapporto==="assistenza"){
+        selectChoice('Tipo contratto', 'assistenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Assistenza Notturna');
+    }else if(tipo_rapporto==="presenza"){
+        selectChoice('Tipo contratto', 'presenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Presenza Notturna');    }
+    
+
+    // 2 TIPO LIVELLO CONTRATTO
+    const livello_rapporto = params.get('contract-level');
+    console.log("Livello Contratto:", livello_rapporto);
+    if(livello_rapporto!==""&&livello_rapporto){
+        
+        
+        selectChoice('Livello',livello_rapporto.toLowerCase());sceglipaga();accendiopzioni();scelto('boxLivelloContratto',livello_rapporto.toUpperCase());
+    }
+
+    // 3 DURATA CONTRATTO
+    const durata_contratto = params.get('contract-time');
+    console.log("Durata contratto:",   durata_contratto);
+    if(durata_contratto==="indeterminato"){
+        selectChoice('Contratto', 'indeterminato');accendiopzioni();scelto('boxDurataContratto','Indeterminato');
+    }else if(durata_contratto==="determinato"){
+        selectChoice('Contratto', 'determinato');accendiopzioni();scelto('boxDurataContratto','Determinato');
+    }else if(durata_contratto==="determinato-in-sostituzione"){
+        selectChoice('Contratto', 'determinato in sostituzione');accendiopzioni();scelto('boxDurataContratto','Determinato in sostituzione');
+    }
+
+
+
+    // Trova l'elemento span tramite l'ID
+    const currencyText1 = document.getElementById('currency-text');
+    const isHourly = ["nonconvivente", "sostituzione"].includes(tipocontrattoselezionato);
+    const minimoCCNL = isHourly ? document.getElementById('InputpagaOra') : document.getElementById('InputpagaMese');
+
+    // Aggiorna il testo dell'elemento span
+    let newText = `Prezzo medio per un ${params.get('type-job')} a ${params.get('location')} è ${params.get('avg-price')}`;
+
+    // Il minimo del CCNL è ${minimoCCNL}
+
+    currencyText1.textContent = newText;
+    // Cambia il display style per rendere l'elemento visibile
+    currencyText1.style.display = 'inline'; // o 'block' a seconda delle tue necessità
+    /*
+    const currencyText2 = document.getElementById('currency-text-2');
+    newText = `Il minimo del CCNL è ${minimoCCNL}`;
+    currencyText2.textContent = newText;
+    // Cambia il display style per rendere l'elemento visibile
+    currencyText2.style.display = 'inline'; // o 'block' a seconda delle tue necessità
+*/
+  
+}
+
+
+
+// Funzione per controllare se almeno un giorno ha ore > 0
+function isAtLeastOneDayGreaterThanZero(data) {
+    return (
+        data.oreLunedi > 0 || 
+        data.oreMartedi > 0 || 
+        data.oreMercoledi > 0 || 
+        data.oreGiovedi > 0 || 
+        data.oreVenerdi > 0 || 
+        data.oreSabato > 0 || 
+        data.oreDomenica > 0
+    );
+}
+
 
 // Aggiunge un ascoltatore di eventi al bottone con ID "sendRequest".
 // Al click, viene chiamata la funzione submitChoices per inviare i dati scelti.
@@ -58,21 +154,9 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         return true;
     }
 
-    // Funzione per controllare se almeno un giorno ha ore > 0
-    function isAtLeastOneDayGreaterThanZero(data) {
-        return (
-            data.oreLunedi > 0 || 
-            data.oreMartedi > 0 || 
-            data.oreMercoledi > 0 || 
-            data.oreGiovedi > 0 || 
-            data.oreVenerdi > 0 || 
-            data.oreSabato > 0 || 
-            data.oreDomenica > 0
-        );
-    }
-
+    
     if (!areAllFieldsFilled(data)) {
-        alert('Per favore effettuare tutte le scelte');
+        alert('Compila i campi obbligatori per stimare il costo del lavoro domestico');
         return; // Termina la funzione qui se ci sono campi vuoti
     }
 
@@ -431,7 +515,7 @@ function salvaPaga(event) {
     var placeholderValue = parseFloat(pagaInput.placeholder);
 
     // Controlla se il valore supera il limite o non è un numero valido
-    if (pagaValue > 4000 || isNaN(pagaValue)) {
+    if (pagaValue > 5000 || isNaN(pagaValue)) {
     alert("Inserisci un valore valido per la paga.");
     resetPaga(pagaInput);
     return;
@@ -442,44 +526,45 @@ document.getElementById('paga-netta').innerText = paga + ' €';
 }
 
 function formatPaga(event) {
-var pagaInput = event.target;
-var pagaValue = parseFloat(pagaInput.value);
-var placeholderValue = parseFloat(pagaInput.placeholder);
+    var pagaInput = event.target;
+    var pagaValue = parseFloat(pagaInput.value);
+    var placeholderValue = parseFloat(pagaInput.placeholder);
 
-// Se il valore è inferiore al placeholder, resetta al placeholder
-if (!isNaN(placeholderValue) && pagaValue < placeholderValue) {
-pagaInput.value = placeholderValue.toFixed(2);
-} else if (!isNaN(pagaValue)) {
-pagaInput.value = pagaValue.toFixed(2);
+    // Se il valore è inferiore al placeholder, resetta al placeholder
+    if (!isNaN(placeholderValue) && pagaValue < placeholderValue) {
+    pagaInput.value = placeholderValue.toFixed(2);
+    } else if (!isNaN(pagaValue)) {
+    pagaInput.value = pagaValue.toFixed(2);
 }
 }
 
 
 // Funzione per resettare la paga quando si inserisce un valore non valido
 function resetPaga(inputElement) {
-paga = 0;
-inputElement.value = inputElement.placeholder;
-document.getElementById('paga-netta').innerText = '';
-}
+    paga = 0;
+    inputElement.value = inputElement.placeholder;
+    document.getElementById('paga-netta').innerText = '';
+ }
+
 
 document.addEventListener('DOMContentLoaded', (event) => {
-var inputPagaOra = document.getElementById('InputpagaOra');
-var inputPagaMese = document.getElementById('InputpagaMese');
-inputPagaOra.addEventListener('input', salvaPaga);
-inputPagaMese.addEventListener('input', salvaPaga);
+    var inputPagaOra = document.getElementById('InputpagaOra');
+    var inputPagaMese = document.getElementById('InputpagaMese');
+    inputPagaOra.addEventListener('input', salvaPaga);
+    inputPagaMese.addEventListener('input', salvaPaga);
 
-inputPagaOra.addEventListener('blur', formatPaga);
-inputPagaMese.addEventListener('blur', formatPaga);
+    inputPagaOra.addEventListener('blur', formatPaga);
+    inputPagaMese.addEventListener('blur', formatPaga);
 
-// Quando la pagina è caricata, imposta il valore della paga al placeholder se l'input è vuoto
-if (!inputPagaOra.value) {
-inputPagaOra.value = inputPagaOra.placeholder;
-}
-if (!inputPagaMese.value) {
-inputPagaMese.value = inputPagaMese.placeholder;
-}
+    // Quando la pagina è caricata, imposta il valore della paga al placeholder se l'input è vuoto
+    if (!inputPagaOra.value) {
+    inputPagaOra.value = inputPagaOra.placeholder;
+    }
+    if (!inputPagaMese.value) {
+    inputPagaMese.value = inputPagaMese.placeholder;
+    }
 
-sceglipaga();
+    sceglipaga();
 });
 
 
@@ -596,21 +681,7 @@ selections['Autosufficienti'] = autosufficienti;
 //displaySelections();
 }
 
-/*
-function displaySelections() {
-var selectedItems = document.getElementById('selectedItems');
-selectedItems.innerHTML = '';
 
-for (let key in selections) {
-    if (selections[key] !== null) {
-        if (Array.isArray(selections[key]) && selections[key].length > 0) {
-            selectedItems.innerHTML += '<p>' + key + ': ' + selections[key].join(', ') + '</p>';
-        } else if (!Array.isArray(selections[key])) {
-            selectedItems.innerHTML += '<p>' + key + ': ' + selections[key] + '</p>';
-        }
-    }
-}
-}*/
 // Definizione dei limiti per ogni tipo di contratto
 var  contractLimits = {
     convivente: { maxWeeklyHours: 54, maxDailyHours: 10 },
@@ -699,15 +770,28 @@ function updateTotals() {
     }
 
     if (value > 0) {
-    totalDays++;
+        totalDays++;
     } else {
-    atLeastOneDayOff = true;
+        atLeastOneDayOff = true;
     }
-    totalHours += value;
+     totalHours += value;
     });
 
     document.getElementById('totalHours').textContent = totalHours;
     document.getElementById('totalDays').textContent = totalDays;
+
+    
+
+    const statsContainer = document.getElementById('stats-container');
+    const button = document.getElementById('sendRequest');
+    if(totalHours>0 && button && statsContainer){
+        button.classList.remove('is-inactive');
+        statsContainer.style.display = 'flex';
+    }else{
+        button.classList.add('is-inactive'); 
+        statsContainer.style.display = 'none';
+        
+    }    
 
     // Mostra messaggio di errore se non c'è almeno un giorno di riposo
     if (!atLeastOneDayOff) {
@@ -794,6 +878,10 @@ updateButtonVisibility(day);
 
 // Ascolta l'evento quando il DOM è completamente caricato.
 document.addEventListener('DOMContentLoaded', function() {
+    // Ottiene l'URL corrente della finestra
+    const url = window.location.href;
+    main(url)
+
     // Seleziona tutti gli elementi con classe 'informativa'.
     const informativeElements = document.querySelectorAll('.informativa');
 

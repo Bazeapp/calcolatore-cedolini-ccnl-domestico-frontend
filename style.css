@@ -1087,3 +1087,28 @@ label {
     
     font-family: Recoleta, sans-serif;
 }
+
+.currency-text {
+    font-size: 0.875rem; /* Imposta il testo a una dimensione piccola in rem */
+    font-family: 'Recoleta', sans-serif; /* Usa Recoleta se disponibile, altrimenti sans-serif */
+    font-weight: normal; /* Assicurati che il testo non sia in grassetto */
+    color: #333; /* Imposta un colore scuro standard per il testo */
+}
+
+.button.is-inactive {
+    cursor: not-allowed;
+    background-color: #a0b6dd
+}
+
+
+.button-wrapper {
+    position: sticky; /* Mantieni la posizione sticky */
+    bottom: 0.1rem; /* Fissa il wrapper in fondo alla pagina con un margine di 1rem */
+    left: 0; /* Assicura che il wrapper inizi dal bordo sinistro della pagina */
+    right: 0; /* Assicura che il wrapper termini al bordo destro della pagina */
+    width: 100%; /* Assicura che il wrapper si estenda per tutta la larghezza della pagina */
+    background-color: rgba(255, 255, 255, 0.98); /* Imposta uno sfondo bianco con una leggera trasparenza */
+    z-index: 1000; /* Assegna un valore alto a z-index per mantenerlo sopra altri contenuti */
+    padding: 1.5rem 0; /* Aggiunge un po' di spazio sopra e sotto il bottone per estetica */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera per distinguerlo dal resto della pagina */
+}

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style_from_bazeapp_com.css">
 </head>
 <body>
+    
+    
     <div id="calcolatore">
         <!-- 
         <div class="grande"><h1>Calcolatore Costo Colf / Badanti</h1></div>
@@ -24,22 +26,22 @@
                     <!--  1.1 TIPO CONTRATTO     -->
 
 
-                    <div class="table-cell box tipo-contratto" id="boxTipoContratto" onclick="toggleChoices('choices1');">
+                    <div class="table-cell box tipo-contratto selected" id="boxTipoContratto" onclick="toggleChoices('choices1');">
                         1) Seleziona Tipo Contratto
                         <div id="choices1" class="choices">
-                            <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');accendiopzioni();scelto('boxTipoContratto', 'Non-Convivente');">Non-Convivente</button> <!--showLine('.cerchio21') -->
-                            <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Full-Time');">Convivente Full-Time</button> <!--showLine('.cerchio21') -->
-                            <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Part-Time');">Convivente Part-Time</button> <!--showLine('.cerchio21') -->
-                            <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');accendiopzioni();scelto('boxTipoContratto', 'Sostituzione Lavoratori in Riposo');">Sostituzione Lavoratori in Riposo</button> <!--showLine('.cerchio21') -->
-                            <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Assistenza Notturna');">Convivente Assistenza Notturna</button> <!--showLine('.cerchio21') -->
-                            <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Presenza Notturna');">Convivente Presenza Notturna</button> <!--showLine('.cerchio21') -->
+                            <button id="nonconvivente" onclick="selectChoice('Tipo contratto', 'non-convivente');accendiopzioni();scelto('boxTipoContratto', 'Non-Convivente');">Non Convivente ❌🛌</button> <!--showLine('.cerchio21') -->
+                            <button id="fulltime" onclick="selectChoice('Tipo contratto', 'full-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Full-Time');">Convivente Full-Time 🛌🕙🕙</button> <!--showLine('.cerchio21') -->
+                            <button id="partitime" onclick="selectChoice('Tipo contratto', 'part-time');accendiopzioni();scelto('boxTipoContratto', 'Convivente Part-Time');">Convivente Part-Time 🛌🕙</button> <!--showLine('.cerchio21') -->
+                            <button id="sostituzione" onclick="selectChoice('Tipo contratto', 'sostituzione');accendiopzioni();scelto('boxTipoContratto', 'Sostituzione Lavoratori in Riposo');">Sostituzione Lavoratori in Riposo ⌛</button> <!--showLine('.cerchio21') -->
+                            <button id="assistenza" onclick="selectChoice('Tipo contratto', 'assistenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Assistenza Notturna');">Convivente Assistenza Notturna 🌙👩‍⚕️</button> <!--showLine('.cerchio21') -->
+                            <button id="presenza" onclick="selectChoice('Tipo contratto', 'presenza');accendiopzioni();scelto('boxTipoContratto', 'Convivente Presenza Notturna');">Convivente Presenza Notturna 🌙🛌</button> <!--showLine('.cerchio21') -->
                         </div>
                     </div>
 
                     <!-- 1.2 LIVELLO CONTRATTO -->
 
 
-                    <div class=" table-cell box" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltaLivello();">
+                    <div class=" table-cell box selected" id="boxLivelloContratto" onclick="toggleChoices('livello'); sceltaLivello();">
                             2) Seleziona Livello Contratto 
                         <div id="livello" class="choices">
                             <div id="a" style="display:none">
@@ -257,7 +259,7 @@
 
                     <!-- 1.3 DURATA CONTRATTO -->
 
-                    <div class="box table-cell" id="boxDurataContratto" onclick="toggleChoices('durata');">
+                    <div class="box table-cell selected" id="boxDurataContratto" onclick="toggleChoices('durata');">
                         3) Seleziona Durata Contratto 
                         <div id="durata" class="choices">
                             <button id="indeterminato" onclick="selectChoice('Contratto', 'indeterminato');accendiopzioni();scelto('boxDurataContratto','Indeterminato');">Indeterminato</button>
@@ -359,12 +361,12 @@
                 <label><b>Giorni Settimanali:</b> <span id="totalDays"></span></label>
             </div>
         </div>-->
-        <div class="stats-container">
+        <div class="stats-container" id="stats-container" style="display:none">
             <div class="stats-item">
-                <label for="totalHours"><strong>Ore Settimanali:</strong> <span id="totalHours">3</span></label>
+                <label for="totalHours"><strong>Ore Settimanali:</strong> <span id="totalHours">0</span></label>
             </div>
             <div class="stats-item">
-                <label for="totalDays"><strong>Giorni Settimanali:</strong> <span id="totalDays">1</span></label>
+                <label for="totalDays"><strong>Giorni Settimanali:</strong> <span id="totalDays">0</span></label>
             </div>
         </div>
         
@@ -379,28 +381,13 @@
             <h2 class="titleSectionInput">Altre Opzioni</h2>
 
         </div>
-       <!-- 
-        <div class="selection-container" id="InputpagaBoxora">
-            <br>
-            <label>Paga oraria del lavoratore :</label>
-            <input type="number" inputmode="numeric" id="InputpagaOra" min="0" step="1" placeholder="paga">
-            €
-            <br>
-        </div>
-            
-        <div class="selection-container" id="InputpagaBoxmese" style="display:none;">
-            <br>
-            <label>Paga mensile del lavoratore :</label>
-            <input type="number" inputmode="numeric" id="InputpagaMese" min="0" step="1" placeholder="paga">
-            €
-            <br>
-        </div>-->
         <div class="payment-container" id="InputpagaBoxora">
             <label for="InputpagaOra">Paga Oraria</label>
             <div class="input-group">
                 <input type="number" inputmode="numeric" id="InputpagaOra" min="0" step="1" placeholder="">
                 <span class="currency">€/h</span>
             </div>
+            <div class="text-currency" id="text-currency"></div>
         </div>
         
         <div class="payment-container" id="InputpagaBoxmese" style="display:none;">
@@ -409,8 +396,11 @@
                 <input type="number" inputmode="numeric" id="InputpagaMese" min="0" step="1" placeholder="">
                 <span class="currency">€/mese</span>
             </div>
+            
+            
         </div>
-        
+        <span class="currency-text" id="currency-text" style="display:none;"></span>
+        <!--<span class="currency-text" id="currency-text-2" style="display:none;"></span>-->
         <br>
         <div class="selection-wrapper">
                 <div class="selection-container" id="vittoAlloggioBox" style="display:none;">
@@ -500,13 +490,15 @@
             <div id="loadingDots" class="dots"></div>
         </a>
     </div>
--->
+
 <div class="align-center">
-    <button id="sendRequest" class="button">
-        <span class="buttonCalcola" id="buttonCalcola">🧮 CALCOLA 🧮</span>
+    <button id="sendRequest" class="button is-inactive"">
+        <span class="buttonCalcola  id="buttonCalcola"> CALCOLA </span>
         <span id="loadingDots" class="dots"></span>
     </button>
 </div>
+-->
+
 
     
     <br>
@@ -554,15 +546,20 @@
             <td> <i class="margin-left-20">  Contributi INPS lavoratore</i></td>
             <td id="contributiinps-lavoratore"> </td>
         </tr>
-        <tr class="font-x-small">
-            <td><i class="margin-left-20"><b> Paga netta lavoratore</b></i></td>
-            <td><b id="paganetta-lavoratore"> </b></td>
-        </tr>
-        <tr class="empty-row"></tr>
+        <!-- 
         <tr class="font-medium">
             <td><b class="margin-left-20">Costo netto al datore</b></td>
             <td><b id="pagalorda-lavoratore"></b></td>
+        </tr>    
+        -->
+        <tr class="empty-row"></tr>
+
+
+        <tr class="font-x-medium">
+            <td><i class="margin-left-20"><b> Paga netta lavoratore </b></i></td>
+            <td><b id="paganetta-lavoratore"> </b></td>
         </tr>
+        
         <tr class="font-x-small">
             <td> <i class="margin-left-20"> Contributi cassa colf Datore</i></td>
             <td id="contributicolf-datore"></td>
@@ -584,14 +581,14 @@
             <td id="indennita-tredicesim"></td>
         </tr>
         <tr class="empty-row"></tr>
-        <tr class="font-medium">
+        <tr class="font-large">
             <td><b class="margin-left-20">Costo totale al datore</b></td>
             <td><b id="costototale-datore"> </b></td>
         </tr>
     </table>
     </div>
-
-    <div class="button-group align-center">
+    <!-- NASCOSTO AL MOMENTO -->
+    <div class="button-group align-center" style="display: none;">
         <button id="nuovocalcolo" class="button">
             <span id="buttonCalcola">NUOVO CALCOLO 🧮</span>
         </button>
@@ -608,6 +605,14 @@
            Risultati calcoli verranno visualizzati qui 
     </div>
 </div>
+</div>
+<div class="button-wrapper">
+    <div class="align-center">
+        <button id="sendRequest" class="button is-inactive">
+            <span class="buttonCalcola" id="buttoncalcola">CALCOLA</span>
+            <span id="loadingDots" class="dots"></span>
+        </button>
+    </div>
 </div>
     <script src="toki.js"></script>   
     <script src="index.js"></script>   
