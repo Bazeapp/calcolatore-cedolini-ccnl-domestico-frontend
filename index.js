@@ -62,7 +62,17 @@ function main(url) {
     const minimoCCNL = isHourly ? document.getElementById('InputpagaOra') : document.getElementById('InputpagaMese');
 
     // Aggiorna il testo dell'elemento span
-    let newText = `Prezzo medio per un ${params.get('type-job')} a ${params.get('location')} è ${params.get('avg-price')}`;
+
+    const typeJob = params.get('type-job');
+    const location = params.get('location');
+    const avgPrice = params.get('avg-price');
+
+    // Controlliamo se uno dei parametri è vuoto
+    if (!typeJob || !location || !avgPrice) {
+        newText = "";
+    } else {
+        newText = `Prezzo medio per un ${typeJob} a ${location} è ${avgPrice}`;
+    }
 
     // Il minimo del CCNL è ${minimoCCNL}
 
@@ -97,9 +107,87 @@ function isAtLeastOneDayGreaterThanZero(data) {
 
 // Aggiunge un ascoltatore di eventi al bottone con ID "sendRequest".
 // Al click, viene chiamata la funzione submitChoices per inviare i dati scelti.
+/*
 document.getElementById("sendRequest").addEventListener("click", function() {
     submitChoices();
+});*/
+
+
+
+// RICEVI VIA EMAIL
+document.addEventListener('DOMContentLoaded', async function() {
+    document.getElementById('openModal').addEventListener('click', function() {
+        document.getElementById('popup-application').style.display = 'flex'; // Mostra il modale
+    });
+    
+    
+    
+    // Per chiudere il modale quando si clicca sul bottone di chiusura
+    document.getElementById('close-button').addEventListener('click', function() {
+        document.getElementById('popup-application').style.display = 'none'; // Nascondi il modale
+    });
+    
+
+    const formRiceviViaEmail = document.getElementById('formRiceviViaEmail');
+
+    formRiceviViaEmail.addEventListener('submit', function(event) {
+        event.preventDefault(); // Previene il comportamento di default del form, ad esempio il ricaricamento della pagina
+
+        // Qui puoi inserire il codice che vuoi eseguire quando il form viene inviato
+        console.log('Form submitted!');
+        const emailValue = document.getElementById('Email-2').value;
+
+        const data = {
+            durataContratto: duratacontrattoselezionato,
+            tipoContratto: tipocontrattoselezionato,
+            livelloContratto: livellocontrattoselezionato,
+            oreLunedi: document.getElementById("lunedi").value,
+            oreMartedi: document.getElementById("martedi").value,
+            oreMercoledi: document.getElementById("mercoledi").value,
+            oreGiovedi:document.getElementById("giovedi").value,
+            oreVenerdi: document.getElementById("venerdi").value,
+            oreSabato: document.getElementById("sabato").value,
+            oreDomenica: document.getElementById("domenica").value,
+            paga: paga,
+            bambino_6_anni: bambino,
+            piu_persone: autosufficienti,
+            certificato_uni: certificato,
+            pranzo_natura: indennitaPranzoColazione,
+            cena_natura: indennitaCena,
+            alloggio_natura: indennitaAlloggio,
+            email: emailValue
+        };
+    
+        sendToWebhookToReceiveByEmail(data);
+        
+        document.getElementById('openModal').style.display = 'none'; // Nascondi Modale, ma mostra scritta
+        document.getElementById('popup-application').style.display = 'none'; // Nascondi il modale
+        document.getElementById('wrapScrittaEmailRicevuta').style.display = 'block'; // Nascondi il modale
+
+
+    })
+
+    
+    
+    function sendToWebhookToReceiveByEmail(data) {
+        fetch('https://hook.eu1.make.com/dyfpkkq8iouyk0aa7i1cqe387iy7okv4', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+
+
 });
+
+
+
 
 // Aggiunge un ascoltatore di eventi al bottone con ID "nuovocalcolo".
 // Al click, viene chiamata la funzione confermanuovo per avviare un nuovo calcolo.
@@ -121,7 +209,7 @@ document.getElementById("annulla").addEventListener("click", function() {
 
 
 document.getElementById('sendRequest').addEventListener('click', async () => {
-
+    submitChoices();
     const data = {
         durataContratto: duratacontrattoselezionato,
         tipoContratto: tipocontrattoselezionato,
@@ -185,7 +273,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
 
     
 
-    function sendToWebhook(data) {
+    function sendToWebhookToCalculate(data) {
         fetch('https://hook.eu1.make.com/asor6kjlu4bbl2eemv3nlbjhb5sr39hb', {
             method: 'POST',
             headers: {
@@ -212,7 +300,9 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         });
     }
 
-    sendToWebhook(data);
+    sendToWebhookToCalculate(data);
+    document.getElementById('openModal').style.display = 'inline';
+    
     
                 //far vedere attendi... mentre si carica la tabella
  /*

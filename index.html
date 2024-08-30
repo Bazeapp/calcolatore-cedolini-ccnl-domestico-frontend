@@ -518,32 +518,32 @@
             <th><i>Importo</i></th>
         </tr>
         <tr class="font-x-small">
-            <td ><i class="margin-left-20">Paga base lavoratore:</td>
+            <td ><i class="margin-left-20"> (+) Paga base lavoratore:</td>
             <td id="paga-netta"> </td>   
         </tr>
         <tr class="font-x-small">
-            <td><i class="margin-left-20"> Indennità extra totali</i></td>
+            <td><i class="margin-left-20"> (+) Indennità extra totali</i></td>
             <td id="indennita-tot"> </td>   
         </tr>
         <tr class="font-x-small">
-            <td><i class="margin-left-20">Indennità vitto e alloggio</i></td>
+            <td><i class="margin-left-20"> (+) Indennità vitto e alloggio</i></td>
             <td id="indennita-cibo"> </td>   
         </tr>
         <tr class="font-x-small">
-            <td><i class="margin-left-20">Indennità  domeniche</i></td>
+            <td><i class="margin-left-20"> (+) Indennità  domeniche</i></td>
             <td id="paga-domenica"> </td>   
         </tr>
         <tr class="font-medium">
-            <td><b class="margin-left-20">Paga lorda lavoratore</b></td>
+            <td><b class="margin-left-20">  Paga lorda lavoratore</b></td>
             <td><b id="pagalorda-lavoratore"> </b> </td>   
         </tr>
         <tr class="empty-row"></tr>
         <tr class="font-x-small">
-            <td> <i class="margin-left-20"> Contributi cassa colf lavoratore</i></td>
+            <td> <i class="margin-left-20">(-) Contributi cassa colf lavoratore </i></td>
             <td id="contributicolf-lavoratore"></td>
         </tr>
         <tr class="font-x-small">
-            <td> <i class="margin-left-20">  Contributi INPS lavoratore</i></td>
+            <td> <i class="margin-left-20"> (-) Contributi INPS lavoratore</i></td>
             <td id="contributiinps-lavoratore"> </td>
         </tr>
         <!-- 
@@ -561,23 +561,23 @@
         </tr>
         
         <tr class="font-x-small">
-            <td> <i class="margin-left-20"> Contributi cassa colf Datore</i></td>
+            <td> <i class="margin-left-20"> (+) Contributi cassa colf Datore</i></td>
             <td id="contributicolf-datore"></td>
         </tr>
         <tr class="font-x-small">
-            <td> <i class="margin-left-20">Contributi INPS datore </i></td>
+            <td> <i class="margin-left-20"> (+) Contributi INPS datore </i></td>
             <td id="contributiinps-datore" ></td>
         </tr>
         <tr class="font-x-small">
-            <td> <i class="margin-left-20"> Trattamento fine rapporto (TFR)</i></td>
+            <td> <i class="margin-left-20"> (+)  Trattamento fine rapporto (TFR)</i></td>
             <td id="indennita-tfr"></td>
         </tr>
         <tr class="font-x-small">
-            <td><i class="margin-left-20">Ferie</i></td>
+            <td><i class="margin-left-20"> (+) Ferie</i></td>
             <td id="indennita-ferie"></td>
         </tr>
         <tr class="font-x-small">
-            <td><i class="margin-left-20">Tredicesima</i></td>
+            <td><i class="margin-left-20"> (+) Tredicesima</i></td>
             <td id="indennita-tredicesim"></td>
         </tr>
         <tr class="empty-row"></tr>
@@ -612,10 +612,58 @@
             <span class="buttonCalcola" id="buttoncalcola">CALCOLA</span>
             <span id="loadingDots" class="dots"></span>
         </button>
+        <button id="openModal" class="buttonRiceviViaEmail" style="display: none;">
+            <span class="buttonCalcola">Ricevi via email ✉️</span>
+            
+        </button>
+        <div class="wrapScrittaEmailRicevuta" id="wrapScrittaEmailRicevuta" style="display: none;">
+            <span class="scrittaEmailRicevuta">Guarda casella email 📩</span></div>
     </div>
 </div>
     <script src="toki.js"></script>   
     <script src="index.js"></script>   
 </div>
+
+
+<!-- MODALE -->
+<div id="popup-application" class="popup-application_wrapper" style="display: none;">
+    <div class="popup-application">
+        <div class="form-field_text-wrapper">
+            <h3 class="heading-style-h3-v2">Ricevi via email la tabella costi </h3>
+            <!--<div class="text-size-small is-grey">
+                Useremo i tuoi contatti solo per aggiornarti sulla tua candidatura all'offerta.
+            </div>-->
+        </div>
+        <div id="candidatura-form" class="form-application-wrapper w-form">
+            <form id="formRiceviViaEmail" name="formRiceviViaEmail" data-name="Candidatura Popup Form" method="get" class="form-application" data-wf-page-id="65149874b25b7d66bda84ecf" data-wf-element-id="2bd00115-f1db-a562-20bc-9f3a124ccff2" aria-label="Candidatura Popup Form">
+                <div class="w-embed">
+                    <input type="hidden" name="EmailFamigliaAnnuncio" value="">
+                </div>
+                <div class="form-field_wrapper-application">
+                    <label for="Email-2" class="field-label text-weight-bold">Email*</label>
+                    <input class="form-input w-input" maxlength="256" name="Email" data-name="Email" placeholder="luca.rossi@gmail.com" type="email" id="Email-2" required="">
+                </div>
+                <div class="form-field_wrapper-application">
+                    <label class="w-checkbox checkbox_form-wrapper"><input type="checkbox" name="checkbox" id="checkbox" data-name="Checkbox" required="" class="w-checkbox-input checkbox" checked="" data-gtm-form-interact-field-id="0"><span class="checkbox_form-label w-form-label" for="checkbox">Accetto i <a href="/termini-e-condizioni/termini-e-condizioni-famiglie"><strong>termini di utilizzo</strong></a> e la <a href="#" target="_blank"><strong>privacy policy</strong></a></span></label>                </div>
+                <input type="submit" data-wait="Attendi per favore..." class="button is-full w-button buttonCalcola" value="Invia">
+            </form>
+            <div class="messaggio_successo-application w-form-done" tabindex="-1" role="region" aria-label="Candidatura Popup Form success">
+                <div>Guarda la tua casella email</div>
+            </div>
+            <div class="messaggio_errore-application w-form-fail" tabindex="-1" role="region" aria-label="Candidatura Popup Form failure">
+                <div>🛑 Controlla di aver inserito la mail corretta</div>
+            </div>
+        </div>
+        <div id="close-button" class="close-button">
+            <div class="icon-1x1-small is-pointer w-embed">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
