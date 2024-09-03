@@ -38,9 +38,10 @@ function main(url) {
     const livello_rapporto = params.get('contract-level');
     console.log("Livello Contratto:", livello_rapporto);
     if(livello_rapporto!==""&&livello_rapporto){
+        let livello_rapporto_label = livello_rapporto.toUpperCase()
+        if(livello_rapporto.length > 1) livello_rapporto_label =  livello_rapporto_label.charAt(0) + ' Super'
         
-        
-        selectChoice('Livello',livello_rapporto.toLowerCase());sceglipaga();accendiopzioni();scelto('boxLivelloContratto',livello_rapporto.toUpperCase());
+        selectChoice('Livello',livello_rapporto.toLowerCase());sceglipaga();accendiopzioni();scelto('boxLivelloContratto',livello_rapporto_label);
     }
 
     // 3 DURATA CONTRATTO
