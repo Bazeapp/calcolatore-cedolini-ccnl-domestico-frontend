@@ -1136,3 +1136,23 @@ label {
     padding: 1.5rem 0; /* Aggiunge un po' di spazio sopra e sotto il bottone per estetica */
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra leggera per distinguerlo dal resto della pagina */
 }
+
+
+  /* Personalizzazione della scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px; /* Larghezza della scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Colore dello sfondo della traccia della scrollbar */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #0047a9, #002d66); /* Sfumatura per il colore del thumb */
+    border-radius: 6px; /* Bordi arrotondati */
+    border: 2px solid #f0f0f0; /* Bordo dello stesso colore dello sfondo della traccia per effetto "incasso" */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #003b82, #001f4d); /* Cambia sfumatura quando si passa sopra col mouse */
+  }

@@ -156,7 +156,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             pranzo_natura: indennitaPranzoColazione,
             cena_natura: indennitaCena,
             alloggio_natura: indennitaAlloggio,
-            email: emailValue
+            email: emailValue,
+            ...risultatiSimulazione
         };
     
         sendToWebhookToReceiveByEmail(data);
@@ -302,7 +303,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     }
 
     sendToWebhookToCalculate(data);
-    document.getElementById('openModal').style.display = 'inline';
+    
     
     
                 //far vedere attendi... mentre si carica la tabella
@@ -338,7 +339,11 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     }); 
     
 // Funzione per aggiornare il contenuto dei campi della simulazione in base ai risultati ottenuti
+var risultatiSimulazione = {}
 function updateSimulazione(result) {
+    risultatiSimulazione=result;
+    //console.log(risultatiSimulazione)
+    document.getElementById('openModal').style.display = 'inline';
     // Itera su ciascuna chiave nell'oggetto result
     for (const key in result) {
         // Seleziona tutti gli elementi HTML con l'ID che corrisponde alla chiave
