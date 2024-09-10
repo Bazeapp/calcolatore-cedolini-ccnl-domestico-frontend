@@ -261,7 +261,7 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
     document.getElementById('risultatisimulazione').style.display = 'none';
     const buttonCalcola = document.getElementById("buttonCalcola");
     buttonCalcola.textContent = "ATTENDI";
-    
+    /*
     var loadingDots = document.getElementById("loadingDots");
     loadingDots.style.visibility = 'visible'; // Show the dots
 
@@ -273,9 +273,10 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
         }
     }, 500); // Change dots every 500ms
 
-    
+    */
 
     function sendToWebhookToCalculate(data) {
+        document.getElementById('nuovocalcolo').scrollIntoView({ behavior: 'smooth' });
         fetch('https://hook.eu1.make.com/asor6kjlu4bbl2eemv3nlbjhb5sr39hb', {
             method: 'POST',
             headers: {
@@ -291,10 +292,10 @@ document.getElementById('sendRequest').addEventListener('click', async () => {
             document.getElementById('loadingMessage').style.display = 'none';
             document.getElementById('risultatisimulazione').style.display='block';
             document.getElementById('nuovocalcolo').style.display = 'block';
-                     // Riporta il testo del pulsante a "Calcola"
-                     buttonCalcola.textContent = "CALCOLA 🧮";
-            loadingDots.style.visibility = 'hidden'; // Hide the dots
-            clearInterval(dotInterval); // Stop the interval
+            // Riporta il testo del pulsante a "Calcola"
+            buttonCalcola.textContent = "CALCOLA 🧮";
+            //loadingDots.style.visibility = 'hidden'; // Hide the dots
+            //clearInterval(dotInterval); // Stop the interval
         })
         
         .catch(error => {
