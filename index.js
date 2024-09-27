@@ -71,6 +71,7 @@ function main(url) {
     // Controlliamo se uno dei parametri è vuoto
     if (!typeJob || !location || !avgPrice) {
         newText = "";
+
     } else {
         newText = `Prezzo medio per un ${typeJob} a ${location} è ${avgPrice}`;
     }
@@ -612,14 +613,24 @@ function salvaPaga(event) {
     var placeholderValue = parseFloat(pagaInput.placeholder);
 
     // Controlla se il valore supera il limite o non è un numero valido
-    if (pagaValue > 5000 || isNaN(pagaValue)) {
-    alert("Inserisci un valore valido per la paga.");
-    resetPaga(pagaInput);
-    return;
-}
-
-paga = pagaValue.toFixed(2);
-document.getElementById('paga-netta').innerText = paga + ' €';
+    if (pagaValue > 10000) {
+        alert("Inserisci un valore valido per la paga.");
+        resetPaga(pagaInput);
+        return;
+    }
+    // Controlla se il valore supera il 100 ed eventualmente fallo notare
+    const isHourly = ["nonconvivente", "sostituzione"].includes(tipocontrattoselezionato);
+    
+    const currencyText1 = document.getElementById('currency-text');
+    if(isHourly && pagaValue.toFixed(2)>=50 && currencyText1){
+        currencyText1.textContent = "⚠️ ATTENZIONE, hai inserito una paga oraria alta maggiore di 50€/h";
+        currencyText1.style.display = 'inline'; // o 'block' a seconda delle tue necessità
+    }else{
+        currencyText1.textContent = "";
+        currencyText1.style.display = 'none'; // o 'block' a seconda delle tue necessità
+    }
+    paga = pagaValue.toFixed(2);
+    document.getElementById('paga-netta').innerText = paga + ' €';
 }
 
 function formatPaga(event) {
@@ -645,8 +656,8 @@ function resetPaga(inputElement) {
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    var inputPagaOra = document.getElementById('InputpagaOra');
-    var inputPagaMese = document.getElementById('InputpagaMese');
+    let inputPagaOra = document.getElementById('InputpagaOra');
+    let inputPagaMese = document.getElementById('InputpagaMese');
     inputPagaOra.addEventListener('input', salvaPaga);
     inputPagaMese.addEventListener('input', salvaPaga);
 
@@ -655,10 +666,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Quando la pagina è caricata, imposta il valore della paga al placeholder se l'input è vuoto
     if (!inputPagaOra.value) {
-    inputPagaOra.value = inputPagaOra.placeholder;
+        inputPagaOra.value = inputPagaOra.placeholder;
     }
     if (!inputPagaMese.value) {
-    inputPagaMese.value = inputPagaMese.placeholder;
+        inputPagaMese.value = inputPagaMese.placeholder;
     }
 
     sceglipaga();
